@@ -23,7 +23,7 @@ namespace AweSimConnect
         {
             this.fileName = getFileName();
             label1.Text = this.fileName;
-
+            setClusterBox();
         }
 
         // Gets the file name without the extension
@@ -35,5 +35,12 @@ namespace AweSimConnect
             file = System.IO.Path.GetFileNameWithoutExtension(pathArgs[0]);
             return file;
         }
+
+        private void setClusterBox()
+        {
+            cbCluster.Items.Add("Oakley");
+            cbCluster.SelectedIndex = 0;
+        }
+                
     }
 }

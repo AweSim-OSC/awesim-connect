@@ -19,10 +19,11 @@ namespace AweSimConnect
             InitializeComponent();
         }
 
+        // On application load
         private void AweSimMain_Load(object sender, EventArgs e)
         {
             this.fileName = getFileName();
-            label1.Text = this.fileName;
+            label1.Text = "Debug: " + this.fileName;
             setClusterBox();
         }
 
@@ -36,11 +37,14 @@ namespace AweSimConnect
             return file;
         }
 
+        // Adds the ssh server locations to the combobox
         private void setClusterBox()
         {
             cbCluster.Items.Add("Oakley");
             cbCluster.SelectedIndex = 0;
         }
+
+
                 
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="AweSimMain.Designer.cs">
       <DependentUpon>AweSimMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cluster.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AweSimMain.resx">
@@ -81,6 +82,7 @@
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
     <Content Include="assets\awesim-sm.png" />
+    <None Include="Resources\header.png" />
     <EmbeddedResource Include="Resources\plink.exe" />
     <None Include="Resources\awesim-sm.png" />
   </ItemGroup>

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AweSimMain));
-            this.label1 = new System.Windows.Forms.Label();
             this.pbAweSimLogo = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -47,19 +46,10 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(229, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
             // pbAweSimLogo
             // 
             this.pbAweSimLogo.Image = global::AweSimConnect.Properties.Resources.awesim_sm;
-            this.pbAweSimLogo.Location = new System.Drawing.Point(12, 12);
+            this.pbAweSimLogo.Location = new System.Drawing.Point(30, 12);
             this.pbAweSimLogo.Name = "pbAweSimLogo";
             this.pbAweSimLogo.Size = new System.Drawing.Size(200, 84);
             this.pbAweSimLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -68,14 +58,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(313, 36);
+            this.textBox1.Location = new System.Drawing.Point(323, 34);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(125, 20);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(313, 64);
+            this.textBox2.Location = new System.Drawing.Point(323, 62);
             this.textBox2.MaxLength = 200;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(125, 20);
@@ -85,7 +75,7 @@
             // lUsername
             // 
             this.lUsername.AutoSize = true;
-            this.lUsername.Location = new System.Drawing.Point(249, 39);
+            this.lUsername.Location = new System.Drawing.Point(259, 37);
             this.lUsername.Name = "lUsername";
             this.lUsername.Size = new System.Drawing.Size(58, 13);
             this.lUsername.TabIndex = 4;
@@ -94,7 +84,7 @@
             // lPassword
             // 
             this.lPassword.AutoSize = true;
-            this.lPassword.Location = new System.Drawing.Point(249, 67);
+            this.lPassword.Location = new System.Drawing.Point(259, 65);
             this.lPassword.Name = "lPassword";
             this.lPassword.Size = new System.Drawing.Size(56, 13);
             this.lPassword.TabIndex = 5;
@@ -105,12 +95,14 @@
             this.cbCluster.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCluster.DisplayMember = "Name";
             this.cbCluster.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCluster.FormattingEnabled = true;
             this.cbCluster.Location = new System.Drawing.Point(18, 30);
             this.cbCluster.Name = "cbCluster";
             this.cbCluster.Size = new System.Drawing.Size(67, 23);
             this.cbCluster.TabIndex = 6;
+            this.cbCluster.ValueMember = "Name";
             // 
             // lCluster
             // 
@@ -139,7 +131,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(265, 14);
+            this.label2.Location = new System.Drawing.Point(268, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 15;
@@ -186,8 +178,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(479, 178);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);
             this.Controls.Add(this.lUsername);
@@ -210,7 +203,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbAweSimLogo;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;

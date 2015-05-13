@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AweSimConnect.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,14 @@ namespace AweSimConnect
 {
     public partial class AweSimMain : Form
     {
-        String fileName;
+        private String fileName;
+        String hostName;
+        int redirectPort;
+
+        Cluster oakley = new Cluster("OAK", "Oakley", "oakley.osc.edu");
+        Cluster ruby = new Cluster("RBY", "Ruby", "ruby.osc.edu");
+        Cluster glenn = new Cluster("OPT", "Glenn", "glenn.osc.edu");
+       
 
         public AweSimMain()
         {
@@ -23,8 +31,8 @@ namespace AweSimConnect
         private void AweSimMain_Load(object sender, EventArgs e)
         {
             this.fileName = getFileName();
-            label1.Text = "Debug: " + this.fileName;
-            setClusterBox();
+            setupClusters();
+            setupClusterBox();
         }
 
         // Gets the file name without the extension
@@ -37,14 +45,18 @@ namespace AweSimConnect
             return file;
         }
 
-        // Adds the ssh server locations to the combobox
-        private void setClusterBox()
+        // Set up app with clusters
+        private void setupClusters()
         {
-            cbCluster.Items.Add("Oakley");
-            cbCluster.SelectedIndex = 0;
         }
 
-
-                
+        // Adds the ssh server locations to the combobox
+        private void setupClusterBox()
+        {
+            cbCluster.Items.Add(oakley);
+            cbCluster.Items.Add(ruby);
+            cbCluster.Items.Add(glenn);
+            cbCluster.SelectedIndex = 0;
+        }     
     }
 }

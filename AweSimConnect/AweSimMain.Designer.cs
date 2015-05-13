@@ -37,8 +37,8 @@
             this.cbCluster = new System.Windows.Forms.ComboBox();
             this.lCluster = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lRedirect = new System.Windows.Forms.Label();
+            this.tbRedirect = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.bConnect = new System.Windows.Forms.Button();
             this.tbHost = new System.Windows.Forms.TextBox();
@@ -115,8 +115,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.lRedirect);
+            this.groupBox1.Controls.Add(this.tbRedirect);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.bConnect);
             this.groupBox1.Controls.Add(this.tbHost);
@@ -128,23 +128,24 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
-            // label2
+            // lRedirect
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(268, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Redirect";
+            this.lRedirect.AutoSize = true;
+            this.lRedirect.Location = new System.Drawing.Point(268, 14);
+            this.lRedirect.Name = "lRedirect";
+            this.lRedirect.Size = new System.Drawing.Size(47, 13);
+            this.lRedirect.TabIndex = 15;
+            this.lRedirect.Text = "Redirect";
             // 
-            // textBox3
+            // tbRedirect
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(260, 30);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(64, 22);
-            this.textBox3.TabIndex = 14;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbRedirect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRedirect.Location = new System.Drawing.Point(260, 30);
+            this.tbRedirect.Name = "tbRedirect";
+            this.tbRedirect.Size = new System.Drawing.Size(64, 22);
+            this.tbRedirect.TabIndex = 14;
+            this.tbRedirect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbRedirect.TextChanged += new System.EventHandler(this.tbRedirect_TextChanged);
             // 
             // label4
             // 
@@ -173,6 +174,7 @@
             this.tbHost.Size = new System.Drawing.Size(131, 22);
             this.tbHost.TabIndex = 8;
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
             // 
             // AweSimMain
             // 
@@ -214,8 +216,8 @@
         private System.Windows.Forms.TextBox tbHost;
         private System.Windows.Forms.Button bConnect;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbRedirect;
+        private System.Windows.Forms.Label lRedirect;
 
     }
 }

@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AweSimConnect
@@ -17,10 +15,9 @@ namespace AweSimConnect
         String hostName;
         int redirectPort;
 
-        Cluster oakley = new Cluster("OAK", "Oakley", "oakley.osc.edu");
-        Cluster ruby = new Cluster("RBY", "Ruby", "ruby.osc.edu");
-        Cluster glenn = new Cluster("OPT", "Glenn", "glenn.osc.edu");
-       
+        static Cluster oakley = new Cluster("OAK", "Oakley", "oakley.osc.edu");
+        static Cluster ruby = new Cluster("RBY", "Ruby", "ruby.osc.edu");
+        static Cluster glenn = new Cluster("OPT", "Glenn", "glenn.osc.edu");
 
         public AweSimMain()
         {
@@ -56,7 +53,48 @@ namespace AweSimConnect
             cbCluster.Items.Add(oakley);
             cbCluster.Items.Add(ruby);
             cbCluster.Items.Add(glenn);
-            cbCluster.SelectedIndex = 0;
-        }     
+            //cbCluster.SelectedIndex = 0;
+            setCluster();
+        }
+
+        //If the filename includes "OAK", "RBY", or "OPT", set the combobox, else select oakley.
+        private void setCluster()
+        {
+            if (this.fileName.Contains(oakley.Code)) {
+                cbCluster.SelectedIndex = cbCluster.FindStringExact(oakley.Name);
+            }
+            else if (this.fileName.Contains(ruby.Code))
+            {
+                cbCluster.SelectedIndex = cbCluster.FindStringExact(ruby.Name);
+            }
+            else if (this.fileName.Contains(glenn.Code))
+            {
+                cbCluster.SelectedIndex = cbCluster.FindStringExact(glenn.Name);
+            }
+            else
+            {
+                cbCluster.SelectedIndex = cbCluster.FindStringExact(oakley.Name);
+            }
+        }
+
+        private void tbHost_TextChanged(object sender, EventArgs e)
+        {
+            this.hostName = tbHost.Text;
+        }
+
+        private void tbRedirect_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.redirectPort = int.Parse(tbRedirect.Text);
+                lRedirect.ForeColor = Color.Black;
+            }
+            catch (Exception ex)
+            {
+                lRedirect.ForeColor = Color.Red;
+            }
+        }
+
+
     }
 }

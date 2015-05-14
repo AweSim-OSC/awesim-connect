@@ -49,6 +49,7 @@
             // 
             // pbAweSimLogo
             // 
+            this.pbAweSimLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbAweSimLogo.Image = global::AweSimConnect.Properties.Resources.awesim_sm;
             this.pbAweSimLogo.Location = new System.Drawing.Point(30, 12);
             this.pbAweSimLogo.Name = "pbAweSimLogo";
@@ -76,6 +77,7 @@
             // lUsername
             // 
             this.lUsername.AutoSize = true;
+            this.lUsername.BackColor = System.Drawing.Color.Transparent;
             this.lUsername.Location = new System.Drawing.Point(259, 29);
             this.lUsername.Name = "lUsername";
             this.lUsername.Size = new System.Drawing.Size(58, 13);
@@ -85,6 +87,7 @@
             // lPassword
             // 
             this.lPassword.AutoSize = true;
+            this.lPassword.BackColor = System.Drawing.Color.Transparent;
             this.lPassword.Location = new System.Drawing.Point(259, 65);
             this.lPassword.Name = "lPassword";
             this.lPassword.Size = new System.Drawing.Size(56, 13);
@@ -116,6 +119,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.lRedirect);
             this.groupBox1.Controls.Add(this.tbRedirect);
             this.groupBox1.Controls.Add(this.label4);
@@ -181,19 +185,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 9);
+            this.label1.Location = new System.Drawing.Point(259, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 9;
-            this.label1.Text = "label1";
+            this.label1.Text = "DebugLabel";
             // 
             // AweSimMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 178);
+            this.ClientSize = new System.Drawing.Size(479, 176);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);

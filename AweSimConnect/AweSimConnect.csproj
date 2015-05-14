@@ -83,6 +83,8 @@
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
     <Content Include="assets\awesim-sm.png" />
+    <Content Include="Resources\greenlight.png" />
+    <Content Include="Resources\redlight.png" />
     <None Include="Resources\header.png" />
     <EmbeddedResource Include="Resources\plink.exe" />
     <None Include="Resources\awesim-sm.png" />

@@ -12,6 +12,13 @@ using System.Windows.Forms;
 
 namespace AweSimConnect
 {
+    /*
+     * AweSim Connect
+     *  
+     * A windows native app for SSH tunneling to Ohio Supercomputer Center services.
+     * 
+     * Brian McMichael: bmcmichael@osc.edu
+     */
     public partial class AweSimMain : Form
     {
         private String fileName;
@@ -88,26 +95,7 @@ namespace AweSimConnect
                 lRedirect.ForeColor = Color.Red;
             }
         }
-
-        private bool isPuttyInstalled()
-        {
-            return (GetFullPath("putty.exe") != null);
-        }
-
-        private object GetFullPath(string fileName)
-        {
-            if (File.Exists(fileName))
-                return Path.GetFullPath(fileName);
-
-            var values = Environment.GetEnvironmentVariable("PATH");
-            foreach (var path in values.Split(';'))
-            {
-                var fullPath = Path.Combine(path, fileName);
-                if (File.Exists(fullPath))
-                    return fullPath;
-            }
-            return null;
-        }
+               
 
         // Launch PuTTY
         private void startPuttyProcess()
@@ -134,6 +122,36 @@ namespace AweSimConnect
         private void bConnect_Click(object sender, EventArgs e)
         {
             startPuttyProcess();
+        }
+
+        //Use this to see if a particluar file is available on the path
+        public static bool ExistsOnPath(String filename)
+        {
+            if (GetFullPath(filename) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //Use this to get the full path of a file
+        public static string GetFullPath(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                return Path.GetFullPath(fileName);
+            }
+
+            var values = Environment.GetEnvironmentVariable("PATH");
+            foreach (var path in values.Split(';'))
+            {
+                var fullPath = Path.Combine(path, fileName);
+                if (File.Exists(fullPath))
+                {
+                    return fullPath;
+                }
+            }
+            return null;
         }
     }
 }

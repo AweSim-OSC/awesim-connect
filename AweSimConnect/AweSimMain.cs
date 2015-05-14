@@ -1,4 +1,5 @@
-﻿using AweSimConnect.Models;
+﻿using AweSimConnect.Controllers;
+using AweSimConnect.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,8 @@ namespace AweSimConnect
         private String fileName;
         String hostName;
         int redirectPort;
-
-        static Cluster oakley = new Cluster("OAK", "Oakley", "oakley.osc.edu");
-        static Cluster ruby = new Cluster("RBY", "Ruby", "ruby.osc.edu");
-        static Cluster glenn = new Cluster("OPT", "Glenn", "glenn.osc.edu");
-
+        ClusterController cc = new ClusterController();
+        
         public AweSimMain()
         {
             InitializeComponent();
@@ -46,14 +44,19 @@ namespace AweSimConnect
         // Adds the ssh server locations to the combobox
         private void setupClusterBox()
         {
-            cbCluster.Items.Add(oakley);
-            cbCluster.Items.Add(ruby);
-            cbCluster.Items.Add(glenn);
+            foreach (Cluster cluster in cc.GetClusterList())
+            {
+                cbCluster.Items.Add(cluster);
+            }
+            //cbCluster.Items.Add(oakley);
+            //cbCluster.Items.Add(ruby);
+            //cbCluster.Items.Add(glenn);
             //cbCluster.SelectedIndex = 0;
-            setCluster();
+            //setCluster();
         }
 
         // If the filename includes "OAK", "RBY", or "OPT", set the combobox, else select oakley.
+       /*
         private void setCluster()
         {
             if (this.fileName.Contains(oakley.Code)) {
@@ -72,6 +75,7 @@ namespace AweSimConnect
                 cbCluster.SelectedIndex = cbCluster.FindStringExact(oakley.Name);
             }
         }
+        * */
 
         // When the user modifies the host box, the variable gets set
         private void tbHost_TextChanged(object sender, EventArgs e)

@@ -48,34 +48,26 @@ namespace AweSimConnect
             {
                 cbCluster.Items.Add(cluster);
             }
-            //cbCluster.Items.Add(oakley);
-            //cbCluster.Items.Add(ruby);
-            //cbCluster.Items.Add(glenn);
-            //cbCluster.SelectedIndex = 0;
-            //setCluster();
+            setCluster();
         }
 
         // If the filename includes "OAK", "RBY", or "OPT", set the combobox, else select oakley.
-       /*
         private void setCluster()
         {
-            if (this.fileName.Contains(oakley.Code)) {
-                cbCluster.SelectedIndex = cbCluster.FindStringExact(oakley.Name);
-            }
-            else if (this.fileName.Contains(ruby.Code))
+            foreach (Cluster cluster in cc.GetClusterList())
             {
-                cbCluster.SelectedIndex = cbCluster.FindStringExact(ruby.Name);
-            }
-            else if (this.fileName.Contains(glenn.Code))
-            {
-                cbCluster.SelectedIndex = cbCluster.FindStringExact(glenn.Name);
-            }
-            else
-            {
-                cbCluster.SelectedIndex = cbCluster.FindStringExact(oakley.Name);
+                if (this.fileName.Contains(cluster.Code))
+                {
+                    cc.SetCluster(cluster);
+                    cbCluster.SelectedIndex = cbCluster.FindStringExact(cluster.Name);
+                    break;
+                }
+                else
+                {
+                    cbCluster.SelectedIndex = 0;
+                }
             }
         }
-        * */
 
         // When the user modifies the host box, the variable gets set
         private void tbHost_TextChanged(object sender, EventArgs e)
@@ -122,6 +114,7 @@ namespace AweSimConnect
         {
             //TODO fix this to get the user's directory
             //TODO fix this to get the slected ssh server
+            //TODO move putty stuff to a separate class
             String puttyCommand = String.Format(@"C:\Program Files (x86)\PuTTY\putty.exe"); // -ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}", this.redirectPort, this.hostName, tbUserName.Text, "oakley.osc.edu", tbUserName.Text, tbPassword.Text);
             ProcessStartInfo info = new ProcessStartInfo(puttyCommand);
             info.Arguments = String.Format("-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}", this.redirectPort, this.hostName, tbUserName.Text, "oakley.osc.edu", tbUserName.Text, tbPassword.Text);

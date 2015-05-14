@@ -13,9 +13,27 @@ namespace AweSimConnect.Controllers
 
         private Cluster selectedCluster;
 
+        private List<Cluster> clusterList;
+
         public ClusterController()
         {
-            this.selectedCluster = oakley;
+            init(oakley);
+        }
+
+        public ClusterController(Cluster selected)
+        {
+            init(selected);
+        }
+
+        private void init(Cluster selected)
+        {
+            List<Cluster> list = new List<Cluster>();
+            list.Add(oakley);
+            list.Add(ruby);
+            list.Add(glenn);
+
+            this.clusterList = list;
+            this.selectedCluster = selected;
         }
 
         public void SetCluster(String code) {
@@ -26,6 +44,11 @@ namespace AweSimConnect.Controllers
             } else {
                 this.selectedCluster = oakley;
             }
+        }
+
+        public void SetCluster(Cluster cluster)
+        {
+            this.selectedCluster = cluster;
         }
 
         public Cluster GetCluster() {
@@ -43,12 +66,8 @@ namespace AweSimConnect.Controllers
         }
 
         public List<Cluster> GetClusterList()
-        {
-            List<Cluster> list = new List<Cluster>();
-            list.Add(oakley);
-            list.Add(ruby);
-            list.Add(glenn);
-            return list;
+        {            
+            return this.clusterList;
         }
     }
 }

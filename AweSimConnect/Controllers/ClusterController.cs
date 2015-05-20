@@ -69,5 +69,17 @@ namespace AweSimConnect.Controllers
         {            
             return this.clusterList;
         }
+
+        public String GetDomainAtIndex(int index)
+        {
+            try
+            {
+                return clusterList[index].Domain;
+            }
+            catch (Exception ex)
+            {
+                return selectedCluster.Domain;
+            }
+        }
     }
 }

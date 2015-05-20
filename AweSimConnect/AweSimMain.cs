@@ -21,10 +21,14 @@ namespace AweSimConnect
      */
     public partial class AweSimMain : Form
     {
+        private PuTTYController pc;
+        private VncController vc;
+        private ClipboardController cbc;
+        private ClusterController clc;
+
         private String fileName;
         String hostName;
         int redirectPort;
-        ClusterController cc = new ClusterController();
         
         public AweSimMain()
         {
@@ -34,6 +38,12 @@ namespace AweSimConnect
         // On application load
         private void AweSimMain_Load(object sender, EventArgs e)
         {
+            //Initialize controllers.
+            pc = new PuTTYController();
+            vc = new VncController();
+            cbc = new ClipboardController();
+            clc = new ClusterController();
+
             this.fileName = getFileName();
             setupClusterBox();
         }        
@@ -51,7 +61,7 @@ namespace AweSimConnect
         // Adds the ssh server locations to the combobox
         private void setupClusterBox()
         {
-            foreach (Cluster cluster in cc.GetClusterList())
+            foreach (Cluster cluster in clc.GetClusterList())
             {
                 cbCluster.Items.Add(cluster);
             }
@@ -61,11 +71,11 @@ namespace AweSimConnect
         // If the filename includes "OAK", "RBY", or "OPT", set the combobox, else select oakley.
         private void setCluster()
         {
-            foreach (Cluster cluster in cc.GetClusterList())
+            foreach (Cluster cluster in clc.GetClusterList())
             {
                 if (this.fileName.Contains(cluster.Code))
                 {
-                    cc.SetCluster(cluster);
+                    clc.SetCluster(cluster);
                     cbCluster.SelectedIndex = cbCluster.FindStringExact(cluster.Name);
                     break;
                 }
@@ -81,7 +91,7 @@ namespace AweSimConnect
         {
             this.hostName = tbHost.Text;
         }
-
+        
         // When the user modifies the redirect port box, set the variable, change label to red if not a valid integer
         private void tbRedirect_TextChanged(object sender, EventArgs e)
         {
@@ -95,33 +105,11 @@ namespace AweSimConnect
                 lRedirect.ForeColor = Color.Red;
             }
         }
-               
-
-        // Launch PuTTY
-        private void startPuttyProcess()
-        {
-            //TODO fix this to get the user's directory
-            //TODO fix this to get the slected ssh server
-            //TODO move putty stuff to a separate class
-            String puttyCommand = String.Format(@"C:\Program Files (x86)\PuTTY\putty.exe"); // -ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}", this.redirectPort, this.hostName, tbUserName.Text, "oakley.osc.edu", tbUserName.Text, tbPassword.Text);
-            ProcessStartInfo info = new ProcessStartInfo(puttyCommand);
-            info.Arguments = String.Format("-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}", this.redirectPort, this.hostName, tbUserName.Text, "oakley.osc.edu", tbUserName.Text, tbPassword.Text);
-            info.UseShellExecute = false;
-            info.WindowStyle = ProcessWindowStyle.Minimized;
-
-            try
-            {
-                Process.Start(info);
-            }
-            catch (Exception ex)
-            {
-                label1.Text = ex.Message;
-            }
-        }
 
         private void bConnect_Click(object sender, EventArgs e)
         {
-            startPuttyProcess();
+            //TODO: More robust validation for passwords.
+            pc.startPuttyProcess(tbPassword.Text);
         }
 
         //Use this to see if a particluar file is available on the path
@@ -153,6 +141,17 @@ namespace AweSimConnect
             }
             return null;
         }
+
+        private void tbUserName_TextChanged(object sender, EventArgs e)
+        {
+            pc.UserName = tbUserName.Text;
+        }
+
+        private void cbCluster_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.setCluster();
+        }
+
 
     }
 }

@@ -64,6 +64,7 @@
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(125, 20);
             this.tbUserName.TabIndex = 1;
+            this.tbUserName.TextChanged += new System.EventHandler(this.tbUserName_TextChanged);
             // 
             // tbPassword
             // 
@@ -107,6 +108,7 @@
             this.cbCluster.Size = new System.Drawing.Size(67, 23);
             this.cbCluster.TabIndex = 3;
             this.cbCluster.ValueMember = "Name";
+            this.cbCluster.SelectedIndexChanged += new System.EventHandler(this.cbCluster_SelectedIndexChanged);
             // 
             // lCluster
             // 

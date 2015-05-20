@@ -26,7 +26,9 @@ namespace AweSimConnect
         private ClipboardController cbc;
         private ClusterController clc;
 
+        //This is here in case we use the file name for settings.
         private String fileName;
+        
         String hostName;
         int redirectPort;
         
@@ -106,6 +108,7 @@ namespace AweSimConnect
             }
         }
 
+        //Handles the connect button action.
         private void bConnect_Click(object sender, EventArgs e)
         {
             //TODO: More robust validation for passwords.
@@ -142,16 +145,16 @@ namespace AweSimConnect
             return null;
         }
 
+        //Set the username when the user enters text.
         private void tbUserName_TextChanged(object sender, EventArgs e)
         {
             pc.UserName = tbUserName.Text;
         }
 
+        //Set the cluster when the user changes the box.
         private void cbCluster_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.setCluster();
         }
-
-
     }
 }

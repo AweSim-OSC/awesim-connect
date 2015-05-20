@@ -46,7 +46,7 @@ namespace AweSimConnect.Controllers
         {
             new PuTTYController("", -1, "", "");
         }
-
+        
         public PuTTYController(String hostName, int redirectPort, String userName, String sshHost)
         {
             this.hostName = hostName;

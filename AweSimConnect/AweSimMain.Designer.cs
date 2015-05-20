@@ -63,7 +63,7 @@
             this.tbUserName.Location = new System.Drawing.Point(323, 26);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(125, 20);
-            this.tbUserName.TabIndex = 2;
+            this.tbUserName.TabIndex = 1;
             // 
             // tbPassword
             // 
@@ -71,7 +71,7 @@
             this.tbPassword.MaxLength = 200;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(125, 20);
-            this.tbPassword.TabIndex = 3;
+            this.tbPassword.TabIndex = 2;
             this.tbPassword.UseSystemPasswordChar = true;
             // 
             // lUsername
@@ -105,7 +105,7 @@
             this.cbCluster.Location = new System.Drawing.Point(18, 30);
             this.cbCluster.Name = "cbCluster";
             this.cbCluster.Size = new System.Drawing.Size(67, 23);
-            this.cbCluster.TabIndex = 6;
+            this.cbCluster.TabIndex = 3;
             this.cbCluster.ValueMember = "Name";
             // 
             // lCluster
@@ -148,7 +148,7 @@
             this.tbRedirect.Location = new System.Drawing.Point(260, 30);
             this.tbRedirect.Name = "tbRedirect";
             this.tbRedirect.Size = new System.Drawing.Size(64, 22);
-            this.tbRedirect.TabIndex = 14;
+            this.tbRedirect.TabIndex = 5;
             this.tbRedirect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbRedirect.TextChanged += new System.EventHandler(this.tbRedirect_TextChanged);
             // 
@@ -166,7 +166,7 @@
             this.bConnect.Location = new System.Drawing.Point(347, 19);
             this.bConnect.Name = "bConnect";
             this.bConnect.Size = new System.Drawing.Size(89, 34);
-            this.bConnect.TabIndex = 10;
+            this.bConnect.TabIndex = 6;
             this.bConnect.Text = "Connect";
             this.bConnect.UseVisualStyleBackColor = true;
             this.bConnect.Click += new System.EventHandler(this.bConnect_Click);
@@ -178,7 +178,7 @@
             this.tbHost.MaxLength = 300;
             this.tbHost.Name = "tbHost";
             this.tbHost.Size = new System.Drawing.Size(163, 22);
-            this.tbHost.TabIndex = 8;
+            this.tbHost.TabIndex = 4;
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
             // 

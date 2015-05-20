@@ -50,7 +50,10 @@
     <Compile Include="AweSimMain.Designer.cs">
       <DependentUpon>AweSimMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ClipboardController.cs" />
     <Compile Include="Controllers\ClusterController.cs" />
+    <Compile Include="Controllers\PuTTYController.cs" />
+    <Compile Include="Controllers\VncController.cs" />
     <Compile Include="Models\Cluster.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

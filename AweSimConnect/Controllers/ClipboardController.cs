@@ -49,7 +49,6 @@ namespace AweSimConnect.Controllers
                     //Not a valid json string.
                     isValid = false;
                 }
-                isValid = true;
             }
             else
             {
@@ -60,11 +59,13 @@ namespace AweSimConnect.Controllers
             return isValid;
         }
 
+        // App has valid data from the clipboard ready for use.
         public bool IsValid()
         {
             return isValid;
         }
 
+        // If the app has connection data in the clipboard, mark as invalid so we don't keep returning the same data, then return what we've got.
         public Connection GetClipboardCluster()
         {
             if (IsValid())

@@ -40,8 +40,9 @@ namespace AweSimConnect.Controllers
         }
         
         
-        //TODO: This is the default install location, make this dynamic.
-        private static String PUTTY_COMMAND = @"C:\Program Files (x86)\PuTTY\putty.exe";
+        // TODO: This is the default install location, make this dynamic.
+        // PuTTY is unused for now. Switched to plink.
+        // private static String PUTTY_COMMAND = @"C:\Program Files (x86)\PuTTY\putty.exe";
 
         //The full current path of the plink executable.
         private static String PLINK_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), "plink.exe");

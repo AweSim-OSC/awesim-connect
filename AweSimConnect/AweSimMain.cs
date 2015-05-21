@@ -53,6 +53,8 @@ namespace AweSimConnect
 
             // Installs the plink app if it isn't already there.
             pc.InstallPlink();
+
+            // Adds the Clusters to the Combobox
             setupClusterBox();
 
             label1.Text = cbc.CheckClipboardForAweSim().ToString();
@@ -60,17 +62,22 @@ namespace AweSimConnect
             if (cbc.CheckClipboardForAweSim())
             {
                 Connection clipData = cbc.GetClipboardCluster();
-                tbUserName.Text = clipData.UserName;
-                this.userName = clipData.UserName;
-                tbRedirect.Text = clipData.RedirectPort.ToString();
-                this.redirectPort = clipData.RedirectPort;
-                tbHost.Text = clipData.PUAServer;
-                this.hostName = clipData.PUAServer;
-                //Oakley for now.
-                setCluster();                
+                UpdateData(clipData);
             }                       
             
-        }        
+        }
+
+        private void UpdateData(Connection connection)
+        {
+            tbUserName.Text = connection.UserName;
+            this.userName = connection.UserName;
+            tbRedirect.Text = connection.RedirectPort.ToString();
+            this.redirectPort = connection.RedirectPort;
+            tbHost.Text = connection.PUAServer;
+            this.hostName = connection.PUAServer;
+            //Oakley for now.
+            setCluster();                
+        }
 
         // Gets the file name without the extension
         // Arg 0 is always the file path.

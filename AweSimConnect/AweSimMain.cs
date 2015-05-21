@@ -46,6 +46,9 @@ namespace AweSimConnect
             cbc = new ClipboardController();
             clc = new ClusterController();
 
+            label1.Text = cbc.CheckClipboardForAweSim().ToString();
+
+
             this.fileName = getFileName();
             setupClusterBox();
         }        

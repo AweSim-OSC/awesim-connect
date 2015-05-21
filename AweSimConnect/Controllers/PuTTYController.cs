@@ -62,13 +62,18 @@ namespace AweSimConnect.Controllers
             this.sshHost = sshHost;
         }
 
+        //Installs plink.exe to current directory
         public bool InstallPlink()
         {
-            using (FileStream fs = new FileStream(PLINK_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
+            if (!IsPlinkInstalled())
             {
-                byte[] bytes = Resources.GetPlink();
-                fs.Write(bytes, 0, bytes.Length);
+                using (FileStream fs = new FileStream(PLINK_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
+                {
+                    byte[] bytes = Resources.GetPlink();
+                    fs.Write(bytes, 0, bytes.Length);
+                }
             }
+            
             return true;
         }
 
@@ -92,6 +97,11 @@ namespace AweSimConnect.Controllers
             {
                 
             }
+        }
+
+        internal bool IsPlinkInstalled()
+        {
+            return FileController.ExistsOnPath("plink.exe");
         }
     }
 }

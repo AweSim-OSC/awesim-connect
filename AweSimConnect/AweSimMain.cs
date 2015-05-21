@@ -49,6 +49,7 @@ namespace AweSimConnect
             cbc = new ClipboardController();
             clc = new ClusterController();
 
+            // Installs the plink app if it isn't already there.
             pc.InstallPlink();
 
             //This is here in case the user wants to modify the file name to edit settings. Depricated.

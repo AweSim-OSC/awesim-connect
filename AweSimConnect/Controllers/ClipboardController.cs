@@ -16,22 +16,21 @@ namespace AweSimConnect.Controllers
        Example json:
      
         { 
-        'PUAServer': 'n0024.ten.osc.edu:5901',
-        'RedirectPort': '8080',
-        'SSHHost': 'oakley.osc.edu',
-        'UserName': 'an0018'
+            'PUAServer': 'n0580.ten.osc.edu:5901',
+            'RedirectPort': '5901',
+            'SSHHost': 'oakley.osc.edu',
+            'UserName': 'bmcmichael'
         }
      
      */
     class ClipboardController
     {
-        Connection connectionData;        
+        Connection connectionData;
+        bool isValid;
         
         //Checks the clipboard for valid data and returns true if found.
         public bool CheckClipboardForAweSim() {
-
-            bool isValid;
-            
+                        
             if (Clipboard.ContainsText()) {
                 try {
                     // Get the text from the clipboard.
@@ -50,6 +49,7 @@ namespace AweSimConnect.Controllers
                     //Not a valid json string.
                     isValid = false;
                 }
+                isValid = true;
             }
             else
             {
@@ -58,6 +58,22 @@ namespace AweSimConnect.Controllers
             }
 
             return isValid;
+        }
+
+        public bool IsValid()
+        {
+            return isValid;
+        }
+
+        public Connection GetClipboardCluster()
+        {
+            if (IsValid())
+            {
+                isValid = false;
+                return connectionData;
+            }
+            else 
+                return null;
         }
     }
 }

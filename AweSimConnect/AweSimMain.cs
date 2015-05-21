@@ -31,9 +31,11 @@ namespace AweSimConnect
 
         //This is here in case we use the file name for settings.
         private String fileName;
-        
+
+        String userName;        
         String hostName;
         int redirectPort;
+        Cluster cluster;
         
         public AweSimMain()
         {
@@ -51,10 +53,23 @@ namespace AweSimConnect
 
             // Installs the plink app if it isn't already there.
             pc.InstallPlink();
-
-            //This is here in case the user wants to modify the file name to edit settings. Depricated.
-            this.fileName = getFileName();
             setupClusterBox();
+
+            label1.Text = cbc.CheckClipboardForAweSim().ToString();
+
+            if (cbc.CheckClipboardForAweSim())
+            {
+                Connection clipData = cbc.GetClipboardCluster();
+                tbUserName.Text = clipData.UserName;
+                this.userName = clipData.UserName;
+                tbRedirect.Text = clipData.RedirectPort.ToString();
+                this.redirectPort = clipData.RedirectPort;
+                tbHost.Text = clipData.PUAServer;
+                this.hostName = clipData.PUAServer;
+                //Oakley for now.
+                setCluster();                
+            }                       
+            
         }        
 
         // Gets the file name without the extension
@@ -77,24 +92,12 @@ namespace AweSimConnect
             setCluster();
         }
 
-        // If the filename includes "OAK", "RBY", or "OPT", set the combobox, else select oakley.
+        // Select the first one on the list. Oakley now.
         private void setCluster()
         {
-            foreach (Cluster cluster in clc.GetClusterList())
-            {
-                if (this.fileName.Contains(cluster.Code))
-                {
-                    clc.SetCluster(cluster);
-                    cbCluster.SelectedIndex = cbCluster.FindStringExact(cluster.Name);
-                    break;
-                }
-                else
-                {
-                    cbCluster.SelectedIndex = 0;
-                }
-            }
+            cbCluster.SelectedIndex = 0;            
         }
-
+        
         // When the user modifies the host box, the variable gets set
         private void tbHost_TextChanged(object sender, EventArgs e)
         {
@@ -118,50 +121,25 @@ namespace AweSimConnect
         //Handles the connect button action.
         private void bConnect_Click(object sender, EventArgs e)
         {
+            //TODO: Validate inputs
+            pc.UserName = this.userName;
+            pc.SshHost = this.cluster.Domain;
+            pc.RedirectPort = this.redirectPort;            
+            pc.HostName = this.hostName;
             //TODO: More robust validation for passwords.
-            pc.startPuttyProcess(tbPassword.Text);
-        }
-
-        //Use this to see if a particluar file is available on the path
-        public static bool ExistsOnPath(String filename)
-        {
-            if (GetFullPath(filename) != null)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        //Use this to get the full path of a file
-        public static string GetFullPath(string fileName)
-        {
-            if (File.Exists(fileName))
-            {
-                return Path.GetFullPath(fileName);
-            }
-
-            var values = Environment.GetEnvironmentVariable("PATH");
-            foreach (var path in values.Split(';'))
-            {
-                var fullPath = Path.Combine(path, fileName);
-                if (File.Exists(fullPath))
-                {
-                    return fullPath;
-                }
-            }
-            return null;
+            pc.StartPlinkProcess(tbPassword.Text);
         }
 
         //Set the username when the user enters text.
         private void tbUserName_TextChanged(object sender, EventArgs e)
         {
-            pc.UserName = tbUserName.Text;
+            this.userName = tbUserName.Text;
         }
 
         //Set the cluster when the user changes the box.
         private void cbCluster_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.setCluster();
+            this.cluster = clc.GetClusterList()[cbCluster.SelectedIndex];
         }
 
         // Open a browser window to Awesim Dashboard when user clicks the logo.

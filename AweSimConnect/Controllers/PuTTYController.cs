@@ -45,10 +45,10 @@ namespace AweSimConnect.Controllers
 
         //The full current path of the plink executable.
         private static String PLINK_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), "plink.exe");
-        
-        
-        private static String PUTTY_ARGS_PASSWORD = PUTTY_ARGS_NOPASSWORD + " -pw {5}";
-        private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4}";
+
+        // PuTTY/Plink command line argument placeholder.
+        private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
+        private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1}:{0} -C -N -T {2}@{3} -l {4}";
 
         public PuTTYController()
         {
@@ -73,40 +73,17 @@ namespace AweSimConnect.Controllers
                     byte[] bytes = Resources.GetPlink();
                     fs.Write(bytes, 0, bytes.Length);
                 }
-            }
-            
+            }            
             return true;
-        }
-
-        // Launch PuTTY
-        public void startPuttyProcess(String password)
-        {
-            //TODO fix this to get the user's directory
-            //TODO fix this to get the slected ssh server
-            //TODO move putty stuff to a separate class
-            String puttyCommand = String.Format(PUTTY_COMMAND); // -ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}", this.redirectPort, this.hostName, tbUserName.Text, "oakley.osc.edu", tbUserName.Text, tbPassword.Text);
-            ProcessStartInfo info = new ProcessStartInfo(puttyCommand);
-            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.redirectPort, this.hostName, this.userName, this.sshHost, this.userName, password);
-            info.UseShellExecute = false;
-            info.WindowStyle = ProcessWindowStyle.Minimized;
-
-            try
-            {
-                Process.Start(info);
-            }
-            catch (Exception ex)
-            {
-                
-            }
         }
 
         //Launch Plink without a password
         public void StartPlinkProcess()
         {
-            String plinkCommand = PLINK_CURRENT_DIR;
+            String plinkCommand = String.Format(PLINK_CURRENT_DIR);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
             info.Arguments = String.Format(PUTTY_ARGS_NOPASSWORD, this.redirectPort, this.hostName, this.userName, this.sshHost, this.userName);
-            info.UseShellExecute = false;
+            info.UseShellExecute = true;
 
             try
             {
@@ -116,16 +93,15 @@ namespace AweSimConnect.Controllers
             {
 
             }
-
         }
 
         //Launch Plink with a password
         public void StartPlinkProcess(String password)
         {
-            String plinkCommand = PLINK_CURRENT_DIR;
+            String plinkCommand = String.Format(PLINK_CURRENT_DIR);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
             info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.redirectPort, this.hostName, this.userName, this.sshHost, this.userName, password);
-            info.UseShellExecute = false;
+            info.UseShellExecute = true;
 
             try
             {
@@ -137,6 +113,7 @@ namespace AweSimConnect.Controllers
             }
         }
 
+        // Check to see if plink exists in the AweSim connect folder.
         internal bool IsPlinkInstalled()
         {
             return FileController.ExistsOnPath("plink.exe");

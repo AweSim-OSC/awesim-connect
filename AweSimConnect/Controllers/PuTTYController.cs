@@ -38,15 +38,16 @@ namespace AweSimConnect.Controllers
             get { return sshHost; }
             set { sshHost = value; }
         }
-
-
         
-        //TODO: Make this dynamic.
+        
+        //TODO: This is the default install location, make this dynamic.
         private static String PUTTY_COMMAND = @"C:\Program Files (x86)\PuTTY\putty.exe";
+
+        //The full current path of the plink executable.
         private static String PLINK_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), "plink.exe");
         
         
-        private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
+        private static String PUTTY_ARGS_PASSWORD = PUTTY_ARGS_NOPASSWORD + " -pw {5}";
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4}";
 
         public PuTTYController()
@@ -96,6 +97,43 @@ namespace AweSimConnect.Controllers
             catch (Exception ex)
             {
                 
+            }
+        }
+
+        //Launch Plink without a password
+        public void StartPlinkProcess()
+        {
+            String plinkCommand = PLINK_CURRENT_DIR;
+            ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
+            info.Arguments = String.Format(PUTTY_ARGS_NOPASSWORD, this.redirectPort, this.hostName, this.userName, this.sshHost, this.userName);
+            info.UseShellExecute = false;
+
+            try
+            {
+                Process.Start(info);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        //Launch Plink with a password
+        public void StartPlinkProcess(String password)
+        {
+            String plinkCommand = PLINK_CURRENT_DIR;
+            ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
+            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.redirectPort, this.hostName, this.userName, this.sshHost, this.userName, password);
+            info.UseShellExecute = false;
+
+            try
+            {
+                Process.Start(info);
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 

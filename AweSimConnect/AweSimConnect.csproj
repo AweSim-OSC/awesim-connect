@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Controllers\ClipboardController.cs" />
     <Compile Include="Controllers\ClusterController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\PuTTYController.cs" />
     <Compile Include="Controllers\VncController.cs" />
     <Compile Include="Models\Cluster.cs" />
@@ -91,6 +92,7 @@
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
     <Content Include="assets\awesim-sm.png" />
+    <Content Include="LICENSE.txt" />
     <Content Include="Resources\greenlight.png" />
     <Content Include="Resources\redlight.png" />
     <None Include="Resources\header.png" />

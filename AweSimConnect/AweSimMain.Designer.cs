@@ -57,6 +57,7 @@
             this.pbAweSimLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbAweSimLogo.TabIndex = 1;
             this.pbAweSimLogo.TabStop = false;
+            this.pbAweSimLogo.Click += new System.EventHandler(this.pbAweSimLogo_Click);
             // 
             // tbUserName
             // 

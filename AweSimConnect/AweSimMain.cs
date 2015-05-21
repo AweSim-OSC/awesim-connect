@@ -21,6 +21,9 @@ namespace AweSimConnect
      */
     public partial class AweSimMain : Form
     {
+        //AweSim Dashboard URL
+        static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
+
         private PuTTYController pc;
         private VncController vc;
         private ClipboardController cbc;
@@ -46,9 +49,7 @@ namespace AweSimConnect
             cbc = new ClipboardController();
             clc = new ClusterController();
 
-            label1.Text = cbc.CheckClipboardForAweSim().ToString();
-
-
+            
             this.fileName = getFileName();
             setupClusterBox();
         }        
@@ -158,6 +159,12 @@ namespace AweSimConnect
         private void cbCluster_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.setCluster();
+        }
+
+        // Open a browser window to Awesim Dashboard when user clicks the logo.
+        private void pbAweSimLogo_Click(object sender, EventArgs e)
+        {
+            Process.Start(AWESIM_DASHBOARD_URL);
         }
     }
 }

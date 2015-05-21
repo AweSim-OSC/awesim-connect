@@ -1,0 +1,5 @@
+﻿This application uses the following plugins or applications:
+
+JSON.net
+newtonsoft.com/json
+MIT License

@@ -15,7 +15,7 @@ namespace AweSimConnect.Controllers
      */
     class ClipboardController
     {
-        String jsonString;
+        Connection connectionData;        
         
         //Checks the clipboard for valid data and returns true if found.
         public bool CheckClipboardForAweSim() {
@@ -24,9 +24,16 @@ namespace AweSimConnect.Controllers
             
             if (Clipboard.ContainsText()) {
                 try {
+                    // Get the text from the clipboard.
                     String json = Clipboard.GetText();
+
+                    // Attempt to parse the clipboard text.
                     Connection connection = JsonConvert.DeserializeObject<Connection>(json);
 
+                    // Set the local Connection object.
+                    connectionData = connection;
+
+                    // If we've made it this far, it's a valid json.
                     isValid = true;
                     
                 } catch (Exception ex) {
@@ -39,8 +46,8 @@ namespace AweSimConnect.Controllers
                 //No text on clipboard.
                 isValid = false;
             }
+
             return isValid;
         }
-
     }
 }

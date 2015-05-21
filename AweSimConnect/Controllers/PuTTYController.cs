@@ -1,6 +1,9 @@
-﻿using System;
+﻿using AweSimConnect.Properties;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Resources;
 using System.Text;
 
 namespace AweSimConnect.Controllers
@@ -35,9 +38,13 @@ namespace AweSimConnect.Controllers
             get { return sshHost; }
             set { sshHost = value; }
         }
+
+
         
         //TODO: Make this dynamic.
         private static String PUTTY_COMMAND = @"C:\Program Files (x86)\PuTTY\putty.exe";
+        private static String PLINK_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), "plink.exe");
+        
         
         private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4}";
@@ -53,6 +60,16 @@ namespace AweSimConnect.Controllers
             this.redirectPort = redirectPort;
             this.userName = userName;
             this.sshHost = sshHost;
+        }
+
+        public bool InstallPlink()
+        {
+            using (FileStream fs = new FileStream(PLINK_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
+            {
+                byte[] bytes = Resources.GetPlink();
+                fs.Write(bytes, 0, bytes.Length);
+            }
+            return true;
         }
 
         // Launch PuTTY

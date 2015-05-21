@@ -12,6 +12,16 @@ namespace AweSimConnect.Controllers
 
     /*
      * This controller is used to manage clipboard actions and parsing. 
+     * 
+       Example json:
+     
+        { 
+        'PUAServer': 'n0024.ten.osc.edu:5901',
+        'RedirectPort': '8080',
+        'SSHHost': 'oakley.osc.edu',
+        'UserName': 'an0018'
+        }
+     
      */
     class ClipboardController
     {

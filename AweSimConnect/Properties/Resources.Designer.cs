@@ -91,6 +91,21 @@ namespace AweSimConnect.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] plink {
+            get {
+                object obj = ResourceManager.GetObject("plink", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        public static byte[] GetPlink()
+        {
+            return plink;
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap redlight {

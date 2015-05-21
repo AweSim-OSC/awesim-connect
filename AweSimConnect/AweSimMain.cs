@@ -49,7 +49,9 @@ namespace AweSimConnect
             cbc = new ClipboardController();
             clc = new ClusterController();
 
-            
+            pc.InstallPlink();
+
+            //This is here in case the user wants to modify the file name to edit settings. Depricated.
             this.fileName = getFileName();
             setupClusterBox();
         }        

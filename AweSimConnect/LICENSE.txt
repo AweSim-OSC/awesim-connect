@@ -1,5 +1,13 @@
 ﻿This application uses the following plugins or applications:
 
 JSON.net
-newtonsoft.com/json
+http://www.newtonsoft.com/json
+MIT License
+
+GGIVNC
+http://www.lysator.liu.se/~peda/ggivnc/
+MIT License
+
+Plink
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 MIT License

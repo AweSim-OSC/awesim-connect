@@ -10,6 +10,9 @@ namespace AweSimConnect.Controllers
 {
     class VNCController
     {
+        //TODO Add ggi license to docs
+
+        //GGIVNC - MIT License.
         private static String GGIVNC_FILE = "ggivnc.exe";
 
         private Connection connection;

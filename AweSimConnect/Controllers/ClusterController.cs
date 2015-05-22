@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace AweSimConnect.Controllers
-{    
+{
     //Maintains the existing clusters.
     class ClusterController
     {
@@ -37,12 +37,18 @@ namespace AweSimConnect.Controllers
             this.selectedCluster = selected;
         }
 
-        public void SetCluster(String code) {
-            if (code.Equals(ruby.Code)) {
+        public void SetCluster(String code)
+        {
+            if (code.Equals(ruby.Code))
+            {
                 this.selectedCluster = ruby;
-            } else if (code.Equals(glenn.Code)) {
+            }
+            else if (code.Equals(glenn.Code))
+            {
                 this.selectedCluster = glenn;
-            } else {
+            }
+            else
+            {
                 this.selectedCluster = oakley;
             }
         }
@@ -52,7 +58,8 @@ namespace AweSimConnect.Controllers
             this.selectedCluster = cluster;
         }
 
-        public Cluster GetCluster() {
+        public Cluster GetCluster()
+        {
             return this.selectedCluster;
         }
 
@@ -67,7 +74,7 @@ namespace AweSimConnect.Controllers
         }
 
         public List<Cluster> GetClusterList()
-        {            
+        {
             return this.clusterList;
         }
 

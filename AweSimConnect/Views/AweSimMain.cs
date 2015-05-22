@@ -34,7 +34,7 @@ namespace AweSimConnect
         private String fileName;
 
         Connection connection;
-        
+
         public AweSimMain()
         {
             InitializeComponent();
@@ -55,7 +55,7 @@ namespace AweSimConnect
             // Adds the Clusters to the Combobox
             setupClusterBox();
 
-            
+
             vc = new VNCController(connection);
             label1.Text = FileController.ExistsOnPath("ggivnc.exe").ToString();
 
@@ -64,10 +64,10 @@ namespace AweSimConnect
             {
                 Connection clipData = cbc.GetClipboardCluster();
                 UpdateData(clipData);
-            }                       
-            
+            }
+
         }
-        
+
         private void UpdateData(Connection newConnection)
         {
             tbUserName.Text = newConnection.UserName;
@@ -77,7 +77,7 @@ namespace AweSimConnect
             tbHost.Text = newConnection.PUAServer;
             this.connection.UserName = newConnection.PUAServer;
             //Oakley for now.
-            setCluster();                
+            setCluster();
         }
 
         // Gets the file name without the extension
@@ -104,16 +104,16 @@ namespace AweSimConnect
         //TODO: Fix this
         private void setCluster()
         {
-            cbCluster.SelectedIndex = 0;      
-      
+            cbCluster.SelectedIndex = 0;
+
         }
-        
+
         // When the user modifies the host box, the variable gets set
         private void tbHost_TextChanged(object sender, EventArgs e)
         {
             this.connection.PUAServer = tbHost.Text;
         }
-        
+
         // When the user modifies the redirect port box, set the variable, change label to red if not a valid integer
         private void tbRedirect_TextChanged(object sender, EventArgs e)
         {
@@ -131,11 +131,11 @@ namespace AweSimConnect
         //Handles the connect button action.
         private void bConnect_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword) && Validator.IsPresent(cbCluster) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect) )
+            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword) && Validator.IsPresent(cbCluster) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect))
             {
                 pc = new PuTTYController(this.connection);
                 pc.StartPlinkProcess(tbPassword.Text);
-            }                        
+            }
         }
 
         //Set the username when the user enters text.

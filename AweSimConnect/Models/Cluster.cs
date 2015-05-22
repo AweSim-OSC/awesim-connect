@@ -33,7 +33,7 @@ namespace AweSimConnect.Models
         }
 
         private String domain;
-               
+
         public String Domain
         {
             get { return domain; }

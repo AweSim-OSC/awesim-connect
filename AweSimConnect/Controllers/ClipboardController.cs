@@ -28,12 +28,15 @@ namespace AweSimConnect.Controllers
     {
         Connection connectionData;
         bool isValid;
-        
+
         //Checks the clipboard for valid data and returns true if found.
-        public bool CheckClipboardForAweSim() {
-                        
-            if (Clipboard.ContainsText()) {
-                try {
+        public bool CheckClipboardForAweSim()
+        {
+
+            if (Clipboard.ContainsText())
+            {
+                try
+                {
                     // Get the text from the clipboard.
                     String json = Clipboard.GetText();
 
@@ -45,8 +48,10 @@ namespace AweSimConnect.Controllers
 
                     // If we've made it this far, it's a valid json.
                     isValid = true;
-                    
-                } catch (Exception ex) {
+
+                }
+                catch (Exception ex)
+                {
                     // If we get an error, it's not a valid json string.
                     isValid = false;
                 }
@@ -75,7 +80,7 @@ namespace AweSimConnect.Controllers
                 isValid = false;
                 return connectionData;
             }
-            else 
+            else
                 return null;
         }
     }

@@ -22,14 +22,14 @@ namespace AweSimConnect.Controllers
             get { return connection; }
             set { connection = value; }
         }
-        
+
         //The full current path of the plink executable.
         private static String GGIVNC_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), GGIVNC_FILE);
 
         // GGIVnc command line argument placeholder.
         // TODO
         private static String GGIVNC_ARGS = "";
-                
+
         public VNCController(Connection connection)
         {
             InstallVNC();
@@ -46,7 +46,7 @@ namespace AweSimConnect.Controllers
                     byte[] bytes = getGGIVnc();
                     fs.Write(bytes, 0, bytes.Length);
                 }
-            }            
+            }
             return true;
         }
 

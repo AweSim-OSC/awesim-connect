@@ -25,7 +25,7 @@ namespace AweSimConnect.Controllers
             }
 
             String values = Environment.GetEnvironmentVariable("Path");
-                        
+
             foreach (String path in values.Split(';'))
             {
                 try
@@ -38,7 +38,7 @@ namespace AweSimConnect.Controllers
                 }
                 catch (Exception ex)
                 {
-                    
+
                 }
             }
             return null;

@@ -43,8 +43,15 @@
             this.bConnect = new System.Windows.Forms.Button();
             this.tbHost = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.bVNCConnect = new System.Windows.Forms.Button();
+            this.tbVNCPassword = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbAweSimLogo
@@ -195,11 +202,74 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 191);
+            this.label1.Location = new System.Drawing.Point(291, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 9);
             this.label1.TabIndex = 9;
             this.label1.Text = "DebugLabel";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.bVNCConnect);
+            this.groupBox2.Controls.Add(this.tbVNCPassword);
+            this.groupBox2.Location = new System.Drawing.Point(11, 172);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(458, 62);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(141, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Tag = "Host";
+            this.label3.Text = "VNC Password";
+            // 
+            // bVNCConnect
+            // 
+            this.bVNCConnect.Location = new System.Drawing.Point(348, 19);
+            this.bVNCConnect.Name = "bVNCConnect";
+            this.bVNCConnect.Size = new System.Drawing.Size(89, 34);
+            this.bVNCConnect.TabIndex = 6;
+            this.bVNCConnect.Text = "Launch VNC";
+            this.bVNCConnect.UseVisualStyleBackColor = true;
+            // 
+            // tbVNCPassword
+            // 
+            this.tbVNCPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbVNCPassword.Location = new System.Drawing.Point(92, 31);
+            this.tbVNCPassword.MaxLength = 300;
+            this.tbVNCPassword.Name = "tbVNCPassword";
+            this.tbVNCPassword.Size = new System.Drawing.Size(163, 22);
+            this.tbVNCPassword.TabIndex = 4;
+            this.tbVNCPassword.Tag = "Host";
+            this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(269, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Redirect";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(261, 31);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(64, 22);
+            this.textBox1.TabIndex = 16;
+            this.textBox1.Tag = "Redirect";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AweSimMain
             // 
@@ -208,7 +278,8 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 213);
+            this.ClientSize = new System.Drawing.Size(479, 245);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);
@@ -225,6 +296,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,6 +319,12 @@
         private System.Windows.Forms.TextBox tbRedirect;
         private System.Windows.Forms.Label lRedirect;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button bVNCConnect;
+        private System.Windows.Forms.TextBox tbVNCPassword;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }

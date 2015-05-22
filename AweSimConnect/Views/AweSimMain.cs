@@ -57,6 +57,7 @@ namespace AweSimConnect
             setupClusterBox();
 
             //Test network info
+            vc = new VNCController(connection);
             IPGlobalProperties prop = IPGlobalProperties.GetIPGlobalProperties();
             TcpConnectionInformation[] tcpi = prop.GetActiveTcpConnections();
             label1.Text = tcpi[1].RemoteEndPoint.Address.ToString();

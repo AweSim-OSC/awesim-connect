@@ -26,7 +26,7 @@ namespace AweSimConnect
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
 
         private PuTTYController pc;
-        private VncController vc;
+        private VNCController vc;
         private ClipboardController cbc;
         private ClusterController clc;
 
@@ -99,7 +99,7 @@ namespace AweSimConnect
         }
 
         // Select the first one on the list. Oakley for now.
-        //TODO: Fix this/
+        //TODO: Fix this
         private void setCluster()
         {
             cbCluster.SelectedIndex = 0;      

@@ -19,7 +19,8 @@ namespace AweSimConnect.Controllers
             'PUAServer': 'n0580.ten.osc.edu:5901',
             'RedirectPort': '5901',
             'SSHHost': 'oakley.osc.edu',
-            'UserName': 'bmcmichael'
+            'UserName': 'bmcmichael',
+            'VNCPassword: 'XXXXXXXX'
         }
      
      */
@@ -46,7 +47,7 @@ namespace AweSimConnect.Controllers
                     isValid = true;
                     
                 } catch (Exception ex) {
-                    //Not a valid json string.
+                    // If we get an error, it's not a valid json string.
                     isValid = false;
                 }
             }
@@ -65,7 +66,8 @@ namespace AweSimConnect.Controllers
             return isValid;
         }
 
-        // If the app has connection data in the clipboard, mark as invalid so we don't keep returning the same data, then return what we've got.
+        // If the app has connection data in the clipboard, mark as invalid so we 
+        // don't keep returning the same data, then return what we've got.
         public Connection GetClipboardCluster()
         {
             if (IsValid())

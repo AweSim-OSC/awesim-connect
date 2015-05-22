@@ -4,7 +4,8 @@ using System.Text;
 
 namespace AweSimConnect.Controllers
 {
-    class VncController
+    class VNCController
     {
+
     }
 }

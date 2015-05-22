@@ -33,10 +33,7 @@ namespace AweSimConnect
         //This is here in case we use the file name for settings.
         private String fileName;
 
-        String userName;        
-        String hostName;
-        int redirectPort;
-        Cluster cluster;
+        Connection connection;
         
         public AweSimMain()
         {
@@ -46,20 +43,21 @@ namespace AweSimConnect
         // On application load
         private void AweSimMain_Load(object sender, EventArgs e)
         {
+            this.CenterToParent();
+            this.AcceptButton = bConnect;
+
             //Initialize controllers.
-            pc = new PuTTYController();
-            vc = new VncController();
             cbc = new ClipboardController();
             clc = new ClusterController();
 
-            // Installs the plink app if it isn't already there.
-            pc.InstallPlink();
+            connection = new Connection();
 
             // Adds the Clusters to the Combobox
             setupClusterBox();
 
-            label1.Text = cbc.CheckClipboardForAweSim().ToString();
+            label1.Text = FileController.ExistsOnPath("plink.exe").ToString();
 
+            //Check to see if there is any valid data on the clipboard.
             if (cbc.CheckClipboardForAweSim())
             {
                 Connection clipData = cbc.GetClipboardCluster();
@@ -68,14 +66,14 @@ namespace AweSimConnect
             
         }
 
-        private void UpdateData(Connection connection)
+        private void UpdateData(Connection newConnection)
         {
-            tbUserName.Text = connection.UserName;
-            this.userName = connection.UserName;
-            tbRedirect.Text = connection.RedirectPort.ToString();
-            this.redirectPort = connection.RedirectPort;
-            tbHost.Text = connection.PUAServer;
-            this.hostName = connection.PUAServer;
+            tbUserName.Text = newConnection.UserName;
+            this.connection.UserName = newConnection.UserName;
+            tbRedirect.Text = newConnection.RedirectPort.ToString();
+            this.connection.RedirectPort = newConnection.RedirectPort;
+            tbHost.Text = newConnection.PUAServer;
+            this.connection.UserName = newConnection.PUAServer;
             //Oakley for now.
             setCluster();                
         }
@@ -100,16 +98,18 @@ namespace AweSimConnect
             setCluster();
         }
 
-        // Select the first one on the list. Oakley now.
+        // Select the first one on the list. Oakley for now.
+        //TODO: Fix this/
         private void setCluster()
         {
-            cbCluster.SelectedIndex = 0;            
+            cbCluster.SelectedIndex = 0;      
+      
         }
         
         // When the user modifies the host box, the variable gets set
         private void tbHost_TextChanged(object sender, EventArgs e)
         {
-            this.hostName = tbHost.Text;
+            this.connection.PUAServer = tbHost.Text;
         }
         
         // When the user modifies the redirect port box, set the variable, change label to red if not a valid integer
@@ -117,7 +117,7 @@ namespace AweSimConnect
         {
             try
             {
-                this.redirectPort = int.Parse(tbRedirect.Text);
+                this.connection.RedirectPort = int.Parse(tbRedirect.Text);
                 lRedirect.ForeColor = Color.Black;
             }
             catch (Exception ex)
@@ -129,12 +129,9 @@ namespace AweSimConnect
         //Handles the connect button action.
         private void bConnect_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect) && Validator.IsPresent(cbCluster) && Validator.IsPresent(tbPassword))
+            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword) && Validator.IsPresent(cbCluster) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect) )
             {
-                pc.UserName = this.userName;
-                pc.SshHost = this.cluster.Domain;
-                pc.RedirectPort = this.redirectPort;            
-                pc.HostName = this.hostName;
+                pc = new PuTTYController(this.connection);
                 pc.StartPlinkProcess(tbPassword.Text);
             }                        
         }
@@ -142,13 +139,13 @@ namespace AweSimConnect
         //Set the username when the user enters text.
         private void tbUserName_TextChanged(object sender, EventArgs e)
         {
-            this.userName = tbUserName.Text;
+            this.connection.UserName = tbUserName.Text;
         }
 
         //Set the cluster when the user changes the box.
         private void cbCluster_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.cluster = clc.GetClusterList()[cbCluster.SelectedIndex];
+            this.connection.SSHHost = clc.GetClusterList()[cbCluster.SelectedIndex].Domain;
         }
 
         // Open a browser window to Awesim Dashboard when user clicks the logo.

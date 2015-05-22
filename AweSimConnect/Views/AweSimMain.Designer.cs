@@ -50,7 +50,7 @@
             // pbAweSimLogo
             // 
             this.pbAweSimLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pbAweSimLogo.Image = global::AweSimConnect.Properties.Resources.awesim_sm;
+            this.pbAweSimLogo.Image = global::AweSimConnect.Properties.Resources.awesimsm;
             this.pbAweSimLogo.Location = new System.Drawing.Point(30, 12);
             this.pbAweSimLogo.Name = "pbAweSimLogo";
             this.pbAweSimLogo.Size = new System.Drawing.Size(200, 84);

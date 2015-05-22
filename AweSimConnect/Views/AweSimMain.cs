@@ -55,7 +55,9 @@ namespace AweSimConnect
             // Adds the Clusters to the Combobox
             setupClusterBox();
 
-            label1.Text = FileController.ExistsOnPath("plink.exe").ToString();
+            
+            vc = new VNCController(connection);
+            label1.Text = FileController.ExistsOnPath("ggivnc.exe").ToString();
 
             //Check to see if there is any valid data on the clipboard.
             if (cbc.CheckClipboardForAweSim())
@@ -65,7 +67,7 @@ namespace AweSimConnect
             }                       
             
         }
-
+        
         private void UpdateData(Connection newConnection)
         {
             tbUserName.Text = newConnection.UserName;

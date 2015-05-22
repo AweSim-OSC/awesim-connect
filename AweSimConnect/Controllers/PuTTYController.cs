@@ -11,6 +11,8 @@ namespace AweSimConnect.Controllers
 {
     class PuTTYController
     {
+        private static String PLINK_FILE = "plink.exe";
+
         private Connection connection;
 
         internal Connection Connection
@@ -20,11 +22,11 @@ namespace AweSimConnect.Controllers
         }
         
         //The full current path of the plink executable.
-        private static String PLINK_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), "plink.exe");
+        private static String PLINK_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), PLINK_FILE);
 
-        // PuTTY/Plink command line argument placeholder.
-        private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
+        // PuTTY/Plink command line argument placeholder.        
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1}:{0} -C -N -T {2}@{3} -l {4}";
+        private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
                 
         public PuTTYController(Connection connection)
         {
@@ -92,7 +94,7 @@ namespace AweSimConnect.Controllers
         // Check to see if plink exists in the AweSim connect folder.
         internal bool IsPlinkInstalled()
         {
-            return FileController.ExistsOnPath("plink.exe");
+            return FileController.ExistsOnPath(PLINK_FILE);
         }
     }
 }

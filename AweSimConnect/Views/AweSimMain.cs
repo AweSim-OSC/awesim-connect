@@ -8,6 +8,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Forms;
 
@@ -55,9 +56,10 @@ namespace AweSimConnect
             // Adds the Clusters to the Combobox
             setupClusterBox();
 
-
-            vc = new VNCController(connection);
-            label1.Text = FileController.ExistsOnPath("ggivnc.exe").ToString();
+            //Test network info
+            IPGlobalProperties prop = IPGlobalProperties.GetIPGlobalProperties();
+            TcpConnectionInformation[] tcpi = prop.GetActiveTcpConnections();
+            label1.Text = tcpi[1].RemoteEndPoint.Address.ToString();
 
             //Check to see if there is any valid data on the clipboard.
             if (cbc.CheckClipboardForAweSim())

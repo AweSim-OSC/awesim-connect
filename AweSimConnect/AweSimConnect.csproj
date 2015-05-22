@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>d98c51d4</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\NetworkTools.cs" />
-    <Compile Include="Models\Port.cs" />
     <Compile Include="Views\AweSimMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +95,7 @@
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
     <Content Include="assets\awesim-sm.png" />
+    <Content Include="FodyWeavers.xml" />
     <Content Include="LICENSE.txt" />
     <None Include="Resources\ggivnc.exe" />
     <Content Include="Resources\greenlight.png" />
@@ -104,6 +105,13 @@
     <None Include="Resources\awesim-sm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.1.26.1\build\Fody.targets" Condition="Exists('..\packages\Fody.1.26.1\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.1.26.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.26.1\build\Fody.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

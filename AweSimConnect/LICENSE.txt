@@ -11,3 +11,6 @@ MIT License
 Plink
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 MIT License
+
+Costura.Fody
+MIT License

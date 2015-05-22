@@ -22,7 +22,7 @@ namespace AweSimConnect.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AweSimConnect.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AweSimConnect.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AweSimConnect.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap awesim_sm {
+        public static System.Drawing.Bitmap awesim_sm {
             get {
                 object obj = ResourceManager.GetObject("awesim-sm", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -71,9 +71,19 @@ namespace AweSimConnect.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] ggivnc {
+            get {
+                object obj = ResourceManager.GetObject("ggivnc", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap greenlight {
+        public static System.Drawing.Bitmap greenlight {
             get {
                 object obj = ResourceManager.GetObject("greenlight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +93,7 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap header {
+        public static System.Drawing.Bitmap header {
             get {
                 object obj = ResourceManager.GetObject("header", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,22 +103,17 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] plink {
+        public static byte[] plink {
             get {
                 object obj = ResourceManager.GetObject("plink", resourceCulture);
                 return ((byte[])(obj));
             }
         }
-
-        public static byte[] GetPlink()
-        {
-            return plink;
-        }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap redlight {
+        public static System.Drawing.Bitmap redlight {
             get {
                 object obj = ResourceManager.GetObject("redlight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

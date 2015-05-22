@@ -133,4 +133,7 @@
   <data name="plink" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\plink.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ggivnc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ggivnc.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -70,7 +70,7 @@
       <DependentUpon>AweSimMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -97,6 +97,7 @@
     <Content Include="assets\awesim-ball.ico" />
     <Content Include="assets\awesim-sm.png" />
     <Content Include="LICENSE.txt" />
+    <None Include="Resources\ggivnc.exe" />
     <Content Include="Resources\greenlight.png" />
     <Content Include="Resources\redlight.png" />
     <None Include="Resources\header.png" />

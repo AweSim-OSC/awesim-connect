@@ -71,11 +71,16 @@ namespace AweSimConnect.Controllers
             {
                 using (FileStream fs = new FileStream(PLINK_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
                 {
-                    byte[] bytes = Resources.GetPlink();
+                    byte[] bytes = getPlink();
                     fs.Write(bytes, 0, bytes.Length);
                 }
             }            
             return true;
+        }
+
+        private byte[] getPlink()
+        {
+            return Resources.plink;
         }
 
         //Launch Plink without a password

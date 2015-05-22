@@ -39,7 +39,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lRedirect = new System.Windows.Forms.Label();
             this.tbRedirect = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.hostLabel = new System.Windows.Forms.Label();
             this.bConnect = new System.Windows.Forms.Button();
             this.tbHost = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -65,6 +65,7 @@
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(125, 20);
             this.tbUserName.TabIndex = 1;
+            this.tbUserName.Tag = "Username";
             this.tbUserName.TextChanged += new System.EventHandler(this.tbUserName_TextChanged);
             // 
             // tbPassword
@@ -74,6 +75,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(125, 20);
             this.tbPassword.TabIndex = 2;
+            this.tbPassword.Tag = "Password";
             this.tbPassword.UseSystemPasswordChar = true;
             // 
             // lUsername
@@ -108,6 +110,7 @@
             this.cbCluster.Name = "cbCluster";
             this.cbCluster.Size = new System.Drawing.Size(67, 23);
             this.cbCluster.TabIndex = 3;
+            this.cbCluster.Tag = "Cluster";
             this.cbCluster.ValueMember = "Name";
             this.cbCluster.SelectedIndexChanged += new System.EventHandler(this.cbCluster_SelectedIndexChanged);
             // 
@@ -125,7 +128,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.lRedirect);
             this.groupBox1.Controls.Add(this.tbRedirect);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.hostLabel);
             this.groupBox1.Controls.Add(this.bConnect);
             this.groupBox1.Controls.Add(this.tbHost);
             this.groupBox1.Controls.Add(this.lCluster);
@@ -152,17 +155,19 @@
             this.tbRedirect.Name = "tbRedirect";
             this.tbRedirect.Size = new System.Drawing.Size(64, 22);
             this.tbRedirect.TabIndex = 5;
+            this.tbRedirect.Tag = "Redirect";
             this.tbRedirect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbRedirect.TextChanged += new System.EventHandler(this.tbRedirect_TextChanged);
             // 
-            // label4
+            // hostLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(163, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Host";
+            this.hostLabel.AutoSize = true;
+            this.hostLabel.Location = new System.Drawing.Point(163, 14);
+            this.hostLabel.Name = "hostLabel";
+            this.hostLabel.Size = new System.Drawing.Size(29, 13);
+            this.hostLabel.TabIndex = 12;
+            this.hostLabel.Tag = "Host";
+            this.hostLabel.Text = "Host";
             // 
             // bConnect
             // 
@@ -182,6 +187,7 @@
             this.tbHost.Name = "tbHost";
             this.tbHost.Size = new System.Drawing.Size(163, 22);
             this.tbHost.TabIndex = 4;
+            this.tbHost.Tag = "Host";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
             // 
@@ -236,7 +242,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tbHost;
         private System.Windows.Forms.Button bConnect;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label hostLabel;
         private System.Windows.Forms.TextBox tbRedirect;
         private System.Windows.Forms.Label lRedirect;
         private System.Windows.Forms.Label label1;

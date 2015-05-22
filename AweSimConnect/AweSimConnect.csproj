@@ -50,10 +50,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AweSimMain.cs">
+    <Compile Include="Views\AweSimMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AweSimMain.Designer.cs">
+    <Compile Include="Views\AweSimMain.Designer.cs">
       <DependentUpon>AweSimMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ClipboardController.cs" />
@@ -65,7 +65,8 @@
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AweSimMain.resx">
+    <Compile Include="Views\Validator.cs" />
+    <EmbeddedResource Include="Views\AweSimMain.resx">
       <DependentUpon>AweSimMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

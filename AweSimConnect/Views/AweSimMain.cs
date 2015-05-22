@@ -1,5 +1,6 @@
 ﻿using AweSimConnect.Controllers;
 using AweSimConnect.Models;
+using AweSimConnect.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -128,13 +129,14 @@ namespace AweSimConnect
         //Handles the connect button action.
         private void bConnect_Click(object sender, EventArgs e)
         {
-            //TODO: Validate inputs
-            pc.UserName = this.userName;
-            pc.SshHost = this.cluster.Domain;
-            pc.RedirectPort = this.redirectPort;            
-            pc.HostName = this.hostName;
-            //TODO: More robust validation for passwords.
-            pc.StartPlinkProcess(tbPassword.Text);
+            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect) && Validator.IsPresent(cbCluster) && Validator.IsPresent(tbPassword))
+            {
+                pc.UserName = this.userName;
+                pc.SshHost = this.cluster.Domain;
+                pc.RedirectPort = this.redirectPort;            
+                pc.HostName = this.hostName;
+                pc.StartPlinkProcess(tbPassword.Text);
+            }                        
         }
 
         //Set the username when the user enters text.

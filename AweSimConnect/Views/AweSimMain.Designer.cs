@@ -39,7 +39,7 @@
             this.lCluster = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lRedirect = new System.Windows.Forms.Label();
-            this.tbRedirect = new System.Windows.Forms.TextBox();
+            this.tbLocalPort = new System.Windows.Forms.TextBox();
             this.hostLabel = new System.Windows.Forms.Label();
             this.bConnect = new System.Windows.Forms.Button();
             this.tbHost = new System.Windows.Forms.TextBox();
@@ -138,7 +138,7 @@
             this.groupBox1.Controls.Add(this.lRemotePort);
             this.groupBox1.Controls.Add(this.tbRemotePort);
             this.groupBox1.Controls.Add(this.lRedirect);
-            this.groupBox1.Controls.Add(this.tbRedirect);
+            this.groupBox1.Controls.Add(this.tbLocalPort);
             this.groupBox1.Controls.Add(this.hostLabel);
             this.groupBox1.Controls.Add(this.bConnect);
             this.groupBox1.Controls.Add(this.tbHost);
@@ -157,16 +157,16 @@
             this.lRedirect.TabIndex = 15;
             this.lRedirect.Text = "Local Port";
             // 
-            // tbRedirect
+            // tbLocalPort
             // 
-            this.tbRedirect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRedirect.Location = new System.Drawing.Point(258, 30);
-            this.tbRedirect.Name = "tbRedirect";
-            this.tbRedirect.Size = new System.Drawing.Size(66, 22);
-            this.tbRedirect.TabIndex = 5;
-            this.tbRedirect.Tag = "Redirect";
-            this.tbRedirect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbRedirect.TextChanged += new System.EventHandler(this.tbRedirect_TextChanged);
+            this.tbLocalPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLocalPort.Location = new System.Drawing.Point(258, 30);
+            this.tbLocalPort.Name = "tbLocalPort";
+            this.tbLocalPort.Size = new System.Drawing.Size(66, 22);
+            this.tbLocalPort.TabIndex = 6;
+            this.tbLocalPort.Tag = "Local Port";
+            this.tbLocalPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbLocalPort.TextChanged += new System.EventHandler(this.tbRedirect_TextChanged);
             // 
             // hostLabel
             // 
@@ -183,7 +183,7 @@
             this.bConnect.Location = new System.Drawing.Point(348, 19);
             this.bConnect.Name = "bConnect";
             this.bConnect.Size = new System.Drawing.Size(89, 34);
-            this.bConnect.TabIndex = 6;
+            this.bConnect.TabIndex = 7;
             this.bConnect.Text = "Connect";
             this.bConnect.UseVisualStyleBackColor = true;
             this.bConnect.Click += new System.EventHandler(this.bConnect_Click);
@@ -195,7 +195,7 @@
             this.tbHost.MaxLength = 300;
             this.tbHost.Name = "tbHost";
             this.tbHost.Size = new System.Drawing.Size(160, 22);
-            this.tbHost.TabIndex = 4;
+            this.tbHost.TabIndex = 5;
             this.tbHost.Tag = "Host : Port";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
@@ -227,7 +227,7 @@
             this.bVNCConnect.Location = new System.Drawing.Point(348, 19);
             this.bVNCConnect.Name = "bVNCConnect";
             this.bVNCConnect.Size = new System.Drawing.Size(89, 34);
-            this.bVNCConnect.TabIndex = 6;
+            this.bVNCConnect.TabIndex = 9;
             this.bVNCConnect.Text = "Launch VNC";
             this.bVNCConnect.UseVisualStyleBackColor = true;
             this.bVNCConnect.Click += new System.EventHandler(this.bVNCConnect_Click);
@@ -239,7 +239,7 @@
             this.tbVNCPassword.MaxLength = 300;
             this.tbVNCPassword.Name = "tbVNCPassword";
             this.tbVNCPassword.Size = new System.Drawing.Size(160, 22);
-            this.tbVNCPassword.TabIndex = 4;
+            this.tbVNCPassword.TabIndex = 8;
             this.tbVNCPassword.Tag = "VNC Password";
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbVNCPassword.TextChanged += new System.EventHandler(this.tbVNCPassword_TextChanged);
@@ -265,7 +265,7 @@
             this.tbRemotePort.Location = new System.Drawing.Point(18, 30);
             this.tbRemotePort.Name = "tbRemotePort";
             this.tbRemotePort.Size = new System.Drawing.Size(68, 22);
-            this.tbRemotePort.TabIndex = 16;
+            this.tbRemotePort.TabIndex = 4;
             this.tbRemotePort.Tag = "Remote Port";
             this.tbRemotePort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbRemotePort.TextChanged += new System.EventHandler(this.tbRemotePort_TextChanged);
@@ -315,7 +315,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button bConnect;
         private System.Windows.Forms.Label hostLabel;
-        private System.Windows.Forms.TextBox tbRedirect;
+        private System.Windows.Forms.TextBox tbLocalPort;
         private System.Windows.Forms.Label lRedirect;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelVNCPassword;

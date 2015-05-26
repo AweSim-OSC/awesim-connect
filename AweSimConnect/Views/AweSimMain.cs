@@ -53,6 +53,8 @@ namespace AweSimConnect
             //Initialize controllers.
             cbc = new ClipboardController();
             clc = new ClusterController();
+            pc = new PuTTYController(connection);
+            vc = new VNCController(connection);
 
             connection = new Connection();
             timerConnection.Start();
@@ -90,9 +92,9 @@ namespace AweSimConnect
             tbUserName.Text = newConnection.UserName;
             this.connection.UserName = newConnection.UserName;
             if (newConnection.LocalPort != 0)
-                tbRedirect.Text = newConnection.LocalPort.ToString();
+                tbLocalPort.Text = newConnection.LocalPort.ToString();
             else
-                tbRedirect.Text = "";
+                tbLocalPort.Text = "";
             this.connection.LocalPort = newConnection.LocalPort;
             tbHost.Text = newConnection.PUAServer;
             this.connection.UserName = newConnection.PUAServer;
@@ -140,7 +142,7 @@ namespace AweSimConnect
         {
             try
             {
-                this.connection.LocalPort = int.Parse(tbRedirect.Text);
+                this.connection.LocalPort = int.Parse(tbLocalPort.Text);
                 LabelColorChanger(lRedirect, true);
             }
             catch (Exception ex)
@@ -152,7 +154,7 @@ namespace AweSimConnect
         //Handles the connect button action.
         private void bConnect_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword) && Validator.IsPresent(cbCluster) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect))
+            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword) && Validator.IsPresent(cbCluster) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbLocalPort))
             {
                 pc = new PuTTYController(this.connection);
                 pc.StartPlinkProcess(tbPassword.Text);
@@ -179,7 +181,7 @@ namespace AweSimConnect
 
         private void bVNCConnect_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect) && Validator.IsPresent(tbVNCPassword))
+            if (Validator.IsPresent(tbHost) && Validator.IsInt32(tbLocalPort) && Validator.IsPresent(tbVNCPassword))
             {
                 vc = new VNCController(connection);
                 vc.StartVNCProcess();
@@ -218,6 +220,7 @@ namespace AweSimConnect
             if (secondsElapsed % 3 == 0)
                 EnableAdditionalOptions(NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort));
 
+
             secondsElapsed++;
         }
 
@@ -230,12 +233,19 @@ namespace AweSimConnect
         {
             bConnect.Enabled = enable;
         }
-
+        
         private void tbRemotePort_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                this.connection.RemotePort = int.Parse(tbRemotePort.Text);
+                int port = int.Parse(tbRemotePort.Text);
+                this.connection.RemotePort = port;
+                
+                // In many cases we will map the remote port to the local port. 
+                // This fills in the text box. User can still modify local manually. 
+                this.connection.LocalPort = port;
+                tbLocalPort.Text = tbRemotePort.Text;
+                
                 LabelColorChanger(lRemotePort, true);
             }
             catch (Exception ex)

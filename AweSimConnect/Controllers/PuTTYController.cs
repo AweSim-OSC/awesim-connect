@@ -11,6 +11,7 @@ namespace AweSimConnect.Controllers
 {
     class PuTTYController
     {
+        private static String PLINK_PROCESS = "plink";
         private static String PLINK_FILE = "plink.exe";
 
         private Connection connection;
@@ -95,6 +96,21 @@ namespace AweSimConnect.Controllers
         internal bool IsPlinkInstalled()
         {
             return FileController.ExistsOnPath(PLINK_FILE);
+        }
+
+        // Check to see if plink is in the running processes.
+        internal bool IsPlinkRunning()
+        {
+            return FileController.IsProcessRunning(PLINK_PROCESS);
+        }
+
+        internal bool IsPlinkConnected()
+        {
+            if (IsPlinkRunning())
+            {
+                return NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort);
+            }
+            return false;
         }
     }
 }

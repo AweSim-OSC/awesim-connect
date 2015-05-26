@@ -32,10 +32,12 @@ namespace AweSimConnect
         private VNCController vc;
         private ClipboardController cbc;
         private ClusterController clc;
-
-        private int secondsElapsed = 0;
-
         Connection connection;
+
+        private bool network_available = false;
+        private bool tunnel_available = false;
+
+        private int secondsElapsed = 0;       
 
         public AweSimMain()
         {
@@ -240,17 +242,53 @@ namespace AweSimConnect
             // Disable the connection button if can not connect to OSC.
             if (secondsElapsed % 15 == 0)
             {
-                EnableTunnelOptions(NetworkTools.CanTelnetToOakley());
+                network_available = NetworkTools.CanTelnetToOakley();
+                EnableTunnelOptions(network_available);
             }
                         
             // Check for tunnel connectivity every 3 seconds.
             // Disable the additional connection options if can't connect through the tunnel.
-            if (secondsElapsed % 3 == 0)
-                EnableAdditionalOptions(NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort));
+            if (secondsElapsed % 4 == 0)
+            {
+                tunnel_available = NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort);
+                EnableAdditionalOptions(tunnel_available);
+            }
+
+            EnableWeb(connection.LocalPort);
+            
+            
+                
 
 
 
             secondsElapsed++;
+        }
+
+        private void EnableWeb(int port)
+        {
+            if ((port > 0) && tunnel_available)
+            {
+                labelWeb.Text = "https://localhost:" + port;
+                bWeb.Enabled = true;
+            }
+            else
+            {
+                labelWeb.Text = "";
+                bWeb.Enabled = false;
+            }
+        }
+
+        // Red light / Green light toggle
+        private void PictureBoxConnected(PictureBox picture, bool connected)
+        {
+            if (connected)
+            {
+                picture.Image = new Bitmap(AweSimConnect.Properties.Resources.greenlight);
+            }
+            else
+            {
+                picture.Image = new Bitmap(AweSimConnect.Properties.Resources.redlight);
+            }
         }
 
         // Use this to enable/disable non-connection related options
@@ -287,6 +325,15 @@ namespace AweSimConnect
             catch (Exception ex)
             {
                 LabelColorChanger(lRemotePort, false);
+            }
+        }
+
+        private void bWeb_Click(object sender, EventArgs e)
+        {
+            if (connection.LocalPort > 0)
+            {
+                String localUrl = "https://localhost:" + connection.LocalPort;
+                Process.Start(localUrl);
             }
         }
                 

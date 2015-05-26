@@ -51,9 +51,19 @@
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.tooltips = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bWeb = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.labelWeb = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbAweSimLogo
@@ -125,7 +135,7 @@
             this.cbCluster.Location = new System.Drawing.Point(324, 76);
             this.cbCluster.Name = "cbCluster";
             this.cbCluster.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cbCluster.Size = new System.Drawing.Size(125, 23);
+            this.cbCluster.Size = new System.Drawing.Size(127, 23);
             this.cbCluster.TabIndex = 3;
             this.cbCluster.Tag = "Cluster";
             this.tooltips.SetToolTip(this.cbCluster, "The SSH host.\r\n\r\nDefault: oakley.osc.edu");
@@ -220,8 +230,8 @@
             this.bConnect.Size = new System.Drawing.Size(89, 34);
             this.bConnect.TabIndex = 7;
             this.bConnect.Text = "Connect";
-            this.tooltips.SetToolTip(this.bConnect, "Enter your connection information and click this to establish a secure connection" +
-        " to AweSim.");
+            this.tooltips.SetToolTip(this.bConnect, "Enter your connection information and click here to establish a secure connection" +
+        " to AweSim servers.");
             this.bConnect.UseVisualStyleBackColor = false;
             this.bConnect.Click += new System.EventHandler(this.bConnect_Click);
             // 
@@ -301,6 +311,95 @@
             this.tooltips.IsBalloon = true;
             this.tooltips.ReshowDelay = 100;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.labelWeb);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.bWeb);
+            this.groupBox3.Location = new System.Drawing.Point(12, 233);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(458, 62);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(153, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Tag = "Host";
+            this.label1.Text = "Website";
+            // 
+            // bWeb
+            // 
+            this.bWeb.Location = new System.Drawing.Point(348, 19);
+            this.bWeb.Name = "bWeb";
+            this.bWeb.Size = new System.Drawing.Size(89, 34);
+            this.bWeb.TabIndex = 9;
+            this.bWeb.Text = "Launch Web";
+            this.tooltips.SetToolTip(this.bWeb, "Click to launch a VNC Connection");
+            this.bWeb.UseVisualStyleBackColor = false;
+            this.bWeb.Click += new System.EventHandler(this.bWeb_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Location = new System.Drawing.Point(12, 301);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(458, 62);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(130, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Tag = "Host";
+            this.label2.Text = "VNC Password";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(348, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 34);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Launch SFTP";
+            this.tooltips.SetToolTip(this.button2, "Click to launch a VNC Connection");
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(92, 31);
+            this.textBox2.MaxLength = 300;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(160, 22);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.Tag = "VNC Password";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tooltips.SetToolTip(this.textBox2, "The 8 character password associated with your node.");
+            // 
+            // labelWeb
+            // 
+            this.labelWeb.AutoSize = true;
+            this.labelWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWeb.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelWeb.Location = new System.Drawing.Point(88, 29);
+            this.labelWeb.Name = "labelWeb";
+            this.labelWeb.Size = new System.Drawing.Size(0, 24);
+            this.labelWeb.TabIndex = 13;
+            this.labelWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // AweSimMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,7 +407,9 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 236);
+            this.ClientSize = new System.Drawing.Size(479, 371);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);
@@ -329,6 +430,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,6 +462,14 @@
         private System.Windows.Forms.Label lRemotePort;
         private System.Windows.Forms.TextBox tbRemotePort;
         private System.Windows.Forms.ToolTip tooltips;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bWeb;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label labelWeb;
 
     }
 }

@@ -80,6 +80,8 @@ namespace AweSimConnect
             }
         }
 
+        // Update the form fields from a connection object.
+        // Use this when we begin importing from link or json.
         private void UpdateData(Connection newConnection)
         {
             tbUserName.Text = newConnection.UserName;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AweSimMain));
             this.pbAweSimLogo = new System.Windows.Forms.PictureBox();
             this.tbUserName = new System.Windows.Forms.TextBox();
@@ -47,6 +48,7 @@
             this.bVNCConnect = new System.Windows.Forms.Button();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -249,6 +251,10 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "label1";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            // 
             // AweSimMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,6 +307,7 @@
         private System.Windows.Forms.TextBox tbVNCPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbHost;
+        private System.Windows.Forms.Timer timer1;
 
     }
 }

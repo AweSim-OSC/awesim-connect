@@ -46,6 +46,7 @@
             this.labelVNCPassword = new System.Windows.Forms.Label();
             this.bVNCConnect = new System.Windows.Forms.Button();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -191,7 +192,7 @@
             this.tbHost.Name = "tbHost";
             this.tbHost.Size = new System.Drawing.Size(184, 22);
             this.tbHost.TabIndex = 4;
-            this.tbHost.Tag = "Host";
+            this.tbHost.Tag = "Host : Port";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
             // 
@@ -235,9 +236,18 @@
             this.tbVNCPassword.Name = "tbVNCPassword";
             this.tbVNCPassword.Size = new System.Drawing.Size(184, 22);
             this.tbVNCPassword.TabIndex = 4;
-            this.tbVNCPassword.Tag = "Host";
+            this.tbVNCPassword.Tag = "VNC Password";
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbVNCPassword.TextChanged += new System.EventHandler(this.tbVNCPassword_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(290, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "label1";
             // 
             // AweSimMain
             // 
@@ -247,6 +257,7 @@
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(479, 234);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);
@@ -280,7 +291,6 @@
         private System.Windows.Forms.ComboBox cbCluster;
         private System.Windows.Forms.Label lCluster;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tbHost;
         private System.Windows.Forms.Button bConnect;
         private System.Windows.Forms.Label hostLabel;
         private System.Windows.Forms.TextBox tbRedirect;
@@ -289,6 +299,8 @@
         private System.Windows.Forms.Label labelVNCPassword;
         private System.Windows.Forms.Button bVNCConnect;
         private System.Windows.Forms.TextBox tbVNCPassword;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbHost;
 
     }
 }

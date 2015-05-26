@@ -60,7 +60,7 @@ namespace AweSimConnect.Controllers
         {
             String plinkCommand = String.Format(PLINK_CURRENT_DIR);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
-            info.Arguments = String.Format(PUTTY_ARGS_NOPASSWORD, this.connection.RedirectPort, this.connection.PUAServer, this.connection.UserName, this.connection.SSHHost, this.connection.UserName);
+            info.Arguments = String.Format(PUTTY_ARGS_NOPASSWORD, this.connection.LocalPort, this.connection.GetServerAndPort(), this.connection.UserName, this.connection.SSHHost, this.connection.UserName);
             info.UseShellExecute = true;
 
             try
@@ -78,7 +78,7 @@ namespace AweSimConnect.Controllers
         {
             String plinkCommand = String.Format(PLINK_CURRENT_DIR);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
-            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.connection.RedirectPort, this.connection.PUAServer, this.connection.UserName, this.connection.SSHHost, this.connection.UserName, password);
+            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.connection.LocalPort, this.connection.GetServerAndPort(), this.connection.UserName, this.connection.SSHHost, this.connection.UserName, password);
             info.UseShellExecute = true;
 
             try

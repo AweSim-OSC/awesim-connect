@@ -11,11 +11,21 @@ namespace AweSimConnect.Models
         //TODO: PUA server regex match ten.osc.edu?
         //TODO: SSHHost match *.osc.edu?
 
-        // EX: nxxxx.ten.osc.edu:8080
+        // EX: nxxxx.ten.osc.edu
         public String PUAServer { get; set; }
 
+        public String GetServerAndPort()
+        {
+            String host = PUAServer + ":" + RemotePort;
+            return host;
+        }
+
+        // 2036 for comsol
+        // 5901 for vnc
+        public int RemotePort { get; set; }
+
         // EX: 8080
-        public int RedirectPort { get; set; }
+        public int LocalPort { get; set; }
 
         // EX: oakley.osc.edu
         public String SSHHost { get; set; }

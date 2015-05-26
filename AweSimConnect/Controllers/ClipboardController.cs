@@ -16,8 +16,9 @@ namespace AweSimConnect.Controllers
        Example json:
      
         { 
-            'PUAServer': 'n0580.ten.osc.edu:5901',
-            'RedirectPort': '5901',
+            'PUAServer': 'n0580.ten.osc.edu',
+            'LocalPort': '5901',
+            'RemotePort': '5901',
             'SSHHost': 'oakley.osc.edu',
             'UserName': 'bmcmichael',
             'VNCPassword: 'XXXXXXXX'

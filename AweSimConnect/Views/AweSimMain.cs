@@ -89,11 +89,11 @@ namespace AweSimConnect
         {
             tbUserName.Text = newConnection.UserName;
             this.connection.UserName = newConnection.UserName;
-            if (newConnection.RedirectPort != 0)
-                tbRedirect.Text = newConnection.RedirectPort.ToString();
+            if (newConnection.LocalPort != 0)
+                tbRedirect.Text = newConnection.LocalPort.ToString();
             else
                 tbRedirect.Text = "";
-            this.connection.RedirectPort = newConnection.RedirectPort;
+            this.connection.LocalPort = newConnection.LocalPort;
             tbHost.Text = newConnection.PUAServer;
             this.connection.UserName = newConnection.PUAServer;
             //Oakley for now.
@@ -140,7 +140,7 @@ namespace AweSimConnect
         {
             try
             {
-                this.connection.RedirectPort = int.Parse(tbRedirect.Text);
+                this.connection.LocalPort = int.Parse(tbRedirect.Text);
                 LabelColorChanger(lRedirect, true);
             }
             catch (Exception ex)
@@ -216,7 +216,7 @@ namespace AweSimConnect
             // Check for tunnel connectivity every 3 seconds.
             // Disable the additional connection options if can't connect through the tunnel.
             if (secondsElapsed % 3 == 0)
-                EnableAdditionalOptions(NetworkTools.IsPortOpenOnLocalHost(connection.RedirectPort));
+                EnableAdditionalOptions(NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort));
 
             secondsElapsed++;
         }
@@ -229,6 +229,19 @@ namespace AweSimConnect
         private void EnableTunnelOptions(bool enable)
         {
             bConnect.Enabled = enable;
+        }
+
+        private void tbRemotePort_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.connection.RemotePort = int.Parse(tbRemotePort.Text);
+                LabelColorChanger(lRemotePort, true);
+            }
+            catch (Exception ex)
+            {
+                LabelColorChanger(lRemotePort, false);
+            }
         }
     }
 }

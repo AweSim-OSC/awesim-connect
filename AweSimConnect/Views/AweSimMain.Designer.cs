@@ -48,8 +48,8 @@
             this.bVNCConnect = new System.Windows.Forms.Button();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lRemotePort = new System.Windows.Forms.Label();
+            this.tbRemotePort = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -135,8 +135,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.lRemotePort);
+            this.groupBox1.Controls.Add(this.tbRemotePort);
             this.groupBox1.Controls.Add(this.lRedirect);
             this.groupBox1.Controls.Add(this.tbRedirect);
             this.groupBox1.Controls.Add(this.hostLabel);
@@ -151,18 +151,18 @@
             // lRedirect
             // 
             this.lRedirect.AutoSize = true;
-            this.lRedirect.Location = new System.Drawing.Point(278, 14);
+            this.lRedirect.Location = new System.Drawing.Point(265, 14);
             this.lRedirect.Name = "lRedirect";
-            this.lRedirect.Size = new System.Drawing.Size(47, 13);
+            this.lRedirect.Size = new System.Drawing.Size(55, 13);
             this.lRedirect.TabIndex = 15;
-            this.lRedirect.Text = "Redirect";
+            this.lRedirect.Text = "Local Port";
             // 
             // tbRedirect
             // 
             this.tbRedirect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRedirect.Location = new System.Drawing.Point(281, 30);
+            this.tbRedirect.Location = new System.Drawing.Point(258, 30);
             this.tbRedirect.Name = "tbRedirect";
-            this.tbRedirect.Size = new System.Drawing.Size(43, 22);
+            this.tbRedirect.Size = new System.Drawing.Size(66, 22);
             this.tbRedirect.TabIndex = 5;
             this.tbRedirect.Tag = "Redirect";
             this.tbRedirect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -171,7 +171,7 @@
             // hostLabel
             // 
             this.hostLabel.AutoSize = true;
-            this.hostLabel.Location = new System.Drawing.Point(170, 14);
+            this.hostLabel.Location = new System.Drawing.Point(153, 14);
             this.hostLabel.Name = "hostLabel";
             this.hostLabel.Size = new System.Drawing.Size(29, 13);
             this.hostLabel.TabIndex = 12;
@@ -191,10 +191,10 @@
             // tbHost
             // 
             this.tbHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHost.Location = new System.Drawing.Point(91, 30);
+            this.tbHost.Location = new System.Drawing.Point(92, 30);
             this.tbHost.MaxLength = 300;
             this.tbHost.Name = "tbHost";
-            this.tbHost.Size = new System.Drawing.Size(184, 22);
+            this.tbHost.Size = new System.Drawing.Size(160, 22);
             this.tbHost.TabIndex = 4;
             this.tbHost.Tag = "Host : Port";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -215,7 +215,7 @@
             // labelVNCPassword
             // 
             this.labelVNCPassword.AutoSize = true;
-            this.labelVNCPassword.Location = new System.Drawing.Point(151, 15);
+            this.labelVNCPassword.Location = new System.Drawing.Point(130, 15);
             this.labelVNCPassword.Name = "labelVNCPassword";
             this.labelVNCPassword.Size = new System.Drawing.Size(78, 13);
             this.labelVNCPassword.TabIndex = 12;
@@ -238,7 +238,7 @@
             this.tbVNCPassword.Location = new System.Drawing.Point(92, 31);
             this.tbVNCPassword.MaxLength = 300;
             this.tbVNCPassword.Name = "tbVNCPassword";
-            this.tbVNCPassword.Size = new System.Drawing.Size(184, 22);
+            this.tbVNCPassword.Size = new System.Drawing.Size(160, 22);
             this.tbVNCPassword.TabIndex = 4;
             this.tbVNCPassword.Tag = "VNC Password";
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -250,24 +250,25 @@
             this.timerConnection.Tag = "timer";
             this.timerConnection.Tick += new System.EventHandler(this.timerConnection_Tick);
             // 
-            // label1
+            // lRemotePort
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Redirect";
+            this.lRemotePort.AutoSize = true;
+            this.lRemotePort.Location = new System.Drawing.Point(20, 14);
+            this.lRemotePort.Name = "lRemotePort";
+            this.lRemotePort.Size = new System.Drawing.Size(66, 13);
+            this.lRemotePort.TabIndex = 17;
+            this.lRemotePort.Text = "Remote Port";
             // 
-            // textBox1
+            // tbRemotePort
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(27, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(43, 22);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.Tag = "Redirect";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbRemotePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRemotePort.Location = new System.Drawing.Point(18, 30);
+            this.tbRemotePort.Name = "tbRemotePort";
+            this.tbRemotePort.Size = new System.Drawing.Size(68, 22);
+            this.tbRemotePort.TabIndex = 16;
+            this.tbRemotePort.Tag = "Remote Port";
+            this.tbRemotePort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbRemotePort.TextChanged += new System.EventHandler(this.tbRemotePort_TextChanged);
             // 
             // AweSimMain
             // 
@@ -322,8 +323,8 @@
         private System.Windows.Forms.TextBox tbVNCPassword;
         private System.Windows.Forms.TextBox tbHost;
         private System.Windows.Forms.Timer timerConnection;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lRemotePort;
+        private System.Windows.Forms.TextBox tbRemotePort;
 
     }
 }

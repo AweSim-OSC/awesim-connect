@@ -38,6 +38,8 @@
             this.cbCluster = new System.Windows.Forms.ComboBox();
             this.lCluster = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lRemotePort = new System.Windows.Forms.Label();
+            this.tbRemotePort = new System.Windows.Forms.TextBox();
             this.lRedirect = new System.Windows.Forms.Label();
             this.tbLocalPort = new System.Windows.Forms.TextBox();
             this.hostLabel = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.bVNCConnect = new System.Windows.Forms.Button();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
-            this.lRemotePort = new System.Windows.Forms.Label();
-            this.tbRemotePort = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -148,6 +148,26 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
+            // lRemotePort
+            // 
+            this.lRemotePort.AutoSize = true;
+            this.lRemotePort.Location = new System.Drawing.Point(20, 14);
+            this.lRemotePort.Name = "lRemotePort";
+            this.lRemotePort.Size = new System.Drawing.Size(66, 13);
+            this.lRemotePort.TabIndex = 17;
+            this.lRemotePort.Text = "Remote Port";
+            // 
+            // tbRemotePort
+            // 
+            this.tbRemotePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbRemotePort.Location = new System.Drawing.Point(18, 30);
+            this.tbRemotePort.Name = "tbRemotePort";
+            this.tbRemotePort.Size = new System.Drawing.Size(68, 22);
+            this.tbRemotePort.TabIndex = 4;
+            this.tbRemotePort.Tag = "Remote Port";
+            this.tbRemotePort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbRemotePort.TextChanged += new System.EventHandler(this.tbRemotePort_TextChanged);
+            // 
             // lRedirect
             // 
             this.lRedirect.AutoSize = true;
@@ -196,7 +216,7 @@
             this.tbHost.Name = "tbHost";
             this.tbHost.Size = new System.Drawing.Size(160, 22);
             this.tbHost.TabIndex = 5;
-            this.tbHost.Tag = "Host : Port";
+            this.tbHost.Tag = "Host";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
             // 
@@ -249,26 +269,6 @@
             this.timerConnection.Interval = 1000;
             this.timerConnection.Tag = "timer";
             this.timerConnection.Tick += new System.EventHandler(this.timerConnection_Tick);
-            // 
-            // lRemotePort
-            // 
-            this.lRemotePort.AutoSize = true;
-            this.lRemotePort.Location = new System.Drawing.Point(20, 14);
-            this.lRemotePort.Name = "lRemotePort";
-            this.lRemotePort.Size = new System.Drawing.Size(66, 13);
-            this.lRemotePort.TabIndex = 17;
-            this.lRemotePort.Text = "Remote Port";
-            // 
-            // tbRemotePort
-            // 
-            this.tbRemotePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRemotePort.Location = new System.Drawing.Point(18, 30);
-            this.tbRemotePort.Name = "tbRemotePort";
-            this.tbRemotePort.Size = new System.Drawing.Size(68, 22);
-            this.tbRemotePort.TabIndex = 4;
-            this.tbRemotePort.Tag = "Remote Port";
-            this.tbRemotePort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbRemotePort.TextChanged += new System.EventHandler(this.tbRemotePort_TextChanged);
             // 
             // AweSimMain
             // 

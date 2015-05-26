@@ -154,7 +154,7 @@ namespace AweSimConnect
         //Handles the connect button action.
         private void bConnect_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword) && Validator.IsPresent(cbCluster) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbLocalPort))
+            if (Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword) && Validator.IsPresent(cbCluster) && Validator.IsInt32(tbRemotePort) && Validator.IsPresent(tbHost) && Validator.IsInt32(tbLocalPort))
             {
                 pc = new PuTTYController(this.connection);
                 pc.StartPlinkProcess(tbPassword.Text);
@@ -179,9 +179,10 @@ namespace AweSimConnect
             Process.Start(AWESIM_DASHBOARD_URL);
         }
 
+        // Click handler for VNC button
         private void bVNCConnect_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(tbHost) && Validator.IsInt32(tbLocalPort) && Validator.IsPresent(tbVNCPassword))
+            if (pc.IsPlinkConnected() && Validator.IsPresent(tbVNCPassword))
             {
                 vc = new VNCController(connection);
                 vc.StartVNCProcess();
@@ -210,21 +211,29 @@ namespace AweSimConnect
 
         private void timerConnection_Tick(object sender, EventArgs e)
         {
-            // Check for network connectivity every 5 seconds.
+            // Check for network connectivity every 15 seconds.
             // Disable the connection button if can not connect to OSC.
-            if (secondsElapsed % 5 == 0)
+            if (secondsElapsed % 15 == 0)
                 EnableTunnelOptions(NetworkTools.CanTelnetToOakley());
-
+                        
             // Check for tunnel connectivity every 3 seconds.
             // Disable the additional connection options if can't connect through the tunnel.
             if (secondsElapsed % 3 == 0)
                 EnableAdditionalOptions(NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort));
 
 
+
             secondsElapsed++;
         }
 
+        // Use this to enable/disable non-connection related options
         private void EnableAdditionalOptions(bool enable)
+        {
+            EnableVNCButton(enable);
+        }
+
+        // Use this to enable/disable vnc button
+        private void EnableVNCButton(bool enable)
         {
             bVNCConnect.Enabled = enable;
         }
@@ -242,7 +251,7 @@ namespace AweSimConnect
                 this.connection.RemotePort = port;
                 
                 // In many cases we will map the remote port to the local port. 
-                // This fills in the text box. User can still modify local manually. 
+                // This fills in the local text box. User can still modify local manually. 
                 this.connection.LocalPort = port;
                 tbLocalPort.Text = tbRemotePort.Text;
                 

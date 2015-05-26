@@ -72,7 +72,7 @@ namespace AweSimConnect.Controllers
         }
 
         //Launch Plink without a password
-        //Currently not implemented. the form validates for password.
+        //Currently not implemented since the form validates for password.
         public void StartVNCProcess()
         {
             String vncCommand = BuildCommandString();

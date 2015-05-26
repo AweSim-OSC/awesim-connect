@@ -60,7 +60,7 @@ namespace AweSimConnect
             vc = new VNCController(connection);
             IPGlobalProperties prop = IPGlobalProperties.GetIPGlobalProperties();
             TcpConnectionInformation[] tcpi = prop.GetActiveTcpConnections();
-            label1.Text = tcpi[1].RemoteEndPoint.Address.ToString();
+            //label1.Text = tcpi[1].RemoteEndPoint.Address.ToString();
 
         
             
@@ -165,13 +165,14 @@ namespace AweSimConnect
 
         private void bVNCConnect_Click(object sender, EventArgs e)
         {
-            if (Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect))
+            if (Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect) && Validator.IsPresent(tbVNCPassword))
             {
                 vc = new VNCController(connection);
                 vc.StartVNCProcess();
             }
         }
 
+        // Checks the password field and marks the label red if the password is invalid.
         private void tbVNCPassword_TextChanged(object sender, EventArgs e)
         {
             try

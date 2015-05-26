@@ -42,7 +42,6 @@
             this.hostLabel = new System.Windows.Forms.Label();
             this.bConnect = new System.Windows.Forms.Button();
             this.tbHost = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelVNCPassword = new System.Windows.Forms.Label();
             this.bVNCConnect = new System.Windows.Forms.Button();
@@ -66,7 +65,7 @@
             // 
             // tbUserName
             // 
-            this.tbUserName.Location = new System.Drawing.Point(323, 26);
+            this.tbUserName.Location = new System.Drawing.Point(324, 31);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(125, 20);
             this.tbUserName.TabIndex = 1;
@@ -75,7 +74,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(323, 62);
+            this.tbPassword.Location = new System.Drawing.Point(324, 67);
             this.tbPassword.MaxLength = 200;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(125, 20);
@@ -87,7 +86,7 @@
             // 
             this.lUsername.AutoSize = true;
             this.lUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lUsername.Location = new System.Drawing.Point(259, 29);
+            this.lUsername.Location = new System.Drawing.Point(260, 34);
             this.lUsername.Name = "lUsername";
             this.lUsername.Size = new System.Drawing.Size(58, 13);
             this.lUsername.TabIndex = 4;
@@ -97,7 +96,7 @@
             // 
             this.lPassword.AutoSize = true;
             this.lPassword.BackColor = System.Drawing.Color.Transparent;
-            this.lPassword.Location = new System.Drawing.Point(259, 65);
+            this.lPassword.Location = new System.Drawing.Point(260, 70);
             this.lPassword.Name = "lPassword";
             this.lPassword.Size = new System.Drawing.Size(56, 13);
             this.lPassword.TabIndex = 5;
@@ -122,11 +121,11 @@
             // lCluster
             // 
             this.lCluster.AutoSize = true;
-            this.lCluster.Location = new System.Drawing.Point(28, 14);
+            this.lCluster.Location = new System.Drawing.Point(24, 14);
             this.lCluster.Name = "lCluster";
-            this.lCluster.Size = new System.Drawing.Size(39, 13);
+            this.lCluster.Size = new System.Drawing.Size(54, 13);
             this.lCluster.TabIndex = 7;
-            this.lCluster.Text = "Cluster";
+            this.lCluster.Text = "SSH Host";
             // 
             // groupBox1
             // 
@@ -134,9 +133,9 @@
             this.groupBox1.Controls.Add(this.lRedirect);
             this.groupBox1.Controls.Add(this.tbRedirect);
             this.groupBox1.Controls.Add(this.hostLabel);
+            this.groupBox1.Controls.Add(this.lCluster);
             this.groupBox1.Controls.Add(this.bConnect);
             this.groupBox1.Controls.Add(this.tbHost);
-            this.groupBox1.Controls.Add(this.lCluster);
             this.groupBox1.Controls.Add(this.cbCluster);
             this.groupBox1.Location = new System.Drawing.Point(12, 103);
             this.groupBox1.Name = "groupBox1";
@@ -147,7 +146,7 @@
             // lRedirect
             // 
             this.lRedirect.AutoSize = true;
-            this.lRedirect.Location = new System.Drawing.Point(268, 14);
+            this.lRedirect.Location = new System.Drawing.Point(278, 14);
             this.lRedirect.Name = "lRedirect";
             this.lRedirect.Size = new System.Drawing.Size(47, 13);
             this.lRedirect.TabIndex = 15;
@@ -156,9 +155,9 @@
             // tbRedirect
             // 
             this.tbRedirect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRedirect.Location = new System.Drawing.Point(260, 30);
+            this.tbRedirect.Location = new System.Drawing.Point(281, 30);
             this.tbRedirect.Name = "tbRedirect";
-            this.tbRedirect.Size = new System.Drawing.Size(64, 22);
+            this.tbRedirect.Size = new System.Drawing.Size(43, 22);
             this.tbRedirect.TabIndex = 5;
             this.tbRedirect.Tag = "Redirect";
             this.tbRedirect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -167,7 +166,7 @@
             // hostLabel
             // 
             this.hostLabel.AutoSize = true;
-            this.hostLabel.Location = new System.Drawing.Point(163, 14);
+            this.hostLabel.Location = new System.Drawing.Point(170, 14);
             this.hostLabel.Name = "hostLabel";
             this.hostLabel.Size = new System.Drawing.Size(29, 13);
             this.hostLabel.TabIndex = 12;
@@ -190,21 +189,11 @@
             this.tbHost.Location = new System.Drawing.Point(91, 30);
             this.tbHost.MaxLength = 300;
             this.tbHost.Name = "tbHost";
-            this.tbHost.Size = new System.Drawing.Size(163, 22);
+            this.tbHost.Size = new System.Drawing.Size(184, 22);
             this.tbHost.TabIndex = 4;
             this.tbHost.Tag = "Host";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(291, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 9);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "DebugLabel";
             // 
             // groupBox2
             // 
@@ -212,7 +201,7 @@
             this.groupBox2.Controls.Add(this.labelVNCPassword);
             this.groupBox2.Controls.Add(this.bVNCConnect);
             this.groupBox2.Controls.Add(this.tbVNCPassword);
-            this.groupBox2.Location = new System.Drawing.Point(11, 172);
+            this.groupBox2.Location = new System.Drawing.Point(12, 165);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(458, 62);
             this.groupBox2.TabIndex = 10;
@@ -221,7 +210,7 @@
             // labelVNCPassword
             // 
             this.labelVNCPassword.AutoSize = true;
-            this.labelVNCPassword.Location = new System.Drawing.Point(141, 14);
+            this.labelVNCPassword.Location = new System.Drawing.Point(151, 15);
             this.labelVNCPassword.Name = "labelVNCPassword";
             this.labelVNCPassword.Size = new System.Drawing.Size(78, 13);
             this.labelVNCPassword.TabIndex = 12;
@@ -244,7 +233,7 @@
             this.tbVNCPassword.Location = new System.Drawing.Point(92, 31);
             this.tbVNCPassword.MaxLength = 300;
             this.tbVNCPassword.Name = "tbVNCPassword";
-            this.tbVNCPassword.Size = new System.Drawing.Size(163, 22);
+            this.tbVNCPassword.Size = new System.Drawing.Size(184, 22);
             this.tbVNCPassword.TabIndex = 4;
             this.tbVNCPassword.Tag = "Host";
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -257,9 +246,8 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 245);
+            this.ClientSize = new System.Drawing.Size(479, 234);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);
             this.Controls.Add(this.lUsername);
@@ -297,7 +285,6 @@
         private System.Windows.Forms.Label hostLabel;
         private System.Windows.Forms.TextBox tbRedirect;
         private System.Windows.Forms.Label lRedirect;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelVNCPassword;
         private System.Windows.Forms.Button bVNCConnect;

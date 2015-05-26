@@ -33,8 +33,6 @@ namespace AweSimConnect
         private ClipboardController cbc;
         private ClusterController clc;
 
-        //This is here in case we use the file name for settings.
-        private String fileName;
         private int secondsElapsed = 0;
 
         Connection connection;
@@ -42,14 +40,16 @@ namespace AweSimConnect
         public AweSimMain()
         {
             InitializeComponent();
+
         }
 
         // On application load
         private void AweSimMain_Load(object sender, EventArgs e)
         {
+            //GUI setup
             this.CenterToParent();
             this.AcceptButton = bConnect;
-
+            
             //Initialize controllers.
             cbc = new ClipboardController();
             clc = new ClusterController();
@@ -89,18 +89,43 @@ namespace AweSimConnect
         // Use this when we begin importing from link or json.
         private void UpdateData(Connection newConnection)
         {
-            tbUserName.Text = newConnection.UserName;
-            this.connection.UserName = newConnection.UserName;
-            if (newConnection.LocalPort != 0)
+
+            if (newConnection.UserName != null)
+            {
+                tbUserName.Text = newConnection.UserName;
+                this.connection.UserName = newConnection.UserName;
+            }
+            
+            
+            if (newConnection.LocalPort != 0)    
                 tbLocalPort.Text = newConnection.LocalPort.ToString();
             else
                 tbLocalPort.Text = "";
             this.connection.LocalPort = newConnection.LocalPort;
-            tbHost.Text = newConnection.PUAServer;
-            this.connection.UserName = newConnection.PUAServer;
+            
+
+            if (newConnection.RemotePort != 0)
+                tbRemotePort.Text = newConnection.RemotePort.ToString();
+            else
+                tbRemotePort.Text = "";
+            this.connection.RemotePort = newConnection.RemotePort;
+            
+
+            if (newConnection.PUAServer != null)
+            {
+                tbHost.Text = newConnection.PUAServer;
+                this.connection.UserName = newConnection.PUAServer;
+            }
+            
             //Oakley for now.
             // TODO enable all clusters
             setCluster();
+
+            if (newConnection.VNCPassword != null)
+            {
+                tbVNCPassword.Text = newConnection.VNCPassword;
+                this.connection.VNCPassword = newConnection.VNCPassword;
+            }
         }
 
         // Gets the file name without the extension
@@ -214,7 +239,9 @@ namespace AweSimConnect
             // Check for network connectivity every 15 seconds.
             // Disable the connection button if can not connect to OSC.
             if (secondsElapsed % 15 == 0)
+            {
                 EnableTunnelOptions(NetworkTools.CanTelnetToOakley());
+            }
                         
             // Check for tunnel connectivity every 3 seconds.
             // Disable the additional connection options if can't connect through the tunnel.
@@ -262,5 +289,6 @@ namespace AweSimConnect
                 LabelColorChanger(lRemotePort, false);
             }
         }
+                
     }
 }

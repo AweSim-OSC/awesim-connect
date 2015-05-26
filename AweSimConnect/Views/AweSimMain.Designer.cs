@@ -50,6 +50,7 @@
             this.bVNCConnect = new System.Windows.Forms.Button();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
+            this.tooltips = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -65,32 +66,37 @@
             this.pbAweSimLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbAweSimLogo.TabIndex = 1;
             this.pbAweSimLogo.TabStop = false;
+            this.tooltips.SetToolTip(this.pbAweSimLogo, "Click to visit the AweSim Dashboard.");
             this.pbAweSimLogo.Click += new System.EventHandler(this.pbAweSimLogo_Click);
             // 
             // tbUserName
             // 
+            this.tbUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUserName.Location = new System.Drawing.Point(324, 14);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(125, 20);
             this.tbUserName.TabIndex = 1;
             this.tbUserName.Tag = "Username";
+            this.tooltips.SetToolTip(this.tbUserName, "Your AweSim user name.\r\n\r\nGet yours at http://www.awesim.org");
             this.tbUserName.TextChanged += new System.EventHandler(this.tbUserName_TextChanged);
             // 
             // tbPassword
             // 
+            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPassword.Location = new System.Drawing.Point(324, 45);
             this.tbPassword.MaxLength = 200;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(125, 20);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.Tag = "Password";
+            this.tooltips.SetToolTip(this.tbPassword, "Your AweSim password.");
             this.tbPassword.UseSystemPasswordChar = true;
             // 
             // lUsername
             // 
             this.lUsername.AutoSize = true;
             this.lUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lUsername.Location = new System.Drawing.Point(260, 17);
+            this.lUsername.Location = new System.Drawing.Point(256, 16);
             this.lUsername.Name = "lUsername";
             this.lUsername.Size = new System.Drawing.Size(58, 13);
             this.lUsername.TabIndex = 4;
@@ -100,7 +106,7 @@
             // 
             this.lPassword.AutoSize = true;
             this.lPassword.BackColor = System.Drawing.Color.Transparent;
-            this.lPassword.Location = new System.Drawing.Point(258, 48);
+            this.lPassword.Location = new System.Drawing.Point(258, 47);
             this.lPassword.Name = "lPassword";
             this.lPassword.Size = new System.Drawing.Size(56, 13);
             this.lPassword.TabIndex = 5;
@@ -112,13 +118,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCluster.DisplayMember = "Name";
+            this.cbCluster.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCluster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCluster.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCluster.FormattingEnabled = true;
             this.cbCluster.Location = new System.Drawing.Point(324, 76);
             this.cbCluster.Name = "cbCluster";
+            this.cbCluster.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cbCluster.Size = new System.Drawing.Size(125, 23);
             this.cbCluster.TabIndex = 3;
             this.cbCluster.Tag = "Cluster";
+            this.tooltips.SetToolTip(this.cbCluster, "The SSH host.\r\n\r\nDefault: oakley.osc.edu");
             this.cbCluster.ValueMember = "Name";
             this.cbCluster.SelectedIndexChanged += new System.EventHandler(this.cbCluster_SelectedIndexChanged);
             // 
@@ -126,11 +136,11 @@
             // 
             this.lCluster.AutoSize = true;
             this.lCluster.BackColor = System.Drawing.Color.Transparent;
-            this.lCluster.Location = new System.Drawing.Point(260, 81);
+            this.lCluster.Location = new System.Drawing.Point(257, 81);
             this.lCluster.Name = "lCluster";
-            this.lCluster.Size = new System.Drawing.Size(54, 13);
+            this.lCluster.Size = new System.Drawing.Size(57, 13);
             this.lCluster.TabIndex = 7;
-            this.lCluster.Text = "SSH Host";
+            this.lCluster.Text = "SSH Host:";
             // 
             // groupBox1
             // 
@@ -159,6 +169,7 @@
             // 
             // tbRemotePort
             // 
+            this.tbRemotePort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbRemotePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbRemotePort.Location = new System.Drawing.Point(18, 30);
             this.tbRemotePort.Name = "tbRemotePort";
@@ -166,6 +177,7 @@
             this.tbRemotePort.TabIndex = 4;
             this.tbRemotePort.Tag = "Remote Port";
             this.tbRemotePort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tooltips.SetToolTip(this.tbRemotePort, "The remote port of the resource to connect to. Ex: 5901");
             this.tbRemotePort.TextChanged += new System.EventHandler(this.tbRemotePort_TextChanged);
             // 
             // lRedirect
@@ -179,6 +191,7 @@
             // 
             // tbLocalPort
             // 
+            this.tbLocalPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbLocalPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLocalPort.Location = new System.Drawing.Point(258, 30);
             this.tbLocalPort.Name = "tbLocalPort";
@@ -186,6 +199,8 @@
             this.tbLocalPort.TabIndex = 6;
             this.tbLocalPort.Tag = "Local Port";
             this.tbLocalPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tooltips.SetToolTip(this.tbLocalPort, "The port to map to your local machine. \r\n\r\nExample: 5901 for VNC or 8080 for brow" +
+        "ser tunneling.");
             this.tbLocalPort.TextChanged += new System.EventHandler(this.tbRedirect_TextChanged);
             // 
             // hostLabel
@@ -205,11 +220,14 @@
             this.bConnect.Size = new System.Drawing.Size(89, 34);
             this.bConnect.TabIndex = 7;
             this.bConnect.Text = "Connect";
-            this.bConnect.UseVisualStyleBackColor = true;
+            this.tooltips.SetToolTip(this.bConnect, "Enter your connection information and click this to establish a secure connection" +
+        " to AweSim.");
+            this.bConnect.UseVisualStyleBackColor = false;
             this.bConnect.Click += new System.EventHandler(this.bConnect_Click);
             // 
             // tbHost
             // 
+            this.tbHost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbHost.Location = new System.Drawing.Point(92, 30);
             this.tbHost.MaxLength = 300;
@@ -218,6 +236,8 @@
             this.tbHost.TabIndex = 5;
             this.tbHost.Tag = "Host";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tooltips.SetToolTip(this.tbHost, "The host name of your requested node. Get this from the AweSim Dashboard.\r\n\r\nEx: " +
+        "n231.ten.osc.edu");
             this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
             // 
             // groupBox2
@@ -249,11 +269,13 @@
             this.bVNCConnect.Size = new System.Drawing.Size(89, 34);
             this.bVNCConnect.TabIndex = 9;
             this.bVNCConnect.Text = "Launch VNC";
-            this.bVNCConnect.UseVisualStyleBackColor = true;
+            this.tooltips.SetToolTip(this.bVNCConnect, "Click to launch a VNC Connection");
+            this.bVNCConnect.UseVisualStyleBackColor = false;
             this.bVNCConnect.Click += new System.EventHandler(this.bVNCConnect_Click);
             // 
             // tbVNCPassword
             // 
+            this.tbVNCPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbVNCPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVNCPassword.Location = new System.Drawing.Point(92, 31);
             this.tbVNCPassword.MaxLength = 300;
@@ -262,6 +284,7 @@
             this.tbVNCPassword.TabIndex = 8;
             this.tbVNCPassword.Tag = "VNC Password";
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tooltips.SetToolTip(this.tbVNCPassword, "The 8 character password associated with your node.");
             this.tbVNCPassword.TextChanged += new System.EventHandler(this.tbVNCPassword_TextChanged);
             // 
             // timerConnection
@@ -270,6 +293,14 @@
             this.timerConnection.Tag = "timer";
             this.timerConnection.Tick += new System.EventHandler(this.timerConnection_Tick);
             // 
+            // tooltips
+            // 
+            this.tooltips.AutoPopDelay = 5000;
+            this.tooltips.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tooltips.InitialDelay = 2000;
+            this.tooltips.IsBalloon = true;
+            this.tooltips.ReshowDelay = 100;
+            // 
             // AweSimMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,7 +308,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 234);
+            this.ClientSize = new System.Drawing.Size(479, 236);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);
@@ -325,6 +356,7 @@
         private System.Windows.Forms.Timer timerConnection;
         private System.Windows.Forms.Label lRemotePort;
         private System.Windows.Forms.TextBox tbRemotePort;
+        private System.Windows.Forms.ToolTip tooltips;
 
     }
 }

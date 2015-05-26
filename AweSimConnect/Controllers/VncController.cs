@@ -14,7 +14,7 @@ namespace AweSimConnect.Controllers
 
         //GGIVNC - MIT License.
         private static String GGIVNC_FILE = "ggivnc.exe";
-
+        
         private Connection connection;
 
         internal Connection Connection
@@ -22,13 +22,28 @@ namespace AweSimConnect.Controllers
             get { return connection; }
             set { connection = value; }
         }
-
+        
         //The full current path of the plink executable.
         private static String GGIVNC_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), GGIVNC_FILE);
 
+        //The arguments for ggivnc
+        private static String GGI_ARGS = "-p {0} localhost:1";
+
+        //Writes out the password file to a tmp location and returns the path of the file.
+        private String WritePasswordFile()
+        {
+            String passPath = Path.GetTempFileName();
+            using (StreamWriter passWrite = new StreamWriter(passPath, false)) {
+                passWrite.WriteLine(connection.VNCPassword);
+            }
+            return passPath;
+        }
+
         // GGIVnc command line argument placeholder.
-        // TODO
-        private static String GGIVNC_ARGS = "";
+        private String BuildCommandString()
+        {
+            return GGIVNC_CURRENT_DIR + " -p " + WritePasswordFile() + " localhost:1";
+        }
 
         public VNCController(Connection connection)
         {
@@ -60,10 +75,10 @@ namespace AweSimConnect.Controllers
         //Currently not implemented. the form validates for password.
         public void StartVNCProcess()
         {
-            String vncCommand = String.Format(GGIVNC_CURRENT_DIR);
-            ProcessStartInfo info = new ProcessStartInfo(vncCommand);
+            String vncCommand = BuildCommandString();
+            ProcessStartInfo info = new ProcessStartInfo(GGIVNC_CURRENT_DIR);
             //TODO
-            //info.Arguments = String.Format(GGIVNC_ARGS, this.connection.RedirectPort, this.connection.PUAServer, this.connection.UserName, this.connection.SSHHost, this.connection.UserName);
+            info.Arguments = String.Format(GGI_ARGS, WritePasswordFile());
             info.UseShellExecute = true;
 
             try

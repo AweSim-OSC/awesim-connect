@@ -62,6 +62,10 @@ namespace AweSimConnect
             TcpConnectionInformation[] tcpi = prop.GetActiveTcpConnections();
             label1.Text = tcpi[1].RemoteEndPoint.Address.ToString();
 
+        
+            
+            
+            
             //Check to see if there is any valid data on the clipboard.
             if (cbc.CheckClipboardForAweSim())
             {
@@ -157,6 +161,27 @@ namespace AweSimConnect
         private void pbAweSimLogo_Click(object sender, EventArgs e)
         {
             Process.Start(AWESIM_DASHBOARD_URL);
+        }
+
+        private void bVNCConnect_Click(object sender, EventArgs e)
+        {
+            if (Validator.IsPresent(tbHost) && Validator.IsInt32(tbRedirect))
+            {
+                vc = new VNCController(connection);
+                vc.StartVNCProcess();
+            }
+        }
+
+        private void tbVNCPassword_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                connection.VNCPassword = tbVNCPassword.Text;
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
     }
 }

@@ -47,8 +47,9 @@
             this.labelVNCPassword = new System.Windows.Forms.Label();
             this.bVNCConnect = new System.Windows.Forms.Button();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
+            this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,7 +69,7 @@
             // 
             // tbUserName
             // 
-            this.tbUserName.Location = new System.Drawing.Point(324, 31);
+            this.tbUserName.Location = new System.Drawing.Point(324, 14);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(125, 20);
             this.tbUserName.TabIndex = 1;
@@ -77,7 +78,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(324, 67);
+            this.tbPassword.Location = new System.Drawing.Point(324, 45);
             this.tbPassword.MaxLength = 200;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(125, 20);
@@ -89,7 +90,7 @@
             // 
             this.lUsername.AutoSize = true;
             this.lUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lUsername.Location = new System.Drawing.Point(260, 34);
+            this.lUsername.Location = new System.Drawing.Point(260, 17);
             this.lUsername.Name = "lUsername";
             this.lUsername.Size = new System.Drawing.Size(58, 13);
             this.lUsername.TabIndex = 4;
@@ -99,7 +100,7 @@
             // 
             this.lPassword.AutoSize = true;
             this.lPassword.BackColor = System.Drawing.Color.Transparent;
-            this.lPassword.Location = new System.Drawing.Point(260, 70);
+            this.lPassword.Location = new System.Drawing.Point(258, 48);
             this.lPassword.Name = "lPassword";
             this.lPassword.Size = new System.Drawing.Size(56, 13);
             this.lPassword.TabIndex = 5;
@@ -113,9 +114,9 @@
             this.cbCluster.DisplayMember = "Name";
             this.cbCluster.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCluster.FormattingEnabled = true;
-            this.cbCluster.Location = new System.Drawing.Point(18, 30);
+            this.cbCluster.Location = new System.Drawing.Point(324, 76);
             this.cbCluster.Name = "cbCluster";
-            this.cbCluster.Size = new System.Drawing.Size(67, 23);
+            this.cbCluster.Size = new System.Drawing.Size(125, 23);
             this.cbCluster.TabIndex = 3;
             this.cbCluster.Tag = "Cluster";
             this.cbCluster.ValueMember = "Name";
@@ -124,7 +125,8 @@
             // lCluster
             // 
             this.lCluster.AutoSize = true;
-            this.lCluster.Location = new System.Drawing.Point(24, 14);
+            this.lCluster.BackColor = System.Drawing.Color.Transparent;
+            this.lCluster.Location = new System.Drawing.Point(260, 81);
             this.lCluster.Name = "lCluster";
             this.lCluster.Size = new System.Drawing.Size(54, 13);
             this.lCluster.TabIndex = 7;
@@ -133,13 +135,13 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.lRedirect);
             this.groupBox1.Controls.Add(this.tbRedirect);
             this.groupBox1.Controls.Add(this.hostLabel);
-            this.groupBox1.Controls.Add(this.lCluster);
             this.groupBox1.Controls.Add(this.bConnect);
             this.groupBox1.Controls.Add(this.tbHost);
-            this.groupBox1.Controls.Add(this.cbCluster);
             this.groupBox1.Location = new System.Drawing.Point(12, 103);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(457, 63);
@@ -178,7 +180,7 @@
             // 
             // bConnect
             // 
-            this.bConnect.Location = new System.Drawing.Point(347, 19);
+            this.bConnect.Location = new System.Drawing.Point(348, 19);
             this.bConnect.Name = "bConnect";
             this.bConnect.Size = new System.Drawing.Size(89, 34);
             this.bConnect.TabIndex = 6;
@@ -242,18 +244,30 @@
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbVNCPassword.TextChanged += new System.EventHandler(this.tbVNCPassword_TextChanged);
             // 
+            // timerConnection
+            // 
+            this.timerConnection.Interval = 1000;
+            this.timerConnection.Tag = "timer";
+            this.timerConnection.Tick += new System.EventHandler(this.timerConnection_Tick);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(290, 9);
+            this.label1.Location = new System.Drawing.Point(24, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Redirect";
             // 
-            // timer1
+            // textBox1
             // 
-            this.timer1.Interval = 1000;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(27, 30);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(43, 22);
+            this.textBox1.TabIndex = 16;
+            this.textBox1.Tag = "Redirect";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AweSimMain
             // 
@@ -263,13 +277,14 @@
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(479, 234);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);
+            this.Controls.Add(this.lCluster);
             this.Controls.Add(this.lUsername);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbUserName);
+            this.Controls.Add(this.cbCluster);
             this.Controls.Add(this.pbAweSimLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -305,9 +320,10 @@
         private System.Windows.Forms.Label labelVNCPassword;
         private System.Windows.Forms.Button bVNCConnect;
         private System.Windows.Forms.TextBox tbVNCPassword;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbHost;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerConnection;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }

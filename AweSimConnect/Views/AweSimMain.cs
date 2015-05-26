@@ -26,6 +26,7 @@ namespace AweSimConnect
     {
         //AweSim Dashboard URL
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
+        static long START_TIME = DateTime.Now.Ticks;
         
         private PuTTYController pc;
         private VNCController vc;
@@ -34,6 +35,7 @@ namespace AweSimConnect
 
         //This is here in case we use the file name for settings.
         private String fileName;
+        private int secondsElapsed = 0;
 
         Connection connection;
 
@@ -53,6 +55,7 @@ namespace AweSimConnect
             clc = new ClusterController();
 
             connection = new Connection();
+            timerConnection.Start();
 
             // Adds the Clusters to the Combobox
             setupClusterBox();
@@ -86,7 +89,10 @@ namespace AweSimConnect
         {
             tbUserName.Text = newConnection.UserName;
             this.connection.UserName = newConnection.UserName;
-            tbRedirect.Text = newConnection.RedirectPort.ToString();
+            if (newConnection.RedirectPort != 0)
+                tbRedirect.Text = newConnection.RedirectPort.ToString();
+            else
+                tbRedirect.Text = "";
             this.connection.RedirectPort = newConnection.RedirectPort;
             tbHost.Text = newConnection.PUAServer;
             this.connection.UserName = newConnection.PUAServer;
@@ -198,6 +204,31 @@ namespace AweSimConnect
         private void LabelColorChanger(Label label, bool valid)
         {
             label.ForeColor = valid ? Color.Black : Color.Red;
+        }
+
+        private void timerConnection_Tick(object sender, EventArgs e)
+        {
+            // Check for network connectivity every 5 seconds.
+            // Disable the connection button if can not connect to OSC.
+            if (secondsElapsed % 5 == 0)
+                EnableTunnelOptions(NetworkTools.CanTelnetToOakley());
+
+            // Check for tunnel connectivity every 3 seconds.
+            // Disable the additional connection options if can't connect through the tunnel.
+            if (secondsElapsed % 3 == 0)
+                EnableAdditionalOptions(NetworkTools.IsPortOpenOnLocalHost(connection.RedirectPort));
+
+            secondsElapsed++;
+        }
+
+        private void EnableAdditionalOptions(bool enable)
+        {
+            bVNCConnect.Enabled = enable;
+        }
+
+        private void EnableTunnelOptions(bool enable)
+        {
+            bConnect.Enabled = enable;
         }
     }
 }

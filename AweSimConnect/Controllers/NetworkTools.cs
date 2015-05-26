@@ -11,6 +11,12 @@ namespace AweSimConnect.Controllers
 {
     class NetworkTools
     {
+        //Checks for connectivity to Oakley. (Use for diagnostic)
+        public static bool CanTelnetToOakley()
+        {
+            return IsPortOpen("oakley.osc.edu", 22);
+        }
+
         // Checks the localhost for an open port.
         public static bool IsPortOpenOnLocalHost(int port)
         {

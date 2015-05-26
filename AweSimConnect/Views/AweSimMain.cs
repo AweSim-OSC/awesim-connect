@@ -26,7 +26,7 @@ namespace AweSimConnect
     {
         //AweSim Dashboard URL
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
-
+        
         private PuTTYController pc;
         private VNCController vc;
         private ClipboardController cbc;
@@ -56,6 +56,9 @@ namespace AweSimConnect
 
             // Adds the Clusters to the Combobox
             setupClusterBox();
+
+            // Check for connectivity to the servers
+            LimitedConnectionPopup();
             
             
             
@@ -68,7 +71,14 @@ namespace AweSimConnect
 
         }
 
-        
+        // Throws up a popup window if the app isn't able to connect to the selected SSH host.
+        private void LimitedConnectionPopup()
+        {
+            if (!NetworkTools.CanTelnetToOakley())
+            {
+                MessageBox.Show("Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
 
         private void UpdateData(Connection newConnection)
         {
@@ -79,6 +89,7 @@ namespace AweSimConnect
             tbHost.Text = newConnection.PUAServer;
             this.connection.UserName = newConnection.PUAServer;
             //Oakley for now.
+            // TODO enable all clusters
             setCluster();
         }
 

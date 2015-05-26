@@ -56,14 +56,7 @@ namespace AweSimConnect
 
             // Adds the Clusters to the Combobox
             setupClusterBox();
-
-            //Test network info
-            vc = new VNCController(connection);
-            IPGlobalProperties prop = IPGlobalProperties.GetIPGlobalProperties();
-            TcpConnectionInformation[] tcpi = prop.GetActiveTcpConnections();
-            //label1.Text = tcpi[1].RemoteEndPoint.Address.ToString();
-
-            label1.Text = CheckConnection("oakley.osc.edu", 8080).ToString();
+            
             
             
             //Check to see if there is any valid data on the clipboard.
@@ -75,24 +68,7 @@ namespace AweSimConnect
 
         }
 
-        //TODO testing connection, move it to network tools if it works.
-        private bool CheckConnection(String host, int port)
-        {
-            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
-            try
-            {
-                socket.Connect(host, port);
-                return true;
-            }
-            catch (SocketException ex)
-            {
-                if (ex.SocketErrorCode == SocketError.ConnectionRefused)
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
+        
 
         private void UpdateData(Connection newConnection)
         {
@@ -193,10 +169,7 @@ namespace AweSimConnect
 
         // Checks the password field and marks the label red if the password is invalid.
         private void tbVNCPassword_TextChanged(object sender, EventArgs e)
-        {
-            //TODO remove
-            label1.Text = CheckConnection("localhost", connection.RedirectPort).ToString();
-
+        {            
             try
             {
                 connection.VNCPassword = tbVNCPassword.Text;

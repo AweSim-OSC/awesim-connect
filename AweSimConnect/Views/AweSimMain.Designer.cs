@@ -44,7 +44,7 @@
             this.tbHost = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelVNCPassword = new System.Windows.Forms.Label();
             this.bVNCConnect = new System.Windows.Forms.Button();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
@@ -209,7 +209,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.labelVNCPassword);
             this.groupBox2.Controls.Add(this.bVNCConnect);
             this.groupBox2.Controls.Add(this.tbVNCPassword);
             this.groupBox2.Location = new System.Drawing.Point(11, 172);
@@ -218,15 +218,15 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
-            // label3
+            // labelVNCPassword
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(141, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Tag = "Host";
-            this.label3.Text = "VNC Password";
+            this.labelVNCPassword.AutoSize = true;
+            this.labelVNCPassword.Location = new System.Drawing.Point(141, 14);
+            this.labelVNCPassword.Name = "labelVNCPassword";
+            this.labelVNCPassword.Size = new System.Drawing.Size(78, 13);
+            this.labelVNCPassword.TabIndex = 12;
+            this.labelVNCPassword.Tag = "Host";
+            this.labelVNCPassword.Text = "VNC Password";
             // 
             // bVNCConnect
             // 
@@ -299,7 +299,7 @@
         private System.Windows.Forms.Label lRedirect;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelVNCPassword;
         private System.Windows.Forms.Button bVNCConnect;
         private System.Windows.Forms.TextBox tbVNCPassword;
 

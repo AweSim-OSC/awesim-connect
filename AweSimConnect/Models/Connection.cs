@@ -8,9 +8,8 @@ namespace AweSimConnect.Models
     class Connection
     {
         //TODO: Add some handling to ensure inputs at least look valid.
-        //TODO: VNC password has 8 chars?
-        //TODO: PUA server regex match ten.osc.edu.
-        //TODO: SSHHost match *.osc.edu
+        //TODO: PUA server regex match ten.osc.edu?
+        //TODO: SSHHost match *.osc.edu?
 
         // EX: nxxxx.ten.osc.edu:8080
         public String PUAServer { get; set; }
@@ -25,6 +24,21 @@ namespace AweSimConnect.Models
         public String UserName { get; set; }
 
         // EX: XD4F893S
-        public String VNCPassword { get; set; }
+        // Design by contract enforces an 8-char password for VNC. 
+        // 8 char pass is specified in RFB protocol.
+        private string vncPassword;
+        public String VNCPassword { 
+            
+            get {
+                return vncPassword;   
+            } 
+            set {
+                if (value.Length != 8)
+                {
+                    throw new ArgumentException("VNC passwords must be 8 characters.");
+                }
+                vncPassword = value;
+            } 
+        }
     }
 }

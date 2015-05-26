@@ -127,11 +127,11 @@ namespace AweSimConnect
             try
             {
                 this.connection.RedirectPort = int.Parse(tbRedirect.Text);
-                lRedirect.ForeColor = Color.Black;
+                LabelColorChanger(lRedirect, true);
             }
             catch (Exception ex)
             {
-                lRedirect.ForeColor = Color.Red;
+                LabelColorChanger(lRedirect, false);
             }
         }
 
@@ -177,11 +177,18 @@ namespace AweSimConnect
             try
             {
                 connection.VNCPassword = tbVNCPassword.Text;
+                LabelColorChanger(labelVNCPassword, true);
             }
             catch (Exception ex)
             {
-                
+                LabelColorChanger(labelVNCPassword, false);
             }
+        }
+
+        //Changes the color of a label
+        private void LabelColorChanger(Label label, bool valid)
+        {
+            label.ForeColor = valid ? Color.Black : Color.Red;
         }
     }
 }

@@ -99,7 +99,6 @@ namespace AweSimConnect
                     this.connection.UserName = newConnection.UserName;
                 }
 
-
                 if (newConnection.LocalPort != 0)
                     tbLocalPort.Text = newConnection.LocalPort.ToString();
                 else
@@ -112,9 +111,8 @@ namespace AweSimConnect
                 else
                     tbRemotePort.Text = "";
                 this.connection.RemotePort = newConnection.RemotePort;
-
-
-                if (newConnection.PUAServer != null)
+                
+                if (!String.IsNullOrEmpty(newConnection.PUAServer))
                 {
                     tbHost.Text = newConnection.PUAServer;
                     this.connection.UserName = newConnection.PUAServer;
@@ -124,7 +122,7 @@ namespace AweSimConnect
                 // TODO enable all clusters
                 setCluster();
 
-                if (newConnection.VNCPassword != null)
+                if (!String.IsNullOrEmpty(newConnection.VNCPassword))
                 {
                     tbVNCPassword.Text = newConnection.VNCPassword;
                     this.connection.VNCPassword = newConnection.VNCPassword;
@@ -188,6 +186,8 @@ namespace AweSimConnect
                 pc = new PuTTYController(this.connection);
                 pc.StartPlinkProcess(tbPassword.Text);
             }
+            
+
         }
 
         //Set the username when the user enters text.
@@ -269,7 +269,15 @@ namespace AweSimConnect
                 if (tunnel_available && !pc.IsProcessEmbedded())
                 {
                     pc.EmbedProcess();
-                    SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+
+                    //TODO: This is the only place these are used right now. Move them up or out if we need to.
+                    int MAXIMIZE_WINDOW = 3;
+                    int MINIMIZE_WINDOW = 6;
+
+                    ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);                    
+                    
+                    //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.
+                    //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
                 }
             }
 
@@ -373,6 +381,10 @@ namespace AweSimConnect
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern IntPtr SetParent(IntPtr windowChild, IntPtr windowParent);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]
+        static extern bool ShowWindow(IntPtr windowHandle, int command);
     }
 
 }

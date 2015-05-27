@@ -142,5 +142,10 @@ namespace AweSimConnect.Controllers
         {
             return process_embedded;
         }
+
+        public void KillProcess()
+        {
+            process.Kill();
+        }
     }
 }

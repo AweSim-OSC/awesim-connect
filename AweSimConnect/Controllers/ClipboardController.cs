@@ -22,8 +22,7 @@ namespace AweSimConnect.Controllers
             'SSHHost': 'oakley.osc.edu',
             'UserName': 'bmcmichael',
             'VNCPassword: 'XXXXXXXX'
-        }
-     
+        }     
      */
     class ClipboardController
     {

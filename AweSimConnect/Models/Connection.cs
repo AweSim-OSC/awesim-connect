@@ -45,6 +45,7 @@ namespace AweSimConnect.Models
             set {
                 if (value.Length != 8)
                 {
+                    vncPassword = null;
                     throw new ArgumentException("VNC passwords must be 8 characters.");
                 }
                 vncPassword = value;

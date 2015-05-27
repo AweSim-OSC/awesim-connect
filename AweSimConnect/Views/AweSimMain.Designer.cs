@@ -54,7 +54,7 @@
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.tooltips = new System.Windows.Forms.ToolTip(this.components);
             this.bWeb = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bSFTP = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelWeb = new System.Windows.Forms.Label();
@@ -62,6 +62,12 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelProcesses = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pbNetwork = new System.Windows.Forms.PictureBox();
+            this.pbTunnel = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -71,6 +77,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).BeginInit();
             this.SuspendLayout();
             // 
             // pbAweSimLogo
@@ -275,7 +285,7 @@
             this.groupBox2.Controls.Add(this.labelVNCPassword);
             this.groupBox2.Controls.Add(this.bVNCConnect);
             this.groupBox2.Controls.Add(this.tbVNCPassword);
-            this.groupBox2.Location = new System.Drawing.Point(12, 165);
+            this.groupBox2.Location = new System.Drawing.Point(12, 236);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(458, 62);
             this.groupBox2.TabIndex = 10;
@@ -325,6 +335,8 @@
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tooltips.SetToolTip(this.tbVNCPassword, "The 8 character password associated with your node.");
             this.tbVNCPassword.TextChanged += new System.EventHandler(this.tbVNCPassword_TextChanged);
+            this.tbVNCPassword.Enter += new System.EventHandler(this.tbVNCPassword_Enter);
+            this.tbVNCPassword.Leave += new System.EventHandler(this.tbVNCPassword_Leave);
             // 
             // timerConnection
             // 
@@ -351,15 +363,15 @@
             this.bWeb.UseVisualStyleBackColor = false;
             this.bWeb.Click += new System.EventHandler(this.bWeb_Click);
             // 
-            // button2
+            // bSFTP
             // 
-            this.button2.Location = new System.Drawing.Point(348, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 34);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Launch SFTP";
-            this.tooltips.SetToolTip(this.button2, "Click to launch a VNC Connection");
-            this.button2.UseVisualStyleBackColor = false;
+            this.bSFTP.Location = new System.Drawing.Point(348, 19);
+            this.bSFTP.Name = "bSFTP";
+            this.bSFTP.Size = new System.Drawing.Size(89, 34);
+            this.bSFTP.TabIndex = 9;
+            this.bSFTP.Text = "Launch SFTP";
+            this.tooltips.SetToolTip(this.bSFTP, "Click to launch a VNC Connection");
+            this.bSFTP.UseVisualStyleBackColor = false;
             // 
             // groupBox3
             // 
@@ -368,7 +380,7 @@
             this.groupBox3.Controls.Add(this.labelWeb);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.bWeb);
-            this.groupBox3.Location = new System.Drawing.Point(12, 233);
+            this.groupBox3.Location = new System.Drawing.Point(12, 304);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(458, 62);
             this.groupBox3.TabIndex = 11;
@@ -413,8 +425,8 @@
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
             this.groupBox4.Controls.Add(this.pictureBox3);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Location = new System.Drawing.Point(12, 301);
+            this.groupBox4.Controls.Add(this.bSFTP);
+            this.groupBox4.Location = new System.Drawing.Point(12, 372);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(458, 62);
             this.groupBox4.TabIndex = 13;
@@ -432,11 +444,85 @@
             // 
             // panelProcesses
             // 
-            this.panelProcesses.Location = new System.Drawing.Point(15, 369);
+            this.panelProcesses.Location = new System.Drawing.Point(15, 449);
             this.panelProcesses.Name = "panelProcesses";
             this.panelProcesses.Size = new System.Drawing.Size(452, 342);
             this.panelProcesses.TabIndex = 14;
             this.panelProcesses.Visible = false;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.pbTunnel);
+            this.groupBox5.Controls.Add(this.pbNetwork);
+            this.groupBox5.Controls.Add(this.pictureBox5);
+            this.groupBox5.Location = new System.Drawing.Point(12, 170);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(458, 62);
+            this.groupBox5.TabIndex = 16;
+            this.groupBox5.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::AweSimConnect.Properties.Resources.plug;
+            this.pictureBox5.Location = new System.Drawing.Point(18, 15);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 15;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pbNetwork
+            // 
+            this.pbNetwork.Image = global::AweSimConnect.Properties.Resources.redlight;
+            this.pbNetwork.Location = new System.Drawing.Point(115, 23);
+            this.pbNetwork.Name = "pbNetwork";
+            this.pbNetwork.Size = new System.Drawing.Size(24, 24);
+            this.pbNetwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbNetwork.TabIndex = 16;
+            this.pbNetwork.TabStop = false;
+            // 
+            // pbTunnel
+            // 
+            this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.redlight;
+            this.pbTunnel.Location = new System.Drawing.Point(261, 23);
+            this.pbTunnel.Name = "pbTunnel";
+            this.pbTunnel.Size = new System.Drawing.Size(24, 24);
+            this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTunnel.TabIndex = 17;
+            this.pbTunnel.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(145, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 24);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Network";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(291, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 24);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Secure Tunnel";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AweSimMain
             // 
@@ -445,7 +531,8 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 371);
+            this.ClientSize = new System.Drawing.Size(479, 442);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panelProcesses);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
@@ -476,6 +563,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -508,13 +600,19 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bWeb;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bSFTP;
         private System.Windows.Forms.Panel panelProcesses;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelWeb;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pbTunnel;
+        private System.Windows.Forms.PictureBox pbNetwork;
 
     }
 }

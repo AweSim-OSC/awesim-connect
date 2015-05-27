@@ -92,43 +92,45 @@ namespace AweSimConnect
         // Use this when we begin importing from link or json.
         private void UpdateData(Connection newConnection)
         {
-
-            if (newConnection.UserName != null)
+            if (newConnection != null)
             {
-                tbUserName.Text = newConnection.UserName;
-                this.connection.UserName = newConnection.UserName;
-            }
-            
-            
-            if (newConnection.LocalPort != 0)    
-                tbLocalPort.Text = newConnection.LocalPort.ToString();
-            else
-                tbLocalPort.Text = "";
-            this.connection.LocalPort = newConnection.LocalPort;
-            
+                if (!String.IsNullOrEmpty(newConnection.UserName))
+                {
+                    tbUserName.Text = newConnection.UserName;
+                    this.connection.UserName = newConnection.UserName;
+                }
 
-            if (newConnection.RemotePort != 0)
-                tbRemotePort.Text = newConnection.RemotePort.ToString();
-            else
-                tbRemotePort.Text = "";
-            this.connection.RemotePort = newConnection.RemotePort;
-            
 
-            if (newConnection.PUAServer != null)
-            {
-                tbHost.Text = newConnection.PUAServer;
-                this.connection.UserName = newConnection.PUAServer;
-            }
-            
-            //Oakley for now.
-            // TODO enable all clusters
-            setCluster();
+                if (newConnection.LocalPort != 0)
+                    tbLocalPort.Text = newConnection.LocalPort.ToString();
+                else
+                    tbLocalPort.Text = "";
+                this.connection.LocalPort = newConnection.LocalPort;
 
-            if (newConnection.VNCPassword != null)
-            {
-                tbVNCPassword.Text = newConnection.VNCPassword;
-                this.connection.VNCPassword = newConnection.VNCPassword;
-            }
+
+                if (newConnection.RemotePort != 0)
+                    tbRemotePort.Text = newConnection.RemotePort.ToString();
+                else
+                    tbRemotePort.Text = "";
+                this.connection.RemotePort = newConnection.RemotePort;
+
+
+                if (newConnection.PUAServer != null)
+                {
+                    tbHost.Text = newConnection.PUAServer;
+                    this.connection.UserName = newConnection.PUAServer;
+                }
+
+                //Oakley for now.
+                // TODO enable all clusters
+                setCluster();
+
+                if (newConnection.VNCPassword != null)
+                {
+                    tbVNCPassword.Text = newConnection.VNCPassword;
+                    this.connection.VNCPassword = newConnection.VNCPassword;
+                }
+            }            
         }
 
         // Gets the file name without the extension
@@ -237,6 +239,8 @@ namespace AweSimConnect
             label.ForeColor = valid ? Color.Black : Color.Red;
         }
 
+        // This is the main timer loop for the app.
+        // Handle timed events like connection checking.
         private void timerConnection_Tick(object sender, EventArgs e)
         {
             // Check for network connectivity every 15 seconds.
@@ -245,6 +249,7 @@ namespace AweSimConnect
             {
                 network_available = NetworkTools.CanTelnetToOakley();
                 EnableTunnelOptions(network_available);
+                PictureBoxConnected(pbNetwork, network_available);
             }
                         
             // Check for tunnel connectivity every 4 seconds.
@@ -258,6 +263,8 @@ namespace AweSimConnect
 
                 //Enable the VNC and SFTP
                 EnableAdditionalOptions(tunnel_available);
+
+                PictureBoxConnected(pbTunnel, tunnel_available);
             }
 
             secondsElapsed++;
@@ -294,6 +301,13 @@ namespace AweSimConnect
         private void EnableAdditionalOptions(bool enable)
         {
             EnableVNCButton(enable);
+            EnableSFTPButton(enable);
+        }
+
+        // Use this to enable/disable sftp button
+        private void EnableSFTPButton(bool enable)
+        {
+            bSFTP.Enabled = enable;
         }
 
         // Use this to enable/disable vnc button
@@ -301,7 +315,8 @@ namespace AweSimConnect
         {
             bVNCConnect.Enabled = enable;
         }
-        
+
+        // Use this to enable/disable connect button
         private void EnableTunnelOptions(bool enable)
         {
             bConnect.Enabled = enable;
@@ -336,6 +351,18 @@ namespace AweSimConnect
                 String localUrl = "https://localhost:" + connection.LocalPort;
                 Process.Start(localUrl);
             }
+        }
+
+        // User can click the vnc button by hittin enter in the vnc password box.
+        private void tbVNCPassword_Enter(object sender, EventArgs e)
+        {
+            this.AcceptButton = bVNCConnect;
+        }
+
+        // When the user leaves the VNC password box the focus returns to the main connect button.
+        private void tbVNCPassword_Leave(object sender, EventArgs e)
+        {
+            this.AcceptButton = bConnect;
         }
                         
     }

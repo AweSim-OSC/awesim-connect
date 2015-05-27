@@ -153,6 +153,16 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap plug {
+            get {
+                object obj = ResourceManager.GetObject("plug", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap redlight {
             get {
                 object obj = ResourceManager.GetObject("redlight", resourceCulture);

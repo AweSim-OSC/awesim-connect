@@ -42,7 +42,6 @@ namespace AweSimConnect
         public AweSimMain()
         {
             InitializeComponent();
-
         }
 
         // On application load
@@ -265,6 +264,13 @@ namespace AweSimConnect
                 EnableAdditionalOptions(tunnel_available);
 
                 PictureBoxConnected(pbTunnel, tunnel_available);
+
+                //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
+                if (tunnel_available && !pc.IsProcessEmbedded())
+                {
+                    pc.EmbedProcess();
+                    SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                }
             }
 
             secondsElapsed++;
@@ -274,7 +280,7 @@ namespace AweSimConnect
         {
             if ((port > 0) && tunnel_available)
             {
-                labelWeb.Text = "https://localhost:" + port;
+                labelWeb.Text = "http://localhost:" + port;
                 bWeb.Enabled = true;
             }
             else
@@ -348,7 +354,7 @@ namespace AweSimConnect
         {
             if (connection.LocalPort > 0)
             {
-                String localUrl = "https://localhost:" + connection.LocalPort;
+                String localUrl = "http://localhost:" + connection.LocalPort;
                 Process.Start(localUrl);
             }
         }
@@ -364,6 +370,9 @@ namespace AweSimConnect
         {
             this.AcceptButton = bConnect;
         }
-                        
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr windowChild, IntPtr windowParent);
     }
+
 }

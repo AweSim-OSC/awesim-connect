@@ -58,7 +58,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelWeb = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelProcesses = new System.Windows.Forms.Panel();
@@ -180,7 +179,7 @@
             this.groupBox1.Controls.Add(this.hostLabel);
             this.groupBox1.Controls.Add(this.bConnect);
             this.groupBox1.Controls.Add(this.tbHost);
-            this.groupBox1.Location = new System.Drawing.Point(12, 103);
+            this.groupBox1.Location = new System.Drawing.Point(12, 108);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(457, 63);
             this.groupBox1.TabIndex = 8;
@@ -285,7 +284,7 @@
             this.groupBox2.Controls.Add(this.labelVNCPassword);
             this.groupBox2.Controls.Add(this.bVNCConnect);
             this.groupBox2.Controls.Add(this.tbVNCPassword);
-            this.groupBox2.Location = new System.Drawing.Point(12, 236);
+            this.groupBox2.Location = new System.Drawing.Point(12, 241);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(458, 62);
             this.groupBox2.TabIndex = 10;
@@ -359,7 +358,7 @@
             this.bWeb.Size = new System.Drawing.Size(89, 34);
             this.bWeb.TabIndex = 9;
             this.bWeb.Text = "Launch Web";
-            this.tooltips.SetToolTip(this.bWeb, "Click to launch a VNC Connection");
+            this.tooltips.SetToolTip(this.bWeb, "Click to launch a Browser Session");
             this.bWeb.UseVisualStyleBackColor = false;
             this.bWeb.Click += new System.EventHandler(this.bWeb_Click);
             // 
@@ -370,7 +369,7 @@
             this.bSFTP.Size = new System.Drawing.Size(89, 34);
             this.bSFTP.TabIndex = 9;
             this.bSFTP.Text = "Launch SFTP";
-            this.tooltips.SetToolTip(this.bSFTP, "Click to launch a VNC Connection");
+            this.tooltips.SetToolTip(this.bSFTP, "Click to launch an SFTP connection (if installed)");
             this.bSFTP.UseVisualStyleBackColor = false;
             // 
             // groupBox3
@@ -378,9 +377,8 @@
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.pictureBox2);
             this.groupBox3.Controls.Add(this.labelWeb);
-            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.bWeb);
-            this.groupBox3.Location = new System.Drawing.Point(12, 304);
+            this.groupBox3.Location = new System.Drawing.Point(12, 309);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(458, 62);
             this.groupBox3.TabIndex = 11;
@@ -404,29 +402,19 @@
             this.labelWeb.AutoSize = true;
             this.labelWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWeb.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelWeb.Location = new System.Drawing.Point(121, 30);
+            this.labelWeb.Location = new System.Drawing.Point(121, 22);
             this.labelWeb.Name = "labelWeb";
             this.labelWeb.Size = new System.Drawing.Size(101, 24);
             this.labelWeb.TabIndex = 13;
             this.labelWeb.Text = "Web Label";
             this.labelWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(185, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Tag = "Host";
-            this.label1.Text = "Website";
-            // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
             this.groupBox4.Controls.Add(this.pictureBox3);
             this.groupBox4.Controls.Add(this.bSFTP);
-            this.groupBox4.Location = new System.Drawing.Point(12, 372);
+            this.groupBox4.Location = new System.Drawing.Point(12, 377);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(458, 62);
             this.groupBox4.TabIndex = 13;
@@ -458,7 +446,7 @@
             this.groupBox5.Controls.Add(this.pbTunnel);
             this.groupBox5.Controls.Add(this.pbNetwork);
             this.groupBox5.Controls.Add(this.pictureBox5);
-            this.groupBox5.Location = new System.Drawing.Point(12, 170);
+            this.groupBox5.Location = new System.Drawing.Point(12, 175);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(458, 62);
             this.groupBox5.TabIndex = 16;
@@ -477,7 +465,7 @@
             // pbNetwork
             // 
             this.pbNetwork.Image = global::AweSimConnect.Properties.Resources.redlight;
-            this.pbNetwork.Location = new System.Drawing.Point(115, 23);
+            this.pbNetwork.Location = new System.Drawing.Point(95, 23);
             this.pbNetwork.Name = "pbNetwork";
             this.pbNetwork.Size = new System.Drawing.Size(24, 24);
             this.pbNetwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -487,7 +475,7 @@
             // pbTunnel
             // 
             this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.redlight;
-            this.pbTunnel.Location = new System.Drawing.Point(261, 23);
+            this.pbTunnel.Location = new System.Drawing.Point(226, 23);
             this.pbTunnel.Name = "pbTunnel";
             this.pbTunnel.Size = new System.Drawing.Size(24, 24);
             this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -502,7 +490,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(145, 23);
+            this.label3.Location = new System.Drawing.Point(125, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 24);
             this.label3.TabIndex = 15;
@@ -517,7 +505,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(291, 23);
+            this.label2.Location = new System.Drawing.Point(256, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 24);
             this.label2.TabIndex = 18;
@@ -531,7 +519,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 442);
+            this.ClientSize = new System.Drawing.Size(479, 447);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panelProcesses);
             this.Controls.Add(this.groupBox4);
@@ -597,7 +585,6 @@
         private System.Windows.Forms.TextBox tbRemotePort;
         private System.Windows.Forms.ToolTip tooltips;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bWeb;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button bSFTP;

@@ -17,6 +17,8 @@ namespace AweSimConnect.Controllers
         private Connection connection;
         private Process process;
 
+        private bool process_embedded = false;
+
         internal Connection Connection
         {
             get { return connection; }
@@ -131,5 +133,14 @@ namespace AweSimConnect.Controllers
             return process;
         }
 
+        internal void EmbedProcess()
+        {
+            process_embedded = true;
+        }
+
+        public bool IsProcessEmbedded()
+        {
+            return process_embedded;
+        }
     }
 }

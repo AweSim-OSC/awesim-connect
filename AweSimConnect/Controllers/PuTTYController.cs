@@ -15,6 +15,7 @@ namespace AweSimConnect.Controllers
         private static String PLINK_FILE = "plink.exe";
 
         private Connection connection;
+        private Process process;
 
         internal Connection Connection
         {
@@ -66,7 +67,7 @@ namespace AweSimConnect.Controllers
 
             try
             {
-                Process.Start(info);
+                process = Process.Start(info);
             }
             catch (Exception ex)
             {
@@ -84,7 +85,7 @@ namespace AweSimConnect.Controllers
 
             try
             {
-                Process.Start(info);
+                this.process = Process.Start(info);
             }
             catch (Exception ex)
             {
@@ -104,13 +105,31 @@ namespace AweSimConnect.Controllers
             return FileController.IsProcessRunning(PLINK_PROCESS);
         }
 
+        internal Process[] GetPlinkProcesses()
+        {
+            return Process.GetProcessesByName(PLINK_PROCESS);
+        }
+
         internal bool IsPlinkConnected()
         {
-            if (IsPlinkRunning())
+            try
             {
-                return NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort);
+                if (IsPlinkRunning())
+                {
+                    return NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort);
+                }
             }
+            catch (Exception ex)
+            {
+                return false;
+            }            
             return false;
         }
+
+        internal Process GetThisProcess()
+        {
+            return process;
+        }
+
     }
 }

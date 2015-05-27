@@ -97,8 +97,13 @@
     <Content Include="assets\awesim-sm.png" />
     <Content Include="FodyWeavers.xml" />
     <Content Include="LICENSE.txt" />
+    <None Include="Resources\window.png" />
     <None Include="Resources\ggivnc.exe" />
     <Content Include="Resources\greenlight.png" />
+    <None Include="Resources\network-socket.png" />
+    <None Include="Resources\monitor.png" />
+    <None Include="Resources\hard-disk.png" />
+    <None Include="Resources\info.png" />
     <Content Include="Resources\redlight.png" />
     <None Include="Resources\header.png" />
     <EmbeddedResource Include="Resources\plink.exe" />

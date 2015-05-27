@@ -51,6 +51,7 @@ namespace AweSimConnect
             //GUI setup
             this.CenterToParent();
             this.AcceptButton = bConnect;
+            labelWeb.Text = "";           
             
             //Initialize controllers.
             cbc = new ClipboardController();
@@ -246,20 +247,18 @@ namespace AweSimConnect
                 EnableTunnelOptions(network_available);
             }
                         
-            // Check for tunnel connectivity every 3 seconds.
+            // Check for tunnel connectivity every 4 seconds.
             // Disable the additional connection options if can't connect through the tunnel.
             if (secondsElapsed % 4 == 0)
             {
-                tunnel_available = NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort);
+                tunnel_available = pc.IsPlinkConnected();
+
+                //If the tunnel is connected, enable the button, otherwise disable.
+                EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
+
+                //Enable the VNC and SFTP
                 EnableAdditionalOptions(tunnel_available);
             }
-
-            EnableWeb(connection.LocalPort);
-            
-            
-                
-
-
 
             secondsElapsed++;
         }
@@ -302,12 +301,13 @@ namespace AweSimConnect
         {
             bVNCConnect.Enabled = enable;
         }
-
+        
         private void EnableTunnelOptions(bool enable)
         {
             bConnect.Enabled = enable;
         }
         
+        // Performs an action when the text in the remote port textbox is changed.
         private void tbRemotePort_TextChanged(object sender, EventArgs e)
         {
             try
@@ -328,6 +328,7 @@ namespace AweSimConnect
             }
         }
 
+        // Handles the click for the web button.
         private void bWeb_Click(object sender, EventArgs e)
         {
             if (connection.LocalPort > 0)
@@ -336,6 +337,6 @@ namespace AweSimConnect
                 Process.Start(localUrl);
             }
         }
-                
+                        
     }
 }

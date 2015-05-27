@@ -38,6 +38,7 @@
             this.cbCluster = new System.Windows.Forms.ComboBox();
             this.lCluster = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lRemotePort = new System.Windows.Forms.Label();
             this.tbRemotePort = new System.Windows.Forms.TextBox();
             this.lRedirect = new System.Windows.Forms.Label();
@@ -46,24 +47,30 @@
             this.bConnect = new System.Windows.Forms.Button();
             this.tbHost = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelVNCPassword = new System.Windows.Forms.Label();
             this.bVNCConnect = new System.Windows.Forms.Button();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
             this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.tooltips = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.bWeb = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelWeb = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.panelProcesses = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // pbAweSimLogo
@@ -155,6 +162,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.pictureBox4);
             this.groupBox1.Controls.Add(this.lRemotePort);
             this.groupBox1.Controls.Add(this.tbRemotePort);
             this.groupBox1.Controls.Add(this.lRedirect);
@@ -168,10 +176,20 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::AweSimConnect.Properties.Resources.network_socket;
+            this.pictureBox4.Location = new System.Drawing.Point(18, 15);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 14;
+            this.pictureBox4.TabStop = false;
+            // 
             // lRemotePort
             // 
             this.lRemotePort.AutoSize = true;
-            this.lRemotePort.Location = new System.Drawing.Point(20, 14);
+            this.lRemotePort.Location = new System.Drawing.Point(73, 14);
             this.lRemotePort.Name = "lRemotePort";
             this.lRemotePort.Size = new System.Drawing.Size(66, 13);
             this.lRemotePort.TabIndex = 17;
@@ -181,9 +199,9 @@
             // 
             this.tbRemotePort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbRemotePort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRemotePort.Location = new System.Drawing.Point(18, 30);
+            this.tbRemotePort.Location = new System.Drawing.Point(82, 30);
             this.tbRemotePort.Name = "tbRemotePort";
-            this.tbRemotePort.Size = new System.Drawing.Size(68, 22);
+            this.tbRemotePort.Size = new System.Drawing.Size(45, 22);
             this.tbRemotePort.TabIndex = 4;
             this.tbRemotePort.Tag = "Remote Port";
             this.tbRemotePort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -193,7 +211,7 @@
             // lRedirect
             // 
             this.lRedirect.AutoSize = true;
-            this.lRedirect.Location = new System.Drawing.Point(265, 14);
+            this.lRedirect.Location = new System.Drawing.Point(275, 14);
             this.lRedirect.Name = "lRedirect";
             this.lRedirect.Size = new System.Drawing.Size(55, 13);
             this.lRedirect.TabIndex = 15;
@@ -203,9 +221,9 @@
             // 
             this.tbLocalPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbLocalPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLocalPort.Location = new System.Drawing.Point(258, 30);
+            this.tbLocalPort.Location = new System.Drawing.Point(279, 30);
             this.tbLocalPort.Name = "tbLocalPort";
-            this.tbLocalPort.Size = new System.Drawing.Size(66, 22);
+            this.tbLocalPort.Size = new System.Drawing.Size(45, 22);
             this.tbLocalPort.TabIndex = 6;
             this.tbLocalPort.Tag = "Local Port";
             this.tbLocalPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -216,7 +234,7 @@
             // hostLabel
             // 
             this.hostLabel.AutoSize = true;
-            this.hostLabel.Location = new System.Drawing.Point(153, 14);
+            this.hostLabel.Location = new System.Drawing.Point(189, 14);
             this.hostLabel.Name = "hostLabel";
             this.hostLabel.Size = new System.Drawing.Size(29, 13);
             this.hostLabel.TabIndex = 12;
@@ -239,10 +257,10 @@
             // 
             this.tbHost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHost.Location = new System.Drawing.Point(92, 30);
+            this.tbHost.Location = new System.Drawing.Point(133, 30);
             this.tbHost.MaxLength = 300;
             this.tbHost.Name = "tbHost";
-            this.tbHost.Size = new System.Drawing.Size(160, 22);
+            this.tbHost.Size = new System.Drawing.Size(140, 22);
             this.tbHost.TabIndex = 5;
             this.tbHost.Tag = "Host";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -253,6 +271,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.labelVNCPassword);
             this.groupBox2.Controls.Add(this.bVNCConnect);
             this.groupBox2.Controls.Add(this.tbVNCPassword);
@@ -262,10 +281,20 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AweSimConnect.Properties.Resources.monitor;
+            this.pictureBox1.Location = new System.Drawing.Point(18, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // labelVNCPassword
             // 
             this.labelVNCPassword.AutoSize = true;
-            this.labelVNCPassword.Location = new System.Drawing.Point(130, 15);
+            this.labelVNCPassword.Location = new System.Drawing.Point(167, 15);
             this.labelVNCPassword.Name = "labelVNCPassword";
             this.labelVNCPassword.Size = new System.Drawing.Size(78, 13);
             this.labelVNCPassword.TabIndex = 12;
@@ -287,10 +316,10 @@
             // 
             this.tbVNCPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbVNCPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbVNCPassword.Location = new System.Drawing.Point(92, 31);
+            this.tbVNCPassword.Location = new System.Drawing.Point(133, 31);
             this.tbVNCPassword.MaxLength = 300;
             this.tbVNCPassword.Name = "tbVNCPassword";
-            this.tbVNCPassword.Size = new System.Drawing.Size(160, 22);
+            this.tbVNCPassword.Size = new System.Drawing.Size(140, 22);
             this.tbVNCPassword.TabIndex = 8;
             this.tbVNCPassword.Tag = "VNC Password";
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -311,28 +340,6 @@
             this.tooltips.IsBalloon = true;
             this.tooltips.ReshowDelay = 100;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.labelWeb);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.bWeb);
-            this.groupBox3.Location = new System.Drawing.Point(12, 233);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(458, 62);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(153, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Tag = "Host";
-            this.label1.Text = "Website";
-            // 
             // bWeb
             // 
             this.bWeb.Location = new System.Drawing.Point(348, 19);
@@ -344,28 +351,6 @@
             this.bWeb.UseVisualStyleBackColor = false;
             this.bWeb.Click += new System.EventHandler(this.bWeb_Click);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.textBox2);
-            this.groupBox4.Location = new System.Drawing.Point(12, 301);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(458, 62);
-            this.groupBox4.TabIndex = 13;
-            this.groupBox4.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(130, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Tag = "Host";
-            this.label2.Text = "VNC Password";
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(348, 19);
@@ -376,29 +361,82 @@
             this.tooltips.SetToolTip(this.button2, "Click to launch a VNC Connection");
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // groupBox3
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(92, 31);
-            this.textBox2.MaxLength = 300;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(160, 22);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.Tag = "VNC Password";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tooltips.SetToolTip(this.textBox2, "The 8 character password associated with your node.");
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.pictureBox2);
+            this.groupBox3.Controls.Add(this.labelWeb);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.bWeb);
+            this.groupBox3.Location = new System.Drawing.Point(12, 233);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(458, 62);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::AweSimConnect.Properties.Resources.window;
+            this.pictureBox2.Location = new System.Drawing.Point(18, 15);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
             // 
             // labelWeb
             // 
+            this.labelWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelWeb.AutoSize = true;
             this.labelWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWeb.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelWeb.Location = new System.Drawing.Point(88, 29);
+            this.labelWeb.Location = new System.Drawing.Point(121, 30);
             this.labelWeb.Name = "labelWeb";
-            this.labelWeb.Size = new System.Drawing.Size(0, 24);
+            this.labelWeb.Size = new System.Drawing.Size(101, 24);
             this.labelWeb.TabIndex = 13;
+            this.labelWeb.Text = "Web Label";
             this.labelWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(185, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Tag = "Host";
+            this.label1.Text = "Website";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox4.Controls.Add(this.pictureBox3);
+            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Location = new System.Drawing.Point(12, 301);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(458, 62);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::AweSimConnect.Properties.Resources.hard_disk;
+            this.pictureBox3.Location = new System.Drawing.Point(18, 15);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            // 
+            // panelProcesses
+            // 
+            this.panelProcesses.Location = new System.Drawing.Point(15, 369);
+            this.panelProcesses.Name = "panelProcesses";
+            this.panelProcesses.Size = new System.Drawing.Size(452, 342);
+            this.panelProcesses.TabIndex = 14;
+            this.panelProcesses.Visible = false;
             // 
             // AweSimMain
             // 
@@ -408,8 +446,8 @@
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(479, 371);
+            this.Controls.Add(this.panelProcesses);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lPassword);
@@ -419,6 +457,7 @@
             this.Controls.Add(this.tbUserName);
             this.Controls.Add(this.cbCluster);
             this.Controls.Add(this.pbAweSimLogo);
+            this.Controls.Add(this.groupBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -428,12 +467,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,9 +508,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bWeb;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Panel panelProcesses;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelWeb;
 
     }

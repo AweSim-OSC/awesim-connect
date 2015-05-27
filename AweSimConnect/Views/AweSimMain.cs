@@ -67,8 +67,6 @@ namespace AweSimConnect
             // Check for connectivity to the servers
             LimitedConnectionPopup();
             
-            
-            
             //Check to see if there is any valid data on the clipboard.
             if (cbc.CheckClipboardForAweSim())
             {
@@ -385,6 +383,14 @@ namespace AweSimConnect
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]
         static extern bool ShowWindow(IntPtr windowHandle, int command);
+
+        private void AweSimMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (pc.IsPlinkRunning())
+            {
+                pc.GetThisProcess().Kill();
+            }
+        }
     }
 
 }

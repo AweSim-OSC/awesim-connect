@@ -62,11 +62,11 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelProcesses = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pbNetwork = new System.Windows.Forms.PictureBox();
-            this.pbTunnel = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pbTunnel = new System.Windows.Forms.PictureBox();
+            this.pbNetwork = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -77,9 +77,9 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // pbAweSimLogo
@@ -452,35 +452,20 @@
             this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
             // 
-            // pictureBox5
+            // label2
             // 
-            this.pictureBox5.Image = global::AweSimConnect.Properties.Resources.plug;
-            this.pictureBox5.Location = new System.Drawing.Point(18, 15);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 15;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pbNetwork
-            // 
-            this.pbNetwork.Image = global::AweSimConnect.Properties.Resources.redlight;
-            this.pbNetwork.Location = new System.Drawing.Point(95, 23);
-            this.pbNetwork.Name = "pbNetwork";
-            this.pbNetwork.Size = new System.Drawing.Size(24, 24);
-            this.pbNetwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbNetwork.TabIndex = 16;
-            this.pbNetwork.TabStop = false;
-            // 
-            // pbTunnel
-            // 
-            this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.redlight;
-            this.pbTunnel.Location = new System.Drawing.Point(226, 23);
-            this.pbTunnel.Name = "pbTunnel";
-            this.pbTunnel.Size = new System.Drawing.Size(24, 24);
-            this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbTunnel.TabIndex = 17;
-            this.pbTunnel.TabStop = false;
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(256, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 24);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Secure Tunnel";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -497,20 +482,35 @@
             this.label3.Text = "Network";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // pbTunnel
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(256, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 24);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Secure Tunnel";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.redlight;
+            this.pbTunnel.Location = new System.Drawing.Point(226, 23);
+            this.pbTunnel.Name = "pbTunnel";
+            this.pbTunnel.Size = new System.Drawing.Size(24, 24);
+            this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTunnel.TabIndex = 17;
+            this.pbTunnel.TabStop = false;
+            // 
+            // pbNetwork
+            // 
+            this.pbNetwork.Image = global::AweSimConnect.Properties.Resources.redlight;
+            this.pbNetwork.Location = new System.Drawing.Point(95, 23);
+            this.pbNetwork.Name = "pbNetwork";
+            this.pbNetwork.Size = new System.Drawing.Size(24, 24);
+            this.pbNetwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbNetwork.TabIndex = 16;
+            this.pbNetwork.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::AweSimConnect.Properties.Resources.plug;
+            this.pictureBox5.Location = new System.Drawing.Point(18, 15);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 15;
+            this.pictureBox5.TabStop = false;
             // 
             // AweSimMain
             // 
@@ -538,6 +538,7 @@
             this.MaximizeBox = false;
             this.Name = "AweSimMain";
             this.Text = "AweSim Connect";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AweSimMain_FormClosing);
             this.Load += new System.EventHandler(this.AweSimMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -553,9 +554,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

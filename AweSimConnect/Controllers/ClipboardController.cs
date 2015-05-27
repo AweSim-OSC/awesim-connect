@@ -15,7 +15,7 @@ namespace AweSimConnect.Controllers
      * 
        Example json:
      
-        { 
+        {
             'PUAServer': 'n0580.ten.osc.edu',
             'LocalPort': '5901',
             'RemotePort': '5901',

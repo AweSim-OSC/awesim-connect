@@ -150,7 +150,7 @@
             this.cbCluster.FormattingEnabled = true;
             this.cbCluster.Location = new System.Drawing.Point(324, 76);
             this.cbCluster.Name = "cbCluster";
-            this.cbCluster.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbCluster.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cbCluster.Size = new System.Drawing.Size(127, 23);
             this.cbCluster.TabIndex = 3;
             this.cbCluster.Tag = "Cluster";

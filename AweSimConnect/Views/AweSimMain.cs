@@ -15,6 +15,25 @@ using System.Windows.Forms;
 
 namespace AweSimConnect
 {
+    /* TODO Wishlist
+     *  
+     * -Add About form (for meeting license requirements)
+     * -Hide putty window(s) inside the app
+     * -Detect Filezilla installation
+     * -Detect TurboVNC installation
+     * -Verify json
+     * -Make sure all network stuff runs async
+     * -Disable connect button if already connected on a port.
+     * -Put process data in it's own model
+     * -SFTP handling
+     * -Antialiased Font
+     * -URI Parsing
+     * -Manage multiple tunnels
+     * 
+     * /
+
+
+
     /*
      * AweSim Connect
      *  
@@ -33,6 +52,8 @@ namespace AweSimConnect
         private ClipboardController cbc;
         private ClusterController clc;
         Connection connection;
+
+        private List<Process> processes;
 
         private bool network_available = false;
         private bool tunnel_available = false;
@@ -58,6 +79,7 @@ namespace AweSimConnect
             pc = new PuTTYController(connection);
             vc = new VNCController(connection);
 
+            processes = new List<Process>();
             connection = new Connection();
             timerConnection.Start();
 
@@ -266,8 +288,9 @@ namespace AweSimConnect
                 //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
                 if (tunnel_available && !pc.IsProcessEmbedded())
                 {
+                    processes.Add(pc.GetThisProcess());
                     pc.EmbedProcess();
-
+                    
                     //TODO: This is the only place these are used right now. Move them up or out if we need to.
                     int MAXIMIZE_WINDOW = 3;
                     int MINIMIZE_WINDOW = 6;
@@ -384,13 +407,20 @@ namespace AweSimConnect
         [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]
         static extern bool ShowWindow(IntPtr windowHandle, int command);
 
+        //Kill the process when closing the window.
         private void AweSimMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (pc.IsPlinkRunning())
+            if (processes.Count > 0)
             {
-                pc.GetThisProcess().Kill();
+                // Close all processes that haven't already existed.
+                foreach (Process process in processes)
+                {
+                    if (!process.HasExited)
+                    {
+                        process.Kill();
+                    }
+                }
             }
         }
     }
-
 }

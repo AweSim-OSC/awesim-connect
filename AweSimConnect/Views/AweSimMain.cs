@@ -53,7 +53,7 @@ namespace AweSimConnect
         private ClusterController clc;
         Connection connection;
 
-        private List<Process> processes;
+        private List<ProcessData> processes;
 
         private bool network_available = false;
         private bool tunnel_available = false;
@@ -79,7 +79,7 @@ namespace AweSimConnect
             pc = new PuTTYController(connection);
             vc = new VNCController(connection);
 
-            processes = new List<Process>();
+            processes = new List<ProcessData>();
             connection = new Connection();
             timerConnection.Start();
 
@@ -288,7 +288,8 @@ namespace AweSimConnect
                 //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
                 if (tunnel_available && !pc.IsProcessEmbedded())
                 {
-                    processes.Add(pc.GetThisProcess());
+                    ProcessData pData = new ProcessData(pc.GetThisProcess(), connection);
+                    processes.Add(pData);
                     pc.EmbedProcess();
 
                     //TODO: This is the only place these are used right now. Move them up or out if we need to.
@@ -413,9 +414,9 @@ namespace AweSimConnect
             if (processes.Count > 0)
             {
                 // Close all processes that haven't already existed.
-                foreach (Process process in processes)
+                foreach (ProcessData process in processes)
                 {
-                    if (!process.HasExited)
+                    if (process.IsRunning())
                     {
                         process.Kill();
                     }

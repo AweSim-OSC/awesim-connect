@@ -12,6 +12,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace AweSimConnect
@@ -21,12 +22,10 @@ namespace AweSimConnect
      * -Add About form (for meeting license requirements)
      * -Hide putty window(s) inside the app
      * -Allow disconnecting based on port
-     * -Detect Filezilla installation
      * -Detect TurboVNC installation
      * -Make sure all network stuff runs async
      * -Disable connect button if already connected on a port.
-     * -Put process data in it's own model
-     * -SFTP handling
+     * -SFTP handling - change user label while searching.
      * -Antialiased Font
      * -URI Parsing
      * -Manage multiple tunnels
@@ -61,6 +60,7 @@ namespace AweSimConnect
         private int secondsElapsed = 0;
 
         IntPtr nextClipboardViewer;
+        private bool sftp_available;
 
         public AweSimMain()
         {
@@ -76,17 +76,18 @@ namespace AweSimConnect
             this.CenterToParent();
             this.AcceptButton = bConnect;
             labelWeb.Text = "";
+            labelSFTP.Text = "Searching for SFTP Client";
+
+            processes = new List<ProcessData>();
+            connection = new Connection();
+            timerConnection.Start();
 
             //Initialize controllers.
             cbc = new ClipboardController();
             clc = new ClusterController();
             pc = new PuTTYController(connection);
             vc = new VNCController(connection);
-            ftpc = new SFTPController(connection);
-
-            processes = new List<ProcessData>();
-            connection = new Connection();
-            timerConnection.Start();
+            ftpc = new SFTPController(connection);                        
 
             // Adds the Clusters to the Combobox
             setupClusterBox();
@@ -94,13 +95,12 @@ namespace AweSimConnect
             // Check for connectivity to the servers
             LimitedConnectionPopup();
 
-            //Check to see if there is any valid data on the clipboard.
+            //Check to see if there is any valid data on the clipboard on startup.
             if (cbc.CheckClipboardForAweSim())
             {
                 Connection clipData = cbc.GetClipboardConnection();
                 UpdateData(clipData);
             }
-
         }
 
         // Throws up a popup window if the app isn't able to connect to the selected SSH host.
@@ -139,7 +139,7 @@ namespace AweSimConnect
                 if (!String.IsNullOrEmpty(newConnection.PUAServer))
                 {
                     tbHost.Text = newConnection.PUAServer;
-                    this.connection.UserName = newConnection.PUAServer;
+                    this.connection.PUAServer = newConnection.PUAServer;
                 }
 
                 //Oakley for now.
@@ -179,7 +179,6 @@ namespace AweSimConnect
         private void setCluster()
         {
             cbCluster.SelectedIndex = 0;
-
         }
 
         // When the user modifies the host box, the variable gets set
@@ -240,6 +239,22 @@ namespace AweSimConnect
             }
         }
 
+        // The click handler for the SFTP button
+        private void bSFTP_Click(object sender, EventArgs e)
+        {
+            if (network_available && Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword))
+            {
+                if (ftpc.IsSFTPInstalled())
+                {
+                    ftpc.StartSFTPProcess(tbPassword.Text);
+                    if (ftpc.GetThisProcess() != null)
+                    {
+                        processes.Add(new ProcessData(ftpc.GetThisProcess(), connection));
+                    }
+                }                
+            }
+        }
+
         // Checks the password field and marks the label red if the password is invalid.
         private void tbVNCPassword_TextChanged(object sender, EventArgs e)
         {
@@ -258,6 +273,12 @@ namespace AweSimConnect
         //////////////////////////////////////////////////////
         private void timerConnection_Tick(object sender, EventArgs e)
         {
+            if (secondsElapsed == 2)
+            {
+                //Check for the ftp client 2 seconds after the app has started to get rid of visible load lag.
+                ftpc.DetectSFTPPath();
+            }
+
             // Check for network connectivity every 15 seconds.
             // Disable the connection button if can not connect to OSC.
             if (secondsElapsed % 15 == 0)
@@ -265,7 +286,6 @@ namespace AweSimConnect
                 network_available = NetworkTools.CanTelnetToOakley();
                 EnableTunnelOptions(network_available);
                 PictureBoxConnected(pbNetwork, network_available);
-                EnableSFTPOptions(network_available);
             }
 
             // Check for tunnel connectivity every 4 seconds.
@@ -273,6 +293,9 @@ namespace AweSimConnect
             if (secondsElapsed % 4 == 0)
             {
                 tunnel_available = pc.IsPlinkConnected();
+                sftp_available = ftpc.IsSFTPInstalled();
+
+                EnableSFTPOptions(sftp_available && network_available);
 
                 //If the tunnel is connected, enable the button, otherwise disable.
                 EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
@@ -336,13 +359,7 @@ namespace AweSimConnect
         {
             EnableVNCButton(enable);
         }
-
-        // Use this to enable/disable sftp button
-        private void EnableSFTPButton(bool enable)
-        {
-            bSFTP.Enabled = enable;
-        }
-
+        
         // Use this to enable/disable vnc button
         private void EnableVNCButton(bool enable)
         {
@@ -358,6 +375,7 @@ namespace AweSimConnect
         private void EnableSFTPOptions(bool enable)
         {
             //TODO only enable if this actually discovers sftp client on board
+            labelSFTP.Text = enable ? "SFTP Client Detected" : "SFTP Client Not Found";
             bSFTP.Enabled = enable;
         }
 
@@ -462,7 +480,7 @@ namespace AweSimConnect
             }
         }
 
-        //Kill the process when closing the window.
+        // Actions to perform when closing the app.
         private void AweSimMain_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -481,19 +499,6 @@ namespace AweSimConnect
                     }
                 }
             }
-        }
-
-        private void bSFTP_Click(object sender, EventArgs e)
-        {
-            if (network_available && Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword))
-            {
-                ftpc = new SFTPController(connection);
-                ftpc.StartSFTPProcess(tbPassword.Text);
-                if (ftpc.GetThisProcess() != null)
-                {
-                    processes.Add(new ProcessData(ftpc.GetThisProcess(), connection));
-                }
-            }
-        }
+        }       
     }
 }

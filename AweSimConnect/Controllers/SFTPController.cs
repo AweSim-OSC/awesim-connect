@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
 
 namespace AweSimConnect.Controllers
 {
@@ -24,17 +25,28 @@ namespace AweSimConnect.Controllers
         private Connection connection;
         private Process process;
         private bool process_embedded;
+        private bool searching = true;
         
         public SFTPController(Connection connection)
         {
             this.connection = connection;
+        }
 
+        //Use this constructor if we already know the path of the SFTP client.
+        public SFTPController(Connection connection, String path)
+        {
+            this.connection = connection;
+            this.FilezillaPath = path;
+        }
+
+        public void DetectSFTPPath()
+        {
             //TODO: Optimize or async
-            FilezillaPath = FileController.FindExecutableInProgramFiles(FILEZILLA_FILE);
+            this.FilezillaPath = FileController.FindExecutableInProgramFiles(FILEZILLA_FILE);
         }
 
         public bool IsSFTPInstalled()
-        {
+        {            
             if (FilezillaPath != "")
             {
                 return true;
@@ -85,5 +97,15 @@ namespace AweSimConnect.Controllers
         {
             process.Kill();
         }
+
+        // Asynchronous file detection.
+        public String DetectSFTPAsyncMethod(int callDuration, out int threadID)
+        {
+            threadID = Thread.CurrentThread.ManagedThreadId;
+            return FileController.FindExecutableInProgramFiles(FILEZILLA_FILE);
+        }
+        
+        private delegate String DetectSFTPAsyncMethodCaller(int callDuration, out int threadID);
+        
     }
 }

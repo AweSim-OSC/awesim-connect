@@ -59,6 +59,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelWeb = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.labelSFTP = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelProcesses = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -413,6 +414,7 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox4.Controls.Add(this.labelSFTP);
             this.groupBox4.Controls.Add(this.pictureBox3);
             this.groupBox4.Controls.Add(this.bSFTP);
             this.groupBox4.Location = new System.Drawing.Point(12, 377);
@@ -420,6 +422,21 @@
             this.groupBox4.Size = new System.Drawing.Size(458, 62);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
+            // 
+            // labelSFTP
+            // 
+            this.labelSFTP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSFTP.AutoSize = true;
+            this.labelSFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSFTP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelSFTP.Location = new System.Drawing.Point(121, 23);
+            this.labelSFTP.Name = "labelSFTP";
+            this.labelSFTP.Size = new System.Drawing.Size(109, 24);
+            this.labelSFTP.TabIndex = 16;
+            this.labelSFTP.Text = "SFTP Label";
+            this.labelSFTP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox3
             // 
@@ -552,6 +569,7 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -602,6 +620,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pbTunnel;
         private System.Windows.Forms.PictureBox pbNetwork;
+        private System.Windows.Forms.Label labelSFTP;
 
     }
 }

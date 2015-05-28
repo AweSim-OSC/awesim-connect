@@ -241,15 +241,7 @@ namespace AweSimConnect
         // Checks the password field and marks the label red if the password is invalid.
         private void tbVNCPassword_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                connection.VNCPassword = tbVNCPassword.Text;
-                LabelColorChanger(labelVNCPassword, true);
-            }
-            catch (Exception)
-            {
-                LabelColorChanger(labelVNCPassword, false);
-            }
+            LabelColorChanger(labelVNCPassword, (connection.SetValidVNCPassword(tbVNCPassword.Text) ? true : false));
         }
 
         //Changes the color of a label
@@ -306,6 +298,7 @@ namespace AweSimConnect
             secondsElapsed++;
         }
 
+        // Enable the web button if the tunnel is available and a local port is specified
         private void EnableWeb(int port)
         {
             if ((port > 0) && tunnel_available)
@@ -452,7 +445,7 @@ namespace AweSimConnect
         {
             if (cbc != null)
             {
-                if (cbc.CheckClipboardForAweSim() && cbc.IsValid())
+                if (cbc.CheckClipboardForAweSim())
                 {
                     UpdateData(cbc.GetClipboardConnection());
                 }

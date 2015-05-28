@@ -41,14 +41,28 @@ namespace AweSimConnect.Controllers
                     String json = Clipboard.GetText();
 
                     // Attempt to parse the clipboard text.
-                    Connection connection = JsonConvert.DeserializeObject<Connection>(json);
+                    try
+                    {
+                        Connection connection = JsonConvert.DeserializeObject<Connection>(json);
+                        
+                        // Set the local Connection object.
+                        connectionData = connection;
 
-                    // Set the local Connection object.
-                    connectionData = connection;
+                        // If we've made it this far, it's a valid json.
+                        isValid = true;
+                    }
+                    catch (ArgumentException)
+                    {
+                        isValid = false;
+                    }
+                    
 
-                    // If we've made it this far, it's a valid json.
-                    isValid = true;
+                    
 
+                }
+                catch (ArgumentException)
+                {
+                    isValid = false;
                 }
                 catch (Exception)
                 {

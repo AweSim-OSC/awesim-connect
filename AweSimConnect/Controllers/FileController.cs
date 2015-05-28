@@ -11,6 +11,18 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class FileController
     {
+        public static String FindExecutableInProgramFiles(String filename)
+        {
+            String programsPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            DirectoryInfo dirInfo = new DirectoryInfo(programsPath);
+            FileInfo[] files = dirInfo.GetFiles(filename, SearchOption.AllDirectories);
+            if (files.Length > 0)
+            {
+                return files[0].FullName.ToString();
+            }
+            else
+                return "";
+        }
 
         public static bool IsProcessRunning(String processName) {
             Process[] pname = Process.GetProcessesByName(processName);

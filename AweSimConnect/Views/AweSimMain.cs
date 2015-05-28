@@ -72,6 +72,8 @@ namespace AweSimConnect
         // On application load
         private void AweSimMain_Load(object sender, EventArgs e)
         {
+            label1.Text = FileController.FindExecutableInProgramFiles("filezilla.exe");
+
             //GUI setup
             this.CenterToParent();
             this.AcceptButton = bConnect;

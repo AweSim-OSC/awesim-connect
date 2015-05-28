@@ -71,9 +71,9 @@ namespace AweSimConnect.Controllers
             {
                 process = Process.Start(info);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                //TODO probably should put up a message here.
             }
         }
 
@@ -89,9 +89,9 @@ namespace AweSimConnect.Controllers
             {
                 this.process = Process.Start(info);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                //TODO probably should put up a message here.
             }
         }
 
@@ -121,10 +121,10 @@ namespace AweSimConnect.Controllers
                     return NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
-            }            
+            }
             return false;
         }
 

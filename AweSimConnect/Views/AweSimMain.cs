@@ -46,7 +46,7 @@ namespace AweSimConnect
         //AweSim Dashboard URL
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
         static long START_TIME = DateTime.Now.Ticks;
-        
+
         private PuTTYController pc;
         private VNCController vc;
         private ClipboardController cbc;
@@ -58,7 +58,7 @@ namespace AweSimConnect
         private bool network_available = false;
         private bool tunnel_available = false;
 
-        private int secondsElapsed = 0;       
+        private int secondsElapsed = 0;
 
         public AweSimMain()
         {
@@ -71,8 +71,8 @@ namespace AweSimConnect
             //GUI setup
             this.CenterToParent();
             this.AcceptButton = bConnect;
-            labelWeb.Text = "";           
-            
+            labelWeb.Text = "";
+
             //Initialize controllers.
             cbc = new ClipboardController();
             clc = new ClusterController();
@@ -88,7 +88,7 @@ namespace AweSimConnect
 
             // Check for connectivity to the servers
             LimitedConnectionPopup();
-            
+
             //Check to see if there is any valid data on the clipboard.
             if (cbc.CheckClipboardForAweSim())
             {
@@ -131,7 +131,7 @@ namespace AweSimConnect
                 else
                     tbRemotePort.Text = "";
                 this.connection.RemotePort = newConnection.RemotePort;
-                
+
                 if (!String.IsNullOrEmpty(newConnection.PUAServer))
                 {
                     tbHost.Text = newConnection.PUAServer;
@@ -147,7 +147,7 @@ namespace AweSimConnect
                     tbVNCPassword.Text = newConnection.VNCPassword;
                     this.connection.VNCPassword = newConnection.VNCPassword;
                 }
-            }            
+            }
         }
 
         // Gets the file name without the extension
@@ -192,7 +192,7 @@ namespace AweSimConnect
                 this.connection.LocalPort = int.Parse(tbLocalPort.Text);
                 LabelColorChanger(lRedirect, true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 LabelColorChanger(lRedirect, false);
             }
@@ -206,7 +206,7 @@ namespace AweSimConnect
                 pc = new PuTTYController(this.connection);
                 pc.StartPlinkProcess(tbPassword.Text);
             }
-            
+
 
         }
 
@@ -240,13 +240,13 @@ namespace AweSimConnect
 
         // Checks the password field and marks the label red if the password is invalid.
         private void tbVNCPassword_TextChanged(object sender, EventArgs e)
-        {            
+        {
             try
             {
                 connection.VNCPassword = tbVNCPassword.Text;
                 LabelColorChanger(labelVNCPassword, true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 LabelColorChanger(labelVNCPassword, false);
             }
@@ -270,7 +270,7 @@ namespace AweSimConnect
                 EnableTunnelOptions(network_available);
                 PictureBoxConnected(pbNetwork, network_available);
             }
-                        
+
             // Check for tunnel connectivity every 4 seconds.
             // Disable the additional connection options if can't connect through the tunnel.
             if (secondsElapsed % 4 == 0)
@@ -290,13 +290,13 @@ namespace AweSimConnect
                 {
                     processes.Add(pc.GetThisProcess());
                     pc.EmbedProcess();
-                    
+
                     //TODO: This is the only place these are used right now. Move them up or out if we need to.
-                    int MAXIMIZE_WINDOW = 3;
+                    //int MAXIMIZE_WINDOW = 3;
                     int MINIMIZE_WINDOW = 6;
 
-                    ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);                    
-                    
+                    ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
+
                     //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.
                     //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
                 }
@@ -356,7 +356,7 @@ namespace AweSimConnect
         {
             bConnect.Enabled = enable;
         }
-        
+
         // Performs an action when the text in the remote port textbox is changed.
         private void tbRemotePort_TextChanged(object sender, EventArgs e)
         {
@@ -364,15 +364,15 @@ namespace AweSimConnect
             {
                 int port = int.Parse(tbRemotePort.Text);
                 this.connection.RemotePort = port;
-                
+
                 // In many cases we will map the remote port to the local port. 
                 // This fills in the local text box. User can still modify local manually. 
                 this.connection.LocalPort = port;
                 tbLocalPort.Text = tbRemotePort.Text;
-                
+
                 LabelColorChanger(lRemotePort, true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 LabelColorChanger(lRemotePort, false);
             }

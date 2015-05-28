@@ -37,19 +37,22 @@ namespace AweSimConnect.Models
         // Design by contract enforces an 8-char password for VNC. 
         // 8 char pass is specified in RFB protocol.
         private string vncPassword;
-        public String VNCPassword { 
-            
-            get {
-                return vncPassword;   
-            } 
-            set {
+        public String VNCPassword
+        {
+
+            get
+            {
+                return vncPassword;
+            }
+            set
+            {
                 if (value.Length != 8)
                 {
                     vncPassword = null;
                     throw new ArgumentException("VNC passwords must be 8 characters.");
                 }
                 vncPassword = value;
-            } 
+            }
         }
     }
 }

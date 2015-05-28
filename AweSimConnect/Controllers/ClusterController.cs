@@ -113,7 +113,7 @@ namespace AweSimConnect.Controllers
             {
                 return clusterList[index].Domain;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return selectedCluster.Domain;
             }
@@ -125,7 +125,7 @@ namespace AweSimConnect.Controllers
             {
                 return clusterList[index];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return clusterList[0];
             }

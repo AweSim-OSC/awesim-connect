@@ -14,7 +14,7 @@ namespace AweSimConnect.Controllers
 
         //GGIVNC - MIT License.
         private static String GGIVNC_FILE = "ggivnc.exe";
-        
+
         private Connection connection;
 
         internal Connection Connection
@@ -22,7 +22,7 @@ namespace AweSimConnect.Controllers
             get { return connection; }
             set { connection = value; }
         }
-        
+
         //The full current path of the plink executable.
         private static String GGIVNC_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), GGIVNC_FILE);
 
@@ -33,7 +33,8 @@ namespace AweSimConnect.Controllers
         private String WritePasswordFile()
         {
             String passPath = Path.GetTempFileName();
-            using (StreamWriter passWrite = new StreamWriter(passPath, false)) {
+            using (StreamWriter passWrite = new StreamWriter(passPath, false))
+            {
                 passWrite.WriteLine(connection.VNCPassword);
             }
             return passPath;
@@ -85,9 +86,9 @@ namespace AweSimConnect.Controllers
             {
                 Process.Start(info);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                //TODO Put up a message that it didn't work.
             }
         }
 

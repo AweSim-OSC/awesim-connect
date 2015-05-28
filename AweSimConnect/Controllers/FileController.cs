@@ -42,7 +42,7 @@ namespace AweSimConnect.Controllers
                         return fullPath;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }

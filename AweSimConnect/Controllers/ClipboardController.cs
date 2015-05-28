@@ -21,8 +21,9 @@ namespace AweSimConnect.Controllers
             'RemotePort': '5901',
             'SSHHost': 'oakley.osc.edu',
             'UserName': 'bmcmichael',
-            'VNCPassword: 'XXXXXXXX'
+            'VNCPassword': 'XXXXXXXX'
         }     
+     * 
      */
     class ClipboardController
     {
@@ -50,7 +51,7 @@ namespace AweSimConnect.Controllers
                     isValid = true;
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // If we get an error, it's not a valid json string.
                     isValid = false;

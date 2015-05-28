@@ -14,34 +14,44 @@ namespace AweSimConnect.Controllers
     {
         private static String FILEZILLA_PROCESS = "filezilla";
         private static String FILEZILLA_FILE = "filezilla.exe";
+        private String FilezillaPath = "";
 
         private static String SFTP_PORT = "22";
         
-        // TODO: Add default filezilla install paths.
-        private static String FILEZILLA_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), FILEZILLA_FILE);
-
         //The arguments for filezilla
         private static String FILEZILLA_ARGS = "sftp://{0}:{1}@{2}:{3}";
 
         private Connection connection;
         private Process process;
-        
-        // command line string.
-        private String BuildCommandString()
-        {
-            return FILEZILLA_CURRENT_DIR + FILEZILLA_ARGS;
-        }
+        private bool process_embedded;
         
         public SFTPController(Connection connection)
         {
             this.connection = connection;
+
+            //TODO: Optimize or async
+            FilezillaPath = FileController.FindExecutableInProgramFiles(FILEZILLA_FILE);
+        }
+
+        public bool IsSFTPInstalled()
+        {
+            if (FilezillaPath != "")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public String GetSFTPPath()
+        {
+            return FilezillaPath;
         }
 
         //Launch sftp client with a password
         public void StartSFTPProcess(String password)
         {
             //TODO This will probably break if the password is empty.
-            String sftpCommand = FILEZILLA_CURRENT_DIR;
+            String sftpCommand = FilezillaPath;
             ProcessStartInfo info = new ProcessStartInfo(sftpCommand);
             info.Arguments = String.Format(FILEZILLA_ARGS, this.connection.UserName, password, connection.SSHHost, SFTP_PORT);
             info.UseShellExecute = true;
@@ -56,9 +66,24 @@ namespace AweSimConnect.Controllers
             }
         }
 
-        public Process GetThisProcess()
+        internal Process GetThisProcess()
         {
             return process;
+        }
+
+        internal void EmbedProcess()
+        {
+            process_embedded = true;
+        }
+
+        internal bool IsProcessEmbedded()
+        {
+            return process_embedded;
+        }
+
+        internal void KillProcess()
+        {
+            process.Kill();
         }
     }
 }

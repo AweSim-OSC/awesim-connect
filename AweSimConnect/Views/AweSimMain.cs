@@ -48,6 +48,7 @@ namespace AweSimConnect
 
         private PuTTYController pc;
         private VNCController vc;
+        private SFTPController ftpc;
         private ClipboardController cbc;
         private ClusterController clc;
         Connection connection;
@@ -250,8 +251,10 @@ namespace AweSimConnect
             label.ForeColor = valid ? Color.Black : Color.Red;
         }
 
+        //////////////////////////////////////////////////////
         // This is the main timer loop for the app.
         // Handle timed events like connection checking.
+        //////////////////////////////////////////////////////
         private void timerConnection_Tick(object sender, EventArgs e)
         {
             // Check for network connectivity every 15 seconds.
@@ -261,6 +264,7 @@ namespace AweSimConnect
                 network_available = NetworkTools.CanTelnetToOakley();
                 EnableTunnelOptions(network_available);
                 PictureBoxConnected(pbNetwork, network_available);
+                EnableSFTPOptions(network_available);
             }
 
             // Check for tunnel connectivity every 4 seconds.
@@ -330,7 +334,6 @@ namespace AweSimConnect
         private void EnableAdditionalOptions(bool enable)
         {
             EnableVNCButton(enable);
-            EnableSFTPButton(enable);
         }
 
         // Use this to enable/disable sftp button
@@ -349,6 +352,12 @@ namespace AweSimConnect
         private void EnableTunnelOptions(bool enable)
         {
             bConnect.Enabled = enable;
+        }
+
+        private void EnableSFTPOptions(bool enable)
+        {
+            //TODO only enable if this actually discovers sftp client on board
+            bSFTP.Enabled = enable;
         }
 
         // Performs an action when the text in the remote port textbox is changed.
@@ -469,6 +478,19 @@ namespace AweSimConnect
                     {
                         process.Kill();
                     }
+                }
+            }
+        }
+
+        private void bSFTP_Click(object sender, EventArgs e)
+        {
+            if (network_available && Validator.IsPresent(tbUserName) && Validator.IsPresent(tbPassword))
+            {
+                ftpc = new SFTPController(connection);
+                ftpc.StartSFTPProcess(tbPassword.Text);
+                if (ftpc.GetThisProcess() != null)
+                {
+                    processes.Add(new ProcessData(ftpc.GetThisProcess(), connection));
                 }
             }
         }

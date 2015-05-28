@@ -55,7 +55,7 @@ namespace AweSimConnect.Controllers
             this.connection = connection;
         }
 
-        //Installs plink.exe to current directory if it isn't there.
+        //Installs ggivnc.exe to current directory if it isn't there.
         public bool InstallVNC()
         {
             if (!IsVNCInstalled())

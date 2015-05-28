@@ -83,6 +83,7 @@ namespace AweSimConnect.Controllers
         //Launch Plink with a password
         public void StartPlinkProcess(String password)
         {
+            //TODO This will probably break if the password is empty, but the view currently prevents that.
             String plinkCommand = String.Format(PLINK_CURRENT_DIR);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
             info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.connection.LocalPort, this.connection.GetServerAndPort(), this.connection.UserName, this.connection.SSHHost, this.connection.UserName, password);

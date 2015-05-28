@@ -371,6 +371,7 @@
             this.bSFTP.Text = "Launch SFTP";
             this.tooltips.SetToolTip(this.bSFTP, "Click to launch an SFTP connection (if installed)");
             this.bSFTP.UseVisualStyleBackColor = false;
+            this.bSFTP.Click += new System.EventHandler(this.bSFTP_Click);
             // 
             // groupBox3
             // 

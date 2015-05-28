@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -19,9 +20,9 @@ namespace AweSimConnect
      *  
      * -Add About form (for meeting license requirements)
      * -Hide putty window(s) inside the app
+     * -Allow disconnecting based on port
      * -Detect Filezilla installation
      * -Detect TurboVNC installation
-     * -Verify json
      * -Make sure all network stuff runs async
      * -Disable connect button if already connected on a port.
      * -Put process data in it's own model
@@ -31,8 +32,6 @@ namespace AweSimConnect
      * -Manage multiple tunnels
      * 
      * /
-
-
 
     /*
      * AweSim Connect
@@ -60,9 +59,13 @@ namespace AweSimConnect
 
         private int secondsElapsed = 0;
 
+        IntPtr nextClipboardViewer;
+
         public AweSimMain()
         {
             InitializeComponent();
+            // Tell the clipboard viewer to notify this app when the clipboard changes.
+            nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
         }
 
         // On application load
@@ -92,7 +95,7 @@ namespace AweSimConnect
             //Check to see if there is any valid data on the clipboard.
             if (cbc.CheckClipboardForAweSim())
             {
-                Connection clipData = cbc.GetClipboardCluster();
+                Connection clipData = cbc.GetClipboardConnection();
                 UpdateData(clipData);
             }
 
@@ -206,8 +209,6 @@ namespace AweSimConnect
                 pc = new PuTTYController(this.connection);
                 pc.StartPlinkProcess(tbPassword.Text);
             }
-
-
         }
 
         //Set the username when the user enters text.
@@ -401,16 +402,73 @@ namespace AweSimConnect
             this.AcceptButton = bConnect;
         }
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        // Used for embedding process into the app
+        [DllImport("user32.dll")]
         static extern IntPtr SetParent(IntPtr windowChild, IntPtr windowParent);
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        // Used for embedding process into the app
+        [DllImport("user32.dll")]
         [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]
         static extern bool ShowWindow(IntPtr windowHandle, int command);
+
+        // Clipboard monitoring
+        [DllImport("user32.dll")]
+        protected static extern int SetClipboardViewer(int hWndNewViewer);
+
+        // Add the app to the chain of apps that windows notifies on clipboard updates.
+        [DllImport("user32.dll")]
+        public static extern bool ChangeClipboardChain(IntPtr handleWindowRemove, IntPtr handleWindowNewNext);
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr handleWindow, int windowMessage, IntPtr wParam, IntPtr lParam);
+
+        protected override void WndProc(ref Message m)
+        {
+            // defined in winuser.h
+            const int WM_DRAWCLIPBOARD = 0x308;
+            const int WM_CHANGECBCHAIN = 0x030D;
+
+            switch (m.Msg)
+            {
+                case WM_DRAWCLIPBOARD:
+                    PopulateFromClipboard();
+                    SendMessage(nextClipboardViewer, m.Msg, m.WParam,
+                    m.LParam);
+                    break;
+
+                case WM_CHANGECBCHAIN:
+                    if (m.WParam == nextClipboardViewer)
+                        nextClipboardViewer = m.LParam;
+                    else
+                        SendMessage(nextClipboardViewer, m.Msg, m.WParam,
+                        m.LParam);
+                    break;
+
+                default:
+                    base.WndProc(ref m);
+                    break;
+            }
+        }
+
+        private void PopulateFromClipboard()
+        {
+            MessageBox.Show("Test");
+            /*
+            if (cbc.CheckClipboardForAweSim() && cbc.IsValid())
+            {
+                UpdateData(cbc.GetClipboardConnection());
+            }
+             */
+        }
 
         //Kill the process when closing the window.
         private void AweSimMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+            // Remove the app from the clipboard view chain
+            ChangeClipboardChain(this.Handle, nextClipboardViewer);
+
+            // If the app has created any processes.
             if (processes.Count > 0)
             {
                 // Close all processes that haven't already existed.

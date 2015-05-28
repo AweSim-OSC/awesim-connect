@@ -25,6 +25,7 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class ClipboardController
     {
+
         Connection connectionData;
         bool isValid;
 
@@ -72,7 +73,7 @@ namespace AweSimConnect.Controllers
 
         // If the app has connection data in the clipboard, mark as invalid so we 
         // don't keep returning the same data, then return what we've got.
-        public Connection GetClipboardCluster()
+        public Connection GetClipboardConnection()
         {
             if (IsValid())
             {

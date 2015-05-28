@@ -9,6 +9,9 @@ using System.Text;
 
 namespace AweSimConnect.Controllers
 {
+    /// <summary>
+    /// This class controls the plink application.
+    /// </summary>
     class PuTTYController
     {
         private static String PLINK_PROCESS = "plink";

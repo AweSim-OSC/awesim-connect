@@ -5,7 +5,9 @@ using System.Text;
 
 namespace AweSimConnect.Controllers
 {
-    //Maintains the existing clusters.
+    /// <summary>
+    /// Store data on available OSC clusters
+    /// </summary>
     class ClusterController
     {
         static Cluster oakley = new Cluster("OAK", "Oakley", "oakley.osc.edu");

@@ -9,6 +9,9 @@ using System.Text.RegularExpressions;
 
 namespace AweSimConnect.Controllers
 {
+    /// <summary>
+    /// Static tools for checking network connections.
+    /// </summary>
     class NetworkTools
     {
         //Checks for connectivity to Oakley. (Use for diagnostic)

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace AweSimConnect.Models
 {
-    /*
-     * Stores data on the supercompute cluster. 
-     */
+    /// <summary>
+    /// Contains data about compute clusters.
+    /// </summary>
     class Cluster
     {
         public Cluster(string code, string name, string domain)

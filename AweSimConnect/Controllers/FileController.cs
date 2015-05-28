@@ -6,6 +6,9 @@ using System.Text;
 
 namespace AweSimConnect.Controllers
 {
+    /// <summary>
+    /// Static tools for getting file locations on disk.
+    /// </summary>
     class FileController
     {
 

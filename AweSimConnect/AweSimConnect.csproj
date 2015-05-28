@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Controllers\NetworkTools.cs" />
     <Compile Include="Controllers\SFTPController.cs" />
+    <Compile Include="Models\ProcessData.cs" />
     <Compile Include="Views\AweSimMain.cs">
       <SubType>Form</SubType>
     </Compile>

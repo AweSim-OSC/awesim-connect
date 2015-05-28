@@ -8,11 +8,9 @@ using AweSimConnect.Models;
 
 namespace AweSimConnect.Controllers
 {
-    //TODO Reference JSON.NET in about. MIT license.  http://www.newtonsoft.com/json
-
-    /*
-     * This controller is used to manage clipboard actions and parsing. 
-     * 
+    /// <summary>
+    /// This controller is used to manage clipboard actions and parsing. 
+    /*  
        Example json:
      
         {
@@ -22,9 +20,9 @@ namespace AweSimConnect.Controllers
             'SSHHost': 'oakley.osc.edu',
             'UserName': 'bmcmichael',
             'VNCPassword': 'XXXXXXXX'
-        }     
-     * 
+        }  
      */
+    /// </summary>
     class ClipboardController
     {
         Connection connectionData;

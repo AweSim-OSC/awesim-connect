@@ -8,6 +8,9 @@ using System.Text;
 
 namespace AweSimConnect.Controllers
 {
+    /// <summary>
+    /// This class controls the ggivnc application. 
+    /// </summary>
     class VNCController
     {
         //TODO Add ggi license to docs

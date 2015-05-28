@@ -4,7 +4,9 @@ using System.Text;
 
 namespace AweSimConnect.Models
 {
-    // Handles the data for the connection.
+    /// <summary>
+    /// Maintains data for a connection.
+    /// </summary>
     class Connection
     {
         //TODO: Add some handling to ensure inputs at least look valid.

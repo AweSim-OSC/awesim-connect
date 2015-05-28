@@ -122,18 +122,17 @@ namespace AweSimConnect
                     this.connection.UserName = newConnection.UserName;
                 }
 
-                if (newConnection.LocalPort != 0)
-                    tbLocalPort.Text = newConnection.LocalPort.ToString();
-                else
-                    tbLocalPort.Text = "";
-                this.connection.LocalPort = newConnection.LocalPort;
-
-
                 if (newConnection.RemotePort != 0)
                     tbRemotePort.Text = newConnection.RemotePort.ToString();
                 else
                     tbRemotePort.Text = "";
                 this.connection.RemotePort = newConnection.RemotePort;
+                                
+                if (newConnection.LocalPort != 0)
+                    tbLocalPort.Text = newConnection.LocalPort.ToString();
+                else
+                    tbLocalPort.Text = "";
+                this.connection.LocalPort = newConnection.LocalPort;
 
                 if (!String.IsNullOrEmpty(newConnection.PUAServer))
                 {
@@ -418,7 +417,6 @@ namespace AweSimConnect
         // Add the app to the chain of apps that windows notifies on clipboard updates.
         [DllImport("user32.dll")]
         public static extern bool ChangeClipboardChain(IntPtr handleWindowRemove, IntPtr handleWindowNewNext);
-
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr handleWindow, int windowMessage, IntPtr wParam, IntPtr lParam);
 
@@ -452,13 +450,13 @@ namespace AweSimConnect
 
         private void PopulateFromClipboard()
         {
-            MessageBox.Show("Test");
-            /*
-            if (cbc.CheckClipboardForAweSim() && cbc.IsValid())
+            if (cbc != null)
             {
-                UpdateData(cbc.GetClipboardConnection());
+                if (cbc.CheckClipboardForAweSim() && cbc.IsValid())
+                {
+                    UpdateData(cbc.GetClipboardConnection());
+                }
             }
-             */
         }
 
         //Kill the process when closing the window.

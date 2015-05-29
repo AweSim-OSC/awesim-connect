@@ -21,9 +21,9 @@ namespace AweSimConnect
      * TODO Wishlist
      *  
      * -Add About form (for meeting license requirements)
-     * -Allow user to save password. (External prefs file)
+     * -Allow user to save password. (External prefs file, encode in base64?)
      * -Save external file locations in prefs to speed up startup.
-     * -Hide putty window(s) inside the app
+     * -Hide putty window(s) inside the app (figure out with authentication detection)
      * -Allow disconnecting based on port
      * -Detect TurboVNC installation
      * -Make sure all network stuff runs async
@@ -32,8 +32,7 @@ namespace AweSimConnect
      * -Antialiased Font
      * -URI Parsing
      * -Manage multiple tunnels
-     * See if we can tweak ggivnc encoding settings for better performance
-     * optimize file search tool
+     * -See if we can tweak ggivnc encoding settings for better performance
      * 
      * /
 

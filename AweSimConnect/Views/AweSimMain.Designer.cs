@@ -377,8 +377,8 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.pictureBox2);
             this.groupBox3.Controls.Add(this.labelWeb);
+            this.groupBox3.Controls.Add(this.pictureBox2);
             this.groupBox3.Controls.Add(this.bWeb);
             this.groupBox3.Location = new System.Drawing.Point(12, 309);
             this.groupBox3.Name = "groupBox3";
@@ -404,7 +404,7 @@
             this.labelWeb.AutoSize = true;
             this.labelWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWeb.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelWeb.Location = new System.Drawing.Point(121, 22);
+            this.labelWeb.Location = new System.Drawing.Point(105, 22);
             this.labelWeb.Name = "labelWeb";
             this.labelWeb.Size = new System.Drawing.Size(101, 24);
             this.labelWeb.TabIndex = 13;
@@ -431,7 +431,7 @@
             this.labelSFTP.AutoSize = true;
             this.labelSFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSFTP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelSFTP.Location = new System.Drawing.Point(121, 23);
+            this.labelSFTP.Location = new System.Drawing.Point(105, 22);
             this.labelSFTP.Name = "labelSFTP";
             this.labelSFTP.Size = new System.Drawing.Size(109, 24);
             this.labelSFTP.TabIndex = 16;

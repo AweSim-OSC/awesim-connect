@@ -13,6 +13,7 @@ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 MIT License
 
 Costura.Fody
+https://github.com/Fody/Costura
 MIT License
 
 WPZOOM Developer Icon Set

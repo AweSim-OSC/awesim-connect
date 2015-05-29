@@ -14,6 +14,7 @@ namespace AweSimConnect.Controllers
     class SFTPController
     {
         private static String FILEZILLA_PROCESS = "filezilla";
+        private static String FILEZILLA_FOLDER_CONTAINS = "FileZilla";
         private static String FILEZILLA_FILE = "filezilla.exe";
         private String FilezillaPath = "";
 
@@ -41,8 +42,7 @@ namespace AweSimConnect.Controllers
 
         public void DetectSFTPPath()
         {
-            //TODO: Optimize or async
-            this.FilezillaPath = FileController.FindExecutableInProgramFiles(FILEZILLA_FILE);
+            this.FilezillaPath = FileController.SearchProgramFileFoldersForExecutableWithFolderPatternMatch(FILEZILLA_FILE, FILEZILLA_FOLDER_CONTAINS);
         }
 
         public bool IsSFTPInstalled()

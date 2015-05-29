@@ -24,6 +24,23 @@ namespace AweSimConnect.Controllers
                 return "";
         }
 
+        public static String SearchProgramFileFoldersForExecutableWithFolderPatternMatch(String fileName, String folderPattern)
+        {
+            String programsPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            DirectoryInfo dirInfo = new DirectoryInfo(programsPath);
+            foreach (DirectoryInfo subDirInfo in dirInfo.GetDirectories())
+            {
+                bool contains = subDirInfo.FullName.ToString().IndexOf(folderPattern, StringComparison.CurrentCultureIgnoreCase) >= 0;
+                if (contains) {
+                    FileInfo[] files = subDirInfo.GetFiles(fileName, SearchOption.AllDirectories);
+                    if (files.Length > 0) {
+                        return files[0].FullName.ToString();
+                    }
+                }
+            }
+            return "";
+        }
+
         public static bool IsProcessRunning(String processName) {
             Process[] pname = Process.GetProcessesByName(processName);
             return ((pname.Length != 0) ? true : false);

@@ -17,9 +17,12 @@ using System.Windows.Forms;
 
 namespace AweSimConnect
 {
-    /* TODO Wishlist
+    /* 
+     * TODO Wishlist
      *  
      * -Add About form (for meeting license requirements)
+     * -Allow user to save password. (External prefs file)
+     * -Save external file locations in prefs to speed up startup.
      * -Hide putty window(s) inside the app
      * -Allow disconnecting based on port
      * -Detect TurboVNC installation
@@ -29,6 +32,8 @@ namespace AweSimConnect
      * -Antialiased Font
      * -URI Parsing
      * -Manage multiple tunnels
+     * See if we can tweak ggivnc encoding settings for better performance
+     * optimize file search tool
      * 
      * /
 
@@ -101,12 +106,17 @@ namespace AweSimConnect
                 Connection clipData = cbc.GetClipboardConnection();
                 UpdateData(clipData);
             }
+
+            WebBrowser webBrowser = new WebBrowser();
+            webBrowser.Navigate(AWESIM_DASHBOARD_URL);
+
         }
 
         // Throws up a popup window if the app isn't able to connect to the selected SSH host.
         private void LimitedConnectionPopup()
         {
-            if (!NetworkTools.CanTelnetToOakley())
+            network_available = NetworkTools.CanTelnetToOakley();
+            if (!network_available)
             {
                 MessageBox.Show("Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -293,9 +303,7 @@ namespace AweSimConnect
             if (secondsElapsed % 4 == 0)
             {
                 tunnel_available = pc.IsPlinkConnected();
-                sftp_available = ftpc.IsSFTPInstalled();
-
-                EnableSFTPOptions(sftp_available && network_available);
+                
 
                 //If the tunnel is connected, enable the button, otherwise disable.
                 EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
@@ -321,6 +329,13 @@ namespace AweSimConnect
                     //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.
                     //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
                 }
+            }
+
+            if (secondsElapsed % 2 == 0)
+            {
+                sftp_available = ftpc.IsSFTPInstalled();
+
+                EnableSFTPOptions(sftp_available && network_available);
             }
 
             secondsElapsed++;

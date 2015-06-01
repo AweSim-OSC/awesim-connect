@@ -48,6 +48,8 @@ namespace AweSimConnect
     public partial class AweSimMain : Form
     {
         //AweSim Dashboard URL
+        static String CLIENT_VERSION = "0.1α";
+        static String CLIENT_TITLE = "AweSim Connect";
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
         static long START_TIME = DateTime.Now.Ticks;
 
@@ -67,6 +69,7 @@ namespace AweSimConnect
 
         IntPtr nextClipboardViewer;
         private bool sftp_available;
+        private AboutFrm abtFrm;
 
         public AweSimMain()
         {
@@ -83,6 +86,7 @@ namespace AweSimConnect
             this.AcceptButton = bConnect;
             labelWeb.Text = "";
             labelSFTP.Text = "Searching for SFTP Client";
+            labelVersion.Text = CLIENT_TITLE + " Version " + CLIENT_VERSION;
 
             processes = new List<ProcessData>();
             connection = new Connection();
@@ -93,7 +97,8 @@ namespace AweSimConnect
             clc = new ClusterController();
             pc = new PuTTYController(connection);
             vc = new VNCController(connection);
-            ftpc = new SFTPController(connection);                        
+            ftpc = new SFTPController(connection);
+            abtFrm = new AboutFrm(CLIENT_VERSION);       
 
             // Adds the Clusters to the Combobox
             setupClusterBox();            
@@ -523,6 +528,17 @@ namespace AweSimConnect
                 }
             }
         }
+
+        private void pbAbout_Click(object sender, EventArgs e)
+        {
+            if (abtFrm.IsDisposed)
+            {
+                abtFrm = new AboutFrm(CLIENT_VERSION);
+            }
+            abtFrm.StartPosition = FormStartPosition.CenterScreen;
+            abtFrm.Show();
+        }
+
 
         /*  Upcoming password save feature 
 

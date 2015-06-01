@@ -62,12 +62,15 @@
             this.labelSFTP = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panelProcesses = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pbTunnel = new System.Windows.Forms.PictureBox();
             this.pbNetwork = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.pbAbout = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -77,10 +80,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panelProcesses.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).BeginInit();
             this.SuspendLayout();
             // 
             // pbAweSimLogo
@@ -450,11 +455,21 @@
             // 
             // panelProcesses
             // 
-            this.panelProcesses.Location = new System.Drawing.Point(15, 449);
+            this.panelProcesses.Controls.Add(this.label1);
+            this.panelProcesses.Location = new System.Drawing.Point(30, 458);
             this.panelProcesses.Name = "panelProcesses";
             this.panelProcesses.Size = new System.Drawing.Size(452, 342);
             this.panelProcesses.TabIndex = 14;
             this.panelProcesses.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, -12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
             // 
             // groupBox5
             // 
@@ -530,6 +545,29 @@
             this.pictureBox5.TabIndex = 15;
             this.pictureBox5.TabStop = false;
             // 
+            // labelVersion
+            // 
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.BackColor = System.Drawing.Color.Transparent;
+            this.labelVersion.Location = new System.Drawing.Point(12, 444);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(42, 13);
+            this.labelVersion.TabIndex = 17;
+            this.labelVersion.Text = "Version";
+            // 
+            // pbAbout
+            // 
+            this.pbAbout.BackColor = System.Drawing.Color.Transparent;
+            this.pbAbout.Image = global::AweSimConnect.Properties.Resources.info;
+            this.pbAbout.Location = new System.Drawing.Point(452, 442);
+            this.pbAbout.Name = "pbAbout";
+            this.pbAbout.Size = new System.Drawing.Size(15, 15);
+            this.pbAbout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAbout.TabIndex = 18;
+            this.pbAbout.TabStop = false;
+            this.tooltips.SetToolTip(this.pbAbout, "About");
+            this.pbAbout.Click += new System.EventHandler(this.pbAbout_Click);
+            // 
             // AweSimMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,7 +575,9 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 458);
+            this.ClientSize = new System.Drawing.Size(479, 463);
+            this.Controls.Add(this.pbAbout);
+            this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panelProcesses);
             this.Controls.Add(this.groupBox4);
@@ -571,11 +611,14 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panelProcesses.ResumeLayout(false);
+            this.panelProcesses.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -621,6 +664,9 @@
         private System.Windows.Forms.PictureBox pbTunnel;
         private System.Windows.Forms.PictureBox pbNetwork;
         private System.Windows.Forms.Label labelSFTP;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.PictureBox pbAbout;
 
     }
 }

@@ -55,6 +55,7 @@
             this.tooltips = new System.Windows.Forms.ToolTip(this.components);
             this.bWeb = new System.Windows.Forms.Button();
             this.bSFTP = new System.Windows.Forms.Button();
+            this.pbAbout = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelWeb = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -70,12 +71,12 @@
             this.pbNetwork = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labelVersion = new System.Windows.Forms.Label();
-            this.pbAbout = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAweSimLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -85,7 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).BeginInit();
             this.SuspendLayout();
             // 
             // pbAweSimLogo
@@ -379,6 +379,19 @@
             this.bSFTP.UseVisualStyleBackColor = false;
             this.bSFTP.Click += new System.EventHandler(this.bSFTP_Click);
             // 
+            // pbAbout
+            // 
+            this.pbAbout.BackColor = System.Drawing.Color.Transparent;
+            this.pbAbout.Image = global::AweSimConnect.Properties.Resources.info;
+            this.pbAbout.Location = new System.Drawing.Point(452, 442);
+            this.pbAbout.Name = "pbAbout";
+            this.pbAbout.Size = new System.Drawing.Size(15, 15);
+            this.pbAbout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAbout.TabIndex = 18;
+            this.pbAbout.TabStop = false;
+            this.tooltips.SetToolTip(this.pbAbout, "About");
+            this.pbAbout.Click += new System.EventHandler(this.pbAbout_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
@@ -549,24 +562,12 @@
             // 
             this.labelVersion.AutoSize = true;
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
+            this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelVersion.Location = new System.Drawing.Point(12, 444);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(42, 13);
             this.labelVersion.TabIndex = 17;
             this.labelVersion.Text = "Version";
-            // 
-            // pbAbout
-            // 
-            this.pbAbout.BackColor = System.Drawing.Color.Transparent;
-            this.pbAbout.Image = global::AweSimConnect.Properties.Resources.info;
-            this.pbAbout.Location = new System.Drawing.Point(452, 442);
-            this.pbAbout.Name = "pbAbout";
-            this.pbAbout.Size = new System.Drawing.Size(15, 15);
-            this.pbAbout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbAbout.TabIndex = 18;
-            this.pbAbout.TabStop = false;
-            this.tooltips.SetToolTip(this.pbAbout, "About");
-            this.pbAbout.Click += new System.EventHandler(this.pbAbout_Click);
             // 
             // AweSimMain
             // 
@@ -605,6 +606,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -618,7 +620,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNetwork)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

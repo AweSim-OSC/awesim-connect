@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
+
 namespace AweSimConnect
 {
     /* 
@@ -35,6 +36,7 @@ namespace AweSimConnect
      * -URI Parsing
      * -Manage multiple tunnels
      * -See if we can tweak ggivnc encoding settings for better performance
+     * -Move magic strings to resources
      * 
      * /
 
@@ -47,8 +49,12 @@ namespace AweSimConnect
      */
     public partial class AweSimMain : Form
     {
-        //AweSim Dashboard URL
-        static String CLIENT_VERSION = "0.1α";
+        
+        // The version number. The first and second numbers are set in the assembly info. 
+        // The third number is the number of days since the year 2000
+        // The fourth number is the number of seconds since midnight divided by 2.
+        static String CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
         static String CLIENT_TITLE = "AweSim Connect";
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
         static long START_TIME = DateTime.Now.Ticks;

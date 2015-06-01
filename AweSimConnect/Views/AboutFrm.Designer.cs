@@ -96,10 +96,10 @@
             this.linkAweSim.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkAweSim.Location = new System.Drawing.Point(244, 92);
             this.linkAweSim.Name = "linkAweSim";
-            this.linkAweSim.Size = new System.Drawing.Size(106, 12);
+            this.linkAweSim.Size = new System.Drawing.Size(59, 12);
             this.linkAweSim.TabIndex = 5;
             this.linkAweSim.TabStop = true;
-            this.linkAweSim.Text = "http://www.awesim.org";
+            this.linkAweSim.Text = "AweSim Site";
             this.linkAweSim.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAweSim_LinkClicked);
             // 
             // AboutFrm

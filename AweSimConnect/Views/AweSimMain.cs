@@ -20,6 +20,7 @@ namespace AweSimConnect
     /* 
      * TODO Wishlist
      *  
+     * -Fix for vis nodes 
      * -Add About form (for meeting license requirements)
      * -Allow user to save password. (External prefs file, encode in base64?)
      * -Save external file locations in prefs to speed up startup.
@@ -160,6 +161,9 @@ namespace AweSimConnect
                     tbVNCPassword.Text = newConnection.VNCPassword;
                     this.connection.VNCPassword = newConnection.VNCPassword;
                 }
+
+                tbPassword.Focus();
+                this.BringMainWindowToFront();
             }
         }
 
@@ -282,9 +286,9 @@ namespace AweSimConnect
         //////////////////////////////////////////////////////
         private void timerConnection_Tick(object sender, EventArgs e)
         {
-            if (secondsElapsed == 2)
+            if (secondsElapsed == 1)
             {
-                //Check for the ftp client 2 seconds after the app has started to get rid of visible load lag.
+                //Check for the ftp client 1 seconds after the app has started to get rid of visible load lag.
                 ftpc.DetectSFTPPath();
             }
 
@@ -339,7 +343,7 @@ namespace AweSimConnect
 
             secondsElapsed++;
         }
-
+        
         // Enable the web button if the tunnel is available and a local port is specified
         private void EnableWeb(int port)
         {
@@ -435,6 +439,14 @@ namespace AweSimConnect
         {
             this.AcceptButton = bConnect;
         }
+
+        private void BringMainWindowToFront()
+        {
+            SetForegroundWindow((int)this.Handle);
+        }
+
+        [DllImport("user32.dll")]
+        public static extern Int32 SetForegroundWindow(int windowHandle);
 
         // Used for embedding process into the app
         [DllImport("user32.dll")]

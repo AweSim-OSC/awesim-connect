@@ -1,5 +1,6 @@
 ﻿using AweSimConnect.Controllers;
 using AweSimConnect.Models;
+using AweSimConnect.Properties;
 using AweSimConnect.Views;
 using System;
 using System.Collections.Generic;
@@ -95,7 +96,7 @@ namespace AweSimConnect
             ftpc = new SFTPController(connection);                        
 
             // Adds the Clusters to the Combobox
-            setupClusterBox();
+            setupClusterBox();            
 
             // Check for connectivity to the servers
             LimitedConnectionPopup();
@@ -106,9 +107,6 @@ namespace AweSimConnect
                 Connection clipData = cbc.GetClipboardConnection();
                 UpdateData(clipData);
             }
-
-            WebBrowser webBrowser = new WebBrowser();
-            webBrowser.Navigate(AWESIM_DASHBOARD_URL);
 
         }
 
@@ -286,9 +284,8 @@ namespace AweSimConnect
         //////////////////////////////////////////////////////
         private void timerConnection_Tick(object sender, EventArgs e)
         {
-            if (secondsElapsed == 1)
+            if (secondsElapsed == 0)
             {
-                //Check for the ftp client 1 seconds after the app has started to get rid of visible load lag.
                 ftpc.DetectSFTPPath();
             }
 
@@ -525,6 +522,48 @@ namespace AweSimConnect
                     }
                 }
             }
-        }       
+        }
+
+        /*  Upcoming password save feature 
+
+        // Check the user settings for a username and encrypted password and fill the text boxes.
+        private void checkForUserSettings()
+        {
+            if ((bool)Settings.Default["IsPassSaved"])
+            {
+                label1.Text = Settings.Default["UserName"].ToString();
+                checkSavePassword.Checked = true;
+                string userName = Settings.Default["UserName"].ToString();
+                string userPass = Settings.Default["UserPass"].ToString();
+                tbUserName.Text = userName;
+                tbPassword.Text = PasswordEncryption.Decrypt(userPass);
+                
+            }
+        }
+        
+        // If true, save the choice to the Settings. If false, change user settings to reflect.
+        private void SaveUserSettings(bool userSettings)
+        {
+            Settings.Default["IsPassSaved"] = userSettings;
+            string userName = tbUserName.Text;
+            string userPass = tbPassword.Text;
+
+            //If we're saving the settings, encrypt the password and save to settings. Else save blanks.
+            if (userSettings) {
+                Settings.Default["UserName"] = userName;
+                string encryptedUserPass = PasswordEncryption.Encrypt(userPass);
+                Settings.Default["UserPass"] = encryptedUserPass;
+            }
+            else
+            {
+                Settings.Default["UserName"] = userName;
+                Settings.Default["UserPass"] = "";
+            }
+            Settings.Default.Save();
+            
+        }
+         
+        */
+    
     }
 }

@@ -56,8 +56,8 @@
             this.bWeb = new System.Windows.Forms.Button();
             this.bSFTP = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelWeb = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.labelSFTP = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -87,7 +87,7 @@
             // 
             this.pbAweSimLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbAweSimLogo.Image = global::AweSimConnect.Properties.Resources.awesimsm;
-            this.pbAweSimLogo.Location = new System.Drawing.Point(30, 12);
+            this.pbAweSimLogo.Location = new System.Drawing.Point(19, 13);
             this.pbAweSimLogo.Name = "pbAweSimLogo";
             this.pbAweSimLogo.Size = new System.Drawing.Size(200, 84);
             this.pbAweSimLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -99,9 +99,9 @@
             // tbUserName
             // 
             this.tbUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbUserName.Location = new System.Drawing.Point(324, 14);
+            this.tbUserName.Location = new System.Drawing.Point(331, 17);
             this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(125, 20);
+            this.tbUserName.Size = new System.Drawing.Size(136, 20);
             this.tbUserName.TabIndex = 1;
             this.tbUserName.Tag = "Username";
             this.tooltips.SetToolTip(this.tbUserName, "Your AweSim user name.\r\n\r\nGet yours at http://www.awesim.org");
@@ -110,10 +110,10 @@
             // tbPassword
             // 
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPassword.Location = new System.Drawing.Point(324, 45);
+            this.tbPassword.Location = new System.Drawing.Point(331, 48);
             this.tbPassword.MaxLength = 200;
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(125, 20);
+            this.tbPassword.Size = new System.Drawing.Size(136, 20);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.Tag = "Password";
             this.tooltips.SetToolTip(this.tbPassword, "Your AweSim password.");
@@ -123,7 +123,7 @@
             // 
             this.lUsername.AutoSize = true;
             this.lUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lUsername.Location = new System.Drawing.Point(256, 16);
+            this.lUsername.Location = new System.Drawing.Point(263, 19);
             this.lUsername.Name = "lUsername";
             this.lUsername.Size = new System.Drawing.Size(58, 13);
             this.lUsername.TabIndex = 4;
@@ -133,7 +133,7 @@
             // 
             this.lPassword.AutoSize = true;
             this.lPassword.BackColor = System.Drawing.Color.Transparent;
-            this.lPassword.Location = new System.Drawing.Point(258, 47);
+            this.lPassword.Location = new System.Drawing.Point(265, 50);
             this.lPassword.Name = "lPassword";
             this.lPassword.Size = new System.Drawing.Size(56, 13);
             this.lPassword.TabIndex = 5;
@@ -149,10 +149,10 @@
             this.cbCluster.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCluster.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCluster.FormattingEnabled = true;
-            this.cbCluster.Location = new System.Drawing.Point(324, 76);
+            this.cbCluster.Location = new System.Drawing.Point(331, 79);
             this.cbCluster.Name = "cbCluster";
             this.cbCluster.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbCluster.Size = new System.Drawing.Size(127, 23);
+            this.cbCluster.Size = new System.Drawing.Size(136, 23);
             this.cbCluster.TabIndex = 3;
             this.cbCluster.Tag = "Cluster";
             this.tooltips.SetToolTip(this.cbCluster, "The SSH host.\r\n\r\nDefault: oakley.osc.edu");
@@ -163,7 +163,7 @@
             // 
             this.lCluster.AutoSize = true;
             this.lCluster.BackColor = System.Drawing.Color.Transparent;
-            this.lCluster.Location = new System.Drawing.Point(257, 81);
+            this.lCluster.Location = new System.Drawing.Point(264, 84);
             this.lCluster.Name = "lCluster";
             this.lCluster.Size = new System.Drawing.Size(57, 13);
             this.lCluster.TabIndex = 7;
@@ -386,16 +386,6 @@
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::AweSimConnect.Properties.Resources.window;
-            this.pictureBox2.Location = new System.Drawing.Point(18, 15);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 14;
-            this.pictureBox2.TabStop = false;
-            // 
             // labelWeb
             // 
             this.labelWeb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -410,6 +400,16 @@
             this.labelWeb.TabIndex = 13;
             this.labelWeb.Text = "Web Label";
             this.labelWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::AweSimConnect.Properties.Resources.window;
+            this.pictureBox2.Location = new System.Drawing.Point(18, 15);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
             // 
             // groupBox4
             // 
@@ -537,7 +537,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(479, 447);
+            this.ClientSize = new System.Drawing.Size(479, 458);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panelProcesses);
             this.Controls.Add(this.groupBox4);

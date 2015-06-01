@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Controllers\NetworkTools.cs" />
     <Compile Include="Controllers\SFTPController.cs" />
+    <Compile Include="Models\PasswordEncryption.cs" />
     <Compile Include="Models\ProcessData.cs" />
     <Compile Include="Views\AweSimMain.cs">
       <SubType>Form</SubType>
@@ -125,6 +126,7 @@
     <None Include="Resources\hard-disk.png" />
     <None Include="Resources\info.png" />
     <None Include="Resources\plug.png" />
+    <None Include="Resources\key.png" />
     <Content Include="Resources\redlight.png" />
     <None Include="Resources\header.png" />
     <EmbeddedResource Include="Resources\plink.exe" />

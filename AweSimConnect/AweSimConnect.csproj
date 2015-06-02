@@ -91,6 +91,12 @@
     <Compile Include="Views\AboutFrm.Designer.cs">
       <DependentUpon>AboutFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AweSimMain - Copy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AweSimMain - Copy.Designer.cs">
+      <DependentUpon>AweSimMain - Copy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AweSimMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,9 +118,18 @@
     <Compile Include="Views\AweSimMain2.Designer.cs">
       <DependentUpon>AweSimMain2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ConnectionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ConnectionPanel.Designer.cs">
+      <DependentUpon>ConnectionPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Validator.cs" />
     <EmbeddedResource Include="Views\AboutFrm.resx">
       <DependentUpon>AboutFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AweSimMain - Copy.resx">
+      <DependentUpon>AweSimMain - Copy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AweSimMain.resx">
       <DependentUpon>AweSimMain.cs</DependentUpon>
@@ -131,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="Views\AweSimMain2.resx">
       <DependentUpon>AweSimMain2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ConnectionPanel.resx">
+      <DependentUpon>ConnectionPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

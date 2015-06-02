@@ -17,7 +17,7 @@ namespace AweSimConnect.Views
 
         Assembly assembly;
         StreamReader textStreamReader;
-        static string resource_name = "AweSimConnect.LICENSE.txt";
+        static string RESOURCE_NAME = "AweSimConnect.LICENSE.txt";
         static string AWESIM_SITE = "http://apps.awesim.org/devapps";
 
         public AboutFrm()
@@ -42,7 +42,7 @@ namespace AweSimConnect.Views
             {
                 assembly = Assembly.GetExecutingAssembly();
 
-                using (Stream stream = assembly.GetManifestResourceStream(resource_name))
+                using (Stream stream = assembly.GetManifestResourceStream(RESOURCE_NAME))
                 {
                     using (StreamReader reader = new StreamReader(stream))
                     {

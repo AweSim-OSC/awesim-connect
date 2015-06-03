@@ -38,6 +38,31 @@ namespace AweSimConnect.Controllers
                     }
                 }
             }
+            if (!programsPath.Contains("x86"))
+            {
+                programsPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + " (x86)";
+                try
+                {
+                    dirInfo = new DirectoryInfo(programsPath);
+                    foreach (DirectoryInfo subDirInfo in dirInfo.GetDirectories())
+                    {
+                        bool contains = subDirInfo.FullName.ToString().IndexOf(folderPattern, StringComparison.CurrentCultureIgnoreCase) >= 0;
+                        if (contains)
+                        {
+                            FileInfo[] files = subDirInfo.GetFiles(fileName, SearchOption.AllDirectories);
+                            if (files.Length > 0)
+                            {
+                                return files[0].FullName.ToString();
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    
+                }
+                
+            }
             return "";
         }
 

@@ -1,11 +1,8 @@
 ﻿using AweSimConnect.Models;
 using AweSimConnect.Properties;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Resources;
-using System.Text;
 
 namespace AweSimConnect.Controllers
 {

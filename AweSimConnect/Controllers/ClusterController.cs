@@ -1,7 +1,6 @@
 ﻿using AweSimConnect.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AweSimConnect.Controllers
 {

@@ -1,19 +1,11 @@
 ﻿using AweSimConnect.Controllers;
 using AweSimConnect.Models;
-using AweSimConnect.Properties;
 using AweSimConnect.Views;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 
 
@@ -23,7 +15,6 @@ namespace AweSimConnect
      * TODO Wishlist
      *  
      * -Fix for vis nodes 
-     * -Add About form (for meeting license requirements)
      * -Allow user to save password. (External prefs file, encode in base64?)
      * -Save external file locations in prefs to speed up startup.
      * -Hide putty window(s) inside the app (figure out with authentication detection)
@@ -31,7 +22,6 @@ namespace AweSimConnect
      * -Detect TurboVNC installation
      * -Make sure all network stuff runs async
      * -Disable connect button if already connected on a port.
-     * -SFTP handling - change user label while searching.
      * -Antialiased Font
      * -URI Parsing
      * -Manage multiple tunnels
@@ -119,7 +109,6 @@ namespace AweSimConnect
                 UpdateData(clipData);
             }
 
-            //this.Controls.Add(new ConnectionPanel());
 
         }
 

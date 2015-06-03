@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace AweSimConnect.Models
 {
@@ -18,19 +15,19 @@ namespace AweSimConnect.Models
 
         public ProcessData(Process process, Connection connection)
         {
-            this.Process = process;
-            this.Connection = connection;
+            Process = process;
+            Connection = connection;
         }
 
         // True if program has not exited.
         public bool IsRunning() {
-            return !this.Process.HasExited;
+            return !Process.HasExited;
         }
 
         // Kill the process.
         public void Kill()
         {
-            this.Process.Kill();
+            Process.Kill();
         }
     }
 }

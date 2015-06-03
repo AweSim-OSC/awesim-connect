@@ -157,11 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
-    <Content Include="assets\awesim-sm.png" />
+    <None Include="assets\AweSim2Mockup.png" />
     <Content Include="FodyWeavers.xml" />
     <EmbeddedResource Include="LICENSE.txt" />
     <None Include="Resources\window.png" />
     <None Include="Resources\ggivnc.exe" />
+    <None Include="Resources\awesim-large.png" />
     <Content Include="Resources\greenlight.png" />
     <None Include="Resources\network-socket.png" />
     <None Include="Resources\monitor.png" />

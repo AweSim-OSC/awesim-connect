@@ -63,6 +63,16 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap awesim_large {
+            get {
+                object obj = ResourceManager.GetObject("awesim_large", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap awesimsm {
             get {
                 object obj = ResourceManager.GetObject("awesimsm", resourceCulture);

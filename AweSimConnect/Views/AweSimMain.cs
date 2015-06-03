@@ -119,7 +119,7 @@ namespace AweSimConnect
                 UpdateData(clipData);
             }
 
-            this.Controls.Add(new ConnectionPanel());
+            //this.Controls.Add(new ConnectionPanel());
 
         }
 

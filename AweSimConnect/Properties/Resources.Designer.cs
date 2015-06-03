@@ -63,6 +63,16 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap awesim_ball {
+            get {
+                object obj = ResourceManager.GetObject("awesim_ball", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap awesim_large {
             get {
                 object obj = ResourceManager.GetObject("awesim_large", resourceCulture);
@@ -73,9 +83,29 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap awesim_logo {
+            get {
+                object obj = ResourceManager.GetObject("awesim_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap awesimsm {
             get {
                 object obj = ResourceManager.GetObject("awesimsm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap bolt_gry {
+            get {
+                object obj = ResourceManager.GetObject("bolt_gry", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +136,16 @@ namespace AweSimConnect.Properties {
         public static System.Drawing.Bitmap hard_disk {
             get {
                 object obj = ResourceManager.GetObject("hard_disk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap hdd_gry {
+            get {
+                object obj = ResourceManager.GetObject("hdd_gry", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

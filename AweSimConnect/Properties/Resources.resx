@@ -157,7 +157,19 @@
   <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="awesim_ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\awesim-ball.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="awesim_large" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\awesim-large.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="awesim_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\awesim-logo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bolt_gry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bolt-gry.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hdd_gry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hdd-gry.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

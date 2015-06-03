@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
+using AweSimConnect.Views;
 
 namespace AweSimConnect
 {
@@ -14,7 +14,7 @@ namespace AweSimConnect
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AweSimMain());
+            Application.Run(new AweSimMain2());
         }
     }
 }

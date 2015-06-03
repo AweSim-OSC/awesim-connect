@@ -163,6 +163,9 @@
     <None Include="Resources\window.png" />
     <None Include="Resources\ggivnc.exe" />
     <None Include="Resources\awesim-large.png" />
+    <None Include="Resources\awesim-ball.png" />
+    <None Include="Resources\awesim-logo.png" />
+    <None Include="Resources\bolt-gry.png" />
     <Content Include="Resources\greenlight.png" />
     <None Include="Resources\network-socket.png" />
     <None Include="Resources\monitor.png" />
@@ -170,6 +173,7 @@
     <None Include="Resources\info.png" />
     <None Include="Resources\plug.png" />
     <None Include="Resources\key.png" />
+    <None Include="Resources\hdd-gry.png" />
     <Content Include="Resources\redlight.png" />
     <None Include="Resources\header.png" />
     <EmbeddedResource Include="Resources\plink.exe" />

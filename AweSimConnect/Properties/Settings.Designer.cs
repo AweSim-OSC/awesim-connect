@@ -26,24 +26,24 @@ namespace AweSimConnect.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string UserName {
+        public string Username {
             get {
-                return ((string)(this["UserName"]));
+                return ((string)(this["Username"]));
             }
             set {
-                this["UserName"] = value;
+                this["Username"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string UserPass {
+        public string Userpass {
             get {
-                return ((string)(this["UserPass"]));
+                return ((string)(this["Userpass"]));
             }
             set {
-                this["UserPass"] = value;
+                this["Userpass"] = value;
             }
         }
         

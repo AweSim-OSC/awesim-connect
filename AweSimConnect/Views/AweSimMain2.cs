@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using AweSimConnect.Controllers;
+using AweSimConnect.Models;
 
 namespace AweSimConnect.Views
 {
@@ -36,9 +38,46 @@ namespace AweSimConnect.Views
     */
     public partial class AweSimMain2 : Form
     {
+        // The version number. The first and second numbers are set in the assembly info. 
+        // The third number is the number of days since the year 2000
+        // The fourth number is the number of seconds since midnight divided by 2.
+        static readonly String ClientVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        static readonly String ClientTitle = "AweSim Connect v." + ClientVersion;
+        static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
+        static long START_TIME = DateTime.Now.Ticks;
+        
+        Connection connection;
+
+        private List<ProcessData> processes;
+
+        private bool network_available = false;
+        private bool tunnel_available = false;
+
+        private int secondsElapsed = 0;
+
+        IntPtr nextClipboardViewer;
+        private bool sftp_available;
+        private AboutFrm abtFrm;
+        
         public AweSimMain2()
         {
+            
             InitializeComponent();
+            this.Text = ClientTitle;
+            
+        }
+
+        
+
+        private void AweSimMain2_Load(object sender, EventArgs e)
+        {
+            this.CenterToParent();
+            this.AcceptButton = bConnect;
+        }
+        
+        private void bDashboard_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

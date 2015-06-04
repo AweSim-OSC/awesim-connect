@@ -65,12 +65,13 @@
             this.gbCredentials.Controls.Add(this.labelPassword);
             this.gbCredentials.Controls.Add(this.labelUsername);
             this.gbCredentials.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbCredentials.Location = new System.Drawing.Point(12, 185);
+            this.gbCredentials.Location = new System.Drawing.Point(12, 179);
             this.gbCredentials.Name = "gbCredentials";
-            this.gbCredentials.Size = new System.Drawing.Size(154, 132);
+            this.gbCredentials.Size = new System.Drawing.Size(154, 130);
             this.gbCredentials.TabIndex = 2;
             this.gbCredentials.TabStop = false;
             this.gbCredentials.Text = "1. AweSim Credentials";
+            this.toolTipNoDelay.SetToolTip(this.gbCredentials, "Your AweSim Username and Password.");
             // 
             // tbPassword
             // 
@@ -129,12 +130,13 @@
             this.gbSessionInfo.Controls.Add(this.lPort);
             this.gbSessionInfo.Controls.Add(this.lHost);
             this.gbSessionInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionInfo.Location = new System.Drawing.Point(183, 185);
+            this.gbSessionInfo.Location = new System.Drawing.Point(183, 179);
             this.gbSessionInfo.Name = "gbSessionInfo";
             this.gbSessionInfo.Size = new System.Drawing.Size(154, 64);
             this.gbSessionInfo.TabIndex = 3;
             this.gbSessionInfo.TabStop = false;
             this.gbSessionInfo.Text = "2. Session Info";
+            this.toolTipNoDelay.SetToolTip(this.gbSessionInfo, "Session Information. Get this by requesting a session at the AweSim Dashboard.");
             // 
             // tbPort
             // 
@@ -305,14 +307,17 @@
             // toolTipNoDelay
             // 
             this.toolTipNoDelay.AutomaticDelay = 100;
+            this.toolTipNoDelay.AutoPopDelay = 5000;
             this.toolTipNoDelay.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.toolTipNoDelay.InitialDelay = 100;
+            this.toolTipNoDelay.ReshowDelay = 20;
             // 
             // gbSessionType
             // 
             this.gbSessionType.Controls.Add(this.rbCOMSOL);
             this.gbSessionType.Controls.Add(this.rbVNC);
             this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionType.Location = new System.Drawing.Point(183, 255);
+            this.gbSessionType.Location = new System.Drawing.Point(183, 247);
             this.gbSessionType.Name = "gbSessionType";
             this.gbSessionType.Size = new System.Drawing.Size(154, 62);
             this.gbSessionType.TabIndex = 11;
@@ -323,7 +328,7 @@
             // 
             this.gbVNCPassword.Controls.Add(this.tbVNCPassword);
             this.gbVNCPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbVNCPassword.Location = new System.Drawing.Point(183, 320);
+            this.gbVNCPassword.Location = new System.Drawing.Point(183, 312);
             this.gbVNCPassword.Name = "gbVNCPassword";
             this.gbVNCPassword.Size = new System.Drawing.Size(154, 41);
             this.gbVNCPassword.TabIndex = 12;

@@ -131,9 +131,12 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
+                ConnectionForm connectionForm = new ConnectionForm(connection);
+                connectionForm.Show();
+
                 //TODO Move this to external panel
-                pc = new PuTTYController(this.connection);
-                pc.StartPlinkProcess(tbPassword.Text);
+                //pc = new PuTTYController(this.connection);
+                //pc.StartPlinkProcess(tbPassword.Text);
             }
         }
 

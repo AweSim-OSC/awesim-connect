@@ -1,18 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
+using AweSimConnect.Models;
 
 namespace AweSimConnect.Views
 {
     public partial class ConnectionPanel : UserControl
     {
-        public ConnectionPanel()
+        private Connection connection;
+
+        internal ConnectionPanel(Connection inputConnection)
         {
             InitializeComponent();
+            connection = inputConnection;
+        }
+
+        private void buttonDisconnect_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonConnection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerConnectionPanel_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

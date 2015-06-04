@@ -121,6 +121,12 @@
     <Compile Include="Views\ConnectionPanel.Designer.cs">
       <DependentUpon>ConnectionPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ConnectionForm.Designer.cs">
+      <DependentUpon>ConnectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Validator.cs" />
     <EmbeddedResource Include="Views\AboutFrm.resx">
       <DependentUpon>AboutFrm.cs</DependentUpon>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ConnectionPanel.resx">
       <DependentUpon>ConnectionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ConnectionForm.resx">
+      <DependentUpon>ConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

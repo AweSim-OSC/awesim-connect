@@ -30,98 +30,111 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timerConnectionPanel = new System.Windows.Forms.Timer(this.components);
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pbTunnel = new System.Windows.Forms.PictureBox();
+            this.buttonConnection = new System.Windows.Forms.Button();
             this.buttonDisconnect = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox5.SuspendLayout();
+            this.labelSession = new System.Windows.Forms.Label();
+            this.pbTunnel = new System.Windows.Forms.PictureBox();
+            this.lRunTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox5
+            // timerConnectionPanel
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox5.Controls.Add(this.button1);
-            this.groupBox5.Controls.Add(this.buttonDisconnect);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.pbTunnel);
-            this.groupBox5.Location = new System.Drawing.Point(12, 1);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(582, 77);
-            this.groupBox5.TabIndex = 18;
-            this.groupBox5.TabStop = false;
+            this.timerConnectionPanel.Tick += new System.EventHandler(this.timerConnectionPanel_Tick);
             // 
-            // label2
+            // buttonConnection
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.buttonConnection.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonConnection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConnection.Image = global::AweSimConnect.Properties.Resources.monitor;
+            this.buttonConnection.Location = new System.Drawing.Point(351, 17);
+            this.buttonConnection.Name = "buttonConnection";
+            this.buttonConnection.Size = new System.Drawing.Size(106, 57);
+            this.buttonConnection.TabIndex = 23;
+            this.buttonConnection.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonConnection.UseVisualStyleBackColor = true;
+            this.buttonConnection.Click += new System.EventHandler(this.buttonConnection_Click);
+            // 
+            // buttonDisconnect
+            // 
+            this.buttonDisconnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDisconnect.Image = global::AweSimConnect.Properties.Resources.plug;
+            this.buttonDisconnect.Location = new System.Drawing.Point(476, 17);
+            this.buttonDisconnect.Name = "buttonDisconnect";
+            this.buttonDisconnect.Size = new System.Drawing.Size(103, 57);
+            this.buttonDisconnect.TabIndex = 22;
+            this.buttonDisconnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonDisconnect.UseVisualStyleBackColor = true;
+            this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
+            // 
+            // labelSession
+            // 
+            this.labelSession.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(107, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(210, 24);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "n0103.ten.osc.edu:5901";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelSession.AutoSize = true;
+            this.labelSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSession.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.labelSession.Location = new System.Drawing.Point(111, 17);
+            this.labelSession.Name = "labelSession";
+            this.labelSession.Size = new System.Drawing.Size(210, 24);
+            this.labelSession.TabIndex = 18;
+            this.labelSession.Text = "n0103.ten.osc.edu:5901";
+            this.labelSession.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pbTunnel
             // 
             this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.redlight;
-            this.pbTunnel.Location = new System.Drawing.Point(16, 21);
+            this.pbTunnel.Location = new System.Drawing.Point(34, 23);
             this.pbTunnel.Name = "pbTunnel";
             this.pbTunnel.Size = new System.Drawing.Size(51, 41);
             this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbTunnel.TabIndex = 17;
             this.pbTunnel.TabStop = false;
             // 
-            // buttonDisconnect
+            // lRunTime
             // 
-            this.buttonDisconnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDisconnect.Image = global::AweSimConnect.Properties.Resources.plug;
-            this.buttonDisconnect.Location = new System.Drawing.Point(473, 12);
-            this.buttonDisconnect.Name = "buttonDisconnect";
-            this.buttonDisconnect.Size = new System.Drawing.Size(103, 57);
-            this.buttonDisconnect.TabIndex = 22;
-            this.buttonDisconnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonDisconnect.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Image = global::AweSimConnect.Properties.Resources.monitor;
-            this.button1.Location = new System.Drawing.Point(361, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 57);
-            this.button1.TabIndex = 23;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.lRunTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lRunTime.AutoSize = true;
+            this.lRunTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lRunTime.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lRunTime.Location = new System.Drawing.Point(108, 50);
+            this.lRunTime.Name = "lRunTime";
+            this.lRunTime.Size = new System.Drawing.Size(217, 24);
+            this.lRunTime.TabIndex = 24;
+            this.lRunTime.Text = "Running time: 0:00:00:00";
+            this.lRunTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ConnectionPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox5);
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lRunTime);
+            this.Controls.Add(this.pbTunnel);
+            this.Controls.Add(this.buttonConnection);
+            this.Controls.Add(this.buttonDisconnect);
+            this.Controls.Add(this.labelSession);
             this.Name = "ConnectionPanel";
             this.Size = new System.Drawing.Size(607, 86);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Timer timerConnectionPanel;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonConnection;
         private System.Windows.Forms.Button buttonDisconnect;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelSession;
         private System.Windows.Forms.PictureBox pbTunnel;
+        private System.Windows.Forms.Label lRunTime;
     }
 }

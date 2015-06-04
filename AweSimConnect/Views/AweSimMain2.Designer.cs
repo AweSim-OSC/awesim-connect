@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AweSimMain2));
             this.groupBoxCredentials = new System.Windows.Forms.GroupBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.textBoxUserName = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -41,10 +41,10 @@
             this.rbCOMSOL = new System.Windows.Forms.RadioButton();
             this.tbPort = new System.Windows.Forms.TextBox();
             this.tbHost = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lPort = new System.Windows.Forms.Label();
+            this.lHost = new System.Windows.Forms.Label();
             this.bConnect = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bSFTP = new System.Windows.Forms.Button();
             this.bDashboard = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
@@ -56,8 +56,8 @@
             // 
             // groupBoxCredentials
             // 
-            this.groupBoxCredentials.Controls.Add(this.textBoxPassword);
-            this.groupBoxCredentials.Controls.Add(this.textBoxUserName);
+            this.groupBoxCredentials.Controls.Add(this.tbPassword);
+            this.groupBoxCredentials.Controls.Add(this.tbUsername);
             this.groupBoxCredentials.Controls.Add(this.labelPassword);
             this.groupBoxCredentials.Controls.Add(this.labelUsername);
             this.groupBoxCredentials.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -68,30 +68,30 @@
             this.groupBoxCredentials.TabStop = false;
             this.groupBoxCredentials.Text = "AweSim Credentials";
             // 
-            // textBoxPassword
+            // tbPassword
             // 
-            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(6, 116);
-            this.textBoxPassword.MaxLength = 255;
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(142, 26);
-            this.textBoxPassword.TabIndex = 3;
-            this.textBoxPassword.Tag = "Password";
-            this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTipNoDelay.SetToolTip(this.textBoxPassword, "Enter your AweSim password.");
-            this.textBoxPassword.UseSystemPasswordChar = true;
+            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(6, 116);
+            this.tbPassword.MaxLength = 255;
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(142, 26);
+            this.tbPassword.TabIndex = 3;
+            this.tbPassword.Tag = "Password";
+            this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTipNoDelay.SetToolTip(this.tbPassword, "Enter your AweSim password.");
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
-            // textBoxUserName
+            // tbUsername
             // 
-            this.textBoxUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUserName.Location = new System.Drawing.Point(6, 55);
-            this.textBoxUserName.MaxLength = 255;
-            this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(142, 26);
-            this.textBoxUserName.TabIndex = 2;
-            this.textBoxUserName.Tag = "Username";
-            this.textBoxUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTipNoDelay.SetToolTip(this.textBoxUserName, "Enter your AweSim username.");
+            this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.Location = new System.Drawing.Point(6, 55);
+            this.tbUsername.MaxLength = 255;
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(142, 26);
+            this.tbUsername.TabIndex = 2;
+            this.tbUsername.Tag = "Username";
+            this.tbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTipNoDelay.SetToolTip(this.tbUsername, "Enter your AweSim username.");
             // 
             // labelPassword
             // 
@@ -122,8 +122,8 @@
             this.groupBox2.Controls.Add(this.rbCOMSOL);
             this.groupBox2.Controls.Add(this.tbPort);
             this.groupBox2.Controls.Add(this.tbHost);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.lPort);
+            this.groupBox2.Controls.Add(this.lHost);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox2.Location = new System.Drawing.Point(12, 369);
             this.groupBox2.Name = "groupBox2";
@@ -198,27 +198,27 @@
             this.toolTipNoDelay.SetToolTip(this.tbHost, "The host name assigned to your session. (ex. n0103.ten.osc.edu) Get this from you" +
         "r session information on the AweSim Dashboard.");
             // 
-            // label3
+            // lPort
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(114, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Port";
+            this.lPort.AutoSize = true;
+            this.lPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lPort.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lPort.Location = new System.Drawing.Point(114, 33);
+            this.lPort.Name = "lPort";
+            this.lPort.Size = new System.Drawing.Size(38, 20);
+            this.lPort.TabIndex = 4;
+            this.lPort.Text = "Port";
             // 
-            // label4
+            // lHost
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(40, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Host";
+            this.lHost.AutoSize = true;
+            this.lHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lHost.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lHost.Location = new System.Drawing.Point(40, 32);
+            this.lHost.Name = "lHost";
+            this.lHost.Size = new System.Drawing.Size(43, 20);
+            this.lHost.TabIndex = 3;
+            this.lHost.Text = "Host";
             // 
             // bConnect
             // 
@@ -237,26 +237,28 @@
             this.toolTipNoDelay.SetToolTip(this.bConnect, "Connect to Session. Enter your session information and click here to connect to t" +
         "he session.");
             this.bConnect.UseVisualStyleBackColor = false;
+            this.bConnect.Click += new System.EventHandler(this.bConnect_Click);
             // 
-            // button2
+            // bSFTP
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::AweSimConnect.Properties.Resources.hdd_gry;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(183, 193);
-            this.button2.Margin = new System.Windows.Forms.Padding(15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 158);
-            this.button2.TabIndex = 4;
-            this.button2.Tag = "File Transfer";
-            this.toolTipNoDelay.SetToolTip(this.button2, "File Transfer. Enter your user credentials and click here to open an SFTP file tr" +
+            this.bSFTP.BackColor = System.Drawing.Color.Transparent;
+            this.bSFTP.BackgroundImage = global::AweSimConnect.Properties.Resources.hdd_gry;
+            this.bSFTP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bSFTP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bSFTP.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bSFTP.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.bSFTP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bSFTP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSFTP.Location = new System.Drawing.Point(183, 193);
+            this.bSFTP.Margin = new System.Windows.Forms.Padding(15);
+            this.bSFTP.Name = "bSFTP";
+            this.bSFTP.Size = new System.Drawing.Size(154, 158);
+            this.bSFTP.TabIndex = 4;
+            this.bSFTP.Tag = "File Transfer";
+            this.toolTipNoDelay.SetToolTip(this.bSFTP, "File Transfer. Enter your user credentials and click here to open an SFTP file tr" +
         "ansfer session.");
-            this.button2.UseVisualStyleBackColor = false;
+            this.bSFTP.UseVisualStyleBackColor = false;
+            this.bSFTP.Click += new System.EventHandler(this.buttonSFTP_Click);
             // 
             // bDashboard
             // 
@@ -301,7 +303,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(349, 551);
             this.Controls.Add(this.bConnect);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bSFTP);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxCredentials);
             this.Controls.Add(this.bDashboard);
@@ -326,18 +328,18 @@
         private System.Windows.Forms.GroupBox groupBoxCredentials;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.TextBox textBoxUserName;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tbPort;
         private System.Windows.Forms.TextBox tbHost;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lPort;
+        private System.Windows.Forms.Label lHost;
         private System.Windows.Forms.Button bConnect;
         private System.Windows.Forms.RadioButton rbVNC;
         private System.Windows.Forms.RadioButton rbCOMSOL;
         private System.Windows.Forms.Button bDashboard;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bSFTP;
         private System.Windows.Forms.TextBox tbVNCPassword;
         private System.Windows.Forms.Timer timerMain;
         private System.Windows.Forms.ToolTip toolTipNoDelay;

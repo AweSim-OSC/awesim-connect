@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutFrm));
             this.tbLicenseArea = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
@@ -39,7 +40,7 @@
             // 
             // tbLicenseArea
             // 
-            this.tbLicenseArea.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tbLicenseArea.BackColor = System.Drawing.Color.White;
             this.tbLicenseArea.Location = new System.Drawing.Point(12, 119);
             this.tbLicenseArea.Multiline = true;
             this.tbLicenseArea.Name = "tbLicenseArea";
@@ -106,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::AweSimConnect.Properties.Resources.header;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(401, 250);
             this.Controls.Add(this.linkAweSim);
@@ -115,6 +116,7 @@
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbLicenseArea);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AboutFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";

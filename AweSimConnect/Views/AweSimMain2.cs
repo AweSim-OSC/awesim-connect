@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
+using AweSimConnect.Properties;
 
 namespace AweSimConnect.Views
 {
@@ -443,34 +444,11 @@ namespace AweSimConnect.Views
             }
         }
 
-        private void pbAbout_Click(object sender, EventArgs e)
-        {
-            if (abtFrm.IsDisposed)
-            {
-                abtFrm = new AboutFrm(CLIENT_VERSION);
-            }
-            abtFrm.StartPosition = FormStartPosition.CenterScreen;
-            abtFrm.Show();
-        }
-
-        private void ShowVNCPasswordLabel(bool show)
-        {
-            
-            
-        }
 
         private void tbVNCPassword_TextChanged(object sender, EventArgs e)
         {
             //Hide the password label when there is text in the box.
-            ShowVNCPasswordLabel(tbVNCPassword.Text == ""); 
             LabelColorChanger(gbVNCPassword, (connection.SetValidVNCPassword(tbVNCPassword.Text) ? true : false));
-        }
-
-        
-
-        private void FadeIn(Control control)
-        {
-            
         }
 
         // Provides a user workflow
@@ -536,6 +514,20 @@ namespace AweSimConnect.Views
 
         }
 
+        private void NetworkConnected(bool isNetworkConnected)
+        {
+            if (isNetworkConnected)
+            {
+                pbIsNetworkConnected.Image = Resources.check_gry;
+                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Network Available");
+            }
+            else
+            {
+                pbIsNetworkConnected.Image = Resources.cross_gry;
+                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Unable to Connect to AweSim Server. Check your connection or contact your system administrator.");
+            }
+        }
+
         //////////////////////////////////////////////////////
         // This is the main timer loop for the app.
         // Handle timed events like connection checking.
@@ -543,6 +535,8 @@ namespace AweSimConnect.Views
         private void timerMain_Tick(object sender, EventArgs e)
         {
             displayGroupBoxes();
+
+            NetworkConnected(network_available);
 
             if (secondsElapsed == 0)
             {
@@ -604,7 +598,7 @@ namespace AweSimConnect.Views
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
-            this.connection.UserName = tbUsername.Text;
+            connection.UserName = tbUsername.Text;
         }
 
         private void tbPort_TextChanged(object sender, EventArgs e)
@@ -613,7 +607,7 @@ namespace AweSimConnect.Views
             try
             {
                 int port = int.Parse(tbPort.Text);
-                this.connection.RemotePort = port;
+                connection.RemotePort = port;
                 MapLocalPort(port);
                 LabelColorChanger(lPort, true);
             }
@@ -626,7 +620,17 @@ namespace AweSimConnect.Views
 
         private void tbHost_TextChanged(object sender, EventArgs e)
         {
-            this.connection.PUAServer = tbHost.Text;
+            connection.PUAServer = tbHost.Text;
+        }
+
+        private void pbAbout_Click(object sender, EventArgs e)
+        {
+            if (abtFrm.IsDisposed)
+            {
+                abtFrm = new AboutFrm(CLIENT_VERSION);
+            }
+            abtFrm.StartPosition = FormStartPosition.CenterScreen;
+            abtFrm.Show();
         }
 
 

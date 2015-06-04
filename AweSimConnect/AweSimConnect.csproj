@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
+    <None Include="Resources\setting.png" />
     <None Include="assets\AweSim2Mockup.png" />
     <Content Include="FodyWeavers.xml" />
     <EmbeddedResource Include="LICENSE.txt" />
@@ -178,6 +179,8 @@
     <None Include="Resources\awesim-ball.png" />
     <None Include="Resources\awesim-logo.png" />
     <None Include="Resources\bolt-gry.png" />
+    <None Include="Resources\check-gry.png" />
+    <None Include="Resources\cross-gry.png" />
     <Content Include="Resources\greenlight.png" />
     <None Include="Resources\network-socket.png" />
     <None Include="Resources\monitor.png" />
@@ -186,6 +189,7 @@
     <None Include="Resources\plug.png" />
     <None Include="Resources\key.png" />
     <None Include="Resources\hdd-gry.png" />
+    <None Include="Resources\info-gry.png" />
     <Content Include="Resources\redlight.png" />
     <None Include="Resources\header.png" />
     <EmbeddedResource Include="Resources\plink.exe" />

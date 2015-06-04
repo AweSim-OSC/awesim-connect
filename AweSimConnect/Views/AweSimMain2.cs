@@ -129,7 +129,11 @@ namespace AweSimConnect.Views
 
         private void bConnect_Click(object sender, EventArgs e)
         {
-
+            if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
+            {
+                pc = new PuTTYController(this.connection);
+                pc.StartPlinkProcess(tbPassword.Text);
+            }
         }
 
         // The click handler for the SFTP button
@@ -214,19 +218,7 @@ namespace AweSimConnect.Views
         
         
 
-        // When the user modifies the redirect port box, set the variable, change label to red if not a valid integer
-        private void tbRedirect_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                this.connection.LocalPort = int.Parse(tbPort.Text);
-                LabelColorChanger(lPort, true);
-            }
-            catch (Exception)
-            {
-                LabelColorChanger(lPort, false);
-            }
-        }
+        
 
         
 
@@ -548,6 +540,21 @@ namespace AweSimConnect.Views
         private void tbHost_TextChanged(object sender, EventArgs e)
         {
             this.connection.PUAServer = tbHost.Text;
+        }
+
+        private void tbPort_TextChanged(object sender, EventArgs e)
+        {
+            // When the user modifies the redirect port box, set the variable, change label to red if not a valid integer
+            try
+            {
+                this.connection.LocalPort = int.Parse(tbPort.Text);
+                LabelColorChanger(lPort, true);
+            }
+            catch (Exception)
+            {
+                LabelColorChanger(lPort, false);
+            }
+        
         }
 
 

@@ -43,16 +43,17 @@
             this.tbHost = new System.Windows.Forms.TextBox();
             this.lPort = new System.Windows.Forms.Label();
             this.lHost = new System.Windows.Forms.Label();
-            this.lVNCPassword = new System.Windows.Forms.Label();
             this.bConnect = new System.Windows.Forms.Button();
             this.bSFTP = new System.Windows.Forms.Button();
             this.bDashboard = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.toolTipNoDelay = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBoxCredentials.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxCredentials
@@ -62,12 +63,12 @@
             this.groupBoxCredentials.Controls.Add(this.labelPassword);
             this.groupBoxCredentials.Controls.Add(this.labelUsername);
             this.groupBoxCredentials.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBoxCredentials.Location = new System.Drawing.Point(12, 185);
+            this.groupBoxCredentials.Location = new System.Drawing.Point(12, 187);
             this.groupBoxCredentials.Name = "groupBoxCredentials";
-            this.groupBoxCredentials.Size = new System.Drawing.Size(154, 170);
+            this.groupBoxCredentials.Size = new System.Drawing.Size(154, 164);
             this.groupBoxCredentials.TabIndex = 2;
             this.groupBoxCredentials.TabStop = false;
-            this.groupBoxCredentials.Text = "AweSim Credentials";
+            this.groupBoxCredentials.Text = "1. AweSim Credentials";
             // 
             // tbPassword
             // 
@@ -119,27 +120,23 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tbVNCPassword);
-            this.groupBox2.Controls.Add(this.rbVNC);
-            this.groupBox2.Controls.Add(this.rbCOMSOL);
             this.groupBox2.Controls.Add(this.tbPort);
             this.groupBox2.Controls.Add(this.tbHost);
             this.groupBox2.Controls.Add(this.lPort);
             this.groupBox2.Controls.Add(this.lHost);
-            this.groupBox2.Controls.Add(this.lVNCPassword);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox2.Location = new System.Drawing.Point(12, 369);
+            this.groupBox2.Location = new System.Drawing.Point(12, 371);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(154, 170);
+            this.groupBox2.Size = new System.Drawing.Size(154, 81);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Session Info";
+            this.groupBox2.Text = "2. Session Info";
             // 
             // tbVNCPassword
             // 
             this.tbVNCPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVNCPassword.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.tbVNCPassword.Location = new System.Drawing.Point(26, 105);
+            this.tbVNCPassword.Location = new System.Drawing.Point(24, 33);
             this.tbVNCPassword.MaxLength = 8;
             this.tbVNCPassword.Name = "tbVNCPassword";
             this.tbVNCPassword.Size = new System.Drawing.Size(100, 20);
@@ -153,7 +150,7 @@
             // 
             this.rbVNC.AutoSize = true;
             this.rbVNC.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rbVNC.Location = new System.Drawing.Point(6, 82);
+            this.rbVNC.Location = new System.Drawing.Point(6, 16);
             this.rbVNC.Name = "rbVNC";
             this.rbVNC.Size = new System.Drawing.Size(89, 17);
             this.rbVNC.TabIndex = 7;
@@ -167,7 +164,7 @@
             // 
             this.rbCOMSOL.AutoSize = true;
             this.rbCOMSOL.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rbCOMSOL.Location = new System.Drawing.Point(6, 137);
+            this.rbCOMSOL.Location = new System.Drawing.Point(6, 55);
             this.rbCOMSOL.Name = "rbCOMSOL";
             this.rbCOMSOL.Size = new System.Drawing.Size(144, 17);
             this.rbCOMSOL.TabIndex = 9;
@@ -180,7 +177,7 @@
             // tbPort
             // 
             this.tbPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPort.Location = new System.Drawing.Point(116, 55);
+            this.tbPort.Location = new System.Drawing.Point(116, 46);
             this.tbPort.MaxLength = 5;
             this.tbPort.Name = "tbPort";
             this.tbPort.Size = new System.Drawing.Size(32, 20);
@@ -189,11 +186,12 @@
             this.tbPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTipNoDelay.SetToolTip(this.tbPort, "The port number assigned to your session. (ex. 5901) Get this from your session i" +
         "nformation on the AweSim Dashboard.");
+            this.tbPort.TextChanged += new System.EventHandler(this.tbPort_TextChanged);
             // 
             // tbHost
             // 
             this.tbHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHost.Location = new System.Drawing.Point(6, 55);
+            this.tbHost.Location = new System.Drawing.Point(6, 46);
             this.tbHost.Name = "tbHost";
             this.tbHost.Size = new System.Drawing.Size(104, 20);
             this.tbHost.TabIndex = 5;
@@ -207,7 +205,7 @@
             this.lPort.AutoSize = true;
             this.lPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lPort.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lPort.Location = new System.Drawing.Point(114, 33);
+            this.lPort.Location = new System.Drawing.Point(114, 24);
             this.lPort.Name = "lPort";
             this.lPort.Size = new System.Drawing.Size(38, 20);
             this.lPort.TabIndex = 4;
@@ -218,22 +216,11 @@
             this.lHost.AutoSize = true;
             this.lHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lHost.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lHost.Location = new System.Drawing.Point(40, 32);
+            this.lHost.Location = new System.Drawing.Point(40, 23);
             this.lHost.Name = "lHost";
             this.lHost.Size = new System.Drawing.Size(43, 20);
             this.lHost.TabIndex = 3;
             this.lHost.Text = "Host";
-            // 
-            // lVNCPassword
-            // 
-            this.lVNCPassword.AutoSize = true;
-            this.lVNCPassword.Enabled = false;
-            this.lVNCPassword.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lVNCPassword.Location = new System.Drawing.Point(39, 108);
-            this.lVNCPassword.Name = "lVNCPassword";
-            this.lVNCPassword.Size = new System.Drawing.Size(78, 13);
-            this.lVNCPassword.TabIndex = 10;
-            this.lVNCPassword.Text = "VNC Password";
             // 
             // bConnect
             // 
@@ -315,12 +302,26 @@
             this.toolTipNoDelay.AutomaticDelay = 100;
             this.toolTipNoDelay.BackColor = System.Drawing.SystemColors.ControlLight;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbCOMSOL);
+            this.groupBox1.Controls.Add(this.rbVNC);
+            this.groupBox1.Controls.Add(this.tbVNCPassword);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox1.Location = new System.Drawing.Point(12, 457);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(154, 78);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "3. Session Type";
+            // 
             // AweSimMain2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(349, 551);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bConnect);
             this.Controls.Add(this.bSFTP);
             this.Controls.Add(this.groupBox2);
@@ -337,6 +338,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -361,8 +364,8 @@
         private System.Windows.Forms.Button bSFTP;
         private System.Windows.Forms.Timer timerMain;
         private System.Windows.Forms.ToolTip toolTipNoDelay;
-        private System.Windows.Forms.Label lVNCPassword;
         private System.Windows.Forms.TextBox tbVNCPassword;
+        private System.Windows.Forms.GroupBox groupBox1;
 
 
 

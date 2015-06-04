@@ -277,7 +277,7 @@ namespace AweSimConnect
         //Changes the color of a label
         private void LabelColorChanger(Label label, bool valid)
         {
-            label.ForeColor = valid ? Color.Black : Color.Red;
+            label.ForeColor = valid ? Color.Gray : Color.Red;
         }
 
         //////////////////////////////////////////////////////

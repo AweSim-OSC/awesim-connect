@@ -207,6 +207,7 @@ namespace AweSimConnect.Views
         {
             bool portExists = ProcessData.LocalPortExists(processes, port);
             
+            // If the port was found in the list of processes, increment up and try again.
             if (portExists)
             {
                 MapLocalPort(++port);
@@ -276,6 +277,11 @@ namespace AweSimConnect.Views
         {
             radioButton.ForeColor = valid ? Color.Gray : Color.Red;
         }
+
+        private void LabelColorChanger(GroupBox groupBox, bool valid)
+        {
+            groupBox.ForeColor = valid ? Color.Gray : Color.Red;
+        }
         
         
         
@@ -330,29 +336,7 @@ namespace AweSimConnect.Views
         {
             bSFTP.Enabled = enable;
         }
-
-        // Performs an action when the text in the remote port textbox is changed.
-        private void tbRemotePort_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int port = int.Parse(tbPort.Text);
-                this.connection.RemotePort = port;
-
-                // In many cases we will map the remote port to the local port. 
-                // This fills in the local text box. User can still modify local manually. 
-                // TODO: We're going to start managing this for users. 
-                // Check all connections to see that it isn't open.
-                this.connection.LocalPort = port;
-
-                LabelColorChanger(rbVNC, true);
-            }
-            catch (Exception)
-            {
-                LabelColorChanger(rbVNC, false);
-            }
-        }
-
+        
         // Handles the click for the web button.
         private void bWeb_Click(object sender, EventArgs e)
         {
@@ -476,7 +460,77 @@ namespace AweSimConnect.Views
         {
             //Hide the password label when there is text in the box.
             ShowVNCPasswordLabel(tbVNCPassword.Text == ""); 
-            LabelColorChanger(rbVNC, (connection.SetValidVNCPassword(tbVNCPassword.Text) ? true : false));
+            LabelColorChanger(gbVNCPassword, (connection.SetValidVNCPassword(tbVNCPassword.Text) ? true : false));
+        }
+
+        
+
+        private void FadeIn(Control control)
+        {
+            
+        }
+
+        // Provides a user workflow
+        private void displayGroupBoxes()
+        {
+            if (network_available)
+            {
+                gbCredentials.Visible = true;
+
+                if ((tbUsername.Text != "") && (tbPassword.Text != ""))
+                {
+                    gbSessionInfo.Visible = true;
+                    bSFTP.Visible = true;
+
+                    if ((tbHost.Text != "") && (tbPort.Text != ""))
+                    {
+                        gbSessionType.Visible = true;
+
+                        if (rbCOMSOL.Checked)
+                        {
+                            bConnect.Visible = true;
+                            gbVNCPassword.Visible = false;
+                        }
+                        else if (rbVNC.Checked)
+                        {
+                            gbVNCPassword.Visible = true;
+
+                            if (tbVNCPassword.Text != "")
+                            {
+                                bConnect.Visible = true;
+                            }
+                            else
+                            {
+                                bConnect.Visible = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        gbSessionType.Visible = false;
+                        gbVNCPassword.Visible = false;
+                        bConnect.Visible = false;
+                    }
+                }
+                else
+                {
+                    gbSessionInfo.Visible = false;
+                    gbSessionType.Visible = false;
+                    gbVNCPassword.Visible = false;
+                    bConnect.Visible = false;
+                    bSFTP.Visible = false;
+                }
+            }
+            else
+            {
+                gbCredentials.Visible = false;
+                gbSessionInfo.Visible = false;
+                gbSessionType.Visible = false;
+                gbVNCPassword.Visible = false;
+                bConnect.Visible = false;
+                bSFTP.Visible = false;
+            }
+
         }
 
         //////////////////////////////////////////////////////
@@ -485,11 +539,13 @@ namespace AweSimConnect.Views
         //////////////////////////////////////////////////////
         private void timerMain_Tick(object sender, EventArgs e)
         {
+            displayGroupBoxes();
+
             if (secondsElapsed == 0)
             {
                 ftpc.DetectSFTPPath();
             }
-
+            
             // Check for network connectivity every 15 seconds.
             // Disable the connection button if can not connect to OSC.
             if (secondsElapsed % 15 == 0)
@@ -509,7 +565,7 @@ namespace AweSimConnect.Views
                 EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
 
                 //Enable the VNC and SFTP
-                EnableAdditionalOptions(tunnel_available);
+                EnableAdditionalOptions(true);
 
                 //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
                 if (tunnel_available && !pc.IsProcessEmbedded())
@@ -522,6 +578,7 @@ namespace AweSimConnect.Views
                     //int MAXIMIZE_WINDOW = 3;
                     int MINIMIZE_WINDOW = 6;
 
+                    // TODO: getting an error here
                     ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
                     //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.

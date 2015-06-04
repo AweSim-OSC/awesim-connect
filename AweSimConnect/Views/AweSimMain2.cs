@@ -58,7 +58,7 @@ namespace AweSimConnect.Views
         private ClipboardController cbc;
         private ClusterController clc;
         
-        private List<ProcessData> processes;
+        private List<ProcessData> processes; 
 
         private bool network_available = false;
         private bool tunnel_available = false;
@@ -131,6 +131,7 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
+                //TODO Move this to external panel
                 pc = new PuTTYController(this.connection);
                 pc.StartPlinkProcess(tbPassword.Text);
             }
@@ -199,11 +200,21 @@ namespace AweSimConnect.Views
                 this.BringMainWindowToFront();
             }
         }
-
-        private void MapLocalPort(int p)
+        
+        // Recursive check and assign localport
+        // TODO this can probably be moved into the model
+        private void MapLocalPort(int port)
         {
-            // TODO Try to map the local port to the remote port. If the local port is in use, increment it up and use the next one.
-            throw new NotImplementedException();
+            bool portExists = ProcessData.LocalPortExists(processes, port);
+            
+            if (portExists)
+            {
+                MapLocalPort(++port);
+            }
+            else
+            {
+                this.connection.LocalPort = port;
+            }
         }
 
         // Gets the file name without the extension
@@ -258,12 +269,12 @@ namespace AweSimConnect.Views
         //Changes the color of a label
         private void LabelColorChanger(Label label, bool valid)
         {
-            label.ForeColor = valid ? Color.Black : Color.Red;
+            label.ForeColor = valid ? Color.Gray : Color.Red;
         }
 
         private void LabelColorChanger(RadioButton radioButton, bool valid)
         {
-            radioButton.ForeColor = valid ? Color.Black : Color.Red;
+            radioButton.ForeColor = valid ? Color.Gray : Color.Red;
         }
         
         
@@ -535,19 +546,15 @@ namespace AweSimConnect.Views
         {
             this.connection.UserName = tbUsername.Text;
         }
-    
-        // When the user modifies the host box, the variable gets set
-        private void tbHost_TextChanged(object sender, EventArgs e)
-        {
-            this.connection.PUAServer = tbHost.Text;
-        }
 
         private void tbPort_TextChanged(object sender, EventArgs e)
         {
             // When the user modifies the redirect port box, set the variable, change label to red if not a valid integer
             try
             {
-                this.connection.LocalPort = int.Parse(tbPort.Text);
+                int port = int.Parse(tbPort.Text);
+                this.connection.RemotePort = port;
+                MapLocalPort(port);
                 LabelColorChanger(lPort, true);
             }
             catch (Exception)
@@ -555,6 +562,11 @@ namespace AweSimConnect.Views
                 LabelColorChanger(lPort, false);
             }
         
+        }
+
+        private void tbHost_TextChanged(object sender, EventArgs e)
+        {
+            this.connection.PUAServer = tbHost.Text;
         }
 
 

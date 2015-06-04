@@ -199,6 +199,7 @@
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTipNoDelay.SetToolTip(this.tbHost, "The host name assigned to your session. (ex. n0103.ten.osc.edu) Get this from you" +
         "r session information on the AweSim Dashboard.");
+            this.tbHost.TextChanged += new System.EventHandler(this.tbHost_TextChanged);
             // 
             // lPort
             // 

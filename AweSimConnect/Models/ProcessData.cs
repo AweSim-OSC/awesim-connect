@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AweSimConnect.Models
 {
@@ -28,6 +29,19 @@ namespace AweSimConnect.Models
         public void Kill()
         {
             Process.Kill();
+        }
+
+        //Static method to check for local ports.
+        public static bool LocalPortExists(List<ProcessData> list, int port)
+        {
+            foreach (ProcessData data in list)
+            {
+                if (data.Connection.LocalPort == port)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

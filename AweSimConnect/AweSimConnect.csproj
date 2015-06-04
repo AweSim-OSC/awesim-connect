@@ -85,6 +85,9 @@
     <Compile Include="Controllers\SFTPController.cs" />
     <Compile Include="Models\PasswordEncryption.cs" />
     <Compile Include="Models\ProcessData.cs" />
+    <Compile Include="Models\TransparentTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\AboutFrm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -15,19 +15,19 @@ namespace AweSimConnect.Views
     /* 
     * TODO Wishlist
     *  
+    * -
     * -Fix for vis nodes 
-    * -Allow user to save password. (External prefs file, encode in base64?)
+    * -Allow user to save password. (External prefs file, use user encryption.)
     * -Save external file locations in prefs to speed up startup.
     * -Hide putty window(s) inside the app (figure out with authentication detection)
-    * -Allow disconnecting based on port
     * -Detect TurboVNC installation
     * -Make sure all network stuff runs async
-    * -Disable connect button if already connected on a port.
     * -Antialiased Font
     * -URI Parsing
     * -Manage multiple tunnels
     * -See if we can tweak ggivnc encoding settings for better performance
     * -Move magic strings to resources
+    * -Allow user to select other ssh host in options.
     * 
     * /
 
@@ -43,10 +43,12 @@ namespace AweSimConnect.Views
         // The version number. The first and second numbers are set in the assembly info. 
         // The third number is the number of days since the year 2000
         // The fourth number is the number of seconds since midnight divided by 2.
-        static readonly String ClientVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        static readonly String ClientTitle = "AweSim Connect v." + ClientVersion;
+        static readonly String CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        static readonly String CLIENT_TITLE = "AweSim Connect v." + CLIENT_VERSION;
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
         static long START_TIME = DateTime.Now.Ticks;
+        private static String SSH_HOST = "oakley.osc.edu";
+
         
         Connection connection;
 
@@ -73,18 +75,47 @@ namespace AweSimConnect.Views
         {
             
             InitializeComponent();
-            this.Text = ClientTitle;
+            this.Text = CLIENT_TITLE;
 
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
+
+
             
         }
         
 
         private void AweSimMain2_Load(object sender, EventArgs e)
         {
+
+            //GUI Setup
             this.CenterToParent();
             this.AcceptButton = bConnect;
+
+            processes = new List<ProcessData>();
+            connection = new Connection();
+            timerMain.Start();
+
+            //Initialize controllers.
+            cbc = new ClipboardController();
+            clc = new ClusterController();
+            pc = new PuTTYController(connection);
+            vc = new VNCController(connection);
+            ftpc = new SFTPController(connection);
+            abtFrm = new AboutFrm(CLIENT_VERSION);
+            
+            // Check for connectivity to the servers
+            LimitedConnectionPopup();
+
+            // For now, I'm using oakley as the SSH host. I'd like to make this user-selectable.
+            this.connection.SSHHost = SSH_HOST;
+
+            // Check to see if there is any valid data on the clipboard on startup.
+            if (cbc.CheckClipboardForAweSim())
+            {
+                Connection clipData = cbc.GetClipboardConnection();
+                UpdateData(clipData);
+            }
         }
 
         //////////////////////////// BUTTONS ////////////////////////////
@@ -181,11 +212,7 @@ namespace AweSimConnect.Views
             return file;
         }
         
-        // When the user modifies the host box, the variable gets set
-        private void tbHost_TextChanged(object sender, EventArgs e)
-        {
-            this.connection.PUAServer = tbHost.Text;
-        }
+        
 
         // When the user modifies the redirect port box, set the variable, change label to red if not a valid integer
         private void tbRedirect_TextChanged(object sender, EventArgs e)
@@ -201,11 +228,7 @@ namespace AweSimConnect.Views
             }
         }
 
-        //Set the username when the user enters text.
-        private void tbUserName_TextChanged(object sender, EventArgs e)
-        {
-            this.connection.UserName = tbUsername.Text;
-        }
+        
 
         // Open a browser window to Awesim Dashboard when user clicks the logo.
         private void pbAweSimLogo_Click(object sender, EventArgs e)
@@ -239,77 +262,19 @@ namespace AweSimConnect.Views
             }
         }
 
-        // Checks the password field and marks the label red if the password is invalid.
-        private void tbVNCPassword_TextChanged(object sender, EventArgs e)
+        
+        //Changes the color of a label
+        private void LabelColorChanger(Label label, bool valid)
         {
-            LabelColorChanger(rbVNC, (connection.SetValidVNCPassword(tbVNCPassword.Text) ? true : false));
+            label.ForeColor = valid ? Color.Black : Color.Red;
         }
 
-        //Changes the color of a label
-        private void LabelColorChanger(Control control, bool valid)
+        private void LabelColorChanger(RadioButton radioButton, bool valid)
         {
-            control.ForeColor = valid ? Color.Black : Color.Red;
+            radioButton.ForeColor = valid ? Color.Black : Color.Red;
         }
         
-        //////////////////////////////////////////////////////
-        // This is the main timer loop for the app.
-        // Handle timed events like connection checking.
-        //////////////////////////////////////////////////////
-        private void timerConnection_Tick(object sender, EventArgs e)
-        {
-            if (secondsElapsed == 0)
-            {
-                ftpc.DetectSFTPPath();
-            }
-
-            // Check for network connectivity every 15 seconds.
-            // Disable the connection button if can not connect to OSC.
-            if (secondsElapsed % 15 == 0)
-            {
-                network_available = NetworkTools.CanTelnetToOakley();
-                EnableTunnelOptions(network_available);
-            }
-
-            // Check for tunnel connectivity every 4 seconds.
-            // Disable the additional connection options if can't connect through the tunnel.
-            if (secondsElapsed % 4 == 0)
-            {
-                tunnel_available = pc.IsPlinkConnected();
-                
-
-                //If the tunnel is connected, enable the button, otherwise disable.
-                EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
-
-                //Enable the VNC and SFTP
-                EnableAdditionalOptions(tunnel_available);
-                
-                //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
-                if (tunnel_available && !pc.IsProcessEmbedded())
-                {
-                    ProcessData pData = new ProcessData(pc.GetThisProcess(), connection);
-                    processes.Add(pData);
-                    pc.EmbedProcess();
-
-                    //TODO: This is the only place these are used right now. Move them up or out if we need to.
-                    //int MAXIMIZE_WINDOW = 3;
-                    int MINIMIZE_WINDOW = 6;
-
-                    ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
-
-                    //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.
-                    //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
-                }
-            }
-
-            if (secondsElapsed % 2 == 0)
-            {
-                sftp_available = ftpc.IsSFTPInstalled();
-
-                EnableSFTPOptions(sftp_available && network_available);
-            }
-
-            secondsElapsed++;
-        }
+        
         
         // Enable the web button if the tunnel is available and a local port is specified
         private void EnableWeb(int port)
@@ -492,11 +457,99 @@ namespace AweSimConnect.Views
         {
             if (abtFrm.IsDisposed)
             {
-                abtFrm = new AboutFrm(ClientVersion);
+                abtFrm = new AboutFrm(CLIENT_VERSION);
             }
             abtFrm.StartPosition = FormStartPosition.CenterScreen;
             abtFrm.Show();
         }
+
+        private void ShowVNCPasswordLabel(bool show)
+        {
+            
+            
+        }
+
+        private void tbVNCPassword_TextChanged(object sender, EventArgs e)
+        {
+            //Hide the password label when there is text in the box.
+            ShowVNCPasswordLabel(tbVNCPassword.Text == ""); 
+            LabelColorChanger(rbVNC, (connection.SetValidVNCPassword(tbVNCPassword.Text) ? true : false));
+        }
+
+        //////////////////////////////////////////////////////
+        // This is the main timer loop for the app.
+        // Handle timed events like connection checking.
+        //////////////////////////////////////////////////////
+        private void timerMain_Tick(object sender, EventArgs e)
+        {
+            if (secondsElapsed == 0)
+            {
+                ftpc.DetectSFTPPath();
+            }
+
+            // Check for network connectivity every 15 seconds.
+            // Disable the connection button if can not connect to OSC.
+            if (secondsElapsed % 15 == 0)
+            {
+                network_available = NetworkTools.CanTelnetToOakley();
+                EnableTunnelOptions(network_available);
+            }
+
+            // Check for tunnel connectivity every 4 seconds.
+            // Disable the additional connection options if can't connect through the tunnel.
+            if (secondsElapsed % 4 == 0)
+            {
+                tunnel_available = pc.IsPlinkConnected();
+
+
+                //If the tunnel is connected, enable the button, otherwise disable.
+                EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
+
+                //Enable the VNC and SFTP
+                EnableAdditionalOptions(tunnel_available);
+
+                //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
+                if (tunnel_available && !pc.IsProcessEmbedded())
+                {
+                    ProcessData pData = new ProcessData(pc.GetThisProcess(), connection);
+                    processes.Add(pData);
+                    pc.EmbedProcess();
+
+                    //TODO: This is the only place these are used right now. Move them up or out if we need to.
+                    //int MAXIMIZE_WINDOW = 3;
+                    int MINIMIZE_WINDOW = 6;
+
+                    ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
+
+                    //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.
+                    //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                }
+            }
+
+            if (secondsElapsed % 2 == 0)
+            {
+                sftp_available = ftpc.IsSFTPInstalled();
+
+                EnableSFTPOptions(sftp_available && network_available);
+            }
+
+            secondsElapsed++;
+
+        }
+
+        
+
+        private void tbUsername_TextChanged(object sender, EventArgs e)
+        {
+            this.connection.UserName = tbUsername.Text;
+        }
+    
+        // When the user modifies the host box, the variable gets set
+        private void tbHost_TextChanged(object sender, EventArgs e)
+        {
+            this.connection.PUAServer = tbHost.Text;
+        }
+
 
 
         /*  Upcoming password save feature 

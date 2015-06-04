@@ -537,6 +537,7 @@ namespace AweSimConnect
         }
 
 
+
         /*  Upcoming password save feature 
 
         // Check the user settings for a username and encrypted password and fill the text boxes.

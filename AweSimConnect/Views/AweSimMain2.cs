@@ -373,14 +373,8 @@ namespace AweSimConnect.Views
         [DllImport("user32.dll")]
         public static extern Int32 SetForegroundWindow(int windowHandle);
 
-        // Used for embedding process into the app
-        [DllImport("user32.dll")]
-        static extern IntPtr SetParent(IntPtr windowChild, IntPtr windowParent);
-
-        // Used for embedding process into the app
-        [DllImport("user32.dll")]
-        [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]
-        static extern bool ShowWindow(IntPtr windowHandle, int command);
+        
+        
 
         // Clipboard monitoring
         [DllImport("user32.dll")]
@@ -575,36 +569,16 @@ namespace AweSimConnect.Views
             // Disable the additional connection options if can't connect through the tunnel.
             if (secondsElapsed % 4 == 0)
             {
-                tunnel_available = pc.IsPlinkConnected();
+                
 
-
+                // TODO Move to panel
                 //If the tunnel is connected, enable the button, otherwise disable.
-                EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
+                //EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
 
+                // TODO Move to panel
                 //Enable the VNC and SFTP
-                EnableAdditionalOptions(true);
-
-
-                //TODO Move this block and associated dll calls into the panel. 
-                /*
-                //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
-                if (tunnel_available && !pc.IsProcessEmbedded())
-                {
-                    ProcessData pData = new ProcessData(pc.GetThisProcess(), connection);
-                    processes.Add(pData);
-                    pc.EmbedProcess();
-
-                    //TODO: This is the only place these are used right now. Move them up or out if we need to.
-                    //int MAXIMIZE_WINDOW = 3;
-                    int MINIMIZE_WINDOW = 6;
-
-                    // TODO: getting an error here
-                    ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
-
-                    //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.
-                    //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
-                }
-                 * */
+                //EnableAdditionalOptions(true);
+                
             }
 
             if (secondsElapsed % 2 == 0)
@@ -710,6 +684,5 @@ namespace AweSimConnect.Views
         }
          
         */
-    
     }
 }

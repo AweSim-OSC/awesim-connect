@@ -396,6 +396,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AweSimMain2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AweSim Connect";
             this.Load += new System.EventHandler(this.AweSimMain2_Load);
             this.gbCredentials.ResumeLayout(false);

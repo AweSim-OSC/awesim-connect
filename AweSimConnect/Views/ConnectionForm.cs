@@ -12,6 +12,7 @@ namespace AweSimConnect.Views
     {
         private Models.Connection connection;
         private string userPass;
+        private ConnectionPanel panel;
         
         internal ConnectionForm(Models.Connection connection, string userPass)
         {
@@ -22,7 +23,13 @@ namespace AweSimConnect.Views
 
         private void ConnectionForm_Load(object sender, EventArgs e)
         {
-            this.Controls.Add(new ConnectionPanel(connection, userPass));
+            panel = new ConnectionPanel(connection, userPass);
+            this.Controls.Add(panel);
+        }
+
+        private void ConnectionForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            panel.buttonDisconnect_Click(sender, e);
         }
     }
 }

@@ -21,12 +21,15 @@ namespace AweSimConnect.Views
             this.userPass = userPass;
         }
 
+        // Form load.
         private void ConnectionForm_Load(object sender, EventArgs e)
         {
             panel = new ConnectionPanel(connection, userPass);
             this.Controls.Add(panel);
+            this.Text = ("Connection to " + connection.PUAServer);
         }
 
+        // Make sure that we disconnect the process in the panel when we close the form.
         private void ConnectionForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             panel.buttonDisconnect_Click(sender, e);

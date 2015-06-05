@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
+    <None Include="Resources\shield.png" />
     <None Include="Resources\setting.png" />
     <None Include="assets\AweSim2Mockup.png" />
     <Content Include="FodyWeavers.xml" />

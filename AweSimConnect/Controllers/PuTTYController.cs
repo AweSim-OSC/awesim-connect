@@ -146,7 +146,10 @@ namespace AweSimConnect.Controllers
 
         public void KillProcess()
         {
-            process.Kill();
+            if (!process.HasExited)
+            {
+                process.Kill();
+            }
         }
     }
 }

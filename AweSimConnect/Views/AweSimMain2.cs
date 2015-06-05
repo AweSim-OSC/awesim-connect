@@ -58,7 +58,7 @@ namespace AweSimConnect.Views
         private ClusterController clc;
         
         private List<ProcessData> processes;
-        private List<Connection> connections; 
+        private List<ConnectionForm> connectionForms; 
 
         private bool network_available = false;
         private bool tunnel_available = false;
@@ -90,7 +90,7 @@ namespace AweSimConnect.Views
             this.AcceptButton = bConnect;
 
             processes = new List<ProcessData>();
-            connections = new List<Connection>();
+            connectionForms = new List<ConnectionForm>();
             connection = new Connection();
             timerMain.Start();
 
@@ -137,9 +137,10 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
-                connections.Add(connection);
+                
                 ConnectionForm connectionForm = new ConnectionForm(connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
+                connectionForms.Add(connectionForm);
                 connectionForm.Show();
             }
         }
@@ -209,15 +210,24 @@ namespace AweSimConnect.Views
         }
         
         // Recursive check and assign localport
-        // TODO this can probably be moved into the model
+        // TODO Look over code. This isn't sticking and I think that the local port is being reset somewhere.
         private void MapLocalPort(int port)
         {
-            bool portExists = Connection.LocalPortExists(connections, port);
-            
-            // If the port was found in the list of processes, increment up and try again.
-            if (portExists)
+            bool exists = false;
+            if (connectionForms.Count > 0)
             {
-                MapLocalPort(++port);
+                foreach (ConnectionForm form in connectionForms)
+                {
+                    if (form.GetConnection().LocalPort == port)
+                        exists = true;
+                }
+            }
+
+            // If the port was found in the list of processes, increment up and try again.
+            if (exists)
+            {
+                port++;
+                MapLocalPort(port);
             }
             else
             {

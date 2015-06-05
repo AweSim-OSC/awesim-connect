@@ -90,9 +90,9 @@
             // pbTunnel
             // 
             this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.cross_gry;
-            this.pbTunnel.Location = new System.Drawing.Point(6, 25);
+            this.pbTunnel.Location = new System.Drawing.Point(6, 18);
             this.pbTunnel.Name = "pbTunnel";
-            this.pbTunnel.Size = new System.Drawing.Size(28, 33);
+            this.pbTunnel.Size = new System.Drawing.Size(43, 44);
             this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbTunnel.TabIndex = 17;
             this.pbTunnel.TabStop = false;

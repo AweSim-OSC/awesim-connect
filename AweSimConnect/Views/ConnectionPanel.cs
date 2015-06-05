@@ -12,6 +12,7 @@ namespace AweSimConnect.Views
     {
         private Connection connection;
         private PuTTYController pc;
+        private VNCController vnc;
 
         private ProcessData processData;
         private string userPass;
@@ -27,13 +28,16 @@ namespace AweSimConnect.Views
             InitializeComponent();
             connection = inputConnection;
             pc = new PuTTYController(connection);
+            vnc = new VNCController(connection);
             pc.StartPlinkProcess(userPass);
             timerConnectionPanel.Start();
         }
 
         internal void buttonDisconnect_Click(object sender, EventArgs e)
         {
+            pc.KillProcess();
             timerConnectionPanel.Stop();
+            tunnel_available = false;
             GetProcessData();
             if (processData.IsRunning())
             {
@@ -60,13 +64,22 @@ namespace AweSimConnect.Views
             {
                 labelSession.Text = "VNC";
                 toolTipConnectionPanel.SetToolTip(buttonConnection, "VNC Connection to " + connection.GetServerAndPort());
-                // TODO implement vnc
+
+                if (pc.IsPlinkConnected())
+                {
+                    vnc.StartVNCProcess();
+                }
             }
         }
 
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
-            if (ticks%30 == 0)
+            if ((ticks == 15) && tunnel_available)
+            {
+                buttonConnection_Click(sender, e);
+            }
+
+            if ((ticks % 30 == 0) || (ticks == 3))
             {
                 CheckTunnel();
                 EmbedProcess();
@@ -75,21 +88,21 @@ namespace AweSimConnect.Views
                 EnableConnectedFeatures(tunnel_available);
             }
 
-            
-            
             ticks++;
         }
 
         private void EnableConnectedFeatures(bool tunnel_available)
         {
-            pbTunnel.Image = (tunnel_available) ? Resources.check_gry : Resources.cross_gry;
-            toolTipConnectionPanel.SetToolTip(pbTunnel, (tunnel_available) ? "Secure Tunnel Active" : "Secure Tunnel Disconnected");
+            pbTunnel.Image = (tunnel_available) ? Resources.shield : Resources.cross_gry;
+            toolTipConnectionPanel.SetToolTip(pbTunnel, (tunnel_available) ? "Secure Tunnel Detected" : "Secure Tunnel Disconnected");
             buttonConnection.Enabled = tunnel_available;
         }
 
         private void CheckTunnel()
         {
-            tunnel_available = pc.IsPlinkConnected();
+
+            //TODO Fix this. Keeps returning true after plink is closed.
+            tunnel_available = (pc.IsPlinkConnected() && pc.IsPlinkRunning());
         }
 
         internal ProcessData GetProcessData()
@@ -122,8 +135,6 @@ namespace AweSimConnect.Views
 
                 //TODO This command will embed the putty process in the main window. 
                 SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
-
-
             }
         }
 

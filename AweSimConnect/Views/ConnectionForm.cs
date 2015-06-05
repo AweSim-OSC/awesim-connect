@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using AweSimConnect.Models;
 
 namespace AweSimConnect.Views
 {
@@ -19,6 +20,11 @@ namespace AweSimConnect.Views
             InitializeComponent();
             this.connection = connection;
             this.userPass = userPass;
+        }
+
+        internal Connection GetConnection()
+        {
+            return connection;
         }
 
         // Form load.

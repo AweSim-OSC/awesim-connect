@@ -123,7 +123,7 @@ namespace AweSimConnect.Views
         {
             try
             {
-                Process.Start(AWESIM_DASHBOARD_URL);
+                WebTools.LaunchBrowser(AWESIM_DASHBOARD_URL);
             }
             catch (Exception)
             {

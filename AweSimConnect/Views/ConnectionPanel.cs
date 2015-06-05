@@ -53,7 +53,7 @@ namespace AweSimConnect.Views
                 toolTipConnectionPanel.SetToolTip(buttonConnection, "Connect to" + connection.GetServerAndPort());
                 try
                 {
-                    Process.Start("http://localhost:" + connection.LocalPort);
+                    WebTools.LaunchLocalhostBrowser(connection.LocalPort);
                 }
                 catch (Exception)
                 {
@@ -102,7 +102,7 @@ namespace AweSimConnect.Views
         {
 
             //TODO Fix this. Keeps returning true after plink is closed.
-            tunnel_available = (pc.IsPlinkConnected() && pc.IsPlinkRunning());
+            tunnel_available = pc.IsPlinkConnected();
         }
 
         internal ProcessData GetProcessData()
@@ -131,10 +131,10 @@ namespace AweSimConnect.Views
                 int MINIMIZE_WINDOW = 6;
 
                 // This command minimizes instead of hiding the window.
-                //ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
+                ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
                 //TODO This command will embed the putty process in the main window. 
-                SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
             }
         }
 

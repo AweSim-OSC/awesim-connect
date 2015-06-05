@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
@@ -49,7 +46,7 @@ namespace AweSimConnect.Views
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
         static long START_TIME = DateTime.Now.Ticks;
         private static String SSH_HOST = "oakley.osc.edu";
-        
+        private static String BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
 
         
         Connection connection;
@@ -122,7 +119,15 @@ namespace AweSimConnect.Views
         // Open a browser window to Awesim Dashboard when user clicks the logo.
         private void bDashboard_Click(object sender, EventArgs e)
         {
-            Process.Start(AWESIM_DASHBOARD_URL);
+            try
+            {
+                Process.Start(AWESIM_DASHBOARD_URL);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(BROWSER_ERROR + AWESIM_DASHBOARD_URL, "Browser not found", MessageBoxButtons.OK);
+            }
+            
         }
 
 
@@ -130,7 +135,8 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
-                ConnectionForm connectionForm = new ConnectionForm(connection);
+                ConnectionForm connectionForm = new ConnectionForm(connection, tbPassword.Text);
+                connectionForm.StartPosition = FormStartPosition.CenterScreen;
                 connectionForm.Show();
 
                 //TODO Move this to external panel
@@ -220,7 +226,7 @@ namespace AweSimConnect.Views
             }
         }
 
-        // Gets the file name without the extension
+        // Gets the file name of the application without the extension
         // Arg 0 is always the file path.
         private string getFileName()
         {
@@ -229,12 +235,6 @@ namespace AweSimConnect.Views
             file = System.IO.Path.GetFileNameWithoutExtension(pathArgs[0]);
             return file;
         }
-        
-        
-
-        
-
-        
 
         // Open a browser window to Awesim Dashboard when user clicks the logo.
         private void pbAweSimLogo_Click(object sender, EventArgs e)
@@ -337,6 +337,16 @@ namespace AweSimConnect.Views
         private void EnableSFTPOptions(bool enable)
         {
             bSFTP.Enabled = enable;
+
+            if (enable)
+            {
+                toolTipNoDelay.SetToolTip(bSFTP,
+                    "File Transfer. A supported SFTP client has been detected. Click here to launch.");
+            }
+            else
+            {
+                toolTipNoDelay.SetToolTip(bSFTP, "No supported SFTP client detected.");
+            }
         }
         
         // Handles the click for the web button.
@@ -410,6 +420,7 @@ namespace AweSimConnect.Views
             }
         }
 
+        // If the clipboard has fresh and valid dataset, populate the fields.
         private void PopulateFromClipboard()
         {
             if (cbc != null)
@@ -482,6 +493,9 @@ namespace AweSimConnect.Views
                         else if (rbCOMSOL.Checked)
                         {
                             gbVNCPassword.Visible = false;
+                            tbVNCPassword.Text = "";
+                            LabelColorChanger(gbVNCPassword, true);
+
                             if ((tbHost.Text != "") && (tbPort.Text != ""))
                             {
                                 bConnect.Visible = true;
@@ -570,6 +584,9 @@ namespace AweSimConnect.Views
                 //Enable the VNC and SFTP
                 EnableAdditionalOptions(true);
 
+
+                //TODO Move this block and associated dll calls into the panel. 
+                /*
                 //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
                 if (tunnel_available && !pc.IsProcessEmbedded())
                 {
@@ -587,6 +604,7 @@ namespace AweSimConnect.Views
                     //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.
                     //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
                 }
+                 * */
             }
 
             if (secondsElapsed % 2 == 0)
@@ -635,7 +653,6 @@ namespace AweSimConnect.Views
             {
                 abtFrm = new AboutFrm(CLIENT_VERSION);
             }
-            abtFrm.StartPosition = FormStartPosition.CenterScreen;
             abtFrm.Show();
         }
 

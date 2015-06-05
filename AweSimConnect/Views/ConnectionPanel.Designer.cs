@@ -48,9 +48,9 @@
             this.buttonConnection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnection.Image = global::AweSimConnect.Properties.Resources.monitor;
-            this.buttonConnection.Location = new System.Drawing.Point(351, 17);
+            this.buttonConnection.Location = new System.Drawing.Point(251, 11);
             this.buttonConnection.Name = "buttonConnection";
-            this.buttonConnection.Size = new System.Drawing.Size(106, 57);
+            this.buttonConnection.Size = new System.Drawing.Size(70, 57);
             this.buttonConnection.TabIndex = 23;
             this.buttonConnection.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonConnection.UseVisualStyleBackColor = true;
@@ -62,9 +62,9 @@
             this.buttonDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDisconnect.Image = global::AweSimConnect.Properties.Resources.plug;
-            this.buttonDisconnect.Location = new System.Drawing.Point(476, 17);
+            this.buttonDisconnect.Location = new System.Drawing.Point(327, 11);
             this.buttonDisconnect.Name = "buttonDisconnect";
-            this.buttonDisconnect.Size = new System.Drawing.Size(103, 57);
+            this.buttonDisconnect.Size = new System.Drawing.Size(70, 57);
             this.buttonDisconnect.TabIndex = 22;
             this.buttonDisconnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonDisconnect.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             this.labelSession.AutoSize = true;
             this.labelSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSession.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelSession.Location = new System.Drawing.Point(111, 17);
+            this.labelSession.Location = new System.Drawing.Point(40, 11);
             this.labelSession.Name = "labelSession";
             this.labelSession.Size = new System.Drawing.Size(210, 24);
             this.labelSession.TabIndex = 18;
@@ -87,10 +87,10 @@
             // 
             // pbTunnel
             // 
-            this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.redlight;
-            this.pbTunnel.Location = new System.Drawing.Point(34, 23);
+            this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.cross_gry;
+            this.pbTunnel.Location = new System.Drawing.Point(3, 17);
             this.pbTunnel.Name = "pbTunnel";
-            this.pbTunnel.Size = new System.Drawing.Size(51, 41);
+            this.pbTunnel.Size = new System.Drawing.Size(28, 33);
             this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbTunnel.TabIndex = 17;
             this.pbTunnel.TabStop = false;
@@ -103,7 +103,7 @@
             this.lRunTime.AutoSize = true;
             this.lRunTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lRunTime.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lRunTime.Location = new System.Drawing.Point(108, 50);
+            this.lRunTime.Location = new System.Drawing.Point(37, 44);
             this.lRunTime.Name = "lRunTime";
             this.lRunTime.Size = new System.Drawing.Size(217, 24);
             this.lRunTime.TabIndex = 24;
@@ -115,13 +115,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.buttonConnection);
             this.Controls.Add(this.lRunTime);
             this.Controls.Add(this.pbTunnel);
-            this.Controls.Add(this.buttonConnection);
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.labelSession);
             this.Name = "ConnectionPanel";
-            this.Size = new System.Drawing.Size(607, 86);
+            this.Size = new System.Drawing.Size(400, 80);
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

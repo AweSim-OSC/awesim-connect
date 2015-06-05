@@ -11,17 +11,18 @@ namespace AweSimConnect.Views
     public partial class ConnectionForm : Form
     {
         private Models.Connection connection;
+        private string userPass;
         
-        internal ConnectionForm(Models.Connection connection)
+        internal ConnectionForm(Models.Connection connection, string userPass)
         {
             InitializeComponent();
             this.connection = connection;
-           
+            this.userPass = userPass;
         }
 
         private void ConnectionForm_Load(object sender, EventArgs e)
         {
-            this.Controls.Add(new ConnectionPanel(connection));
+            this.Controls.Add(new ConnectionPanel(connection, userPass));
         }
     }
 }

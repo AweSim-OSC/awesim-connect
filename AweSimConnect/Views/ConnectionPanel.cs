@@ -10,16 +10,23 @@ namespace AweSimConnect.Views
         private Connection connection;
         private PuTTYController pc;
 
-        internal ConnectionPanel(Connection inputConnection)
+        private ProcessData processData;
+        private string userPass;
+        
+        internal ConnectionPanel(Connection inputConnection, string userPass)
         {
             InitializeComponent();
             connection = inputConnection;
-            labelSession.Text = connection.GetServerAndPort();
+            pc = new PuTTYController(connection);
+            pc.StartPlinkProcess(userPass);
         }
 
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
-
+            if (processData.IsRunning())
+            {
+                processData.Process.Kill();
+            }
         }
 
         private void buttonConnection_Click(object sender, EventArgs e)
@@ -30,6 +37,11 @@ namespace AweSimConnect.Views
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        internal ProcessData GetProcessData()
+        {
+            return processData;
         }
     }
 }

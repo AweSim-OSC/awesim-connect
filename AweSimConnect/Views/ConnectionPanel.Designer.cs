@@ -36,6 +36,7 @@
             this.pbTunnel = new System.Windows.Forms.PictureBox();
             this.lRunTime = new System.Windows.Forms.Label();
             this.panelProcesses = new System.Windows.Forms.Panel();
+            this.toolTipConnectionPanel = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             this.buttonConnection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnection.Image = global::AweSimConnect.Properties.Resources.monitor;
-            this.buttonConnection.Location = new System.Drawing.Point(251, 11);
+            this.buttonConnection.Location = new System.Drawing.Point(290, 12);
             this.buttonConnection.Name = "buttonConnection";
             this.buttonConnection.Size = new System.Drawing.Size(70, 57);
             this.buttonConnection.TabIndex = 23;
@@ -60,12 +61,12 @@
             // buttonDisconnect
             // 
             this.buttonDisconnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonDisconnect.BackgroundImage = global::AweSimConnect.Properties.Resources.plug;
             this.buttonDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDisconnect.Image = global::AweSimConnect.Properties.Resources.plug;
-            this.buttonDisconnect.Location = new System.Drawing.Point(327, 11);
+            this.buttonDisconnect.Location = new System.Drawing.Point(366, 25);
             this.buttonDisconnect.Name = "buttonDisconnect";
-            this.buttonDisconnect.Size = new System.Drawing.Size(70, 57);
+            this.buttonDisconnect.Size = new System.Drawing.Size(28, 28);
             this.buttonDisconnect.TabIndex = 22;
             this.buttonDisconnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonDisconnect.UseVisualStyleBackColor = true;
@@ -79,7 +80,7 @@
             this.labelSession.AutoSize = true;
             this.labelSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSession.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelSession.Location = new System.Drawing.Point(40, 12);
+            this.labelSession.Location = new System.Drawing.Point(58, 12);
             this.labelSession.Name = "labelSession";
             this.labelSession.Size = new System.Drawing.Size(210, 24);
             this.labelSession.TabIndex = 18;
@@ -104,7 +105,7 @@
             this.lRunTime.AutoSize = true;
             this.lRunTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lRunTime.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lRunTime.Location = new System.Drawing.Point(37, 45);
+            this.lRunTime.Location = new System.Drawing.Point(55, 45);
             this.lRunTime.Name = "lRunTime";
             this.lRunTime.Size = new System.Drawing.Size(217, 24);
             this.lRunTime.TabIndex = 24;
@@ -113,10 +114,15 @@
             // 
             // panelProcesses
             // 
-            this.panelProcesses.Location = new System.Drawing.Point(318, 75);
+            this.panelProcesses.Location = new System.Drawing.Point(393, 74);
             this.panelProcesses.Name = "panelProcesses";
             this.panelProcesses.Size = new System.Drawing.Size(200, 100);
             this.panelProcesses.TabIndex = 25;
+            // 
+            // toolTipConnectionPanel
+            // 
+            this.toolTipConnectionPanel.AutomaticDelay = 100;
+            this.toolTipConnectionPanel.BackColor = System.Drawing.SystemColors.HighlightText;
             // 
             // ConnectionPanel
             // 
@@ -146,5 +152,6 @@
         private System.Windows.Forms.PictureBox pbTunnel;
         private System.Windows.Forms.Label lRunTime;
         private System.Windows.Forms.Panel panelProcesses;
+        private System.Windows.Forms.ToolTip toolTipConnectionPanel;
     }
 }

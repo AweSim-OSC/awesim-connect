@@ -34,13 +34,17 @@ namespace AweSimConnect.Models
         //Static method to check for local ports.
         public static bool LocalPortExists(List<ProcessData> list, int port)
         {
-            foreach (ProcessData data in list)
+            if (list.Count > 0)
             {
-                if (data.Connection.LocalPort == port)
+                foreach (ProcessData data in list)
                 {
-                    return true;
+                    if (data.Connection.LocalPort == port)
+                    {
+                        return true;
+                    }
                 }
             }
+            
             return false;
         }
     }

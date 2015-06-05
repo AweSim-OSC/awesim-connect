@@ -195,8 +195,8 @@
             // 
             // tbVNCPassword
             // 
-            this.tbVNCPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbVNCPassword.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.tbVNCPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbVNCPassword.ForeColor = System.Drawing.SystemColors.WindowText;
             this.tbVNCPassword.Location = new System.Drawing.Point(28, 15);
             this.tbVNCPassword.MaxLength = 8;
             this.tbVNCPassword.Name = "tbVNCPassword";
@@ -398,6 +398,7 @@
             this.Name = "AweSimMain2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AweSim Connect";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AweSimMain_FormClosing);
             this.Load += new System.EventHandler(this.AweSimMain2_Load);
             this.gbCredentials.ResumeLayout(false);
             this.gbCredentials.PerformLayout();

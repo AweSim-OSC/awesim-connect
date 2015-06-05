@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AweSimConnect.Models
 {
@@ -37,34 +38,36 @@ namespace AweSimConnect.Models
         public String UserName { get; set; }
 
         // EX: XD4F893S
-        private String _vncPassword;
-        public String VNCPassword
-        {
-            get
-            {
-                if (_vncPassword.Length > 8)
-                {
-                    throw new ArgumentException("VNC Passwords are 8 characters");
-                }
-                return _vncPassword;
-            }
-            set
-            {
-                    _vncPassword = value;                
-            }
-        }
+        public String VNCPassword { get; set; }
 
         public bool SetValidVNCPassword(String pass)
         {
             if (pass.Length == 8)
             {
-                _vncPassword = pass;
+                VNCPassword = pass;
                 return true;
             }
             else
             {
+                VNCPassword = "";
                 return false;
             }
+        }
+
+        //Static method to check for local ports.
+        public static bool LocalPortExists(List<Connection> list, int port)
+        {
+            if (list.Count > 0)
+            {
+                foreach (Connection data in list)
+                {
+                    if (data.LocalPort == port)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

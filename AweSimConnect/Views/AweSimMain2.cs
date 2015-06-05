@@ -57,7 +57,8 @@ namespace AweSimConnect.Views
         private ClipboardController cbc;
         private ClusterController clc;
         
-        private List<ProcessData> processes; 
+        private List<ProcessData> processes;
+        private List<Connection> connections; 
 
         private bool network_available = false;
         private bool tunnel_available = false;
@@ -89,6 +90,7 @@ namespace AweSimConnect.Views
             this.AcceptButton = bConnect;
 
             processes = new List<ProcessData>();
+            connections = new List<Connection>();
             connection = new Connection();
             timerMain.Start();
 
@@ -135,13 +137,10 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
+                connections.Add(connection);
                 ConnectionForm connectionForm = new ConnectionForm(connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
                 connectionForm.Show();
-
-                //TODO Move this to external panel
-                //pc = new PuTTYController(this.connection);
-                //pc.StartPlinkProcess(tbPassword.Text);
             }
         }
 
@@ -213,7 +212,7 @@ namespace AweSimConnect.Views
         // TODO this can probably be moved into the model
         private void MapLocalPort(int port)
         {
-            bool portExists = ProcessData.LocalPortExists(processes, port);
+            bool portExists = Connection.LocalPortExists(connections, port);
             
             // If the port was found in the list of processes, increment up and try again.
             if (portExists)
@@ -565,21 +564,6 @@ namespace AweSimConnect.Views
                 EnableTunnelOptions(network_available);
             }
 
-            // Check for tunnel connectivity every 4 seconds.
-            // Disable the additional connection options if can't connect through the tunnel.
-            if (secondsElapsed % 4 == 0)
-            {
-                
-
-                // TODO Move to panel
-                //If the tunnel is connected, enable the button, otherwise disable.
-                //EnableWeb(tunnel_available ? pc.Connection.LocalPort : 0);
-
-                // TODO Move to panel
-                //Enable the VNC and SFTP
-                //EnableAdditionalOptions(true);
-                
-            }
 
             if (secondsElapsed % 2 == 0)
             {
@@ -633,13 +617,13 @@ namespace AweSimConnect.Views
         private void rbVNC_CheckedChanged(object sender, EventArgs e)
         {
             tbPort.Enabled = true;
-            tbPort.Text = Connection.VNC_DISPLAY_DEFAULT.ToString();
+            tbPort.Text = ""+Connection.VNC_DISPLAY_DEFAULT;
         }
 
         private void rbCOMSOL_CheckedChanged(object sender, EventArgs e)
         {
             tbPort.Enabled = false;
-            tbPort.Text = Connection.COMSOL_SERVER_PORT.ToString();
+            tbPort.Text = ""+Connection.COMSOL_SERVER_PORT.ToString();
         }
 
 

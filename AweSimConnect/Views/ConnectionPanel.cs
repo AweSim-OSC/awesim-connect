@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
+using AweSimConnect.Properties;
 
 namespace AweSimConnect.Views
 {
@@ -19,6 +20,7 @@ namespace AweSimConnect.Views
 
         private int ticks = 0;
         private bool tunnel_available;
+        private bool is_vnc;
         
         internal ConnectionPanel(Connection inputConnection, string userPass)
         {
@@ -41,7 +43,25 @@ namespace AweSimConnect.Views
 
         private void buttonConnection_Click(object sender, EventArgs e)
         {
-            
+            if (String.IsNullOrEmpty(connection.VNCPassword))
+            {
+                labelSession.Text = "Browser";
+                toolTipConnectionPanel.SetToolTip(buttonConnection, "Connect to" + connection.GetServerAndPort());
+                try
+                {
+                    Process.Start("http://localhost:" + connection.LocalPort);
+                }
+                catch (Exception)
+                {
+                    //TODO pop up a message or find a better way to open a browser.
+                }
+            }
+            else
+            {
+                labelSession.Text = "VNC";
+                toolTipConnectionPanel.SetToolTip(buttonConnection, "VNC Connection to " + connection.GetServerAndPort());
+                // TODO implement vnc
+            }
         }
 
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
@@ -50,10 +70,21 @@ namespace AweSimConnect.Views
             {
                 CheckTunnel();
                 EmbedProcess();
+                
+                //If the tunnel is connected, enable the buttons, otherwise disable.
+                EnableConnectedFeatures(tunnel_available);
             }
+
             
-            labelSession.Text = ticks.ToString();
+            
             ticks++;
+        }
+
+        private void EnableConnectedFeatures(bool tunnel_available)
+        {
+            pbTunnel.Image = (tunnel_available) ? Resources.check_gry : Resources.cross_gry;
+            toolTipConnectionPanel.SetToolTip(pbTunnel, (tunnel_available) ? "Secure Tunnel Active" : "Secure Tunnel Disconnected");
+            buttonConnection.Enabled = tunnel_available;
         }
 
         private void CheckTunnel()
@@ -86,10 +117,10 @@ namespace AweSimConnect.Views
                 //int MAXIMIZE_WINDOW = 3;
                 int MINIMIZE_WINDOW = 6;
 
-                // TODO: getting an error here
+                // This command minimizes instead of hiding the window.
                 //ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
-                //TODO This command will embed the putty process in the main window. Hold off implementing until I can figure out how to test if tunnel is authenticated.
+                //TODO This command will embed the putty process in the main window. 
                 SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
 
 

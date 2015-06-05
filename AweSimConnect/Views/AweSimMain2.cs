@@ -49,6 +49,7 @@ namespace AweSimConnect.Views
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
         static long START_TIME = DateTime.Now.Ticks;
         private static String SSH_HOST = "oakley.osc.edu";
+        
 
         
         Connection connection;
@@ -70,7 +71,6 @@ namespace AweSimConnect.Views
         private bool sftp_available;
         private AboutFrm abtFrm;
 
-        
 
         public AweSimMain2()
         {
@@ -80,9 +80,7 @@ namespace AweSimConnect.Views
 
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
-
-
-            
+        
         }
         
 
@@ -452,31 +450,39 @@ namespace AweSimConnect.Views
         }
 
         // Provides a user workflow
+        // TODO Clean this up and eliminate duplication.
         private void displayGroupBoxes()
         {
+            
             if (network_available)
             {
                 gbCredentials.Visible = true;
 
                 if ((tbUsername.Text != "") && (tbPassword.Text != ""))
                 {
-                    gbSessionInfo.Visible = true;
+                    gbSessionType.Visible = true;
                     bSFTP.Visible = true;
 
-                    if ((tbHost.Text != "") && (tbPort.Text != ""))
-                    {
-                        gbSessionType.Visible = true;
+                    if (rbVNC.Checked || rbCOMSOL.Checked)
+                    { 
+                        gbSessionInfo.Visible = true;
 
-                        if (rbCOMSOL.Checked)
-                        {
-                            bConnect.Visible = true;
-                            gbVNCPassword.Visible = false;
-                        }
-                        else if (rbVNC.Checked)
+                        if (rbVNC.Checked)
                         {
                             gbVNCPassword.Visible = true;
-
-                            if (tbVNCPassword.Text != "")
+                            if ((tbHost.Text != "") && (tbPort.Text != "") && (tbVNCPassword.Text != ""))
+                            {
+                                bConnect.Visible = true;
+                            }
+                            else
+                            {
+                                bConnect.Visible = false;
+                            }
+                        }
+                        else if (rbCOMSOL.Checked)
+                        {
+                            gbVNCPassword.Visible = false;
+                            if ((tbHost.Text != "") && (tbPort.Text != ""))
                             {
                                 bConnect.Visible = true;
                             }
@@ -488,7 +494,7 @@ namespace AweSimConnect.Views
                     }
                     else
                     {
-                        gbSessionType.Visible = false;
+                        gbSessionInfo.Visible = false;
                         gbVNCPassword.Visible = false;
                         bConnect.Visible = false;
                     }
@@ -631,6 +637,18 @@ namespace AweSimConnect.Views
             }
             abtFrm.StartPosition = FormStartPosition.CenterScreen;
             abtFrm.Show();
+        }
+
+        private void rbVNC_CheckedChanged(object sender, EventArgs e)
+        {
+            tbPort.Enabled = true;
+            tbPort.Text = Connection.VNC_DISPLAY_DEFAULT.ToString();
+        }
+
+        private void rbCOMSOL_CheckedChanged(object sender, EventArgs e)
+        {
+            tbPort.Enabled = false;
+            tbPort.Text = Connection.COMSOL_SERVER_PORT.ToString();
         }
 
 

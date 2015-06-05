@@ -7,6 +7,9 @@ namespace AweSimConnect.Models
     /// </summary>
     class Connection
     {
+        public static int COMSOL_SERVER_PORT = 2036;
+        public static int VNC_DISPLAY_DEFAULT = 5901;
+
         //TODO: Add some handling to ensure inputs at least look valid.
         //TODO: PUA server regex match ten.osc.edu?
         //TODO: SSHHost match *.osc.edu?

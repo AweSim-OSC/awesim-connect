@@ -14,11 +14,10 @@ namespace AweSimConnect.Views
         private PuTTYController pc;
         private VNCController vnc;
 
-        private ProcessData processData;
         private string userPass;
 
-        private Stopwatch stopwatch = new Stopwatch();
-
+        public Form Parent_Form { get; set; }
+        
         private int ticks = 0;
         private bool tunnel_available;
         private bool is_vnc;
@@ -31,22 +30,25 @@ namespace AweSimConnect.Views
             vnc = new VNCController(connection);
             pc.StartPlinkProcess(userPass);
             timerConnectionPanel.Start();
-            stopwatch.Start();
             is_vnc = (connection.VNCPassword != "");
-            GetProcessData();
         }
 
         internal void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            pc.KillProcess();
-            timerConnectionPanel.Stop();
-            stopwatch.Stop();
-            tunnel_available = false;
-            GetProcessData();
-            if (processData.IsRunning())
+            KillProcess();
+            if (Parent_Form != null)
             {
-                processData.Process.Kill();
-                
+                Parent_Form.Close();
+            }
+        }
+
+        internal void KillProcess()
+        {
+            pc.KillProcess();
+            tunnel_available = false;
+            if (pc.IsPlinkRunning())
+            {
+                pc.KillProcess();
             }
         }
 
@@ -88,13 +90,7 @@ namespace AweSimConnect.Views
         private void CheckTunnel()
         {
             //TODO Fix this. Keeps returning true after plink is closed.
-            tunnel_available = pc.IsPlinkConnected();
-        }
-
-        internal ProcessData GetProcessData()
-        {
-            processData = new ProcessData(pc.GetThisProcess(), connection);
-            return processData;
+            tunnel_available = (pc.IsPlinkConnected() && pc.IsPlinkRunning());
         }
 
         //TODO Move this block and associated dll calls into the panel. 
@@ -131,7 +127,7 @@ namespace AweSimConnect.Views
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
             //TODO test string
-            lRunTime.Text = FileController.IsProcessRunning(pc.GetThisProcess().Id).ToString();
+            lRunTime.Text = ""+ticks;
 
             if ((ticks == 15) && tunnel_available)
             {

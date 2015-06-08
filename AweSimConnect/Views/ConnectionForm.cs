@@ -31,6 +31,7 @@ namespace AweSimConnect.Views
         private void ConnectionForm_Load(object sender, EventArgs e)
         {
             panel = new ConnectionPanel(connection, userPass);
+            panel.Parent_Form = this;
             this.Controls.Add(panel);
             this.Text = (connection.GetServerAndPort());
         }
@@ -38,6 +39,7 @@ namespace AweSimConnect.Views
         // Make sure that we disconnect the process in the panel when we close the form.
         private void ConnectionForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            panel.Parent_Form = null;
             panel.buttonDisconnect_Click(sender, e);
         }
     }

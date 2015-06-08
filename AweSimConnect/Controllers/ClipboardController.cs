@@ -9,7 +9,7 @@ namespace AweSimConnect.Controllers
     /// This controller is used to manage clipboard actions and parsing. 
     /// All flags are optional
     /// JSON object tags are based on the Connection Model.
-    /*  
+    /* 
        Example json:
      
         {
@@ -20,7 +20,7 @@ namespace AweSimConnect.Controllers
             'UserName': 'bmcmichael',
             'VNCPassword': 'XXXXXXXX'
         }  
-     * 
+      
      * Minified option:
      
         {
@@ -31,7 +31,7 @@ namespace AweSimConnect.Controllers
         } 
      
         For example, the web app can output the following string for this work:
-            {'H':'n0580.ten.osc.edu','R': '5901','U':'bmcmichael','V':'XXXXXXXX'}
+            {'H':'n0580.ten.osc.edu','R':'5901','U':'bmcmichael','V':'XXXXXXXX'}
      * 
      */
     /// </summary>

@@ -48,19 +48,19 @@
             this.bConnect = new System.Windows.Forms.Button();
             this.bSFTP = new System.Windows.Forms.Button();
             this.bDashboard = new System.Windows.Forms.Button();
+            this.pbAbout = new System.Windows.Forms.PictureBox();
             this.gbSessionType = new System.Windows.Forms.GroupBox();
             this.gbVNCPassword = new System.Windows.Forms.GroupBox();
             this.gbSystem = new System.Windows.Forms.GroupBox();
             this.pbIsNetworkConnected = new System.Windows.Forms.PictureBox();
-            this.pbAbout = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.gbCredentials.SuspendLayout();
             this.gbSessionInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).BeginInit();
             this.gbSessionType.SuspendLayout();
             this.gbVNCPassword.SuspendLayout();
             this.gbSystem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIsNetworkConnected)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,11 +213,11 @@
             this.rbVNC.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.rbVNC.Location = new System.Drawing.Point(6, 17);
             this.rbVNC.Name = "rbVNC";
-            this.rbVNC.Size = new System.Drawing.Size(89, 17);
+            this.rbVNC.Size = new System.Drawing.Size(117, 17);
             this.rbVNC.TabIndex = 4;
             this.rbVNC.TabStop = true;
             this.rbVNC.Tag = "VNC Radio Button";
-            this.rbVNC.Text = "iHPC Session";
+            this.rbVNC.Text = "iHPC VNC Desktop";
             this.toolTipNoDelay.SetToolTip(this.rbVNC, "Click this button to access an iHPC/VNC Session");
             this.rbVNC.UseVisualStyleBackColor = true;
             this.rbVNC.CheckedChanged += new System.EventHandler(this.rbVNC_CheckedChanged);
@@ -228,11 +228,11 @@
             this.rbCOMSOL.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.rbCOMSOL.Location = new System.Drawing.Point(6, 37);
             this.rbCOMSOL.Name = "rbCOMSOL";
-            this.rbCOMSOL.Size = new System.Drawing.Size(144, 17);
+            this.rbCOMSOL.Size = new System.Drawing.Size(130, 17);
             this.rbCOMSOL.TabIndex = 5;
             this.rbCOMSOL.TabStop = true;
             this.rbCOMSOL.Tag = "COMSOL Radio Box";
-            this.rbCOMSOL.Text = "COMSOL Server Session";
+            this.rbCOMSOL.Text = "COMSOL Server Web";
             this.toolTipNoDelay.SetToolTip(this.rbCOMSOL, "Click this button if you requested a browser-based COMSOL Server session.");
             this.rbCOMSOL.UseVisualStyleBackColor = true;
             this.rbCOMSOL.CheckedChanged += new System.EventHandler(this.rbCOMSOL_CheckedChanged);
@@ -308,6 +308,19 @@
             this.bDashboard.UseVisualStyleBackColor = false;
             this.bDashboard.Click += new System.EventHandler(this.bDashboard_Click);
             // 
+            // pbAbout
+            // 
+            this.pbAbout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbAbout.Image = global::AweSimConnect.Properties.Resources.info_gry;
+            this.pbAbout.Location = new System.Drawing.Point(121, 12);
+            this.pbAbout.Name = "pbAbout";
+            this.pbAbout.Size = new System.Drawing.Size(22, 22);
+            this.pbAbout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAbout.TabIndex = 0;
+            this.pbAbout.TabStop = false;
+            this.toolTipNoDelay.SetToolTip(this.pbAbout, "About");
+            this.pbAbout.Click += new System.EventHandler(this.pbAbout_Click);
+            // 
             // gbSessionType
             // 
             this.gbSessionType.Controls.Add(this.rbCOMSOL);
@@ -353,19 +366,6 @@
             this.pbIsNetworkConnected.TabIndex = 1;
             this.pbIsNetworkConnected.TabStop = false;
             // 
-            // pbAbout
-            // 
-            this.pbAbout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbAbout.Image = global::AweSimConnect.Properties.Resources.info_gry;
-            this.pbAbout.Location = new System.Drawing.Point(121, 12);
-            this.pbAbout.Name = "pbAbout";
-            this.pbAbout.Size = new System.Drawing.Size(22, 22);
-            this.pbAbout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbAbout.TabIndex = 0;
-            this.pbAbout.TabStop = false;
-            this.toolTipNoDelay.SetToolTip(this.pbAbout, "About");
-            this.pbAbout.Click += new System.EventHandler(this.pbAbout_Click);
-            // 
             // pbLogo
             // 
             this.pbLogo.BackColor = System.Drawing.Color.Transparent;
@@ -404,13 +404,13 @@
             this.gbCredentials.PerformLayout();
             this.gbSessionInfo.ResumeLayout(false);
             this.gbSessionInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).EndInit();
             this.gbSessionType.ResumeLayout(false);
             this.gbSessionType.PerformLayout();
             this.gbVNCPassword.ResumeLayout(false);
             this.gbVNCPassword.PerformLayout();
             this.gbSystem.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbIsNetworkConnected)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAbout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 

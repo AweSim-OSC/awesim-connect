@@ -31,6 +31,7 @@ namespace AweSimConnect.Views
             vnc = new VNCController(connection);
             pc.StartPlinkProcess(userPass);
             timerConnectionPanel.Start();
+            is_vnc = String.IsNullOrEmpty(connection.VNCPassword);
         }
 
         internal void buttonDisconnect_Click(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace AweSimConnect.Views
 
         private void buttonConnection_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(connection.VNCPassword))
+            if (!is_vnc)
             {
                 labelSession.Text = "Browser";
                 toolTipConnectionPanel.SetToolTip(buttonConnection, "Connect to" + connection.GetServerAndPort());
@@ -67,6 +68,7 @@ namespace AweSimConnect.Views
 
                 if (pc.IsPlinkConnected())
                 {
+                    
                     vnc.StartVNCProcess();
                 }
             }
@@ -74,9 +76,14 @@ namespace AweSimConnect.Views
 
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
+            //TODO test string
+                lRunTime.Text = FileController.IsProcessRunning(pc.GetThisProcess().Id).ToString();
+
             if ((ticks == 15) && tunnel_available)
             {
                 buttonConnection_Click(sender, e);
+
+                
             }
 
             if ((ticks % 30 == 0) || (ticks == 3))
@@ -100,7 +107,6 @@ namespace AweSimConnect.Views
 
         private void CheckTunnel()
         {
-
             //TODO Fix this. Keeps returning true after plink is closed.
             tunnel_available = pc.IsPlinkConnected();
         }

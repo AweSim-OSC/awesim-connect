@@ -73,7 +73,7 @@ namespace AweSimConnect.Controllers
             }
             catch (Exception)
             {
-                //TODO probably should put up a message here.
+                //TODO probably should put up a message or throw another exception here.
             }
         }
 
@@ -92,7 +92,7 @@ namespace AweSimConnect.Controllers
             }
             catch (Exception)
             {
-                //TODO probably should put up a message here.
+                //TODO probably should put up a message or throw another exception here.
             }
         }
 

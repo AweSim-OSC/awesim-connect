@@ -68,6 +68,20 @@ namespace AweSimConnect.Controllers
             Process[] pname = Process.GetProcessesByName(processName);
             return ((pname.Length != 0) ? true : false);
         }
+
+        public static bool IsProcessRunning(int processID)
+        {
+            try
+            {
+                Process pname = Process.GetProcessById(processID);
+                //This should always return true, exception is thrown if process not found
+                return (pname != null);
+            }
+            catch (Exception)
+            {
+                return (false);
+            }
+        }
         
         public static bool ExistsOnPath(String fileName)
         {

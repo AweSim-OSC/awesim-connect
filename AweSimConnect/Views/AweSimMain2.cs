@@ -47,6 +47,8 @@ namespace AweSimConnect.Views
         static long START_TIME = DateTime.Now.Ticks;
         private static String SSH_HOST = "oakley.osc.edu";
         private static String BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
+        private static String LIMITED_CONNECTION_ERROR =
+            "Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.";
 
         
         Connection connection;
@@ -167,7 +169,7 @@ namespace AweSimConnect.Views
             network_available = NetworkTools.CanTelnetToOakley();
             if (!network_available)
             {
-                MessageBox.Show("Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(LIMITED_CONNECTION_ERROR, "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -347,14 +349,17 @@ namespace AweSimConnect.Views
         {
             bSFTP.Enabled = enable;
 
+
             if (enable)
             {
                 toolTipNoDelay.SetToolTip(bSFTP,
                     "File Transfer. A supported SFTP client has been detected. Click here to launch.");
+                bSFTP.Image = Resources.hard_disk;
             }
             else
             {
                 toolTipNoDelay.SetToolTip(bSFTP, "No supported SFTP client detected.");
+                bSFTP.Image = Resources.cross_gry;
             }
         }
         
@@ -635,6 +640,7 @@ namespace AweSimConnect.Views
             tbPort.Enabled = false;
             tbPort.Text = ""+Connection.COMSOL_SERVER_PORT.ToString();
         }
+
 
 
 

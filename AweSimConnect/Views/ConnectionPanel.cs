@@ -17,7 +17,7 @@ namespace AweSimConnect.Views
         private ProcessData processData;
         private string userPass;
 
-        private Stopwatch stopwatch;
+        private Stopwatch stopwatch = new Stopwatch();
 
         private int ticks = 0;
         private bool tunnel_available;
@@ -31,18 +31,22 @@ namespace AweSimConnect.Views
             vnc = new VNCController(connection);
             pc.StartPlinkProcess(userPass);
             timerConnectionPanel.Start();
-            is_vnc = String.IsNullOrEmpty(connection.VNCPassword);
+            stopwatch.Start();
+            is_vnc = (connection.VNCPassword != "");
+            GetProcessData();
         }
 
         internal void buttonDisconnect_Click(object sender, EventArgs e)
         {
             pc.KillProcess();
             timerConnectionPanel.Stop();
+            stopwatch.Stop();
             tunnel_available = false;
             GetProcessData();
             if (processData.IsRunning())
             {
                 processData.Process.Kill();
+                
             }
         }
 
@@ -74,30 +78,6 @@ namespace AweSimConnect.Views
             }
         }
 
-        private void timerConnectionPanel_Tick(object sender, EventArgs e)
-        {
-            //TODO test string
-                lRunTime.Text = FileController.IsProcessRunning(pc.GetThisProcess().Id).ToString();
-
-            if ((ticks == 15) && tunnel_available)
-            {
-                buttonConnection_Click(sender, e);
-
-                
-            }
-
-            if ((ticks % 30 == 0) || (ticks == 3))
-            {
-                CheckTunnel();
-                EmbedProcess();
-                
-                //If the tunnel is connected, enable the buttons, otherwise disable.
-                EnableConnectedFeatures(tunnel_available);
-            }
-
-            ticks++;
-        }
-
         private void EnableConnectedFeatures(bool tunnel_available)
         {
             pbTunnel.Image = (tunnel_available) ? Resources.shield : Resources.cross_gry;
@@ -113,13 +93,8 @@ namespace AweSimConnect.Views
 
         internal ProcessData GetProcessData()
         {
-            SetProcessData();
-            return processData;
-        }
-
-        internal void SetProcessData()
-        {
             processData = new ProcessData(pc.GetThisProcess(), connection);
+            return processData;
         }
 
         //TODO Move this block and associated dll calls into the panel. 
@@ -129,7 +104,6 @@ namespace AweSimConnect.Views
             //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
             if (tunnel_available && !pc.IsProcessEmbedded())
             {
-                SetProcessData();
                 pc.EmbedProcess();
 
                 //TODO: This is the only place these are used right now. Move them up or out if we need to.
@@ -153,5 +127,30 @@ namespace AweSimConnect.Views
 
         [DllImport("user32.dll")]
         private static extern IntPtr SetParent(IntPtr windowChild, IntPtr windowParent);
+
+        private void timerConnectionPanel_Tick(object sender, EventArgs e)
+        {
+            //TODO test string
+            lRunTime.Text = FileController.IsProcessRunning(pc.GetThisProcess().Id).ToString();
+
+            if ((ticks == 15) && tunnel_available)
+            {
+                buttonConnection_Click(sender, e);
+
+
+            }
+
+            if ((ticks % 30 == 0) || (ticks == 3))
+            {
+                CheckTunnel();
+                EmbedProcess();
+
+                //If the tunnel is connected, enable the buttons, otherwise disable.
+                EnableConnectedFeatures(tunnel_available);
+            }
+
+            ticks++;
+        }
+
     }
 }

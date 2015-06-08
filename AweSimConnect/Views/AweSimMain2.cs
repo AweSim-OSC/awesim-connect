@@ -44,32 +44,34 @@ namespace AweSimConnect.Views
         static readonly String CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         static readonly String CLIENT_TITLE = "AweSim Connect v." + CLIENT_VERSION;
         static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
-        static long START_TIME = DateTime.Now.Ticks;
         private static String SSH_HOST = "oakley.osc.edu";
         private static String BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
         private static String LIMITED_CONNECTION_ERROR =
             "Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.";
+        private static String UNABLE_TO_CONNECT =
+            "Unable to Connect to AweSim Server. Check your connection or contact your system administrator.";
+        private static String SFTP_NOT_DETECTED = "Supported SFTP client not detected";
 
         
         Connection connection;
 
-        private PuTTYController pc;
-        private VNCController vc;
-        private SFTPController ftpc;
-        private ClipboardController cbc;
-        private ClusterController clc;
+        private PuTTYController _pc;
+        private VNCController _vc;
+        private SFTPController _ftpc;
+        private ClipboardController _cbc;
+        private ClusterController _clc;
         
         private List<ProcessData> processes;
         private List<ConnectionForm> connectionForms; 
 
-        private bool network_available = false;
-        private bool tunnel_available = false;
+        private bool _networkAvailable = false;
+        private bool _tunnelAvailable = false;
 
-        private int secondsElapsed = 0;
+        private int _secondsElapsed = 0;
 
-        IntPtr nextClipboardViewer;
-        private bool sftp_available;
-        private AboutFrm abtFrm;
+        IntPtr _nextClipboardViewer;
+        private bool _sftpAvailable;
+        private AboutFrm _abtFrm;
 
 
         public AweSimMain2()
@@ -79,7 +81,7 @@ namespace AweSimConnect.Views
             this.Text = CLIENT_TITLE;
 
             // Tell the clipboard viewer to notify this app when the clipboard changes.
-            nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
+            _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
         
         }
         
@@ -97,12 +99,12 @@ namespace AweSimConnect.Views
             timerMain.Start();
 
             //Initialize controllers.
-            cbc = new ClipboardController();
-            clc = new ClusterController();
-            pc = new PuTTYController(connection);
-            vc = new VNCController(connection);
-            ftpc = new SFTPController(connection);
-            abtFrm = new AboutFrm(CLIENT_VERSION);
+            _cbc = new ClipboardController();
+            _clc = new ClusterController();
+            _pc = new PuTTYController(connection);
+            _vc = new VNCController(connection);
+            _ftpc = new SFTPController(connection);
+            _abtFrm = new AboutFrm(CLIENT_VERSION);
             
             // Check for connectivity to the servers
             LimitedConnectionPopup();
@@ -111,9 +113,9 @@ namespace AweSimConnect.Views
             this.connection.SSHHost = SSH_HOST;
 
             // Check to see if there is any valid data on the clipboard on startup.
-            if (cbc.CheckClipboardForAweSim())
+            if (_cbc.CheckClipboardForAweSim())
             {
-                Connection clipData = cbc.GetClipboardConnection();
+                Connection clipData = _cbc.GetClipboardConnection();
                 UpdateData(clipData);
             }
         }
@@ -150,14 +152,14 @@ namespace AweSimConnect.Views
         // The click handler for the SFTP button
         private void buttonSFTP_Click(object sender, EventArgs e)
         {
-            if (network_available && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
+            if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
-                if (ftpc.IsSFTPInstalled())
+                if (_ftpc.IsSFTPInstalled())
                 {
-                    ftpc.StartSFTPProcess(tbPassword.Text);
-                    if (ftpc.GetThisProcess() != null)
+                    _ftpc.StartSFTPProcess(tbPassword.Text);
+                    if (_ftpc.GetThisProcess() != null)
                     {
-                        processes.Add(new ProcessData(ftpc.GetThisProcess(), connection));
+                        processes.Add(new ProcessData(_ftpc.GetThisProcess(), connection));
                     }
                 }
             }
@@ -166,8 +168,8 @@ namespace AweSimConnect.Views
         // Throws up a popup window if the app isn't able to connect to the selected SSH host.
         private void LimitedConnectionPopup()
         {
-            network_available = NetworkTools.CanTelnetToOakley();
-            if (!network_available)
+            _networkAvailable = NetworkTools.CanTelnetToOakley();
+            if (!_networkAvailable)
             {
                 MessageBox.Show(LIMITED_CONNECTION_ERROR, "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -256,24 +258,24 @@ namespace AweSimConnect.Views
         // Click handler for VNC button
         private void bVNCConnect_Click(object sender, EventArgs e)
         {
-            if (pc.IsPlinkConnected() && Validator.IsPresent(tbVNCPassword))
+            if (_pc.IsPlinkConnected() && Validator.IsPresent(tbVNCPassword))
             {
-                vc = new VNCController(connection);
-                vc.StartVNCProcess();
+                _vc = new VNCController(connection);
+                _vc.StartVNCProcess();
             }
         }
 
         // The click handler for the SFTP button
         private void bSFTP_Click(object sender, EventArgs e)
         {
-            if (network_available && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
+            if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
-                if (ftpc.IsSFTPInstalled())
+                if (_ftpc.IsSFTPInstalled())
                 {
-                    ftpc.StartSFTPProcess(tbPassword.Text);
-                    if (ftpc.GetThisProcess() != null)
+                    _ftpc.StartSFTPProcess(tbPassword.Text);
+                    if (_ftpc.GetThisProcess() != null)
                     {
-                        processes.Add(new ProcessData(ftpc.GetThisProcess(), connection));
+                        processes.Add(new ProcessData(_ftpc.GetThisProcess(), connection));
                     }
                 }                
             }
@@ -302,7 +304,7 @@ namespace AweSimConnect.Views
         private void EnableWeb(int port)
         {
             //TODO: This funtionality will be moved to panel
-            if ((port > 0) && tunnel_available)
+            if ((port > 0) && _tunnelAvailable)
             {
                 //labelWeb.Text = "http://localhost:" + port;
                 //bWeb.Enabled = true;
@@ -349,17 +351,18 @@ namespace AweSimConnect.Views
         {
             bSFTP.Enabled = enable;
 
-
             if (enable)
             {
                 toolTipNoDelay.SetToolTip(bSFTP,
                     "File Transfer. A supported SFTP client has been detected. Click here to launch.");
-                bSFTP.Image = Resources.hard_disk;
+                bSFTP.Image = null;
+                bSFTP.Text = String.Empty;
             }
             else
             {
                 toolTipNoDelay.SetToolTip(bSFTP, "No supported SFTP client detected.");
                 bSFTP.Image = Resources.cross_gry;
+                bSFTP.Text = SFTP_NOT_DETECTED;
             }
         }
         
@@ -368,8 +371,7 @@ namespace AweSimConnect.Views
         {
             if (connection.LocalPort > 0)
             {
-                String localUrl = "http://localhost:" + connection.LocalPort;
-                Process.Start(localUrl);
+                WebTools.LaunchLocalhostBrowser(connection.LocalPort);
             }
         }
 
@@ -410,15 +412,15 @@ namespace AweSimConnect.Views
             {
                 case WM_DRAWCLIPBOARD:
                     PopulateFromClipboard();
-                    SendMessage(nextClipboardViewer, m.Msg, m.WParam,
+                    SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
                     m.LParam);
                     break;
 
                 case WM_CHANGECBCHAIN:
-                    if (m.WParam == nextClipboardViewer)
-                        nextClipboardViewer = m.LParam;
+                    if (m.WParam == _nextClipboardViewer)
+                        _nextClipboardViewer = m.LParam;
                     else
-                        SendMessage(nextClipboardViewer, m.Msg, m.WParam,
+                        SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
                         m.LParam);
                     break;
 
@@ -431,11 +433,11 @@ namespace AweSimConnect.Views
         // If the clipboard has fresh and valid dataset, populate the fields.
         private void PopulateFromClipboard()
         {
-            if (cbc != null)
+            if (_cbc != null)
             {
-                if (cbc.CheckClipboardForAweSim())
+                if (_cbc.CheckClipboardForAweSim())
                 {
-                    UpdateData(cbc.GetClipboardConnection());
+                    UpdateData(_cbc.GetClipboardConnection());
                 }
             }
         }
@@ -445,7 +447,7 @@ namespace AweSimConnect.Views
         {
 
             // Remove the app from the clipboard view chain
-            ChangeClipboardChain(this.Handle, nextClipboardViewer);
+            ChangeClipboardChain(this.Handle, _nextClipboardViewer);
 
             // If the app has created any processes.
             if (processes.Count > 0)
@@ -473,7 +475,7 @@ namespace AweSimConnect.Views
         private void displayGroupBoxes()
         {
             
-            if (network_available)
+            if (_networkAvailable)
             {
                 gbCredentials.Visible = true;
 
@@ -552,7 +554,7 @@ namespace AweSimConnect.Views
             else
             {
                 pbIsNetworkConnected.Image = Resources.cross_gry;
-                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Unable to Connect to AweSim Server. Check your connection or contact your system administrator.");
+                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, UNABLE_TO_CONNECT);
             }
         }
 
@@ -564,30 +566,30 @@ namespace AweSimConnect.Views
         {
             displayGroupBoxes();
 
-            NetworkConnected(network_available);
+            NetworkConnected(_networkAvailable);
 
-            if (secondsElapsed == 0)
+            if (_secondsElapsed == 0)
             {
-                ftpc.DetectSFTPPath();
+                _ftpc.DetectSFTPPath();
             }
             
             // Check for network connectivity every 15 seconds.
             // Disable the connection button if can not connect to OSC.
-            if (secondsElapsed % 15 == 0)
+            if (_secondsElapsed % 15 == 0)
             {
-                network_available = NetworkTools.CanTelnetToOakley();
-                EnableTunnelOptions(network_available);
+                _networkAvailable = NetworkTools.CanTelnetToOakley();
+                EnableTunnelOptions(_networkAvailable);
             }
 
 
-            if (secondsElapsed % 2 == 0)
+            if (_secondsElapsed % 2 == 0)
             {
-                sftp_available = ftpc.IsSFTPInstalled();
+                _sftpAvailable = _ftpc.IsSFTPInstalled();
 
-                EnableSFTPOptions(sftp_available && network_available);
+                EnableSFTPOptions(_sftpAvailable && _networkAvailable);
             }
 
-            secondsElapsed++;
+            _secondsElapsed++;
 
         }
 
@@ -622,11 +624,11 @@ namespace AweSimConnect.Views
 
         private void pbAbout_Click(object sender, EventArgs e)
         {
-            if (abtFrm.IsDisposed)
+            if (_abtFrm.IsDisposed)
             {
-                abtFrm = new AboutFrm(CLIENT_VERSION);
+                _abtFrm = new AboutFrm(CLIENT_VERSION);
             }
-            abtFrm.Show();
+            _abtFrm.Show();
         }
 
         private void rbVNC_CheckedChanged(object sender, EventArgs e)

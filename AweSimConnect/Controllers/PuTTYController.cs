@@ -18,13 +18,14 @@ namespace AweSimConnect.Controllers
         private Process process;
 
         private bool process_embedded = false;
+        private bool process_killed = false;
 
         internal Connection Connection
         {
             get { return connection; }
             set { connection = value; }
         }
-
+        
         //The full current path of the plink executable.
         private static String PLINK_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), PLINK_FILE);
 
@@ -105,7 +106,14 @@ namespace AweSimConnect.Controllers
         // Check to see if plink is in the running processes.
         internal bool IsPlinkRunning()
         {
-            return FileController.IsProcessRunning(PLINK_PROCESS);
+            if (!process_killed)
+            {
+                return FileController.IsProcessRunning(PLINK_PROCESS);
+            }
+            else
+            {
+                return process_killed;
+            }
         }
 
         internal Process[] GetPlinkProcesses()
@@ -149,6 +157,7 @@ namespace AweSimConnect.Controllers
             if (!process.HasExited)
             {
                 process.Kill();
+                process_killed = true;
             }
         }
     }

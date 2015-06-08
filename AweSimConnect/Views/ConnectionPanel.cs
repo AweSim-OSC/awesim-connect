@@ -106,10 +106,10 @@ namespace AweSimConnect.Views
                 int MINIMIZE_WINDOW = 6;
 
                 // This command minimizes instead of hiding the window.
-                ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
+                //ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
                 //TODO This command will embed the putty process in the main window. 
-                //SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
             }
         }
 
@@ -131,8 +131,6 @@ namespace AweSimConnect.Views
             if ((ticks == 15) && tunnel_available)
             {
                 buttonConnection_Click(sender, e);
-
-
             }
 
             if ((ticks % 30 == 0) || (ticks == 3))

@@ -25,8 +25,7 @@ namespace AweSimConnect.Views
         // Form load.
         private void ConnectionForm_Load(object sender, EventArgs e)
         {
-            panel = new ConnectionPanel(connection, userPass);
-            panel.Parent_Form = this;
+            panel = new ConnectionPanel(connection, userPass, this);
             this.Controls.Add(panel);
             this.Text = (connection.GetServerAndPort());
         }

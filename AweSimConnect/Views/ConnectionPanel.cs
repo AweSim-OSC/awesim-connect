@@ -21,15 +21,37 @@ namespace AweSimConnect.Views
         private bool tunnel_available;
         private bool is_vnc;
         
-        internal ConnectionPanel(Connection inputConnection, string userPass)
+        internal ConnectionPanel(Connection inputConnection, string userPass, Form parentForm)
         {
             InitializeComponent();
+            Parent_Form = parentForm;
             connection = inputConnection;
             pc = new PuTTYController(connection);
             vnc = new VNCController(connection);
             pc.StartPlinkProcess(userPass);
             timerConnectionPanel.Start();
-            is_vnc = (connection.VNCPassword != "");
+            is_vnc = !String.IsNullOrEmpty(connection.VNCPassword);
+        }
+
+
+        //Set the info box text.
+        internal void SetUpConnection()
+        {
+            if (is_vnc)
+            {
+                tbConnectionInfo.Text = @"Using a VNC client, connect to localhost:" + connection.LocalPort +
+                                       " and use password " + connection.VNCPassword + " or click the eye button.";
+                tbTag.Text = "VNC";
+                buttonConnection.BackgroundImage = Resources.eye_gray;
+            }
+            else
+            {
+                tbConnectionInfo.Text = @"Using a web browser, navigate to http://localhost:" + connection.LocalPort + " or click the button to the right to launch.";
+                tbTag.Text = "COMSOL";
+                buttonConnection.BackgroundImage = Resources.browser_sizes;
+            }
+            lSession.Text = connection.GetServerAndPort();
+            SetTagText();
         }
 
         internal void buttonDisconnect_Click(object sender, EventArgs e)
@@ -55,8 +77,7 @@ namespace AweSimConnect.Views
         {
             if (!is_vnc)
             {
-                labelSession.Text = "Browser";
-                toolTipConnectionPanel.SetToolTip(buttonConnection, "Connect to" + connection.GetServerAndPort());
+                toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a browser connection to " + connection.GetServerAndPort());
                 try
                 {
                     WebTools.LaunchLocalhostBrowser(connection.LocalPort);
@@ -68,12 +89,10 @@ namespace AweSimConnect.Views
             }
             else
             {
-                labelSession.Text = "VNC";
-                toolTipConnectionPanel.SetToolTip(buttonConnection, "VNC Connection to " + connection.GetServerAndPort());
+                toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a VNC Connection to " + connection.GetServerAndPort());
 
                 if (pc.IsPlinkConnected())
                 {
-                    
                     vnc.StartVNCProcess();
                 }
             }
@@ -125,8 +144,10 @@ namespace AweSimConnect.Views
 
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
-            //TODO test string
-            lRunTime.Text = ""+ticks;
+            if (ticks == 1)
+            {
+                SetUpConnection();
+            }
 
             if ((ticks == 15) && tunnel_available)
             {
@@ -143,6 +164,17 @@ namespace AweSimConnect.Views
             }
 
             ticks++;
+        }
+
+        private void SetTagText()
+        {
+            Parent_Form.Text = ((tbTag.Text != "") ? tbTag.Text+" " : "")
+            +connection.GetServerAndPort();
+        }
+
+        private void tbTag_TextChanged(object sender, EventArgs e)
+        {
+            SetTagText();
         }
 
     }

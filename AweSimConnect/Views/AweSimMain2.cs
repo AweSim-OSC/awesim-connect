@@ -13,16 +13,14 @@ namespace AweSimConnect.Views
     /* 
     * TODO Wishlist
     *  
-    * -
+    * -NEED TO ASYNC THE NETWORK CALLS
     * -Fix for vis nodes 
     * -Allow user to save password. (External prefs file, use user encryption.)
     * -Save external file locations in prefs to speed up startup.
-    * -Hide putty window(s) inside the app (figure out with authentication detection)
     * -Detect TurboVNC installation
     * -Make sure all network stuff runs async
     * -Antialiased Font
     * -URI Parsing
-    * -Manage multiple tunnels
     * -See if we can tweak ggivnc encoding settings for better performance
     * -Move magic strings to resources
     * -Allow user to select other ssh host in options.
@@ -204,9 +202,10 @@ namespace AweSimConnect.Views
 
                 if (!String.IsNullOrEmpty(newConnection.VNCPassword))
                 {
+                    rbVNC.Checked = true;
                     tbVNCPassword.Text = newConnection.VNCPassword;
                     this.connection.VNCPassword = newConnection.VNCPassword;
-                }
+                } 
 
                 tbPassword.Focus();
                 this.BringMainWindowToFront();
@@ -622,15 +621,6 @@ namespace AweSimConnect.Views
             connection.PUAServer = tbHost.Text;
         }
 
-        private void pbAbout_Click(object sender, EventArgs e)
-        {
-            if (_abtFrm.IsDisposed)
-            {
-                _abtFrm = new AboutFrm(CLIENT_VERSION);
-            }
-            _abtFrm.Show();
-        }
-
         private void rbVNC_CheckedChanged(object sender, EventArgs e)
         {
             tbPort.Enabled = true;
@@ -641,6 +631,15 @@ namespace AweSimConnect.Views
         {
             tbPort.Enabled = false;
             tbPort.Text = ""+Connection.COMSOL_SERVER_PORT.ToString();
+        }
+
+        private void buttonInfo_Click(object sender, EventArgs e)
+        {
+            if (_abtFrm.IsDisposed)
+            {
+                _abtFrm = new AboutFrm(CLIENT_VERSION);
+            }
+            _abtFrm.Show();
         }
 
 

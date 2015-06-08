@@ -5,6 +5,13 @@ namespace AweSimConnect.Models
 {
     /// <summary>
     /// Maintains data for a connection.
+    /// 
+    /// H = PUA server Hostname
+    /// R = The remote port
+    /// L = The local port (not needed since the app generally maps to an open port)
+    /// U = The username
+    /// V = The VNC Password
+    /// 
     /// </summary>
     class Connection
     {
@@ -18,6 +25,12 @@ namespace AweSimConnect.Models
         // EX: nxxxx.ten.osc.edu
         public String PUAServer { get; set; }
 
+        public String H
+        {
+            get { return PUAServer; }
+            set { PUAServer = value;  }
+        }
+
         public String GetServerAndPort()
         {
             String host = PUAServer + ":" + RemotePort;
@@ -28,17 +41,47 @@ namespace AweSimConnect.Models
         // 5901 for vnc
         public int RemotePort { get; set; }
 
+        public int R
+        {
+            get { return RemotePort; }
+            set { RemotePort = value; }
+        }
+
         // EX: 8080
         public int LocalPort { get; set; }
+
+        public int L
+        {
+            get { return LocalPort; }
+            set { LocalPort = value; }
+        }
 
         // EX: oakley.osc.edu
         public String SSHHost { get; set; }
 
+        public String S
+        {
+            get { return SSHHost; }
+            set { SSHHost = value;  }
+        }
+
         // EX: an0018
         public String UserName { get; set; }
 
+        public String U
+        {
+            get { return UserName; } 
+            set { UserName = value; }
+        }
+
         // EX: XD4F893S
         public String VNCPassword { get; set; }
+
+        public String V
+        {
+            get { return VNCPassword; }
+            set { VNCPassword = value;  }
+        }
 
         public bool SetValidVNCPassword(String pass)
         {

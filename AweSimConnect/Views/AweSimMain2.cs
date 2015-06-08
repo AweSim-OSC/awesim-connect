@@ -193,11 +193,15 @@ namespace AweSimConnect.Views
                 else
                     tbPort.Text = "";
                 this.connection.RemotePort = newConnection.RemotePort;
-                
+
                 if (!String.IsNullOrEmpty(newConnection.PUAServer))
                 {
                     tbHost.Text = newConnection.PUAServer;
                     this.connection.PUAServer = newConnection.PUAServer;
+                }
+                else
+                {
+                    
                 }
 
                 if (!String.IsNullOrEmpty(newConnection.VNCPassword))
@@ -205,7 +209,12 @@ namespace AweSimConnect.Views
                     rbVNC.Checked = true;
                     tbVNCPassword.Text = newConnection.VNCPassword;
                     this.connection.VNCPassword = newConnection.VNCPassword;
-                } 
+                }
+                else
+                {
+                    tbVNCPassword.Text = "";
+                    this.connection.VNCPassword = null;
+                }
 
                 tbPassword.Focus();
                 this.BringMainWindowToFront();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -12,7 +13,8 @@ namespace AweSimConnect.Views
     {
         private readonly Connection _connection;
         private readonly PuTTYController _pc;
-        private readonly VNCControllerGGI _vnc;
+        //private readonly VNCControllerGGI _vnc;
+        private readonly VNCControllerTurbo _vnc;
 
         public Form Parent_Form { get; set; }
         
@@ -31,7 +33,8 @@ namespace AweSimConnect.Views
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
             toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a " + SessionType() + " connection to " + _connection.GetServerAndPort());
                 
-            _vnc = new VNCControllerGGI(_connection);
+            //_vnc = new VNCControllerGGI(_connection);
+            _vnc = new VNCControllerTurbo(_connection);
             timerConnectionPanel.Start();
         }
 

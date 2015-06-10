@@ -14,15 +14,18 @@ namespace AweSimConnect.Controllers
     class VNCControllerTurbo
     {
         //TurboVNC - GPLv2 License.
-        private static String TURBOVNC_FILE = "vncviewer.exe";
+        private static string TURBOVNC_FILE = "vncviewer.exe";
+        private static string TURBOVNC_PROCESS = "vncviewer";
 
         internal Connection Connection { get; set; }
+        private Process process;
+        private bool _processKilled;
 
         //The full current path of the executable.
-        private static String TURBOVNC_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), TURBOVNC_FILE);
+        private static readonly String TURBOVNC_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), TURBOVNC_FILE);
 
-        //The arguments for ggivnc
-        private static String TURBO_ARGS = "-p {0} localhost::{1}";
+        //The arguments for turbovnc
+        private static String TURBO_ARGS = "/password {0} localhost::{1}";
         
         public VNCControllerTurbo(Connection connection)
         {
@@ -30,23 +33,12 @@ namespace AweSimConnect.Controllers
             this.Connection = connection;
         }
 
-        //Writes out the password file to a tmp location and returns the path of the file.
-        private String WritePasswordFile()
-        {
-            String passPath = Path.GetTempFileName();
-            using (StreamWriter passWrite = new StreamWriter(passPath, false))
-            {
-                passWrite.WriteLine(Connection.VNCPassword);
-            }
-            return passPath;
-        }
 
         // GGIVnc command line argument placeholder.
         private String BuildCommandString()
         {
-            string localhost = String.Format(TURBO_ARGS, WritePasswordFile(), Connection.LocalPort);
+            string localhost = String.Format(TURBO_ARGS, Connection.VNCPassword, Connection.LocalPort);
             return localhost;
-            //return GGIVNC_CURRENT_DIR + " -p " + WritePasswordFile() + " localhost:1";
         }
 
         
@@ -58,7 +50,7 @@ namespace AweSimConnect.Controllers
             {
                 using (FileStream fs = new FileStream(TURBOVNC_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
                 {
-                    byte[] bytes = getGGIVnc();
+                    byte[] bytes = getTurboVnc();
                     fs.Write(bytes, 0, bytes.Length);
                 }
             }
@@ -66,9 +58,9 @@ namespace AweSimConnect.Controllers
         }
 
         //Gets plink.exe from the embedded resources.
-        private byte[] getGGIVnc()
+        private byte[] getTurboVnc()
         {
-            return Resources.ggivnc;
+            return Resources.vncviewer;
         }
 
         //Launch Plink without a password
@@ -78,12 +70,12 @@ namespace AweSimConnect.Controllers
             String vncCommand = BuildCommandString();
             ProcessStartInfo info = new ProcessStartInfo(TURBOVNC_CURRENT_DIR);
             //TODO
-            info.Arguments = String.Format(TURBO_ARGS, WritePasswordFile(), Connection.LocalPort);
+            info.Arguments = String.Format(TURBO_ARGS, Connection.VNCPassword, Connection.LocalPort);
             info.UseShellExecute = true;
 
             try
             {
-                Process.Start(info);
+                process = Process.Start(info);
             }
             catch (Exception)
             {
@@ -91,10 +83,36 @@ namespace AweSimConnect.Controllers
             }
         }
 
-        // Check to see if plink exists in the AweSim connect folder.
+        // Check to see if TurboVNC exists in the AweSim connect folder.
         internal bool IsVNCInstalled()
         {
             return FileController.ExistsOnPath(TURBOVNC_FILE);
+        }
+
+        internal void KillProcess()
+        {
+            if (process != null)
+            {
+                if (!process.HasExited)
+                {
+                    process.Kill();
+                    _processKilled = true;
+                }
+            }
+
+        }
+
+        // Check to see if plink is in the running processes.
+        internal bool IsVNCRunning()
+        {
+            if (!_processKilled)
+            {
+                return FileController.IsProcessRunning(TURBOVNC_PROCESS);
+            }
+            else
+            {
+                return _processKilled;
+            }
         }
     }
     

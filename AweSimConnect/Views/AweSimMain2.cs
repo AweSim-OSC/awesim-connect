@@ -52,7 +52,8 @@ namespace AweSimConnect.Views
         Connection _connection;
 
         private PuTTYController _pc;
-        private VNCControllerGGI _vc;
+        //private VNCControllerGGI _vc;
+        private VNCControllerTurbo _vc;
         private SFTPController _ftpc;
         private ClipboardController _cbc;
 
@@ -96,7 +97,8 @@ namespace AweSimConnect.Views
             //Initialize controllers.
             _cbc = new ClipboardController();
             _pc = new PuTTYController(_connection);
-            _vc = new VNCControllerGGI(_connection);
+            //_vc = new VNCControllerGGI(_connection);
+            _vc = new VNCControllerTurbo(_connection);
             _ftpc = new SFTPController(_connection);
             _abtFrm = new AboutFrm(CLIENT_VERSION);
 

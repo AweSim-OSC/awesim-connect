@@ -22,7 +22,7 @@ namespace AweSimConnect.Controllers
         private static String TURBOVNC_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), TURBOVNC_FILE);
 
         //The arguments for ggivnc
-        private static String GGI_ARGS = "-p {0} localhost::{1}";
+        private static String TURBO_ARGS = "-p {0} localhost::{1}";
         
         public VNCControllerTurbo(Connection connection)
         {
@@ -44,7 +44,7 @@ namespace AweSimConnect.Controllers
         // GGIVnc command line argument placeholder.
         private String BuildCommandString()
         {
-            string localhost = String.Format(GGI_ARGS, WritePasswordFile(), Connection.LocalPort);
+            string localhost = String.Format(TURBO_ARGS, WritePasswordFile(), Connection.LocalPort);
             return localhost;
             //return GGIVNC_CURRENT_DIR + " -p " + WritePasswordFile() + " localhost:1";
         }
@@ -78,7 +78,7 @@ namespace AweSimConnect.Controllers
             String vncCommand = BuildCommandString();
             ProcessStartInfo info = new ProcessStartInfo(TURBOVNC_CURRENT_DIR);
             //TODO
-            info.Arguments = String.Format(GGI_ARGS, WritePasswordFile(), Connection.LocalPort);
+            info.Arguments = String.Format(TURBO_ARGS, WritePasswordFile(), Connection.LocalPort);
             info.UseShellExecute = true;
 
             try

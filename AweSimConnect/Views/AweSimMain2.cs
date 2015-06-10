@@ -13,25 +13,16 @@ namespace AweSimConnect.Views
     /*
     * TODO Wishlist
     *
-    * -Make sure localport gets remapped on each connect button click
     * -Make sure closing main form kills all processes opened by the app.
     * -NEED TO ASYNC THE NETWORK CALLS
-    * -Fix for vis nodes
     * -Allow user to save password. (External prefs file, use user encryption.)
     * -Save external file locations in prefs to speed up startup.
     * -Detect TurboVNC installation
-    * -Make sure all network stuff runs async
     * -Antialiased Font
     * -URI Parsing
-    * -See if we can tweak ggivnc encoding settings for better performance
     * -Move magic strings to resources
     * -Allow user to select other ssh host in options.
-<<<<<<< HEAD
     * -Make sure all connections close on exit.
-    * 
-=======
-    *
->>>>>>> d138fec7c589ff0f0d2cd14411466a0988bbcf67
     * /
 
    /*
@@ -58,13 +49,12 @@ namespace AweSimConnect.Views
         private static String SFTP_NOT_DETECTED = "Supported SFTP client not detected";
 
 
-        Connection connection;
+        Connection _connection;
 
         private PuTTYController _pc;
         private VNCControllerGGI _vc;
         private SFTPController _ftpc;
         private ClipboardController _cbc;
-        private ClusterController _clc;
 
         private List<ProcessData> processes;
         private List<ConnectionForm> connectionForms;
@@ -100,22 +90,21 @@ namespace AweSimConnect.Views
 
             processes = new List<ProcessData>();
             connectionForms = new List<ConnectionForm>();
-            connection = new Connection();
+            _connection = new Connection();
             timerMain.Start();
 
             //Initialize controllers.
             _cbc = new ClipboardController();
-            _clc = new ClusterController();
-            _pc = new PuTTYController(connection);
-            _vc = new VNCControllerGGI(connection);
-            _ftpc = new SFTPController(connection);
+            _pc = new PuTTYController(_connection);
+            _vc = new VNCControllerGGI(_connection);
+            _ftpc = new SFTPController(_connection);
             _abtFrm = new AboutFrm(CLIENT_VERSION);
 
             // Check for connectivity to the servers
             LimitedConnectionPopup();
 
             // For now, I'm using oakley as the SSH host. I'd like to make this user-selectable.
-            this.connection.SSHHost = SSH_HOST;
+            this._connection.SSHHost = SSH_HOST;
 
             // Check to see if there is any valid data on the clipboard on startup.
             if (_cbc.CheckClipboardForAweSim())
@@ -146,9 +135,15 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
-                MapLocalPort(Int32.Parse(tbPort.Text));
-                this.connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(tbHost.Text.Trim());
-                ConnectionForm connectionForm = new ConnectionForm(connection, tbPassword.Text);
+                _connection.PUAServer = tbHost.Text.Trim();
+                _connection.UserName = tbUsername.Text.Trim();
+                _connection.SSHHost = SSH_HOST;
+                _connection.RemotePort = int.Parse(tbPort.Text);
+                _connection.VNCPassword = tbVNCPassword.Text.Trim();
+                MapLocalPort(_connection.RemotePort);
+
+                _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);
+                ConnectionForm connectionForm = new ConnectionForm(_connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
                 connectionForms.Add(connectionForm);
                 connectionForm.Show();
@@ -165,7 +160,7 @@ namespace AweSimConnect.Views
                     _ftpc.StartSFTPProcess(tbPassword.Text);
                     if (_ftpc.GetThisProcess() != null)
                     {
-                        processes.Add(new ProcessData(_ftpc.GetThisProcess(), connection));
+                        processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
                     }
                 }
             }
@@ -190,13 +185,13 @@ namespace AweSimConnect.Views
                 if (!String.IsNullOrEmpty(newConnection.UserName))
                 {
                     tbUsername.Text = newConnection.UserName;
-                    this.connection.UserName = newConnection.UserName;
+                    this._connection.UserName = newConnection.UserName;
                 }
 
                 if (newConnection.RemotePort != 0)
                 {
                     tbPort.Text = newConnection.RemotePort.ToString();
-                    this.connection.RemotePort = newConnection.RemotePort;
+                    this._connection.RemotePort = newConnection.RemotePort;
                     MapLocalPort(newConnection.RemotePort);
                 }
                 else
@@ -206,7 +201,7 @@ namespace AweSimConnect.Views
                 if (!String.IsNullOrEmpty(newConnection.PUAServer))
                 {
                     tbHost.Text = newConnection.PUAServer;
-                    this.connection.PUAServer = newConnection.PUAServer;
+                    _connection.PUAServer = newConnection.PUAServer;
                 }
                 else
                 {
@@ -217,16 +212,16 @@ namespace AweSimConnect.Views
                 {
                     rbVNC.Checked = true;
                     tbVNCPassword.Text = newConnection.VNCPassword;
-                    this.connection.VNCPassword = newConnection.VNCPassword;
+                    _connection.VNCPassword = newConnection.VNCPassword;
                 }
                 else
                 {
                     tbVNCPassword.Text = "";
-                    this.connection.VNCPassword = null;
+                    _connection.VNCPassword = null;
                 }
 
                 tbPassword.Focus();
-                this.BringMainWindowToFront();
+                BringMainWindowToFront();
             }
         }
 
@@ -251,33 +246,7 @@ namespace AweSimConnect.Views
             }
             else
             {
-                this.connection.LocalPort = port;
-            }
-        }
-
-        // Gets the file name of the application without the extension
-        // Arg 0 is always the file path.
-        private string getFileName()
-        {
-            String file;
-            String[] pathArgs = Environment.GetCommandLineArgs();
-            file = System.IO.Path.GetFileNameWithoutExtension(pathArgs[0]);
-            return file;
-        }
-
-        // Open a browser window to Awesim Dashboard when user clicks the logo.
-        private void pbAweSimLogo_Click(object sender, EventArgs e)
-        {
-            Process.Start(AWESIM_DASHBOARD_URL);
-        }
-
-        // Click handler for VNC button
-        private void bVNCConnect_Click(object sender, EventArgs e)
-        {
-            if (_pc.IsPlinkConnected() && Validator.IsPresent(tbVNCPassword))
-            {
-                _vc = new VNCControllerGGI(connection);
-                _vc.StartVNCProcess();
+                this._connection.LocalPort = port;
             }
         }
 
@@ -291,7 +260,7 @@ namespace AweSimConnect.Views
                     _ftpc.StartSFTPProcess(tbPassword.Text);
                     if (_ftpc.GetThisProcess() != null)
                     {
-                        processes.Add(new ProcessData(_ftpc.GetThisProcess(), connection));
+                        processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
                     }
                 }
             }
@@ -312,37 +281,6 @@ namespace AweSimConnect.Views
         private void LabelColorChanger(GroupBox groupBox, bool valid)
         {
             groupBox.ForeColor = valid ? Color.Gray : Color.Red;
-        }
-
-
-
-        // Enable the web button if the tunnel is available and a local port is specified
-        private void EnableWeb(int port)
-        {
-            //TODO: This funtionality will be moved to panel
-            if ((port > 0) && _tunnelAvailable)
-            {
-                //labelWeb.Text = "http://localhost:" + port;
-                //bWeb.Enabled = true;
-            }
-            else
-            {
-                //labelWeb.Text = "";
-                //bWeb.Enabled = false;
-            }
-        }
-
-        // Red light / Green light toggle
-        private void PictureBoxConnected(PictureBox picture, bool connected)
-        {
-            if (connected)
-            {
-                picture.Image = new Bitmap(AweSimConnect.Properties.Resources.greenlight);
-            }
-            else
-            {
-                picture.Image = new Bitmap(AweSimConnect.Properties.Resources.redlight);
-            }
         }
 
         // Use this to enable/disable non-connection related options
@@ -385,9 +323,9 @@ namespace AweSimConnect.Views
         // Handles the click for the web button.
         private void bWeb_Click(object sender, EventArgs e)
         {
-            if (connection.LocalPort > 0)
+            if (_connection.LocalPort > 0)
             {
-                WebTools.LaunchLocalhostBrowser(connection.LocalPort);
+                WebTools.LaunchLocalhostBrowser(_connection.LocalPort);
             }
         }
 
@@ -465,7 +403,7 @@ namespace AweSimConnect.Views
             // Remove the app from the clipboard view chain
             ChangeClipboardChain(this.Handle, _nextClipboardViewer);
 
-            // If the app has created any processes.
+            // If the app has created any processes. (SFTP clients, for example)
             if (processes.Count > 0)
             {
                 // Close all processes that haven't already existed.
@@ -477,13 +415,24 @@ namespace AweSimConnect.Views
                     }
                 }
             }
+
+            //Close all child forms (this will kill associated processes)
+            if (connectionForms.Count > 0)
+            {
+
+                // Close each child form (the forms should be managing their own processes)
+                foreach (var connectionForm in connectionForms)
+                {
+                    connectionForm.Close();
+                }
+            }
         }
 
 
         private void tbVNCPassword_TextChanged(object sender, EventArgs e)
         {
             //Hide the password label when there is text in the box.
-            LabelColorChanger(gbVNCPassword, (connection.SetValidVNCPassword(tbVNCPassword.Text) ? true : false));
+            LabelColorChanger(gbVNCPassword, (_connection.SetValidVNCPassword(tbVNCPassword.Text) ? true : false));
         }
 
         // Provides a user workflow
@@ -613,7 +562,7 @@ namespace AweSimConnect.Views
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
-            connection.UserName = tbUsername.Text;
+            _connection.UserName = tbUsername.Text;
         }
 
         private void tbPort_TextChanged(object sender, EventArgs e)
@@ -622,7 +571,7 @@ namespace AweSimConnect.Views
             try
             {
                 int port = int.Parse(tbPort.Text);
-                connection.RemotePort = port;
+                _connection.RemotePort = port;
                 MapLocalPort(port);
                 LabelColorChanger(lPort, true);
             }
@@ -635,7 +584,7 @@ namespace AweSimConnect.Views
 
         private void tbHost_TextChanged(object sender, EventArgs e)
         {
-            connection.PUAServer = tbHost.Text;
+            _connection.PUAServer = tbHost.Text;
         }
 
         private void rbVNC_CheckedChanged(object sender, EventArgs e)

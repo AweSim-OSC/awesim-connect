@@ -36,5 +36,6 @@ namespace AweSimConnect.Views
             panel.Parent_Form = null;
             panel.buttonDisconnect_Click(sender, e);
         }
+        
     }
 }

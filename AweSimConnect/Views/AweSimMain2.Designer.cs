@@ -48,13 +48,13 @@
             this.bConnect = new System.Windows.Forms.Button();
             this.bSFTP = new System.Windows.Forms.Button();
             this.bDashboard = new System.Windows.Forms.Button();
+            this.buttonInfo = new System.Windows.Forms.Button();
+            this.buttonAdvanced = new System.Windows.Forms.Button();
             this.gbSessionType = new System.Windows.Forms.GroupBox();
             this.gbVNCPassword = new System.Windows.Forms.GroupBox();
             this.gbSystem = new System.Windows.Forms.GroupBox();
-            this.buttonInfo = new System.Windows.Forms.Button();
             this.pbIsNetworkConnected = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.buttonAdvanced = new System.Windows.Forms.Button();
             this.gbCredentials.SuspendLayout();
             this.gbSessionInfo.SuspendLayout();
             this.gbSessionType.SuspendLayout();
@@ -310,6 +310,42 @@
             this.bDashboard.UseVisualStyleBackColor = false;
             this.bDashboard.Click += new System.EventHandler(this.bDashboard_Click);
             // 
+            // buttonInfo
+            // 
+            this.buttonInfo.BackgroundImage = global::AweSimConnect.Properties.Resources.info_gry;
+            this.buttonInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonInfo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonInfo.FlatAppearance.BorderSize = 0;
+            this.buttonInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.buttonInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonInfo.Location = new System.Drawing.Point(114, 12);
+            this.buttonInfo.Name = "buttonInfo";
+            this.buttonInfo.Size = new System.Drawing.Size(22, 22);
+            this.buttonInfo.TabIndex = 2;
+            this.toolTipNoDelay.SetToolTip(this.buttonInfo, "About");
+            this.buttonInfo.UseVisualStyleBackColor = true;
+            this.buttonInfo.Click += new System.EventHandler(this.buttonInfo_Click);
+            // 
+            // buttonAdvanced
+            // 
+            this.buttonAdvanced.BackgroundImage = global::AweSimConnect.Properties.Resources.snow;
+            this.buttonAdvanced.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAdvanced.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAdvanced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonAdvanced.FlatAppearance.BorderSize = 0;
+            this.buttonAdvanced.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.buttonAdvanced.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonAdvanced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdvanced.Location = new System.Drawing.Point(86, 12);
+            this.buttonAdvanced.Name = "buttonAdvanced";
+            this.buttonAdvanced.Size = new System.Drawing.Size(22, 22);
+            this.buttonAdvanced.TabIndex = 3;
+            this.toolTipNoDelay.SetToolTip(this.buttonAdvanced, "Advanced Options");
+            this.buttonAdvanced.UseVisualStyleBackColor = true;
+            this.buttonAdvanced.Visible = false;
+            // 
             // gbSessionType
             // 
             this.gbSessionType.Controls.Add(this.rbCOMSOL);
@@ -345,24 +381,6 @@
             this.gbSystem.TabIndex = 13;
             this.gbSystem.TabStop = false;
             // 
-            // buttonInfo
-            // 
-            this.buttonInfo.BackgroundImage = global::AweSimConnect.Properties.Resources.info_gry;
-            this.buttonInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonInfo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonInfo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonInfo.FlatAppearance.BorderSize = 0;
-            this.buttonInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.buttonInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonInfo.Location = new System.Drawing.Point(114, 12);
-            this.buttonInfo.Name = "buttonInfo";
-            this.buttonInfo.Size = new System.Drawing.Size(22, 22);
-            this.buttonInfo.TabIndex = 2;
-            this.toolTipNoDelay.SetToolTip(this.buttonInfo, "About");
-            this.buttonInfo.UseVisualStyleBackColor = true;
-            this.buttonInfo.Click += new System.EventHandler(this.buttonInfo_Click);
-            // 
             // pbIsNetworkConnected
             // 
             this.pbIsNetworkConnected.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -385,24 +403,6 @@
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
             this.pbLogo.Tag = "Logo";
-            // 
-            // buttonAdvanced
-            // 
-            this.buttonAdvanced.BackgroundImage = global::AweSimConnect.Properties.Resources.snow;
-            this.buttonAdvanced.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonAdvanced.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAdvanced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonAdvanced.FlatAppearance.BorderSize = 0;
-            this.buttonAdvanced.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.buttonAdvanced.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonAdvanced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdvanced.Location = new System.Drawing.Point(86, 12);
-            this.buttonAdvanced.Name = "buttonAdvanced";
-            this.buttonAdvanced.Size = new System.Drawing.Size(22, 22);
-            this.buttonAdvanced.TabIndex = 3;
-            this.toolTipNoDelay.SetToolTip(this.buttonAdvanced, "Advanced Options");
-            this.buttonAdvanced.UseVisualStyleBackColor = true;
-            this.buttonAdvanced.Visible = false;
             // 
             // AweSimMain2
             // 

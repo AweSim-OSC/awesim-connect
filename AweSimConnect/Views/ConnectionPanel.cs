@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
@@ -18,19 +19,26 @@ namespace AweSimConnect.Views
         private int _ticks = 0;
         private bool _tunnelAvailable;
         private bool _isVnc;
-        
+
         internal ConnectionPanel(Connection inputConnection, string userPass, Form parentForm)
         {
             InitializeComponent();
             Parent_Form = parentForm;
             _connection = inputConnection;
             _pc = new PuTTYController(_connection);
-            _vnc = new VNCControllerGGI(_connection);
             _pc.StartPlinkProcess(userPass);
-            timerConnectionPanel.Start();
+            //_pc.StartPlinkProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
+            toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a " + SessionType() + " connection to " + _connection.GetServerAndPort());
+                
+            _vnc = new VNCControllerGGI(_connection);
+            timerConnectionPanel.Start();
         }
 
+        private string SessionType()
+        {
+            return ((_isVnc) ? "VNC" : "Browser");
+        }
 
         //Set the info box text.
         internal void SetUpConnection()
@@ -75,7 +83,6 @@ namespace AweSimConnect.Views
         {
             if (!_isVnc)
             {
-                toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a browser connection to " + _connection.GetServerAndPort());
                 try
                 {
                     WebTools.LaunchLocalhostBrowser(_connection.LocalPort);
@@ -87,9 +94,7 @@ namespace AweSimConnect.Views
             }
             else
             {
-                toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a VNC Connection to " + _connection.GetServerAndPort());
-
-                if (_pc.IsPlinkConnected())
+                if (_tunnelAvailable)
                 {
                     _vnc.StartVNCProcess();
                 }
@@ -111,15 +116,15 @@ namespace AweSimConnect.Views
         internal void EmbedProcess()
         {
             //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
-            if (_tunnelAvailable && !_pc.IsProcessEmbedded())
+            if (_tunnelAvailable && !_pc.IsProcessEmbedded() && (_pc.GetThisProcess() != null))
             {
                 _pc.EmbedProcess();
-
+                
                 // This is the only place these are used right now. Move them up or out if we need to.
                 // int MAXIMIZE_WINDOW = 3;
                 // int MINIMIZE_WINDOW = 6;
                 // This command minimizes instead of hiding the window.
-                //ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
+                //ShowWindow(_pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
                 // This command will embed the putty process in the main window. 
                 SetParent(_pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
@@ -147,7 +152,7 @@ namespace AweSimConnect.Views
                 buttonConnection_Click(sender, e);
             }
 
-            if ((_ticks % 30 == 0) || (_ticks == 3))
+            if ((_ticks % 25 == 0))
             {
                 CheckTunnel();
                 EmbedProcess();

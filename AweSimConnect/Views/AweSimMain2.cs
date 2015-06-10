@@ -196,11 +196,12 @@ namespace AweSimConnect.Views
                 if (newConnection.RemotePort != 0)
                 {
                     tbPort.Text = newConnection.RemotePort.ToString();
+                    this.connection.RemotePort = newConnection.RemotePort;
                     MapLocalPort(newConnection.RemotePort);
                 }
                 else
                     tbPort.Text = "";
-                this.connection.RemotePort = newConnection.RemotePort;
+                
 
                 if (!String.IsNullOrEmpty(newConnection.PUAServer))
                 {
@@ -209,7 +210,7 @@ namespace AweSimConnect.Views
                 }
                 else
                 {
-
+                    tbHost.Text = "";
                 }
 
                 if (!String.IsNullOrEmpty(newConnection.VNCPassword))
@@ -640,7 +641,10 @@ namespace AweSimConnect.Views
         private void rbVNC_CheckedChanged(object sender, EventArgs e)
         {
             tbPort.Enabled = true;
-            tbPort.Text = ""+Connection.VNC_DISPLAY_DEFAULT;
+            if ((tbPort.Text == Connection.COMSOL_SERVER_PORT.ToString()) || tbPort.Text == "")
+            {
+                tbPort.Text = ""+Connection.VNC_DISPLAY_DEFAULT;
+            }
         }
 
         private void rbCOMSOL_CheckedChanged(object sender, EventArgs e)

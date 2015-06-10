@@ -29,7 +29,7 @@ namespace AweSimConnect.Views
             this.Controls.Add(panel);
             this.Text = (connection.GetServerAndPort());
         }
-
+        
         // Make sure that we disconnect the process in the panel when we close the form.
         private void ConnectionForm_FormClosing(object sender, FormClosingEventArgs e)
         {

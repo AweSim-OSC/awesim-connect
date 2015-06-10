@@ -24,6 +24,7 @@ namespace AweSimConnect.Views
     * -See if we can tweak ggivnc encoding settings for better performance
     * -Move magic strings to resources
     * -Allow user to select other ssh host in options.
+    * -Make sure all connections close on exit.
     * 
     * /
 
@@ -80,7 +81,6 @@ namespace AweSimConnect.Views
 
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
-        
         }
         
 
@@ -139,7 +139,8 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
-                
+                MapLocalPort(Int32.Parse(tbPort.Text));
+                this.connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(tbHost.Text.Trim());
                 ConnectionForm connectionForm = new ConnectionForm(connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
                 connectionForms.Add(connectionForm);

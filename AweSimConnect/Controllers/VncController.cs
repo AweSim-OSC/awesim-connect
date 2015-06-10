@@ -28,7 +28,7 @@ namespace AweSimConnect.Controllers
         private static String GGIVNC_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), GGIVNC_FILE);
 
         //The arguments for ggivnc
-        private static String GGI_ARGS = "-p {0} localhost:1";
+        private static String GGI_ARGS = "-p {0} localhost::{1}";
 
         //Writes out the password file to a tmp location and returns the path of the file.
         private String WritePasswordFile()
@@ -44,7 +44,9 @@ namespace AweSimConnect.Controllers
         // GGIVnc command line argument placeholder.
         private String BuildCommandString()
         {
-            return GGIVNC_CURRENT_DIR + " -p " + WritePasswordFile() + " localhost:1";
+            string localhost = String.Format(GGI_ARGS, WritePasswordFile(), Connection.LocalPort);
+            return localhost;
+            //return GGIVNC_CURRENT_DIR + " -p " + WritePasswordFile() + " localhost:1";
         }
 
         public VNCController(Connection connection)
@@ -80,7 +82,7 @@ namespace AweSimConnect.Controllers
             String vncCommand = BuildCommandString();
             ProcessStartInfo info = new ProcessStartInfo(GGIVNC_CURRENT_DIR);
             //TODO
-            info.Arguments = String.Format(GGI_ARGS, WritePasswordFile());
+            info.Arguments = String.Format(GGI_ARGS, WritePasswordFile(), connection.LocalPort);
             info.UseShellExecute = true;
 
             try

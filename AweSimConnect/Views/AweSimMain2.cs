@@ -87,10 +87,7 @@ namespace AweSimConnect.Views
 
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
-<<<<<<< HEAD
-=======
 
->>>>>>> d138fec7c589ff0f0d2cd14411466a0988bbcf67
         }
 
 
@@ -149,12 +146,8 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
-<<<<<<< HEAD
                 MapLocalPort(Int32.Parse(tbPort.Text));
                 this.connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(tbHost.Text.Trim());
-=======
-
->>>>>>> d138fec7c589ff0f0d2cd14411466a0988bbcf67
                 ConnectionForm connectionForm = new ConnectionForm(connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
                 connectionForms.Add(connectionForm);

@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Controllers\NetworkTools.cs" />
     <Compile Include="Controllers\SFTPController.cs" />
+    <Compile Include="Controllers\VNCControllerTurbo.cs" />
     <Compile Include="Controllers\WebTools.cs" />
     <Compile Include="Models\PasswordEncryption.cs" />
     <Compile Include="Models\ProcessData.cs" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
+    <None Include="Resources\vncviewer.exe" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\snow.png" />
     <None Include="Resources\wireframe-globe.png" />

@@ -135,11 +135,11 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
-                _connection.PUAServer = tbHost.Text.Trim();
-                _connection.UserName = tbUsername.Text.Trim();
-                _connection.SSHHost = SSH_HOST;
-                _connection.RemotePort = int.Parse(tbPort.Text);
-                _connection.VNCPassword = tbVNCPassword.Text.Trim();
+                //_connection.PUAServer = tbHost.Text.Trim();
+                //_connection.UserName = tbUsername.Text.Trim();
+                //_connection.SSHHost = SSH_HOST;
+                //_connection.RemotePort = int.Parse(tbPort.Text);
+                //_connection.VNCPassword = tbVNCPassword.Text.Trim();
                 MapLocalPort(_connection.RemotePort);
 
                 _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);

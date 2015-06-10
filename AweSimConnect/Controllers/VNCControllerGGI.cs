@@ -15,8 +15,10 @@ namespace AweSimConnect.Controllers
 
         //GGIVNC - MIT License.
         private static String GGIVNC_FILE = "ggivnc.exe";
+        private static string GGIVNC_PROCESS = "ggivnc";
 
         private Connection connection;
+        private Process process;
 
         internal Connection Connection
         {
@@ -29,6 +31,7 @@ namespace AweSimConnect.Controllers
 
         //The arguments for ggivnc
         private static String GGI_ARGS = "-p {0} localhost::{1}";
+        private bool process_killed;
 
         //Writes out the password file to a tmp location and returns the path of the file.
         private String WritePasswordFile()
@@ -87,7 +90,7 @@ namespace AweSimConnect.Controllers
 
             try
             {
-                Process.Start(info);
+                process = Process.Start(info);
             }
             catch (Exception)
             {
@@ -99,6 +102,32 @@ namespace AweSimConnect.Controllers
         internal bool IsVNCInstalled()
         {
             return FileController.ExistsOnPath(GGIVNC_FILE);
+        }
+
+        internal void KillProcess()
+        {
+            if (process != null)
+            {
+                if (!process.HasExited)
+                {
+                    process.Kill();
+                    process_killed = true;
+                }
+            }
+            
+        }
+
+        // Check to see if plink is in the running processes.
+        internal bool IsVNCRunning()
+        {
+            if (!process_killed)
+            {
+                return FileController.IsProcessRunning(GGIVNC_PROCESS);
+            }
+            else
+            {
+                return process_killed;
+            }
         }
     }
 }

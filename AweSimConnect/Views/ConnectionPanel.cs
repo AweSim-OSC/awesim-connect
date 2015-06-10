@@ -72,6 +72,7 @@ namespace AweSimConnect.Views
         internal void KillProcess()
         {
             _pc.KillProcess();
+            _vnc.KillProcess();
             _tunnelAvailable = false;
             if (_pc.IsPlinkRunning())
             {

@@ -10,11 +10,13 @@ using AweSimConnect.Properties;
 
 namespace AweSimConnect.Views
 {
-    /* 
+    /*
     * TODO Wishlist
-    *  
+    *
+    * -Make sure localport gets remapped on each connect button click
+    * -Make sure closing main form kills all processes opened by the app.
     * -NEED TO ASYNC THE NETWORK CALLS
-    * -Fix for vis nodes 
+    * -Fix for vis nodes
     * -Allow user to save password. (External prefs file, use user encryption.)
     * -Save external file locations in prefs to speed up startup.
     * -Detect TurboVNC installation
@@ -24,20 +26,24 @@ namespace AweSimConnect.Views
     * -See if we can tweak ggivnc encoding settings for better performance
     * -Move magic strings to resources
     * -Allow user to select other ssh host in options.
+<<<<<<< HEAD
     * -Make sure all connections close on exit.
     * 
+=======
+    *
+>>>>>>> d138fec7c589ff0f0d2cd14411466a0988bbcf67
     * /
 
    /*
     * AweSim Connect
-    *  
+    *
     * A windows native app for SSH tunneling to Ohio Supercomputer Center services.
-    * 
+    *
     * Brian McMichael: bmcmichael@osc.edu
     */
     public partial class AweSimMain2 : Form
     {
-        // The version number. The first and second numbers are set in the assembly info. 
+        // The version number. The first and second numbers are set in the assembly info.
         // The third number is the number of days since the year 2000
         // The fourth number is the number of seconds since midnight divided by 2.
         static readonly String CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -51,7 +57,7 @@ namespace AweSimConnect.Views
             "Unable to Connect to AweSim Server. Check your connection or contact your system administrator.";
         private static String SFTP_NOT_DETECTED = "Supported SFTP client not detected";
 
-        
+
         Connection connection;
 
         private PuTTYController _pc;
@@ -59,9 +65,9 @@ namespace AweSimConnect.Views
         private SFTPController _ftpc;
         private ClipboardController _cbc;
         private ClusterController _clc;
-        
+
         private List<ProcessData> processes;
-        private List<ConnectionForm> connectionForms; 
+        private List<ConnectionForm> connectionForms;
 
         private bool _networkAvailable = false;
         private bool _tunnelAvailable = false;
@@ -75,14 +81,18 @@ namespace AweSimConnect.Views
 
         public AweSimMain2()
         {
-            
+
             InitializeComponent();
             this.Text = CLIENT_TITLE;
 
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
+<<<<<<< HEAD
+=======
+
+>>>>>>> d138fec7c589ff0f0d2cd14411466a0988bbcf67
         }
-        
+
 
         private void AweSimMain2_Load(object sender, EventArgs e)
         {
@@ -103,7 +113,7 @@ namespace AweSimConnect.Views
             _vc = new VNCControllerGGI(connection);
             _ftpc = new SFTPController(connection);
             _abtFrm = new AboutFrm(CLIENT_VERSION);
-            
+
             // Check for connectivity to the servers
             LimitedConnectionPopup();
 
@@ -131,7 +141,7 @@ namespace AweSimConnect.Views
             {
                 MessageBox.Show(BROWSER_ERROR + AWESIM_DASHBOARD_URL, "Browser not found", MessageBoxButtons.OK);
             }
-            
+
         }
 
 
@@ -139,8 +149,12 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
+<<<<<<< HEAD
                 MapLocalPort(Int32.Parse(tbPort.Text));
                 this.connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(tbHost.Text.Trim());
+=======
+
+>>>>>>> d138fec7c589ff0f0d2cd14411466a0988bbcf67
                 ConnectionForm connectionForm = new ConnectionForm(connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
                 connectionForms.Add(connectionForm);
@@ -202,7 +216,7 @@ namespace AweSimConnect.Views
                 }
                 else
                 {
-                    
+
                 }
 
                 if (!String.IsNullOrEmpty(newConnection.VNCPassword))
@@ -221,7 +235,7 @@ namespace AweSimConnect.Views
                 this.BringMainWindowToFront();
             }
         }
-        
+
         // Recursive check and assign localport
         private void MapLocalPort(int port)
         {
@@ -285,11 +299,11 @@ namespace AweSimConnect.Views
                     {
                         processes.Add(new ProcessData(_ftpc.GetThisProcess(), connection));
                     }
-                }                
+                }
             }
         }
 
-        
+
         //Changes the color of a label
         private void LabelColorChanger(Label label, bool valid)
         {
@@ -305,9 +319,9 @@ namespace AweSimConnect.Views
         {
             groupBox.ForeColor = valid ? Color.Gray : Color.Red;
         }
-        
-        
-        
+
+
+
         // Enable the web button if the tunnel is available and a local port is specified
         private void EnableWeb(int port)
         {
@@ -342,7 +356,7 @@ namespace AweSimConnect.Views
         {
             EnableVNCButton(enable);
         }
-        
+
         // Use this to enable/disable vnc button
         private void EnableVNCButton(bool enable)
         {
@@ -373,7 +387,7 @@ namespace AweSimConnect.Views
                 bSFTP.Text = SFTP_NOT_DETECTED;
             }
         }
-        
+
         // Handles the click for the web button.
         private void bWeb_Click(object sender, EventArgs e)
         {
@@ -397,8 +411,8 @@ namespace AweSimConnect.Views
         [DllImport("user32.dll")]
         public static extern Int32 SetForegroundWindow(int windowHandle);
 
-        
-        
+
+
 
         // Clipboard monitoring
         [DllImport("user32.dll")]
@@ -482,7 +496,7 @@ namespace AweSimConnect.Views
         // TODO Clean this up and eliminate duplication.
         private void displayGroupBoxes()
         {
-            
+
             if (_networkAvailable)
             {
                 gbCredentials.Visible = true;
@@ -493,7 +507,7 @@ namespace AweSimConnect.Views
                     bSFTP.Visible = true;
 
                     if (rbVNC.Checked || rbCOMSOL.Checked)
-                    { 
+                    {
                         gbSessionInfo.Visible = true;
 
                         if (rbVNC.Checked)
@@ -580,7 +594,7 @@ namespace AweSimConnect.Views
             {
                 _ftpc.DetectSFTPPath();
             }
-            
+
             // Check for network connectivity every 15 seconds.
             // Disable the connection button if can not connect to OSC.
             if (_secondsElapsed % 15 == 0)
@@ -601,7 +615,7 @@ namespace AweSimConnect.Views
 
         }
 
-        
+
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
@@ -622,7 +636,7 @@ namespace AweSimConnect.Views
             {
                 LabelColorChanger(lPort, false);
             }
-        
+
         }
 
         private void tbHost_TextChanged(object sender, EventArgs e)
@@ -654,7 +668,7 @@ namespace AweSimConnect.Views
 
 
 
-        /*  Upcoming password save feature 
+        /*  Upcoming password save feature
 
         // Check the user settings for a username and encrypted password and fill the text boxes.
         private void checkForUserSettings()
@@ -667,10 +681,10 @@ namespace AweSimConnect.Views
                 string userPass = Settings.Default["UserPass"].ToString();
                 tbUserName.Text = userName;
                 tbPassword.Text = PasswordEncryption.Decrypt(userPass);
-                
+
             }
         }
-        
+
         // If true, save the choice to the Settings. If false, change user settings to reflect.
         private void SaveUserSettings(bool userSettings)
         {
@@ -690,9 +704,9 @@ namespace AweSimConnect.Views
                 Settings.Default["UserPass"] = "";
             }
             Settings.Default.Save();
-            
+
         }
-         
+
         */
     }
 }

@@ -19,3 +19,7 @@ MIT License
 Metrize Icons
 http://www.alessioatzeni.com/metrize-icons/
 Free Commercial License
+
+TurboVNC 1.2.3
+http://sourceforge.net/projects/turbovnc/
+GPLv2

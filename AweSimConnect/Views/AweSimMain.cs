@@ -50,7 +50,7 @@ namespace AweSimConnect
         static long START_TIME = DateTime.Now.Ticks;
 
         private PuTTYController pc;
-        private VNCController vc;
+        private VNCControllerGGI vc;
         private SFTPController ftpc;
         private ClipboardController cbc;
         private ClusterController clc;
@@ -92,7 +92,7 @@ namespace AweSimConnect
             cbc = new ClipboardController();
             clc = new ClusterController();
             pc = new PuTTYController(connection);
-            vc = new VNCController(connection);
+            vc = new VNCControllerGGI(connection);
             ftpc = new SFTPController(connection);
             abtFrm = new AboutFrm(CLIENT_VERSION);       
 
@@ -247,7 +247,7 @@ namespace AweSimConnect
         {
             if (pc.IsPlinkConnected() && Validator.IsPresent(tbVNCPassword))
             {
-                vc = new VNCController(connection);
+                vc = new VNCControllerGGI(connection);
                 vc.StartVNCProcess();
             }
         }

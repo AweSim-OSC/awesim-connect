@@ -55,7 +55,7 @@ namespace AweSimConnect.Views
         Connection connection;
 
         private PuTTYController _pc;
-        private VNCController _vc;
+        private VNCControllerGGI _vc;
         private SFTPController _ftpc;
         private ClipboardController _cbc;
         private ClusterController _clc;
@@ -100,7 +100,7 @@ namespace AweSimConnect.Views
             _cbc = new ClipboardController();
             _clc = new ClusterController();
             _pc = new PuTTYController(connection);
-            _vc = new VNCController(connection);
+            _vc = new VNCControllerGGI(connection);
             _ftpc = new SFTPController(connection);
             _abtFrm = new AboutFrm(CLIENT_VERSION);
             
@@ -223,7 +223,6 @@ namespace AweSimConnect.Views
         }
         
         // Recursive check and assign localport
-        // TODO Look over code. This isn't sticking and I think that the local port is being reset somewhere.
         private void MapLocalPort(int port)
         {
             bool exists = false;
@@ -269,7 +268,7 @@ namespace AweSimConnect.Views
         {
             if (_pc.IsPlinkConnected() && Validator.IsPresent(tbVNCPassword))
             {
-                _vc = new VNCController(connection);
+                _vc = new VNCControllerGGI(connection);
                 _vc.StartVNCProcess();
             }
         }

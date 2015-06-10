@@ -9,48 +9,46 @@ namespace AweSimConnect.Views
 {
     public partial class ConnectionPanel : UserControl
     {
-        private Connection connection;
-        private PuTTYController pc;
-        private VNCController vnc;
-
-        private string userPass;
+        private readonly Connection _connection;
+        private readonly PuTTYController _pc;
+        private readonly VNCControllerGGI _vnc;
 
         public Form Parent_Form { get; set; }
         
-        private int ticks = 0;
-        private bool tunnel_available;
-        private bool is_vnc;
+        private int _ticks = 0;
+        private bool _tunnelAvailable;
+        private bool _isVnc;
         
         internal ConnectionPanel(Connection inputConnection, string userPass, Form parentForm)
         {
             InitializeComponent();
             Parent_Form = parentForm;
-            connection = inputConnection;
-            pc = new PuTTYController(connection);
-            vnc = new VNCController(connection);
-            pc.StartPlinkProcess(userPass);
+            _connection = inputConnection;
+            _pc = new PuTTYController(_connection);
+            _vnc = new VNCControllerGGI(_connection);
+            _pc.StartPlinkProcess(userPass);
             timerConnectionPanel.Start();
-            is_vnc = !String.IsNullOrEmpty(connection.VNCPassword);
+            _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
         }
 
 
         //Set the info box text.
         internal void SetUpConnection()
         {
-            if (is_vnc)
+            if (_isVnc)
             {
-                tbConnectionInfo.Text = @"Using a VNC client, connect to localhost:" + connection.LocalPort +
-                                       " and use password " + connection.VNCPassword + " or click the eye button.";
+                tbConnectionInfo.Text = @"Using a VNC client, connect to localhost:" + _connection.LocalPort +
+                                       " and use password " + _connection.VNCPassword + " or click the eye button.";
                 tbTag.Text = "VNC";
                 buttonConnection.BackgroundImage = Resources.eye_gray;
             }
             else
             {
-                tbConnectionInfo.Text = @"Using a web browser, navigate to http://localhost:" + connection.LocalPort + " or click the button to the right to launch.";
+                tbConnectionInfo.Text = @"Using a web browser, navigate to http://localhost:" + _connection.LocalPort + " or click the button to the right to launch.";
                 tbTag.Text = "COMSOL";
                 buttonConnection.BackgroundImage = Resources.browser_sizes;
             }
-            lSession.Text = connection.GetServerAndPort();
+            lSession.Text = _connection.GetServerAndPort();
             SetTagText();
         }
 
@@ -65,70 +63,66 @@ namespace AweSimConnect.Views
 
         internal void KillProcess()
         {
-            pc.KillProcess();
-            tunnel_available = false;
-            if (pc.IsPlinkRunning())
+            _pc.KillProcess();
+            _tunnelAvailable = false;
+            if (_pc.IsPlinkRunning())
             {
-                pc.KillProcess();
+                _pc.KillProcess();
             }
         }
 
         private void buttonConnection_Click(object sender, EventArgs e)
         {
-            if (!is_vnc)
+            if (!_isVnc)
             {
-                toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a browser connection to " + connection.GetServerAndPort());
+                toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a browser connection to " + _connection.GetServerAndPort());
                 try
                 {
-                    WebTools.LaunchLocalhostBrowser(connection.LocalPort);
+                    WebTools.LaunchLocalhostBrowser(_connection.LocalPort);
                 }
                 catch (Exception)
                 {
-                    //TODO pop up a message or find a better way to open a browser.
+                    // Pop up a message or find a better way to open a browser.
                 }
             }
             else
             {
-                toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a VNC Connection to " + connection.GetServerAndPort());
+                toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a VNC Connection to " + _connection.GetServerAndPort());
 
-                if (pc.IsPlinkConnected())
+                if (_pc.IsPlinkConnected())
                 {
-                    vnc.StartVNCProcess();
+                    _vnc.StartVNCProcess();
                 }
             }
         }
 
-        private void EnableConnectedFeatures(bool tunnel_available)
+        private void EnableConnectedFeatures(bool tunnelAvailable)
         {
-            pbTunnel.Image = (tunnel_available) ? Resources.shield : Resources.cross_gry;
-            toolTipConnectionPanel.SetToolTip(pbTunnel, (tunnel_available) ? "Secure Tunnel Detected" : "Secure Tunnel Disconnected");
-            buttonConnection.Enabled = tunnel_available;
+            pbTunnel.Image = (tunnelAvailable) ? Resources.shield : Resources.cross_gry;
+            toolTipConnectionPanel.SetToolTip(pbTunnel, (tunnelAvailable) ? "Secure Tunnel Detected" : "Secure Tunnel Disconnected");
+            buttonConnection.Enabled = tunnelAvailable;
         }
 
         private void CheckTunnel()
         {
-            //TODO Fix this. Keeps returning true after plink is closed.
-            tunnel_available = (pc.IsPlinkConnected() && pc.IsPlinkRunning());
+            _tunnelAvailable = (_pc.IsPlinkConnected() && _pc.IsPlinkRunning());
         }
-
-        //TODO Move this block and associated dll calls into the panel. 
-
+        
         internal void EmbedProcess()
         {
             //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
-            if (tunnel_available && !pc.IsProcessEmbedded())
+            if (_tunnelAvailable && !_pc.IsProcessEmbedded())
             {
-                pc.EmbedProcess();
+                _pc.EmbedProcess();
 
-                //TODO: This is the only place these are used right now. Move them up or out if we need to.
-                //int MAXIMIZE_WINDOW = 3;
-                int MINIMIZE_WINDOW = 6;
-
+                // This is the only place these are used right now. Move them up or out if we need to.
+                // int MAXIMIZE_WINDOW = 3;
+                // int MINIMIZE_WINDOW = 6;
                 // This command minimizes instead of hiding the window.
                 //ShowWindow(pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
-                //TODO This command will embed the putty process in the main window. 
-                SetParent(pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                // This command will embed the putty process in the main window. 
+                SetParent(_pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
             }
         }
 
@@ -138,38 +132,37 @@ namespace AweSimConnect.Views
         static extern bool ShowWindow(IntPtr windowHandle, int command);
 
         // Used for embedding process into the app
-
         [DllImport("user32.dll")]
         private static extern IntPtr SetParent(IntPtr windowChild, IntPtr windowParent);
 
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
-            if (ticks == 1)
+            if (_ticks == 1)
             {
                 SetUpConnection();
             }
 
-            if ((ticks == 15) && tunnel_available)
+            if ((_ticks == 15) && _tunnelAvailable)
             {
                 buttonConnection_Click(sender, e);
             }
 
-            if ((ticks % 30 == 0) || (ticks == 3))
+            if ((_ticks % 30 == 0) || (_ticks == 3))
             {
                 CheckTunnel();
                 EmbedProcess();
 
                 //If the tunnel is connected, enable the buttons, otherwise disable.
-                EnableConnectedFeatures(tunnel_available);
+                EnableConnectedFeatures(_tunnelAvailable);
             }
 
-            ticks++;
+            _ticks++;
         }
 
         private void SetTagText()
         {
             Parent_Form.Text = ((tbTag.Text != "") ? tbTag.Text+" " : "")
-            +connection.GetServerAndPort();
+            +_connection.GetServerAndPort();
         }
 
         private void tbTag_TextChanged(object sender, EventArgs e)

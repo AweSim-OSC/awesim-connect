@@ -103,7 +103,7 @@
     <Compile Include="Controllers\ClusterController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\PuTTYController.cs" />
-    <Compile Include="Controllers\VNCController.cs" />
+    <Compile Include="Controllers\VNCControllerGGI.cs" />
     <Compile Include="Models\Cluster.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Program.cs" />

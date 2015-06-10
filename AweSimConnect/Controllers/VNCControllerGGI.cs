@@ -9,7 +9,7 @@ namespace AweSimConnect.Controllers
     /// <summary>
     /// This class controls the ggivnc application. 
     /// </summary>
-    class VNCController
+    class VNCControllerGGI
     {
         //TODO Add ggi license to docs
 
@@ -49,7 +49,7 @@ namespace AweSimConnect.Controllers
             //return GGIVNC_CURRENT_DIR + " -p " + WritePasswordFile() + " localhost:1";
         }
 
-        public VNCController(Connection connection)
+        public VNCControllerGGI(Connection connection)
         {
             InstallVNC();
             this.connection = connection;

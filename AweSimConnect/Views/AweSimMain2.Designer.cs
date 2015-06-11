@@ -256,13 +256,13 @@
             this.bConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.bConnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bConnect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bConnect.FlatAppearance.BorderSize = 0;
             this.bConnect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bConnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bConnect.Location = new System.Drawing.Point(183, 367);
-            this.bConnect.Margin = new System.Windows.Forms.Padding(15);
+            this.bConnect.Margin = new System.Windows.Forms.Padding(0);
             this.bConnect.Name = "bConnect";
-            this.bConnect.Padding = new System.Windows.Forms.Padding(15);
             this.bConnect.Size = new System.Drawing.Size(154, 158);
             this.bConnect.TabIndex = 10;
             this.toolTipNoDelay.SetToolTip(this.bConnect, "Connect to Session. Enter your session information and click here to connect to t" +
@@ -277,11 +277,12 @@
             this.bSFTP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.bSFTP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bSFTP.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bSFTP.FlatAppearance.BorderSize = 0;
             this.bSFTP.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bSFTP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bSFTP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSFTP.Location = new System.Drawing.Point(12, 367);
-            this.bSFTP.Margin = new System.Windows.Forms.Padding(15);
+            this.bSFTP.Margin = new System.Windows.Forms.Padding(0);
             this.bSFTP.Name = "bSFTP";
             this.bSFTP.Size = new System.Drawing.Size(154, 158);
             this.bSFTP.TabIndex = 11;
@@ -298,10 +299,12 @@
             this.bDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.bDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bDashboard.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.bDashboard.FlatAppearance.BorderSize = 0;
             this.bDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bDashboard.Location = new System.Drawing.Point(183, 12);
+            this.bDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.bDashboard.Name = "bDashboard";
             this.bDashboard.Size = new System.Drawing.Size(154, 158);
             this.bDashboard.TabIndex = 1;

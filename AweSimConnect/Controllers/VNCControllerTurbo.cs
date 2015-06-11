@@ -33,16 +33,6 @@ namespace AweSimConnect.Controllers
             this.Connection = connection;
         }
 
-
-        // GGIVnc command line argument placeholder.
-        private String BuildCommandString()
-        {
-            string localhost = String.Format(TURBO_ARGS, Connection.VNCPassword, Connection.LocalPort);
-            return localhost;
-        }
-
-        
-
         //Installs ggivnc.exe to current directory if it isn't there.
         public bool InstallVNC()
         {
@@ -57,19 +47,16 @@ namespace AweSimConnect.Controllers
             return true;
         }
 
-        //Gets plink.exe from the embedded resources.
+        //Gets vncviewer.exe from the embedded resources.
         private byte[] getTurboVnc()
         {
             return Resources.vncviewer;
         }
 
-        //Launch Plink without a password
-        //Currently not implemented since the form validates for password.
+        //Launch TurboVNC 
         public void StartVNCProcess()
         {
-            String vncCommand = BuildCommandString();
             ProcessStartInfo info = new ProcessStartInfo(TURBOVNC_CURRENT_DIR);
-            //TODO
             info.Arguments = String.Format(TURBO_ARGS, Connection.VNCPassword, Connection.LocalPort);
             info.UseShellExecute = true;
 

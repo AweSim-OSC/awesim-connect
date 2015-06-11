@@ -363,11 +363,11 @@ namespace AweSimConnect
         {
             if (connected)
             {
-                picture.Image = new Bitmap(AweSimConnect.Properties.Resources.greenlight);
+                picture.Image = new Bitmap(AweSimConnect.Properties.Resources.check_gry);
             }
             else
             {
-                picture.Image = new Bitmap(AweSimConnect.Properties.Resources.redlight);
+                picture.Image = new Bitmap(AweSimConnect.Properties.Resources.cross_gry);
             }
         }
 

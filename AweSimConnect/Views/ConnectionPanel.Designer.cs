@@ -34,11 +34,11 @@
             this.lSession = new System.Windows.Forms.Label();
             this.panelProcesses = new System.Windows.Forms.Panel();
             this.toolTipConnectionPanel = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonDisconnect = new System.Windows.Forms.Button();
             this.tbTag = new System.Windows.Forms.TextBox();
             this.labelTag = new System.Windows.Forms.Label();
             this.tbConnectionInfo = new System.Windows.Forms.TextBox();
             this.pbTunnel = new System.Windows.Forms.PictureBox();
-            this.buttonDisconnect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +94,26 @@
             this.toolTipConnectionPanel.AutomaticDelay = 100;
             this.toolTipConnectionPanel.BackColor = System.Drawing.SystemColors.HighlightText;
             // 
+            // buttonDisconnect
+            // 
+            this.buttonDisconnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonDisconnect.BackgroundImage = global::AweSimConnect.Properties.Resources.stop;
+            this.buttonDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDisconnect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonDisconnect.FlatAppearance.BorderSize = 0;
+            this.buttonDisconnect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.buttonDisconnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDisconnect.Location = new System.Drawing.Point(354, 40);
+            this.buttonDisconnect.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonDisconnect.Name = "buttonDisconnect";
+            this.buttonDisconnect.Size = new System.Drawing.Size(28, 28);
+            this.buttonDisconnect.TabIndex = 22;
+            this.buttonDisconnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipConnectionPanel.SetToolTip(this.buttonDisconnect, "Disconnect Tunnel");
+            this.buttonDisconnect.UseVisualStyleBackColor = true;
+            this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
+            // 
             // tbTag
             // 
             this.tbTag.Location = new System.Drawing.Point(164, 31);
@@ -130,26 +150,6 @@
             this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbTunnel.TabIndex = 17;
             this.pbTunnel.TabStop = false;
-            // 
-            // buttonDisconnect
-            // 
-            this.buttonDisconnect.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonDisconnect.BackgroundImage = global::AweSimConnect.Properties.Resources.stop;
-            this.buttonDisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDisconnect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonDisconnect.FlatAppearance.BorderSize = 0;
-            this.buttonDisconnect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.buttonDisconnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDisconnect.Location = new System.Drawing.Point(354, 40);
-            this.buttonDisconnect.Name = "buttonDisconnect";
-            this.buttonDisconnect.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonDisconnect.Size = new System.Drawing.Size(28, 28);
-            this.buttonDisconnect.TabIndex = 22;
-            this.buttonDisconnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTipConnectionPanel.SetToolTip(this.buttonDisconnect, "Disconnect Tunnel");
-            this.buttonDisconnect.UseVisualStyleBackColor = true;
-            this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
             // 
             // ConnectionPanel
             // 

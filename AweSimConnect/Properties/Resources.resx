@@ -121,14 +121,8 @@
   <data name="header" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\header.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="redlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\redlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="awesimsm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\awesim-sm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="greenlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\greenlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="plink" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\plink.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -157,9 +151,6 @@
   <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="awesim_ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\awesim-ball.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="awesim_large" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\awesim-large.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -181,9 +172,6 @@
   <data name="info_gry" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info-gry.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\setting.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="shield" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shield.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -201,6 +189,9 @@
   </data>
   <data name="wireframe_globe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wireframe-globe.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="awesim_ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\awesim-ball.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="vncviewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vncviewer.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

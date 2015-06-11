@@ -13,11 +13,11 @@ namespace AweSimConnect.Views
     /*
     * TODO Wishlist
     *
+    * -ggivnc.exe is still being baked in after switch. remove it to reduce file size.
     * -Make sure closing main form kills all processes opened by the app.
     * -NEED TO ASYNC THE NETWORK CALLS
     * -Allow user to save password. (External prefs file, use user encryption.)
     * -Save external file locations in prefs to speed up startup.
-    * -Detect TurboVNC installation
     * -Antialiased Font
     * -URI Parsing
     * -Move magic strings to resources
@@ -230,6 +230,7 @@ namespace AweSimConnect.Views
         // Recursive check and assign localport
         private void MapLocalPort(int port)
         {
+            
             bool exists = false;
             if (connectionForms.Count > 0)
             {

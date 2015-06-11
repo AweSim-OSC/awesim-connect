@@ -88,6 +88,11 @@
     <Compile Include="Models\PasswordEncryption.cs" />
     <Compile Include="Models\ProcessData.cs" />
     <Compile Include="Models\VisualizationNode.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AboutFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,14 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Views\AweSimMain2.resx">
       <DependentUpon>AweSimMain2.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,7 +188,6 @@
     <None Include="Resources\cross-gry.png" />
     <None Include="Resources\browser-sizes.png" />
     <None Include="Resources\eye-gray.png" />
-    <Content Include="Resources\greenlight.png" />
     <None Include="Resources\network-socket.png" />
     <None Include="Resources\monitor.png" />
     <None Include="Resources\hard-disk.png" />
@@ -197,7 +196,6 @@
     <None Include="Resources\key.png" />
     <None Include="Resources\hdd-gry.png" />
     <None Include="Resources\info-gry.png" />
-    <Content Include="Resources\redlight.png" />
     <None Include="Resources\header.png" />
     <EmbeddedResource Include="Resources\plink.exe" />
     <None Include="Resources\awesim-sm.png" />

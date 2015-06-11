@@ -530,7 +530,7 @@
             // 
             // pbTunnel
             // 
-            this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.redlight;
+            this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.cross_gry;
             this.pbTunnel.Location = new System.Drawing.Point(226, 23);
             this.pbTunnel.Name = "pbTunnel";
             this.pbTunnel.Size = new System.Drawing.Size(24, 24);
@@ -540,7 +540,7 @@
             // 
             // pbNetwork
             // 
-            this.pbNetwork.Image = global::AweSimConnect.Properties.Resources.redlight;
+            this.pbNetwork.Image = global::AweSimConnect.Properties.Resources.cross_gry;
             this.pbNetwork.Location = new System.Drawing.Point(95, 23);
             this.pbNetwork.Name = "pbNetwork";
             this.pbNetwork.Size = new System.Drawing.Size(24, 24);

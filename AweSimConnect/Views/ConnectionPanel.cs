@@ -35,6 +35,7 @@ namespace AweSimConnect.Views
                 
             //_vnc = new VNCControllerGGI(_connection);
             _vnc = new VNCControllerTurbo(_connection);
+            labelVersion.Text = "v"+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             timerConnectionPanel.Start();
         }
 

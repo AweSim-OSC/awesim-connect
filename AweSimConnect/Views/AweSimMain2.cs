@@ -16,13 +16,13 @@ namespace AweSimConnect.Views
     * -ggivnc.exe is still being baked in after switch. remove it to reduce file size.
     * -Make sure closing main form kills all processes opened by the app.
     * -NEED TO ASYNC THE NETWORK CALLS
+    * -Async maplocalport
     * -Allow user to save password. (External prefs file, use user encryption.)
     * -Save external file locations in prefs to speed up startup.
     * -Antialiased Font
     * -URI Parsing
     * -Move magic strings to resources
     * -Allow user to select other ssh host in options.
-    * -Make sure all connections close on exit.
     * /
 
    /*

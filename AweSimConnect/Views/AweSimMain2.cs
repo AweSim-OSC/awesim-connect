@@ -228,29 +228,30 @@ namespace AweSimConnect.Views
         }
 
         // Recursive check and assign localport
-        private void MapLocalPort(int port)
+        private int MapLocalPort(int port)
         {
-            
-            bool exists = false;
+            int localPort = port;
+
             if (connectionForms.Count > 0)
             {
                 foreach (ConnectionForm form in connectionForms)
                 {
-                    if (form.GetConnection().LocalPort == port)
-                        exists = true;
+                    if (form.GetConnection().LocalPort == localPort)
+                    {
+                        localPort++;
+                        return MapLocalPort(localPort);
+                    }
                 }
             }
 
-            // If the port was found in the list of processes, increment up and try again.
-            if (exists)
+            if (NetworkTools.IsPortOpenOnLocalHost(localPort))
             {
-                port++;
-                MapLocalPort(port);
+                localPort++;
+                return MapLocalPort(localPort);
             }
-            else
-            {
-                this._connection.LocalPort = port;
-            }
+
+            this._connection.LocalPort = localPort;
+            return localPort;
         }
 
         // The click handler for the SFTP button

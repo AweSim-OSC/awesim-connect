@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -61,7 +60,6 @@ namespace AweSimConnect.Views
         private List<ConnectionForm> connectionForms;
 
         private bool _networkAvailable = false;
-        private bool _tunnelAvailable = false;
 
         private int _secondsElapsed = 0;
 
@@ -81,7 +79,7 @@ namespace AweSimConnect.Views
 
         }
 
-
+        // Form Load
         private void AweSimMain2_Load(object sender, EventArgs e)
         {
 
@@ -132,16 +130,11 @@ namespace AweSimConnect.Views
 
         }
 
-
+        // Handle the connect button actions
         private void bConnect_Click(object sender, EventArgs e)
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
-                //_connection.PUAServer = tbHost.Text.Trim();
-                //_connection.UserName = tbUsername.Text.Trim();
-                //_connection.SSHHost = SSH_HOST;
-                //_connection.RemotePort = int.Parse(tbPort.Text);
-                //_connection.VNCPassword = tbVNCPassword.Text.Trim();
                 MapLocalPort(_connection.RemotePort);
 
                 _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);
@@ -232,6 +225,7 @@ namespace AweSimConnect.Views
         {
             int localPort = port;
 
+            // Check the processes this app instance has opened to see if we've already used this port.
             if (connectionForms.Count > 0)
             {
                 foreach (ConnectionForm form in connectionForms)
@@ -244,12 +238,14 @@ namespace AweSimConnect.Views
                 }
             }
 
+            // If we don't find the port in the list of used ports, check to see if it's in use on the system.
             if (NetworkTools.IsPortOpenOnLocalHost(localPort))
             {
                 localPort++;
                 return MapLocalPort(localPort);
             }
 
+            // TODO refactor this to just return the port. This is belt and suspenders.
             this._connection.LocalPort = localPort;
             return localPort;
         }
@@ -276,12 +272,7 @@ namespace AweSimConnect.Views
         {
             label.ForeColor = valid ? Color.Gray : Color.Red;
         }
-
-        private void LabelColorChanger(RadioButton radioButton, bool valid)
-        {
-            radioButton.ForeColor = valid ? Color.Gray : Color.Red;
-        }
-
+        
         private void LabelColorChanger(GroupBox groupBox, bool valid)
         {
             groupBox.ForeColor = valid ? Color.Gray : Color.Red;
@@ -305,6 +296,7 @@ namespace AweSimConnect.Views
             bConnect.Enabled = enable;
         }
 
+        // True to enable the SFTP button, false to disable.
         private void EnableSFTPOptions(bool enable)
         {
             bSFTP.Enabled = enable;
@@ -346,9 +338,6 @@ namespace AweSimConnect.Views
 
         [DllImport("user32.dll")]
         public static extern Int32 SetForegroundWindow(int windowHandle);
-
-
-
 
         // Clipboard monitoring
         [DllImport("user32.dll")]
@@ -405,7 +394,7 @@ namespace AweSimConnect.Views
         {
 
             // Remove the app from the clipboard view chain
-            ChangeClipboardChain(this.Handle, _nextClipboardViewer);
+            ChangeClipboardChain(Handle, _nextClipboardViewer);
 
             // If the app has created any processes. (SFTP clients, for example)
             if (processes.Count > 0)
@@ -432,7 +421,7 @@ namespace AweSimConnect.Views
             }
         }
 
-
+        // When the user changes the text in the VNC password box, check for validity.
         private void tbVNCPassword_TextChanged(object sender, EventArgs e)
         {
             //Hide the password label when there is text in the box.
@@ -440,8 +429,7 @@ namespace AweSimConnect.Views
         }
 
         // Provides a user workflow
-        // TODO Clean this up and eliminate duplication.
-        private void displayGroupBoxes()
+        private void DisplayGroupBoxes()
         {
 
             if (_networkAvailable)
@@ -533,7 +521,7 @@ namespace AweSimConnect.Views
         //////////////////////////////////////////////////////
         private void timerMain_Tick(object sender, EventArgs e)
         {
-            displayGroupBoxes();
+            DisplayGroupBoxes();
 
             NetworkConnected(_networkAvailable);
 
@@ -563,12 +551,13 @@ namespace AweSimConnect.Views
         }
 
 
-
+        // Set the username when the user enters text.
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
             _connection.UserName = tbUsername.Text;
         }
 
+        // Attempt to parse data the user enters into the port box.
         private void tbPort_TextChanged(object sender, EventArgs e)
         {
             // When the user modifies the redirect port box, set the variable, change label to red if not a valid integer
@@ -586,11 +575,13 @@ namespace AweSimConnect.Views
 
         }
 
+        // Set the host variable when the text changes`
         private void tbHost_TextChanged(object sender, EventArgs e)
         {
             _connection.PUAServer = tbHost.Text;
         }
 
+        // Handle the action when the user selects the VNC button
         private void rbVNC_CheckedChanged(object sender, EventArgs e)
         {
             tbPort.Enabled = true;
@@ -600,12 +591,14 @@ namespace AweSimConnect.Views
             }
         }
 
+        // Handle the action when the user selects the COMSOL button
         private void rbCOMSOL_CheckedChanged(object sender, EventArgs e)
         {
             tbPort.Enabled = false;
             tbPort.Text = ""+Connection.COMSOL_SERVER_PORT.ToString();
         }
 
+        // Open the about form when the user clicks a button
         private void buttonInfo_Click(object sender, EventArgs e)
         {
             if (_abtFrm.IsDisposed)
@@ -614,9 +607,6 @@ namespace AweSimConnect.Views
             }
             _abtFrm.Show();
         }
-
-
-
 
         /*  Upcoming password save feature
 

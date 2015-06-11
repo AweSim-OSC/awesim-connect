@@ -1,7 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
@@ -20,7 +18,7 @@ namespace AweSimConnect.Views
         
         private int _ticks = 0;
         private bool _tunnelAvailable;
-        private bool _isVnc;
+        private readonly bool _isVnc;
 
         internal ConnectionPanel(Connection inputConnection, string userPass, Form parentForm)
         {
@@ -29,7 +27,6 @@ namespace AweSimConnect.Views
             _connection = inputConnection;
             _pc = new PuTTYController(_connection);
             _pc.StartPlinkProcess(userPass);
-            //_pc.StartPlinkProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
             toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a " + SessionType() + " connection to " + _connection.GetServerAndPort());
                 

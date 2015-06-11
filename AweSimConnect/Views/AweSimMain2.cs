@@ -516,7 +516,7 @@ namespace AweSimConnect.Views
         {
             if (isNetworkConnected)
             {
-                pbIsNetworkConnected.Image = Resources.check_gry;
+                pbIsNetworkConnected.Image = Resources.wifi;
                 toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Network Available");
             }
             else

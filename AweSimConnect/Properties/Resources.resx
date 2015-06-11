@@ -193,7 +193,25 @@
   <data name="awesim_ball" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\awesim-ball.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="block_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\block-menu.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="home_wifi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home-wifi.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="list_circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\list-circle.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="officine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\officine.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="options_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\options-settings.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="vncviewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vncviewer.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="wifi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wifi.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

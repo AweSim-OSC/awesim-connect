@@ -103,6 +103,16 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap block_menu {
+            get {
+                object obj = ResourceManager.GetObject("block_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap bolt_gry {
             get {
                 object obj = ResourceManager.GetObject("bolt_gry", resourceCulture);
@@ -193,6 +203,16 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap home_wifi {
+            get {
+                object obj = ResourceManager.GetObject("home_wifi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap info {
             get {
                 object obj = ResourceManager.GetObject("info", resourceCulture);
@@ -223,6 +243,16 @@ namespace AweSimConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap list_circle {
+            get {
+                object obj = ResourceManager.GetObject("list_circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap monitor {
             get {
                 object obj = ResourceManager.GetObject("monitor", resourceCulture);
@@ -236,6 +266,26 @@ namespace AweSimConnect.Properties {
         public static System.Drawing.Bitmap network_socket {
             get {
                 object obj = ResourceManager.GetObject("network_socket", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap officine {
+            get {
+                object obj = ResourceManager.GetObject("officine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap options_settings {
+            get {
+                object obj = ResourceManager.GetObject("options_settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -297,6 +347,16 @@ namespace AweSimConnect.Properties {
             get {
                 object obj = ResourceManager.GetObject("vncviewer", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap wifi {
+            get {
+                object obj = ResourceManager.GetObject("wifi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

@@ -169,6 +169,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
+    <None Include="Resources\officine.png" />
+    <None Include="Resources\home-wifi.png" />
+    <None Include="Resources\wifi.png" />
+    <None Include="Resources\options-settings.png" />
+    <None Include="Resources\block-menu.png" />
+    <None Include="Resources\list-circle.png" />
     <None Include="Resources\vncviewer.exe" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\snow.png" />

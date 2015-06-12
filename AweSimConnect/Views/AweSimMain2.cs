@@ -67,6 +67,7 @@ namespace AweSimConnect.Views
         private bool _sftpAvailable;
         private AboutFrm _abtFrm;
         private AdvSettingsFrm _advFrm;
+        private AdvancedSettings _settings;
         private string _sshHost;
 
 
@@ -103,6 +104,7 @@ namespace AweSimConnect.Views
             _ftpc = new SFTPController(_connection);
             _abtFrm = new AboutFrm();
             _advFrm = new AdvSettingsFrm();
+            _settings = new AdvancedSettings();
 
             // Check for connectivity to the servers
             LimitedConnectionPopup();
@@ -117,6 +119,8 @@ namespace AweSimConnect.Views
                 Connection clipData = _cbc.GetClipboardConnection();
                 UpdateData(clipData);
             }
+
+            tbUsername.Text = _settings.GetUserName();
         }
 
         //////////////////////////// BUTTONS ////////////////////////////
@@ -560,6 +564,7 @@ namespace AweSimConnect.Views
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
             _connection.UserName = tbUsername.Text;
+            SaveUserSettings();
         }
 
         // Attempt to parse data the user enters into the port box.
@@ -620,6 +625,25 @@ namespace AweSimConnect.Views
                 _advFrm = new AdvSettingsFrm();
             }
             _advFrm.Show();
+        }
+
+        private void SaveUserSettings()
+        {
+            if (cbRememberMe.Checked)
+            {
+                _settings.SaveUserName(tbUsername.Text);
+                //TODO add password
+            }
+            else
+            {
+                _settings.SaveUserName("");
+                //TODO add password
+            }
+        }
+
+        private void cbRememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+            SaveUserSettings();
         }
 
         /*  Upcoming password save feature

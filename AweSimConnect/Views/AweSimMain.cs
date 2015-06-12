@@ -53,7 +53,7 @@ namespace AweSimConnect
         private VNCControllerGGI vc;
         private SFTPController ftpc;
         private ClipboardController cbc;
-        private ClusterController clc;
+        private OSCClusterController clc;
         Connection connection;
 
         private List<ProcessData> processes;
@@ -90,7 +90,7 @@ namespace AweSimConnect
 
             //Initialize controllers.
             cbc = new ClipboardController();
-            clc = new ClusterController();
+            clc = new OSCClusterController();
             pc = new PuTTYController(connection);
             vc = new VNCControllerGGI(connection);
             ftpc = new SFTPController(connection);
@@ -180,7 +180,7 @@ namespace AweSimConnect
         // Adds the ssh server locations to the combobox
         private void setupClusterBox()
         {
-            foreach (Cluster cluster in clc.GetClusterList())
+            foreach (OSCCluster cluster in clc.GetClusterList())
             {
                 cbCluster.Items.Add(cluster);
             }

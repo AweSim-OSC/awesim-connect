@@ -36,16 +36,16 @@ namespace AweSimConnect.Views
         // The version number. The first and second numbers are set in the assembly info.
         // The third number is the number of days since the year 2000
         // The fourth number is the number of seconds since midnight divided by 2.
-        static readonly String CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        static readonly String CLIENT_TITLE = "AweSim Connect v." + CLIENT_VERSION;
-        static String AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
-        private static String SSH_HOST = "oakley.osc.edu";
-        private static String BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
-        private static String LIMITED_CONNECTION_ERROR =
+        static readonly string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        static readonly string CLIENT_TITLE = "AweSim Connect v." + CLIENT_VERSION;
+        static string AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
+        
+        private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
+        private static string LIMITED_CONNECTION_ERROR =
             "Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.";
-        private static String UNABLE_TO_CONNECT =
+        private static string UNABLE_TO_CONNECT =
             "Unable to Connect to AweSim Server. Check your connection or contact your system administrator.";
-        private static String SFTP_NOT_DETECTED = "Supported SFTP client not detected";
+        private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
 
 
         Connection _connection;
@@ -55,6 +55,7 @@ namespace AweSimConnect.Views
         private VNCControllerTurbo _vc;
         private SFTPController _ftpc;
         private ClipboardController _cbc;
+        private OSCClusterController _clc;
 
         private List<ProcessData> processes;
         private List<ConnectionForm> connectionForms;
@@ -66,6 +67,7 @@ namespace AweSimConnect.Views
         IntPtr _nextClipboardViewer;
         private bool _sftpAvailable;
         private AboutFrm _abtFrm;
+        private string _sshHost;
 
 
         public AweSimMain2()
@@ -94,6 +96,7 @@ namespace AweSimConnect.Views
 
             //Initialize controllers.
             _cbc = new ClipboardController();
+            _clc = new OSCClusterController();
             _pc = new PuTTYController(_connection);
             //_vc = new VNCControllerGGI(_connection);
             _vc = new VNCControllerTurbo(_connection);
@@ -104,7 +107,8 @@ namespace AweSimConnect.Views
             LimitedConnectionPopup();
 
             // For now, I'm using oakley as the SSH host. I'd like to make this user-selectable.
-            this._connection.SSHHost = SSH_HOST;
+            _sshHost = _clc.ClusterDomain();
+            this._connection.SSHHost = _sshHost;
 
             // Check to see if there is any valid data on the clipboard on startup.
             if (_cbc.CheckClipboardForAweSim())
@@ -600,6 +604,15 @@ namespace AweSimConnect.Views
 
         // Open the about form when the user clicks a button
         private void buttonInfo_Click(object sender, EventArgs e)
+        {
+            if (_abtFrm.IsDisposed)
+            {
+                _abtFrm = new AboutFrm(CLIENT_VERSION);
+            }
+            _abtFrm.Show();
+        }
+
+        private void buttonAdvanced_Click(object sender, EventArgs e)
         {
             if (_abtFrm.IsDisposed)
             {

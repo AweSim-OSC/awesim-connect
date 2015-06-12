@@ -5,9 +5,9 @@ namespace AweSimConnect.Models
     /// <summary>
     /// Contains data about compute clusters.
     /// </summary>
-    class Cluster
+    class OSCCluster
     {
-        public Cluster(string code, string name, string domain)
+        public OSCCluster(string code, string name, string domain)
         {
             this.Code = code;
             this.Name = name;

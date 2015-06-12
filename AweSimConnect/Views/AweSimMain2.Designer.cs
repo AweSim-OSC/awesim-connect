@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AweSimMain2));
             this.gbCredentials = new System.Windows.Forms.GroupBox();
+            this.cbRememberMe = new System.Windows.Forms.CheckBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
@@ -45,15 +46,15 @@
             this.rbCOMSOL = new System.Windows.Forms.RadioButton();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.toolTipNoDelay = new System.Windows.Forms.ToolTip(this.components);
-            this.gbSessionType = new System.Windows.Forms.GroupBox();
-            this.gbVNCPassword = new System.Windows.Forms.GroupBox();
-            this.gbSystem = new System.Windows.Forms.GroupBox();
             this.buttonAdvanced = new System.Windows.Forms.Button();
             this.buttonInfo = new System.Windows.Forms.Button();
-            this.pbIsNetworkConnected = new System.Windows.Forms.PictureBox();
             this.bConnect = new System.Windows.Forms.Button();
             this.bSFTP = new System.Windows.Forms.Button();
             this.bDashboard = new System.Windows.Forms.Button();
+            this.gbSessionType = new System.Windows.Forms.GroupBox();
+            this.gbVNCPassword = new System.Windows.Forms.GroupBox();
+            this.gbSystem = new System.Windows.Forms.GroupBox();
+            this.pbIsNetworkConnected = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.gbCredentials.SuspendLayout();
             this.gbSessionInfo.SuspendLayout();
@@ -66,6 +67,7 @@
             // 
             // gbCredentials
             // 
+            this.gbCredentials.Controls.Add(this.cbRememberMe);
             this.gbCredentials.Controls.Add(this.tbPassword);
             this.gbCredentials.Controls.Add(this.tbUsername);
             this.gbCredentials.Controls.Add(this.labelPassword);
@@ -79,10 +81,23 @@
             this.gbCredentials.Text = "1. AweSim Credentials";
             this.toolTipNoDelay.SetToolTip(this.gbCredentials, "Your AweSim Username and Password.");
             // 
+            // cbRememberMe
+            // 
+            this.cbRememberMe.AutoSize = true;
+            this.cbRememberMe.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.cbRememberMe.Location = new System.Drawing.Point(6, 107);
+            this.cbRememberMe.Name = "cbRememberMe";
+            this.cbRememberMe.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbRememberMe.Size = new System.Drawing.Size(95, 17);
+            this.cbRememberMe.TabIndex = 5;
+            this.cbRememberMe.Text = "Remember Me";
+            this.cbRememberMe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cbRememberMe.UseVisualStyleBackColor = true;
+            // 
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(6, 89);
+            this.tbPassword.Location = new System.Drawing.Point(6, 75);
             this.tbPassword.MaxLength = 255;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(142, 26);
@@ -95,7 +110,7 @@
             // tbUsername
             // 
             this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.Location = new System.Drawing.Point(6, 42);
+            this.tbUsername.Location = new System.Drawing.Point(6, 31);
             this.tbUsername.MaxLength = 255;
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(142, 26);
@@ -111,7 +126,7 @@
             this.labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.labelPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelPassword.Location = new System.Drawing.Point(51, 74);
+            this.labelPassword.Location = new System.Drawing.Point(6, 59);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(53, 13);
             this.labelPassword.TabIndex = 4;
@@ -123,7 +138,7 @@
             this.labelUsername.BackColor = System.Drawing.Color.Transparent;
             this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelUsername.Location = new System.Drawing.Point(49, 26);
+            this.labelUsername.Location = new System.Drawing.Point(6, 15);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(55, 13);
             this.labelUsername.TabIndex = 3;
@@ -176,7 +191,7 @@
             this.lPort.AutoSize = true;
             this.lPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.lPort.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lPort.Location = new System.Drawing.Point(120, 18);
+            this.lPort.Location = new System.Drawing.Point(113, 18);
             this.lPort.Name = "lPort";
             this.lPort.Size = new System.Drawing.Size(26, 13);
             this.lPort.TabIndex = 4;
@@ -187,7 +202,7 @@
             this.lHost.AutoSize = true;
             this.lHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.lHost.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lHost.Location = new System.Drawing.Point(45, 17);
+            this.lHost.Location = new System.Drawing.Point(6, 18);
             this.lHost.Name = "lHost";
             this.lHost.Size = new System.Drawing.Size(29, 13);
             this.lHost.TabIndex = 3;
@@ -249,41 +264,6 @@
             this.toolTipNoDelay.InitialDelay = 100;
             this.toolTipNoDelay.ReshowDelay = 20;
             // 
-            // gbSessionType
-            // 
-            this.gbSessionType.Controls.Add(this.rbCOMSOL);
-            this.gbSessionType.Controls.Add(this.rbVNC);
-            this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionType.Location = new System.Drawing.Point(183, 179);
-            this.gbSessionType.Name = "gbSessionType";
-            this.gbSessionType.Size = new System.Drawing.Size(154, 62);
-            this.gbSessionType.TabIndex = 4;
-            this.gbSessionType.TabStop = false;
-            this.gbSessionType.Text = "2. Session Type";
-            // 
-            // gbVNCPassword
-            // 
-            this.gbVNCPassword.Controls.Add(this.tbVNCPassword);
-            this.gbVNCPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbVNCPassword.Location = new System.Drawing.Point(183, 312);
-            this.gbVNCPassword.Name = "gbVNCPassword";
-            this.gbVNCPassword.Size = new System.Drawing.Size(154, 41);
-            this.gbVNCPassword.TabIndex = 8;
-            this.gbVNCPassword.TabStop = false;
-            this.gbVNCPassword.Text = "4. VNC Password";
-            // 
-            // gbSystem
-            // 
-            this.gbSystem.Controls.Add(this.buttonAdvanced);
-            this.gbSystem.Controls.Add(this.buttonInfo);
-            this.gbSystem.Controls.Add(this.pbIsNetworkConnected);
-            this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSystem.Location = new System.Drawing.Point(12, 179);
-            this.gbSystem.Name = "gbSystem";
-            this.gbSystem.Size = new System.Drawing.Size(154, 40);
-            this.gbSystem.TabIndex = 13;
-            this.gbSystem.TabStop = false;
-            // 
             // buttonAdvanced
             // 
             this.buttonAdvanced.BackgroundImage = global::AweSimConnect.Properties.Resources.officine;
@@ -300,7 +280,7 @@
             this.buttonAdvanced.TabIndex = 3;
             this.toolTipNoDelay.SetToolTip(this.buttonAdvanced, "Advanced Options");
             this.buttonAdvanced.UseVisualStyleBackColor = true;
-            this.buttonAdvanced.Visible = false;
+            this.buttonAdvanced.Click += new System.EventHandler(this.buttonAdvanced_Click);
             // 
             // buttonInfo
             // 
@@ -319,17 +299,6 @@
             this.toolTipNoDelay.SetToolTip(this.buttonInfo, "About");
             this.buttonInfo.UseVisualStyleBackColor = true;
             this.buttonInfo.Click += new System.EventHandler(this.buttonInfo_Click);
-            // 
-            // pbIsNetworkConnected
-            // 
-            this.pbIsNetworkConnected.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pbIsNetworkConnected.Image = global::AweSimConnect.Properties.Resources.cross_gry;
-            this.pbIsNetworkConnected.Location = new System.Drawing.Point(19, 12);
-            this.pbIsNetworkConnected.Name = "pbIsNetworkConnected";
-            this.pbIsNetworkConnected.Size = new System.Drawing.Size(22, 22);
-            this.pbIsNetworkConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbIsNetworkConnected.TabIndex = 1;
-            this.pbIsNetworkConnected.TabStop = false;
             // 
             // bConnect
             // 
@@ -394,6 +363,52 @@
             this.toolTipNoDelay.SetToolTip(this.bDashboard, "Click to Access the AweSim web dashboard.");
             this.bDashboard.UseVisualStyleBackColor = false;
             this.bDashboard.Click += new System.EventHandler(this.bDashboard_Click);
+            // 
+            // gbSessionType
+            // 
+            this.gbSessionType.Controls.Add(this.rbCOMSOL);
+            this.gbSessionType.Controls.Add(this.rbVNC);
+            this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbSessionType.Location = new System.Drawing.Point(183, 179);
+            this.gbSessionType.Name = "gbSessionType";
+            this.gbSessionType.Size = new System.Drawing.Size(154, 62);
+            this.gbSessionType.TabIndex = 4;
+            this.gbSessionType.TabStop = false;
+            this.gbSessionType.Text = "2. Session Type";
+            // 
+            // gbVNCPassword
+            // 
+            this.gbVNCPassword.Controls.Add(this.tbVNCPassword);
+            this.gbVNCPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbVNCPassword.Location = new System.Drawing.Point(183, 312);
+            this.gbVNCPassword.Name = "gbVNCPassword";
+            this.gbVNCPassword.Size = new System.Drawing.Size(154, 41);
+            this.gbVNCPassword.TabIndex = 8;
+            this.gbVNCPassword.TabStop = false;
+            this.gbVNCPassword.Text = "4. VNC Password";
+            // 
+            // gbSystem
+            // 
+            this.gbSystem.Controls.Add(this.buttonAdvanced);
+            this.gbSystem.Controls.Add(this.buttonInfo);
+            this.gbSystem.Controls.Add(this.pbIsNetworkConnected);
+            this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbSystem.Location = new System.Drawing.Point(12, 179);
+            this.gbSystem.Name = "gbSystem";
+            this.gbSystem.Size = new System.Drawing.Size(154, 40);
+            this.gbSystem.TabIndex = 13;
+            this.gbSystem.TabStop = false;
+            // 
+            // pbIsNetworkConnected
+            // 
+            this.pbIsNetworkConnected.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbIsNetworkConnected.Image = global::AweSimConnect.Properties.Resources.cross_gry;
+            this.pbIsNetworkConnected.Location = new System.Drawing.Point(19, 12);
+            this.pbIsNetworkConnected.Name = "pbIsNetworkConnected";
+            this.pbIsNetworkConnected.Size = new System.Drawing.Size(22, 22);
+            this.pbIsNetworkConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbIsNetworkConnected.TabIndex = 1;
+            this.pbIsNetworkConnected.TabStop = false;
             // 
             // pbLogo
             // 
@@ -471,6 +486,7 @@
         private System.Windows.Forms.PictureBox pbIsNetworkConnected;
         private System.Windows.Forms.Button buttonInfo;
         private System.Windows.Forms.Button buttonAdvanced;
+        private System.Windows.Forms.CheckBox cbRememberMe;
 
 
 

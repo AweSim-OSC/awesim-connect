@@ -7,29 +7,29 @@ namespace AweSimConnect.Controllers
     /// <summary>
     /// Store data on available OSC clusters
     /// </summary>
-    class ClusterController
+    class OSCClusterController
     {
-        static Cluster oakley = new Cluster("OAK", "Oakley", "oakley.osc.edu");
-        static Cluster ruby = new Cluster("RBY", "Ruby", "ruby.osc.edu");
-        static Cluster glenn = new Cluster("OPT", "Glenn", "glenn.osc.edu");
+        static OSCCluster oakley = new OSCCluster("OAK", "Oakley", "oakley.osc.edu");
+        static OSCCluster ruby = new OSCCluster("RBY", "Ruby", "ruby.osc.edu");
+        static OSCCluster glenn = new OSCCluster("OPT", "Glenn", "glenn.osc.edu");
 
-        private Cluster selectedCluster;
+        private OSCCluster selectedCluster;
 
-        private List<Cluster> clusterList;
+        private List<OSCCluster> clusterList;
 
-        public ClusterController()
+        public OSCClusterController()
         {
             init(oakley);
         }
 
-        public ClusterController(Cluster selected)
+        public OSCClusterController(OSCCluster selected)
         {
             init(selected);
         }
 
-        private void init(Cluster selected)
+        private void init(OSCCluster selected)
         {
-            List<Cluster> list = new List<Cluster>();
+            List<OSCCluster> list = new List<OSCCluster>();
             list.Add(oakley);  // Index 0
             list.Add(ruby);    // Index 1
             list.Add(glenn);   // Index 2
@@ -79,13 +79,13 @@ namespace AweSimConnect.Controllers
         }
 
         //Sets the cluster to a user specified cluster (future proofing)
-        public void SetCluster(Cluster cluster)
+        public void SetCluster(OSCCluster cluster)
         {
             this.selectedCluster = cluster;
         }
 
         // Gets the currently selected cluster.
-        public Cluster GetCluster()
+        public OSCCluster GetCluster()
         {
             return this.selectedCluster;
         }
@@ -103,7 +103,7 @@ namespace AweSimConnect.Controllers
         }
 
         // Returns the default list of clusters being managed by the controller.
-        public List<Cluster> GetClusterList()
+        public List<OSCCluster> GetClusterList()
         {
             return this.clusterList;
         }
@@ -120,7 +120,7 @@ namespace AweSimConnect.Controllers
             }
         }
 
-        public Cluster GetClusterAtIndex(int index)
+        public OSCCluster GetClusterAtIndex(int index)
         {
             try
             {

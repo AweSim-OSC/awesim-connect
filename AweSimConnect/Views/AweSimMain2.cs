@@ -120,7 +120,8 @@ namespace AweSimConnect.Views
                 UpdateData(clipData);
             }
 
-            tbUsername.Text = _settings.GetUserName();
+            tbUsername.Text = _settings.GetUsername();
+            tbPassword.Text = _settings.GetPassword();
             if (_settings.IsUserSaved())
             {
                 cbRememberMe.Checked = true;
@@ -639,56 +640,20 @@ namespace AweSimConnect.Views
 
             if (cbRememberMe.Checked)
             {
-                _settings.SaveUserName(tbUsername.Text);
-
-                //TODO add password
+                _settings.SaveUsername(tbUsername.Text);
+                _settings.SavePassword(tbPassword.Text);
             }
             else
             {
-                _settings.SaveUserName("");
-                //TODO add password
+                _settings.SaveUsername("");
+                _settings.SavePassword("");
             }
         }
 
-        /*  Upcoming password save feature
-
-        // Check the user settings for a username and encrypted password and fill the text boxes.
-        private void checkForUserSettings()
+        // Sets or unsets the user settings when the user clicks the checkbox
+        private void cbRememberMe_CheckedChanged(object sender, EventArgs e)
         {
-            if ((bool)Settings.Default["IsPassSaved"])
-            {
-                label1.Text = Settings.Default["UserName"].ToString();
-                checkSavePassword.Checked = true;
-                string userName = Settings.Default["UserName"].ToString();
-                string userPass = Settings.Default["UserPass"].ToString();
-                tbUserName.Text = userName;
-                tbPassword.Text = PasswordEncryption.Decrypt(userPass);
-
-            }
+            SaveUserSettings();
         }
-
-        // If true, save the choice to the Settings. If false, change user settings to reflect.
-        private void SaveUserSettings(bool userSettings)
-        {
-            Settings.Default["IsPassSaved"] = userSettings;
-            string userName = tbUserName.Text;
-            string userPass = tbPassword.Text;
-
-            //If we're saving the settings, encrypt the password and save to settings. Else save blanks.
-            if (userSettings) {
-                Settings.Default["UserName"] = userName;
-                string encryptedUserPass = PasswordEncryption.Encrypt(userPass);
-                Settings.Default["UserPass"] = encryptedUserPass;
-            }
-            else
-            {
-                Settings.Default["UserName"] = userName;
-                Settings.Default["UserPass"] = "";
-            }
-            Settings.Default.Save();
-
-        }
-
-        */
     }
 }

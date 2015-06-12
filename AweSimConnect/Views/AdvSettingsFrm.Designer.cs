@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdvSettingsFrm));
             this.labelVersion = new System.Windows.Forms.Label();
+            this.cbSaveUser = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelVersion
@@ -44,12 +45,24 @@
             this.labelVersion.Text = "version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // cbSaveUser
+            // 
+            this.cbSaveUser.AutoSize = true;
+            this.cbSaveUser.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.cbSaveUser.Location = new System.Drawing.Point(12, 45);
+            this.cbSaveUser.Name = "cbSaveUser";
+            this.cbSaveUser.Size = new System.Drawing.Size(131, 17);
+            this.cbSaveUser.TabIndex = 31;
+            this.cbSaveUser.Text = "Save User Credentials";
+            this.cbSaveUser.UseVisualStyleBackColor = true;
+            // 
             // AdvSettingsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(346, 74);
+            this.Controls.Add(this.cbSaveUser);
             this.Controls.Add(this.labelVersion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -60,11 +73,13 @@
             this.Text = "Advanced Settings";
             this.Load += new System.EventHandler(this.AdvSettingsFrm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.CheckBox cbSaveUser;
     }
 }

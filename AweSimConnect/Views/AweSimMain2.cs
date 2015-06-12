@@ -110,7 +110,7 @@ namespace AweSimConnect.Views
             LimitedConnectionPopup();
 
             // For now, I'm using oakley as the SSH host. I'd like to make this user-selectable.
-            _sshHost = _clc.ClusterDomain();
+            _sshHost = _clc.GetCluster(_settings.GetSSHHostCode()).Domain;
             this._connection.SSHHost = _sshHost;
 
             // Check to see if there is any valid data on the clipboard on startup.
@@ -562,13 +562,15 @@ namespace AweSimConnect.Views
                 _sftpAvailable = _ftpc.IsSFTPInstalled();
 
                 EnableSFTPOptions(_sftpAvailable && _networkAvailable);
-                
+
             }
             
             //Checks if the state was toggled in the about form an updates main.
             if (_advFrm.AdvancedSettingsChanged())
             {
                 cbRememberMe.Checked = _settings.IsUserSaved();
+                _sshHost = _clc.GetCluster(_settings.GetSSHHostCode()).Domain;
+                _connection.SSHHost = _sshHost;
             }
 
             _secondsElapsed++;

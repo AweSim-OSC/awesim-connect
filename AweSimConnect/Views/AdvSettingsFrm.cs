@@ -19,6 +19,8 @@ namespace AweSimConnect.Views
             InitializeComponent();
             _settings = new AdvancedSettings();
             _clusterController = new OSCClusterController();
+
+            //TODO move the combobox setup to it's own method
             string presetClusterCode = _settings.GetSSHHostCode();
             int clusterSelected = 0;
             for (int i = 0; i < _clusterController.GetClusterList().Count; i++)

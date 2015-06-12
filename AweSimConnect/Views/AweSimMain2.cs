@@ -121,6 +121,11 @@ namespace AweSimConnect.Views
             }
 
             tbUsername.Text = _settings.GetUserName();
+            if (_settings.IsUserSaved())
+            {
+                cbRememberMe.Checked = true;
+            }
+            
         }
 
         //////////////////////////// BUTTONS ////////////////////////////
@@ -144,6 +149,7 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
+                SaveUserSettings();
                 MapLocalPort(_connection.RemotePort);
 
                 _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);
@@ -159,6 +165,7 @@ namespace AweSimConnect.Views
         {
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
+                SaveUserSettings();
                 if (_ftpc.IsSFTPInstalled())
                 {
                     _ftpc.StartSFTPProcess(tbPassword.Text);
@@ -564,7 +571,6 @@ namespace AweSimConnect.Views
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
             _connection.UserName = tbUsername.Text;
-            SaveUserSettings();
         }
 
         // Attempt to parse data the user enters into the port box.
@@ -629,9 +635,12 @@ namespace AweSimConnect.Views
 
         private void SaveUserSettings()
         {
+            _settings.RememberUser(cbRememberMe.Checked);
+
             if (cbRememberMe.Checked)
             {
                 _settings.SaveUserName(tbUsername.Text);
+
                 //TODO add password
             }
             else
@@ -639,11 +648,6 @@ namespace AweSimConnect.Views
                 _settings.SaveUserName("");
                 //TODO add password
             }
-        }
-
-        private void cbRememberMe_CheckedChanged(object sender, EventArgs e)
-        {
-            SaveUserSettings();
         }
 
         /*  Upcoming password save feature

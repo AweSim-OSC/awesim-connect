@@ -19,7 +19,7 @@ namespace AweSimConnect.Views
 
         private void AdvSettingsFrm_Load(object sender, EventArgs e)
         {
-
+            labelVersion.Text = CLIENT_VERSION;
         }
     }
 }

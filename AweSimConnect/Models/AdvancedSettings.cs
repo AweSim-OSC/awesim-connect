@@ -6,10 +6,6 @@ namespace AweSimConnect.Models
 {
     class AdvancedSettings
     {
-        private bool _rememberUser;
-        private string _lastUserName;
-        private string _SshHost;
-
         public void SaveUserName(string userName)
         {
             Properties.Settings.Default.Username = userName;
@@ -21,6 +17,17 @@ namespace AweSimConnect.Models
             string name = "";
             name = Properties.Settings.Default.Username;
             return name;
+        }
+
+        public void RememberUser(bool remember)
+        {
+            Properties.Settings.Default.IsPassSaved = remember;
+            Properties.Settings.Default.Save();
+        }
+
+        public bool IsUserSaved()
+        {
+            return Properties.Settings.Default.IsPassSaved;
         }
     }
 }

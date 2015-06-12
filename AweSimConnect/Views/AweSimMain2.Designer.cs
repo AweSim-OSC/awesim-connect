@@ -93,7 +93,6 @@
             this.cbRememberMe.Text = "Remember Me";
             this.cbRememberMe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbRememberMe.UseVisualStyleBackColor = true;
-            this.cbRememberMe.CheckedChanged += new System.EventHandler(this.cbRememberMe_CheckedChanged);
             // 
             // tbPassword
             // 

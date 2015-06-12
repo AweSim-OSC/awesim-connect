@@ -66,6 +66,7 @@ namespace AweSimConnect.Views
         IntPtr _nextClipboardViewer;
         private bool _sftpAvailable;
         private AboutFrm _abtFrm;
+        private AdvSettingsFrm _advFrm;
         private string _sshHost;
 
 
@@ -100,7 +101,8 @@ namespace AweSimConnect.Views
             //_vc = new VNCControllerGGI(_connection);
             _vc = new VNCControllerTurbo(_connection);
             _ftpc = new SFTPController(_connection);
-            _abtFrm = new AboutFrm(CLIENT_VERSION);
+            _abtFrm = new AboutFrm();
+            _advFrm = new AdvSettingsFrm();
 
             // Check for connectivity to the servers
             LimitedConnectionPopup();
@@ -606,18 +608,18 @@ namespace AweSimConnect.Views
         {
             if (_abtFrm.IsDisposed)
             {
-                _abtFrm = new AboutFrm(CLIENT_VERSION);
+                _abtFrm = new AboutFrm();
             }
             _abtFrm.Show();
         }
 
         private void buttonAdvanced_Click(object sender, EventArgs e)
         {
-            if (_abtFrm.IsDisposed)
+            if (_advFrm.IsDisposed)
             {
-                _abtFrm = new AboutFrm(CLIENT_VERSION);
+                _advFrm = new AdvSettingsFrm();
             }
-            _abtFrm.Show();
+            _advFrm.Show();
         }
 
         /*  Upcoming password save feature

@@ -99,6 +99,12 @@
     <Compile Include="Views\AboutFrm.Designer.cs">
       <DependentUpon>AboutFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdvSettingsFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdvSettingsFrm.Designer.cs">
+      <DependentUpon>AdvSettingsFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AweSimMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     <Compile Include="Views\Validator.cs" />
     <EmbeddedResource Include="Views\AboutFrm.resx">
       <DependentUpon>AboutFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdvSettingsFrm.resx">
+      <DependentUpon>AdvSettingsFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AweSimMain.resx">
       <DependentUpon>AweSimMain.cs</DependentUpon>
@@ -201,7 +210,6 @@
     <None Include="Resources\key.png" />
     <None Include="Resources\hdd-gry.png" />
     <None Include="Resources\info-gry.png" />
-    <None Include="Resources\header.png" />
     <EmbeddedResource Include="Resources\plink.exe" />
     <None Include="Resources\awesim-sm.png" />
   </ItemGroup>

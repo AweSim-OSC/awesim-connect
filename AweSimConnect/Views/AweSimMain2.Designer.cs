@@ -126,7 +126,7 @@
             this.labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.labelPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelPassword.Location = new System.Drawing.Point(6, 59);
+            this.labelPassword.Location = new System.Drawing.Point(51, 59);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(53, 13);
             this.labelPassword.TabIndex = 4;
@@ -138,7 +138,7 @@
             this.labelUsername.BackColor = System.Drawing.Color.Transparent;
             this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelUsername.Location = new System.Drawing.Point(6, 15);
+            this.labelUsername.Location = new System.Drawing.Point(51, 15);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(55, 13);
             this.labelUsername.TabIndex = 3;
@@ -191,7 +191,7 @@
             this.lPort.AutoSize = true;
             this.lPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.lPort.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lPort.Location = new System.Drawing.Point(113, 18);
+            this.lPort.Location = new System.Drawing.Point(119, 18);
             this.lPort.Name = "lPort";
             this.lPort.Size = new System.Drawing.Size(26, 13);
             this.lPort.TabIndex = 4;
@@ -202,7 +202,7 @@
             this.lHost.AutoSize = true;
             this.lHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.lHost.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lHost.Location = new System.Drawing.Point(6, 18);
+            this.lHost.Location = new System.Drawing.Point(47, 18);
             this.lHost.Name = "lHost";
             this.lHost.Size = new System.Drawing.Size(29, 13);
             this.lHost.TabIndex = 3;
@@ -212,10 +212,10 @@
             // 
             this.tbVNCPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVNCPassword.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.tbVNCPassword.Location = new System.Drawing.Point(28, 15);
+            this.tbVNCPassword.Location = new System.Drawing.Point(6, 16);
             this.tbVNCPassword.MaxLength = 8;
             this.tbVNCPassword.Name = "tbVNCPassword";
-            this.tbVNCPassword.Size = new System.Drawing.Size(100, 20);
+            this.tbVNCPassword.Size = new System.Drawing.Size(142, 20);
             this.tbVNCPassword.TabIndex = 9;
             this.tbVNCPassword.Tag = "VNC Password";
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

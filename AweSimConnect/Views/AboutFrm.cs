@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 
 namespace AweSimConnect.Views
 {
     public partial class AboutFrm : Form
     {
-        private string CLIENT_VERSION;
+        private string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         Assembly assembly;
         StreamReader textStreamReader;
@@ -22,12 +17,6 @@ namespace AweSimConnect.Views
 
         public AboutFrm()
         {
-            InitializeComponent();
-        }
-
-        public AboutFrm(string CLIENT_VERSION)
-        {
-            this.CLIENT_VERSION = CLIENT_VERSION;
             InitializeComponent();
         }
 

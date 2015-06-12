@@ -94,7 +94,7 @@ namespace AweSimConnect
             pc = new PuTTYController(connection);
             vc = new VNCControllerGGI(connection);
             ftpc = new SFTPController(connection);
-            abtFrm = new AboutFrm(CLIENT_VERSION);       
+            abtFrm = new AboutFrm();       
 
             // Adds the Clusters to the Combobox
             setupClusterBox();            
@@ -530,7 +530,7 @@ namespace AweSimConnect
         {
             if (abtFrm.IsDisposed)
             {
-                abtFrm = new AboutFrm(CLIENT_VERSION);
+                abtFrm = new AboutFrm();
             }
             abtFrm.StartPosition = FormStartPosition.CenterScreen;
             abtFrm.Show();

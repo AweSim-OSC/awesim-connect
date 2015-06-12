@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AweSimConnect.Controllers;
 
 namespace AweSimConnect.Models
 {
@@ -55,47 +56,18 @@ namespace AweSimConnect.Models
             {
                 return "";
             }
-            
         }
 
-        /*
-        // Check the user settings for a username and encrypted password and fill the text boxes.
-        private void checkForUserSettings()
+        public void SaveSSHHostCode(OSCCluster cluster)
         {
-            if ((bool)Settings.Default["IsPassSaved"])
-            {
-                label1.Text = Settings.Default["UserName"].ToString();
-                checkSavePassword.Checked = true;
-                string userName = Settings.Default["UserName"].ToString();
-                string userPass = Settings.Default["UserPass"].ToString();
-                tbUserName.Text = userName;
-                tbPassword.Text = PasswordEncryption.Decrypt(userPass);
-
-            }
+            Properties.Settings.Default.SSHHost = cluster.Code;
+            Properties.Settings.Default.Save();
         }
 
-        // If true, save the choice to the Settings. If false, change user settings to reflect.
-        private void SaveUserSettings(bool userSettings)
+        public string GetSSHHostCode()
         {
-            Settings.Default["IsPassSaved"] = userSettings;
-            string userName = tbUserName.Text;
-            string userPass = tbPassword.Text;
-
-            //If we're saving the settings, encrypt the password and save to settings. Else save blanks.
-            if (userSettings) {
-                Settings.Default["UserName"] = userName;
-                string encryptedUserPass = PasswordEncryption.Encrypt(userPass);
-                Settings.Default["UserPass"] = encryptedUserPass;
-            }
-            else
-            {
-                Settings.Default["UserName"] = userName;
-                Settings.Default["UserPass"] = "";
-            }
-            Settings.Default.Save();
-
+            return Properties.Settings.Default.SSHHost;
         }
 
-        */
     }
 }

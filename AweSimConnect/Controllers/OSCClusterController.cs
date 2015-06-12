@@ -9,6 +9,13 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class OSCClusterController
     {
+        public enum Cluster
+        {
+            OAKLEY,
+            RUBY,
+            GLENN
+        }
+
         static OSCCluster oakley = new OSCCluster("OAK", "Oakley", "oakley.osc.edu");
         static OSCCluster ruby = new OSCCluster("RBY", "Ruby", "ruby.osc.edu");
         static OSCCluster glenn = new OSCCluster("OPT", "Glenn", "glenn.osc.edu");
@@ -55,21 +62,17 @@ namespace AweSimConnect.Controllers
         }
 
         //This is just here to map the servers to numbers so I don't have to worry about what the index is.
-        // 1 = Oakley
-        // 2 = Ruby
-        // 3 = Glenn
-        // Default = Oakley
-        public void SetCluster(int pos)
+        public void SetCluster(Cluster cluster)
         {
-            switch (pos)
+            switch (cluster)
             {
-                case 1:
+                case Cluster.OAKLEY:
                     this.selectedCluster = oakley;
                     break;
-                case 2:
+                case Cluster.RUBY:
                     this.selectedCluster = ruby;
                     break;
-                case 3:
+                case Cluster.GLENN:
                     this.selectedCluster = glenn;
                     break;
                 default:
@@ -82,6 +85,18 @@ namespace AweSimConnect.Controllers
         public void SetCluster(OSCCluster cluster)
         {
             this.selectedCluster = cluster;
+        }
+
+        public OSCCluster GetCluster(string code)
+        {
+            foreach (var cluster in clusterList)
+            {
+                if (cluster.Code.Equals(code))
+                {
+                    return cluster;
+                }
+            }
+            return GetCluster();
         }
 
         // Gets the currently selected cluster.

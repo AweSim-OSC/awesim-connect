@@ -94,6 +94,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="Views\AboutFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
+    <None Include="Resources\officine2.png" />
     <None Include="Resources\officine.png" />
     <None Include="Resources\home-wifi.png" />
     <None Include="Resources\wifi.png" />

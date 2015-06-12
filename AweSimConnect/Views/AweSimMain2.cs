@@ -558,9 +558,17 @@ namespace AweSimConnect.Views
 
             if (_secondsElapsed % 2 == 0)
             {
+
                 _sftpAvailable = _ftpc.IsSFTPInstalled();
 
                 EnableSFTPOptions(_sftpAvailable && _networkAvailable);
+                
+            }
+            
+            //Checks if the state was toggled in the about form an updates main.
+            if (_advFrm.AdvancedSettingsChanged())
+            {
+                cbRememberMe.Checked = _settings.IsUserSaved();
             }
 
             _secondsElapsed++;
@@ -655,5 +663,10 @@ namespace AweSimConnect.Views
         {
             SaveUserSettings();
         }
+
+        internal void CheckRememberBox(bool check)
+        {
+            cbRememberMe.Checked = check;
+        } 
     }
 }

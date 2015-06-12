@@ -46,15 +46,15 @@
             this.rbCOMSOL = new System.Windows.Forms.RadioButton();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.toolTipNoDelay = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonAdvanced = new System.Windows.Forms.Button();
-            this.buttonInfo = new System.Windows.Forms.Button();
-            this.bConnect = new System.Windows.Forms.Button();
-            this.bSFTP = new System.Windows.Forms.Button();
-            this.bDashboard = new System.Windows.Forms.Button();
             this.gbSessionType = new System.Windows.Forms.GroupBox();
             this.gbVNCPassword = new System.Windows.Forms.GroupBox();
             this.gbSystem = new System.Windows.Forms.GroupBox();
+            this.buttonAdvanced = new System.Windows.Forms.Button();
+            this.buttonInfo = new System.Windows.Forms.Button();
             this.pbIsNetworkConnected = new System.Windows.Forms.PictureBox();
+            this.bConnect = new System.Windows.Forms.Button();
+            this.bSFTP = new System.Windows.Forms.Button();
+            this.bDashboard = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.gbCredentials.SuspendLayout();
             this.gbSessionInfo.SuspendLayout();
@@ -265,9 +265,44 @@
             this.toolTipNoDelay.InitialDelay = 100;
             this.toolTipNoDelay.ReshowDelay = 20;
             // 
+            // gbSessionType
+            // 
+            this.gbSessionType.Controls.Add(this.rbCOMSOL);
+            this.gbSessionType.Controls.Add(this.rbVNC);
+            this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbSessionType.Location = new System.Drawing.Point(183, 179);
+            this.gbSessionType.Name = "gbSessionType";
+            this.gbSessionType.Size = new System.Drawing.Size(154, 62);
+            this.gbSessionType.TabIndex = 4;
+            this.gbSessionType.TabStop = false;
+            this.gbSessionType.Text = "2. Session Type";
+            // 
+            // gbVNCPassword
+            // 
+            this.gbVNCPassword.Controls.Add(this.tbVNCPassword);
+            this.gbVNCPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbVNCPassword.Location = new System.Drawing.Point(183, 312);
+            this.gbVNCPassword.Name = "gbVNCPassword";
+            this.gbVNCPassword.Size = new System.Drawing.Size(154, 41);
+            this.gbVNCPassword.TabIndex = 8;
+            this.gbVNCPassword.TabStop = false;
+            this.gbVNCPassword.Text = "4. VNC Password";
+            // 
+            // gbSystem
+            // 
+            this.gbSystem.Controls.Add(this.buttonAdvanced);
+            this.gbSystem.Controls.Add(this.buttonInfo);
+            this.gbSystem.Controls.Add(this.pbIsNetworkConnected);
+            this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbSystem.Location = new System.Drawing.Point(12, 179);
+            this.gbSystem.Name = "gbSystem";
+            this.gbSystem.Size = new System.Drawing.Size(154, 40);
+            this.gbSystem.TabIndex = 13;
+            this.gbSystem.TabStop = false;
+            // 
             // buttonAdvanced
             // 
-            this.buttonAdvanced.BackgroundImage = global::AweSimConnect.Properties.Resources.officine;
+            this.buttonAdvanced.BackgroundImage = global::AweSimConnect.Properties.Resources.officine2;
             this.buttonAdvanced.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonAdvanced.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAdvanced.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -300,6 +335,17 @@
             this.toolTipNoDelay.SetToolTip(this.buttonInfo, "About");
             this.buttonInfo.UseVisualStyleBackColor = true;
             this.buttonInfo.Click += new System.EventHandler(this.buttonInfo_Click);
+            // 
+            // pbIsNetworkConnected
+            // 
+            this.pbIsNetworkConnected.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbIsNetworkConnected.Image = global::AweSimConnect.Properties.Resources.cross_gry;
+            this.pbIsNetworkConnected.Location = new System.Drawing.Point(19, 12);
+            this.pbIsNetworkConnected.Name = "pbIsNetworkConnected";
+            this.pbIsNetworkConnected.Size = new System.Drawing.Size(22, 22);
+            this.pbIsNetworkConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbIsNetworkConnected.TabIndex = 1;
+            this.pbIsNetworkConnected.TabStop = false;
             // 
             // bConnect
             // 
@@ -364,52 +410,6 @@
             this.toolTipNoDelay.SetToolTip(this.bDashboard, "Click to Access the AweSim web dashboard.");
             this.bDashboard.UseVisualStyleBackColor = false;
             this.bDashboard.Click += new System.EventHandler(this.bDashboard_Click);
-            // 
-            // gbSessionType
-            // 
-            this.gbSessionType.Controls.Add(this.rbCOMSOL);
-            this.gbSessionType.Controls.Add(this.rbVNC);
-            this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionType.Location = new System.Drawing.Point(183, 179);
-            this.gbSessionType.Name = "gbSessionType";
-            this.gbSessionType.Size = new System.Drawing.Size(154, 62);
-            this.gbSessionType.TabIndex = 4;
-            this.gbSessionType.TabStop = false;
-            this.gbSessionType.Text = "2. Session Type";
-            // 
-            // gbVNCPassword
-            // 
-            this.gbVNCPassword.Controls.Add(this.tbVNCPassword);
-            this.gbVNCPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbVNCPassword.Location = new System.Drawing.Point(183, 312);
-            this.gbVNCPassword.Name = "gbVNCPassword";
-            this.gbVNCPassword.Size = new System.Drawing.Size(154, 41);
-            this.gbVNCPassword.TabIndex = 8;
-            this.gbVNCPassword.TabStop = false;
-            this.gbVNCPassword.Text = "4. VNC Password";
-            // 
-            // gbSystem
-            // 
-            this.gbSystem.Controls.Add(this.buttonAdvanced);
-            this.gbSystem.Controls.Add(this.buttonInfo);
-            this.gbSystem.Controls.Add(this.pbIsNetworkConnected);
-            this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSystem.Location = new System.Drawing.Point(12, 179);
-            this.gbSystem.Name = "gbSystem";
-            this.gbSystem.Size = new System.Drawing.Size(154, 40);
-            this.gbSystem.TabIndex = 13;
-            this.gbSystem.TabStop = false;
-            // 
-            // pbIsNetworkConnected
-            // 
-            this.pbIsNetworkConnected.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pbIsNetworkConnected.Image = global::AweSimConnect.Properties.Resources.cross_gry;
-            this.pbIsNetworkConnected.Location = new System.Drawing.Point(19, 12);
-            this.pbIsNetworkConnected.Name = "pbIsNetworkConnected";
-            this.pbIsNetworkConnected.Size = new System.Drawing.Size(22, 22);
-            this.pbIsNetworkConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbIsNetworkConnected.TabIndex = 1;
-            this.pbIsNetworkConnected.TabStop = false;
             // 
             // pbLogo
             // 

@@ -37,5 +37,10 @@ namespace AweSimConnect.Models
             get { return domain; }
             set { domain = value; }
         }
+
+        public override string ToString()
+        {
+            return domain;
+        }
     }
 }

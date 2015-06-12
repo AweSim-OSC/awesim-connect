@@ -58,5 +58,17 @@ namespace AweSimConnect.Properties {
                 this["IsPassSaved"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OAK")]
+        public string SSHHost {
+            get {
+                return ((string)(this["SSHHost"]));
+            }
+            set {
+                this["SSHHost"] = value;
+            }
+        }
     }
 }

@@ -21,12 +21,16 @@ namespace AweSimConnect.Views
     * -URI Parsing
     * -Move magic strings to resources
     * -Allow user to select other ssh host in options.
+    * -Add WinSCP option
+    * 
     * /
 
    /*
     * AweSim Connect
     *
     * A windows native app for SSH tunneling to Ohio Supercomputer Center services.
+    * 
+    * Compile for .NET 2.0
     *
     * Brian McMichael: bmcmichael@osc.edu
     */

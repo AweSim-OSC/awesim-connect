@@ -4,10 +4,6 @@ JSON.net
 http://www.newtonsoft.com/json
 MIT License
 
-GGIVNC 0.5.0
-http://www.lysator.liu.se/~peda/ggivnc/
-MIT License
-
 Plink 0.64
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 MIT License

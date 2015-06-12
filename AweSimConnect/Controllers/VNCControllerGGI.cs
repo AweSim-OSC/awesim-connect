@@ -11,7 +11,6 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class VNCControllerGGI
     {
-        //TODO Add ggi license to docs
 
         //GGIVNC - MIT License.
         private static String GGIVNC_FILE = "ggivnc.exe";
@@ -75,7 +74,7 @@ namespace AweSimConnect.Controllers
         //Gets plink.exe from the embedded resources.
         private byte[] getGGIVnc()
         {
-            return Resources.ggivnc;
+            return Resources.vncviewer;
         }
 
         //Launch Plink without a password
@@ -94,7 +93,6 @@ namespace AweSimConnect.Controllers
             }
             catch (Exception)
             {
-                //TODO Put up a message that it didn't work.
             }
         }
 
@@ -130,4 +128,5 @@ namespace AweSimConnect.Controllers
             }
         }
     }
+         
 }

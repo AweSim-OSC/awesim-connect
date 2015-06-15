@@ -23,15 +23,15 @@ namespace AweSimConnect.Models
         //TODO: SSHHost match *.osc.edu?
 
         // EX: nxxxx.ten.osc.edu
-        public String PUAServer { get; set; }
+        public string PUAServer { get; set; }
 
-        public String H
+        public string H
         {
             get { return PUAServer; }
             set { PUAServer = value;  }
         }
 
-        public String GetServerAndPort()
+        public string GetServerAndPort()
         {
             String host = PUAServer + ":" + RemotePort;
             return host;
@@ -57,27 +57,27 @@ namespace AweSimConnect.Models
         }
 
         // EX: oakley.osc.edu
-        public String SSHHost { get; set; }
+        public string SSHHost { get; set; }
 
-        public String S
+        public string S
         {
             get { return SSHHost; }
             set { SSHHost = value;  }
         }
 
         // EX: an0018
-        public String UserName { get; set; }
+        public string UserName { get; set; }
 
-        public String U
+        public string U
         {
             get { return UserName; } 
             set { UserName = value; }
         }
 
         // EX: XD4F893S
-        public String VNCPassword { get; set; }
+        public string VNCPassword { get; set; }
 
-        public String V
+        public string V
         {
             get { return VNCPassword; }
             set { VNCPassword = value;  }

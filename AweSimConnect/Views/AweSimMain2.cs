@@ -54,7 +54,6 @@ namespace AweSimConnect.Views
         Connection _connection;
 
         private PuTTYController _pc;
-        //private VNCControllerGGI _vc;
         private VNCControllerTurbo _vc;
         private SFTPController _ftpc;
         private ClipboardController _cbc;
@@ -208,7 +207,6 @@ namespace AweSimConnect.Views
                 {
                     tbPort.Text = newConnection.RemotePort.ToString();
                     this._connection.RemotePort = newConnection.RemotePort;
-                    MapLocalPort(newConnection.RemotePort);
                 }
                 else
                     tbPort.Text = "";
@@ -596,7 +594,7 @@ namespace AweSimConnect.Views
             {
                 int port = int.Parse(tbPort.Text);
                 _connection.RemotePort = port;
-                MapLocalPort(port);
+                //MapLocalPort(port);
                 LabelColorChanger(lPort, true);
             }
             catch (Exception)

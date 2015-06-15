@@ -91,7 +91,6 @@ namespace AweSimConnect.Views
                 _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
             }
             
-
         }
 
         // Form Load

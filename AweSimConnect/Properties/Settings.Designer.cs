@@ -70,5 +70,29 @@ namespace AweSimConnect.Properties {
                 this["SSHHost"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoOpenApp {
+            get {
+                return ((bool)(this["AutoOpenApp"]));
+            }
+            set {
+                this["AutoOpenApp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DetectClipboard {
+            get {
+                return ((bool)(this["DetectClipboard"]));
+            }
+            set {
+                this["DetectClipboard"] = value;
+            }
+        }
     }
 }

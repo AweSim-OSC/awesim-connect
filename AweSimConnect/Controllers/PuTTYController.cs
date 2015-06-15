@@ -18,7 +18,7 @@ namespace AweSimConnect.Controllers
         private Process process;
 
         private bool process_embedded = false;
-        private bool process_killed = false;
+        private bool _processKilled = false;
 
         internal Connection Connection
         {
@@ -107,13 +107,13 @@ namespace AweSimConnect.Controllers
         // Check to see if plink is in the running processes.
         internal bool IsPlinkRunning()
         {
-            if (!process_killed)
+            if (!_processKilled)
             {
                 return FileController.IsProcessRunning(PLINK_PROCESS);
             }
             else
             {
-                return process_killed;
+                return _processKilled;
             }
         }
 
@@ -155,10 +155,14 @@ namespace AweSimConnect.Controllers
 
         public void KillProcess()
         {
-            if (!process.HasExited)
+            if (process != null)
             {
-                process.Kill();
-                process_killed = true;
+                if (!process.HasExited)
+                {
+                    process.Kill();
+                    process = null;
+                    _processKilled = true;
+                }
             }
         }
     }

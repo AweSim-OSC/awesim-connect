@@ -53,14 +53,12 @@ namespace AweSimConnect.Views
 
         Connection _connection;
 
-        private PuTTYController _pc;
-        private VNCControllerTurbo _vc;
         private SFTPController _ftpc;
         private ClipboardController _cbc;
         private OSCClusterController _clc;
 
-        private List<ProcessData> processes;
-        private List<ConnectionForm> connectionForms;
+        private List<ProcessData> _processes;
+        private List<ConnectionForm> _connectionForms;
 
         private bool _networkAvailable = false;
 
@@ -93,17 +91,14 @@ namespace AweSimConnect.Views
             this.CenterToParent();
             this.AcceptButton = bConnect;
 
-            processes = new List<ProcessData>();
-            connectionForms = new List<ConnectionForm>();
+            _processes = new List<ProcessData>();
+            _connectionForms = new List<ConnectionForm>();
             _connection = new Connection();
             timerMain.Start();
 
             //Initialize controllers.
             _cbc = new ClipboardController();
             _clc = new OSCClusterController();
-            _pc = new PuTTYController(_connection);
-            //_vc = new VNCControllerGGI(_connection);
-            _vc = new VNCControllerTurbo(_connection);
             _ftpc = new SFTPController(_connection);
             _abtFrm = new AboutFrm();
             _advFrm = new AdvSettingsFrm();
@@ -129,7 +124,6 @@ namespace AweSimConnect.Views
             {
                 cbRememberMe.Checked = true;
             }
-            
         }
 
         //////////////////////////// BUTTONS ////////////////////////////
@@ -159,7 +153,7 @@ namespace AweSimConnect.Views
                 _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);
                 ConnectionForm connectionForm = new ConnectionForm(_connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
-                connectionForms.Add(connectionForm);
+                _connectionForms.Add(connectionForm);
                 connectionForm.Show();
             }
         }
@@ -175,7 +169,7 @@ namespace AweSimConnect.Views
                     _ftpc.StartSFTPProcess(tbPassword.Text);
                     if (_ftpc.GetThisProcess() != null)
                     {
-                        processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
+                        _processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
                     }
                 }
             }
@@ -245,9 +239,9 @@ namespace AweSimConnect.Views
             int localPort = port;
 
             // Check the processes this app instance has opened to see if we've already used this port.
-            if (connectionForms.Count > 0)
+            if (_connectionForms.Count > 0)
             {
-                foreach (ConnectionForm form in connectionForms)
+                foreach (ConnectionForm form in _connectionForms)
                 {
                     if (form.GetConnection().LocalPort == localPort)
                     {
@@ -279,7 +273,7 @@ namespace AweSimConnect.Views
                     _ftpc.StartSFTPProcess(tbPassword.Text);
                     if (_ftpc.GetThisProcess() != null)
                     {
-                        processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
+                        _processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
                     }
                 }
             }
@@ -416,10 +410,10 @@ namespace AweSimConnect.Views
             ChangeClipboardChain(Handle, _nextClipboardViewer);
 
             // If the app has created any processes. (SFTP clients, for example)
-            if (processes.Count > 0)
+            if (_processes.Count > 0)
             {
                 // Close all processes that haven't already existed.
-                foreach (ProcessData process in processes)
+                foreach (ProcessData process in _processes)
                 {
                     if (process.IsRunning())
                     {
@@ -429,11 +423,11 @@ namespace AweSimConnect.Views
             }
 
             //Close all child forms (this will kill associated processes)
-            if (connectionForms.Count > 0)
+            if (_connectionForms.Count > 0)
             {
 
                 // Close each child form (the forms should be managing their own processes)
-                foreach (var connectionForm in connectionForms)
+                foreach (var connectionForm in _connectionForms)
                 {
                     connectionForm.Close();
                 }
@@ -594,7 +588,6 @@ namespace AweSimConnect.Views
             {
                 int port = int.Parse(tbPort.Text);
                 _connection.RemotePort = port;
-                //MapLocalPort(port);
                 LabelColorChanger(lPort, true);
             }
             catch (Exception)

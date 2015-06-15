@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
@@ -54,8 +55,8 @@ namespace AweSimConnect.Views
         Connection _connection;
 
         private SFTPController _ftpc;
-        private ClipboardController _cbc;
-        private OSCClusterController _clc;
+        private ClipboardController _clipc;
+        private OSCClusterController _clusterc;
 
         private List<ProcessData> _processes;
         private List<ConnectionForm> _connectionForms;
@@ -97,8 +98,8 @@ namespace AweSimConnect.Views
             timerMain.Start();
 
             //Initialize controllers.
-            _cbc = new ClipboardController();
-            _clc = new OSCClusterController();
+            _clipc = new ClipboardController();
+            _clusterc = new OSCClusterController();
             _ftpc = new SFTPController(_connection);
             _abtFrm = new AboutFrm();
             _advFrm = new AdvSettingsFrm();
@@ -108,21 +109,23 @@ namespace AweSimConnect.Views
             LimitedConnectionPopup();
 
             // For now, I'm using oakley as the SSH host. I'd like to make this user-selectable.
-            _sshHost = _clc.GetCluster(_settings.GetSSHHostCode()).Domain;
+            _sshHost = _clusterc.GetCluster(_settings.GetSSHHostCode()).Domain;
             this._connection.SSHHost = _sshHost;
-
-            // Check to see if there is any valid data on the clipboard on startup.
-            if (_cbc.CheckClipboardForAweSim())
-            {
-                Connection clipData = _cbc.GetClipboardConnection();
-                UpdateData(clipData);
-            }
 
             tbUsername.Text = _settings.GetUsername();
             tbPassword.Text = _settings.GetPassword();
             if (_settings.IsUserSaved())
             {
                 cbRememberMe.Checked = true;
+            }
+
+            // Check to see if there is any valid data on the clipboard on startup.
+            if (_clipc.CheckClipboardForAweSim())
+            {
+                //Add a thread sleep while the parser finishes up.
+                Thread.Sleep(100);
+                Connection clipData = _clipc.GetClipboardConnection();
+                UpdateData(clipData);
             }
         }
 
@@ -147,10 +150,16 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
+                // Saves user settings if checked.
                 SaveUserSettings();
+
+                // Maps the remote port to an available local port.
                 MapLocalPort(_connection.RemotePort);
 
+                // The vis nodes have public facing domain names that don't forward properly.
+                // Call the remap method here to check and remap to the internal domain.
                 _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);
+
                 ConnectionForm connectionForm = new ConnectionForm(_connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
                 _connectionForms.Add(connectionForm);
@@ -224,6 +233,7 @@ namespace AweSimConnect.Views
                 }
                 else
                 {
+                    rbCOMSOL.Checked = true;
                     tbVNCPassword.Text = "";
                     _connection.VNCPassword = null;
                 }
@@ -353,7 +363,7 @@ namespace AweSimConnect.Views
         public static extern Int32 SetForegroundWindow(int windowHandle);
 
         // Clipboard monitoring
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", CharSet=CharSet.Auto)]
         protected static extern int SetClipboardViewer(int hWndNewViewer);
 
         // Add the app to the chain of apps that windows notifies on clipboard updates.
@@ -378,10 +388,12 @@ namespace AweSimConnect.Views
 
                 case WM_CHANGECBCHAIN:
                     if (m.WParam == _nextClipboardViewer)
+                    {
                         _nextClipboardViewer = m.LParam;
+                    }
                     else
                         SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
-                        m.LParam);
+                            m.LParam);
                     break;
 
                 default:
@@ -393,11 +405,14 @@ namespace AweSimConnect.Views
         // If the clipboard has fresh and valid dataset, populate the fields.
         private void PopulateFromClipboard()
         {
-            if (_cbc != null)
+            if (_clipc != null)
             {
-                if (_cbc.CheckClipboardForAweSim())
+                if (_clipc.CheckClipboardForAweSim())
                 {
-                    UpdateData(_cbc.GetClipboardConnection());
+                    //Add a thread sleep while the parser finishes up.
+                    Thread.Sleep(100);
+                    Connection clipData = _clipc.GetClipboardConnection();
+                    UpdateData(clipData);
                 }
             }
         }
@@ -554,23 +569,21 @@ namespace AweSimConnect.Views
 
             if (_secondsElapsed % 2 == 0)
             {
-
                 _sftpAvailable = _ftpc.IsSFTPInstalled();
-
                 EnableSFTPOptions(_sftpAvailable && _networkAvailable);
-
             }
-            
-            //Checks if the state was toggled in the about form an updates main.
-            if (_advFrm.AdvancedSettingsChanged())
+
+            if (_secondsElapsed%3 == 0)
             {
-                cbRememberMe.Checked = _settings.IsUserSaved();
-                _sshHost = _clc.GetCluster(_settings.GetSSHHostCode()).Domain;
-                _connection.SSHHost = _sshHost;
+                //Checks if the state was toggled in the about form an updates main.
+                if (_advFrm.AdvancedSettingsChanged())
+                {
+                    cbRememberMe.Checked = _settings.IsUserSaved();
+                    _sshHost = _clusterc.GetCluster(_settings.GetSSHHostCode()).Domain;
+                    _connection.SSHHost = _sshHost;
+                }
             }
-
             _secondsElapsed++;
-
         }
 
 
@@ -628,6 +641,7 @@ namespace AweSimConnect.Views
                 _abtFrm = new AboutFrm();
             }
             _abtFrm.Show();
+            _abtFrm.BringToFront();
         }
 
         private void buttonAdvanced_Click(object sender, EventArgs e)
@@ -637,6 +651,7 @@ namespace AweSimConnect.Views
                 _advFrm = new AdvSettingsFrm();
             }
             _advFrm.Show();
+            _advFrm.BringToFront();
         }
 
         private void SaveUserSettings()

@@ -9,6 +9,8 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class FileController
     {
+        public static string FILE_FOLDER = "AweSimFiles";
+
         public static String FindExecutableInProgramFiles(String filename)
         {
             String programsPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
@@ -97,6 +99,11 @@ namespace AweSimConnect.Controllers
             if (File.Exists(fileName))
             {
                 return Path.GetFullPath(fileName);
+            }
+
+            if (File.Exists(Path.Combine(FILE_FOLDER, fileName)))
+            {
+                return Path.GetFullPath(Path.Combine(FILE_FOLDER, fileName));
             }
 
             String values = Environment.GetEnvironmentVariable("Path");

@@ -50,7 +50,7 @@ namespace AweSimConnect.Controllers
                 try
                 {
                     // Get the text from the clipboard.
-                    String json = Clipboard.GetText();
+                    string json = Clipboard.GetText().Trim();
 
                     // Attempt to parse the clipboard text.
                     try
@@ -67,10 +67,6 @@ namespace AweSimConnect.Controllers
                     {
                         isValid = false;
                     }
-                    
-
-                    
-
                 }
                 catch (ArgumentException)
                 {
@@ -107,7 +103,7 @@ namespace AweSimConnect.Controllers
                 return connectionData;
             }
             else
-                return null;
+                return new Connection();
         }
     }
 }

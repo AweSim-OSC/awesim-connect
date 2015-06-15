@@ -10,7 +10,7 @@ namespace AweSimConnect.Views
         private string userPass;
         private ConnectionPanel panel;
         
-        internal ConnectionForm(Models.Connection connection, string userPass)
+        internal ConnectionForm(Connection connection, string userPass)
         {
             InitializeComponent();
             this.connection = connection;
@@ -33,7 +33,7 @@ namespace AweSimConnect.Views
         // Make sure that we disconnect the process in the panel when we close the form.
         private void ConnectionForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            panel.Parent_Form = null;
+            panel.Parent_Form = new ConnectionForm(connection, userPass);
             panel.buttonDisconnect_Click(sender, e);
         }
         

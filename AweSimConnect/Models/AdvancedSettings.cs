@@ -68,5 +68,27 @@ namespace AweSimConnect.Models
         {
             return Settings.Default.SSHHost;
         }
+
+        public void SetAutoOpenApp(bool autoOpen)
+        {
+            Settings.Default.AutoOpenApp = autoOpen;
+            Settings.Default.Save();
+        }
+
+        public bool AutoOpenApp()
+        {
+            return Settings.Default.AutoOpenApp;
+        }
+
+        public void SetDetectClipboard(bool detect)
+        {
+            Settings.Default.DetectClipboard = detect;
+            Settings.Default.Save();
+        }
+
+        public bool DetectClipboard()
+        {
+            return Settings.Default.DetectClipboard;
+        }
     }
 }

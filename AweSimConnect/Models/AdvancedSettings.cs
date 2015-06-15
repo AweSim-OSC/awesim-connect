@@ -5,8 +5,6 @@ namespace AweSimConnect.Models
 {
     class AdvancedSettings
     {
-        internal static readonly bool DEMO_MODE = true;
-        
         public void SaveUsername(string userName)
         {
             Settings.Default.Username = userName;

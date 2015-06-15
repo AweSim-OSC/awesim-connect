@@ -63,5 +63,15 @@ namespace AweSimConnect.Views
             _settings.SaveSSHHostCode(_clusterController.GetClusterList()[cbHosts.SelectedIndex]);
         }
 
+        private void cbClipboardDetect_CheckedChanged(object sender, EventArgs e)
+        {
+            _settings.SetDetectClipboard(cbClipboardDetect.Checked);
+        }
+
+        private void cbAutoOpen_CheckedChanged(object sender, EventArgs e)
+        {
+            _settings.SetAutoOpenApp(cbAutoOpen.Checked);
+        }
+
     }
 }

@@ -11,7 +11,7 @@ namespace AweSimConnect.Views
     {
         private readonly Connection _connection;
         private readonly PuTTYController _pc;
-        //private readonly VNCControllerGGI _vnc;
+        private readonly AdvancedSettings _advSettings;
         private readonly VNCControllerTurbo _vnc;
 
         public Form Parent_Form { get; set; }
@@ -26,6 +26,7 @@ namespace AweSimConnect.Views
             Parent_Form = parentForm;
             _connection = inputConnection;
             _pc = new PuTTYController(_connection);
+            _advSettings = new AdvancedSettings();
             _pc.StartPlinkProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
             toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a " + SessionType() + " connection to " + _connection.GetServerAndPort());
@@ -151,11 +152,7 @@ namespace AweSimConnect.Views
 
             if ((_ticks == 15) && _tunnelAvailable)
             {
-                if (AdvancedSettings.DEMO_MODE)
-                {
-
-                }
-                else
+                if (_advSettings.AutoOpenApp())
                 {
                     buttonConnection_Click(sender, e);
                 }

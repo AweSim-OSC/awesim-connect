@@ -33,6 +33,8 @@
             this.cbSaveUser = new System.Windows.Forms.CheckBox();
             this.cbHosts = new System.Windows.Forms.ComboBox();
             this.labelSSHHost = new System.Windows.Forms.Label();
+            this.cbClipboardDetect = new System.Windows.Forms.CheckBox();
+            this.cbAutoOpen = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelVersion
@@ -40,7 +42,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(83, 70);
+            this.labelVersion.Location = new System.Drawing.Point(83, 118);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -84,12 +86,38 @@
             this.labelSSHHost.TabIndex = 33;
             this.labelSSHHost.Text = "SSH Host";
             // 
+            // cbClipboardDetect
+            // 
+            this.cbClipboardDetect.AutoSize = true;
+            this.cbClipboardDetect.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.cbClipboardDetect.Location = new System.Drawing.Point(12, 74);
+            this.cbClipboardDetect.Name = "cbClipboardDetect";
+            this.cbClipboardDetect.Size = new System.Drawing.Size(142, 17);
+            this.cbClipboardDetect.TabIndex = 34;
+            this.cbClipboardDetect.Text = "Detect Clipboard Activity";
+            this.cbClipboardDetect.UseVisualStyleBackColor = true;
+            this.cbClipboardDetect.CheckedChanged += new System.EventHandler(this.cbClipboardDetect_CheckedChanged);
+            // 
+            // cbAutoOpen
+            // 
+            this.cbAutoOpen.AutoSize = true;
+            this.cbAutoOpen.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.cbAutoOpen.Location = new System.Drawing.Point(12, 98);
+            this.cbAutoOpen.Name = "cbAutoOpen";
+            this.cbAutoOpen.Size = new System.Drawing.Size(171, 17);
+            this.cbAutoOpen.TabIndex = 35;
+            this.cbAutoOpen.Text = "Automatically Open VNC Client";
+            this.cbAutoOpen.UseVisualStyleBackColor = true;
+            this.cbAutoOpen.CheckedChanged += new System.EventHandler(this.cbAutoOpen_CheckedChanged);
+            // 
             // AdvSettingsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(201, 94);
+            this.ClientSize = new System.Drawing.Size(201, 141);
+            this.Controls.Add(this.cbAutoOpen);
+            this.Controls.Add(this.cbClipboardDetect);
             this.Controls.Add(this.labelSSHHost);
             this.Controls.Add(this.cbHosts);
             this.Controls.Add(this.cbSaveUser);
@@ -113,5 +141,7 @@
         private System.Windows.Forms.CheckBox cbSaveUser;
         private System.Windows.Forms.ComboBox cbHosts;
         private System.Windows.Forms.Label labelSSHHost;
+        private System.Windows.Forms.CheckBox cbClipboardDetect;
+        private System.Windows.Forms.CheckBox cbAutoOpen;
     }
 }

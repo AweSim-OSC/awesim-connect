@@ -81,15 +81,10 @@ namespace AweSimConnect.Views
             InitializeComponent();
             this.Text = CLIENT_TITLE;
 
-            if (AdvancedSettings.DEMO_MODE)
-            {
-
-            }
-            else
-            {
-                // Tell the clipboard viewer to notify this app when the clipboard changes.
-                _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
-            }
+            
+            // Tell the clipboard viewer to notify this app when the clipboard changes.
+            _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
+            
             
         }
 
@@ -407,14 +402,17 @@ namespace AweSimConnect.Views
         // If the clipboard has fresh and valid dataset, populate the fields.
         private void PopulateFromClipboard()
         {
-            if (_clipc != null)
+            if ((_settings != null) && _settings.DetectClipboard())
             {
-                if (_clipc.CheckClipboardForAweSim())
+                if (_clipc != null)
                 {
-                    //Add a thread sleep while the parser finishes up.
-                    Thread.Sleep(100);
-                    Connection clipData = _clipc.GetClipboardConnection();
-                    UpdateData(clipData);
+                    if (_clipc.CheckClipboardForAweSim())
+                    {
+                        //Add a thread sleep while the parser finishes up.
+                        Thread.Sleep(100);
+                        Connection clipData = _clipc.GetClipboardConnection();
+                        UpdateData(clipData);
+                    }
                 }
             }
         }

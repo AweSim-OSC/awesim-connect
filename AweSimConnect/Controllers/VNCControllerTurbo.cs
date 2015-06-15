@@ -80,7 +80,9 @@ namespace AweSimConnect.Controllers
             {
                 if (!process.HasExited)
                 {
-                    process.Kill();
+                    process.Close();
+                    process = null;
+                    //process.Kill();
                     _processKilled = true;
                 }
             }

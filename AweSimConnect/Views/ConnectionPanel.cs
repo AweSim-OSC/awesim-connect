@@ -151,7 +151,14 @@ namespace AweSimConnect.Views
 
             if ((_ticks == 15) && _tunnelAvailable)
             {
-                buttonConnection_Click(sender, e);
+                if (AdvancedSettings.DEMO_MODE)
+                {
+
+                }
+                else
+                {
+                    buttonConnection_Click(sender, e);
+                }
             }
 
             if ((_ticks % 25 == 0))

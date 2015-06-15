@@ -37,6 +37,8 @@ namespace AweSimConnect.Views
     */
     public partial class AweSimMain2 : Form
     {
+        
+
         // The version number. The first and second numbers are set in the assembly info.
         // The third number is the number of days since the year 2000
         // The fourth number is the number of seconds since midnight divided by 2.

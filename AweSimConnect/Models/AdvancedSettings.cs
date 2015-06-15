@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AweSimConnect.Controllers;
+using AweSimConnect.Properties;
 
 namespace AweSimConnect.Models
 {
     class AdvancedSettings
     {
+        internal static readonly bool DEMO_MODE = true;
+        
         public void SaveUsername(string userName)
         {
-            Properties.Settings.Default.Username = userName;
-            Properties.Settings.Default.Save();
+            Settings.Default.Username = userName;
+            Settings.Default.Save();
         }
 
         public string GetUsername()
@@ -18,7 +18,7 @@ namespace AweSimConnect.Models
             string name = "";
             try
             {
-                name = Properties.Settings.Default.Username;
+                name = Settings.Default.Username;
             }
             catch (Exception)
             {
@@ -29,20 +29,20 @@ namespace AweSimConnect.Models
 
         public void RememberUser(bool remember)
         {
-            Properties.Settings.Default.IsPassSaved = remember;
-            Properties.Settings.Default.Save();
+            Settings.Default.IsPassSaved = remember;
+            Settings.Default.Save();
         }
 
         public bool IsUserSaved()
         {
-            return Properties.Settings.Default.IsPassSaved;
+            return Settings.Default.IsPassSaved;
         }
 
         // Encrypts the password and saves to settings
         public void SavePassword(string password)
         {
-            Properties.Settings.Default.Userpass = PasswordEncryption.Encrypt(password);
-            Properties.Settings.Default.Save();
+            Settings.Default.Userpass = PasswordEncryption.Encrypt(password);
+            Settings.Default.Save();
         }
 
         // Returns the decrypted user password from the settings
@@ -50,7 +50,7 @@ namespace AweSimConnect.Models
         {
             try
             {
-                return PasswordEncryption.Decrypt(Properties.Settings.Default.Userpass);
+                return PasswordEncryption.Decrypt(Settings.Default.Userpass);
             }
             catch (Exception)
             {
@@ -60,14 +60,13 @@ namespace AweSimConnect.Models
 
         public void SaveSSHHostCode(OSCCluster cluster)
         {
-            Properties.Settings.Default.SSHHost = cluster.Code;
-            Properties.Settings.Default.Save();
+            Settings.Default.SSHHost = cluster.Code;
+            Settings.Default.Save();
         }
 
         public string GetSSHHostCode()
         {
-            return Properties.Settings.Default.SSHHost;
+            return Settings.Default.SSHHost;
         }
-
     }
 }

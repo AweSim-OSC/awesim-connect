@@ -81,8 +81,16 @@ namespace AweSimConnect.Views
             InitializeComponent();
             this.Text = CLIENT_TITLE;
 
-            // Tell the clipboard viewer to notify this app when the clipboard changes.
-            _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
+            if (AdvancedSettings.DEMO_MODE)
+            {
+
+            }
+            else
+            {
+                // Tell the clipboard viewer to notify this app when the clipboard changes.
+                _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
+            }
+            
 
         }
 
@@ -121,14 +129,7 @@ namespace AweSimConnect.Views
                 cbRememberMe.Checked = true;
             }
 
-            // Check to see if there is any valid data on the clipboard on startup.
-            if (_clipc.CheckClipboardForAweSim())
-            {
-                //Add a thread sleep while the parser finishes up.
-                Thread.Sleep(100);
-                Connection clipData = _clipc.GetClipboardConnection();
-                UpdateData(clipData);
-            }
+            PopulateFromClipboard();
         }
 
         //////////////////////////// BUTTONS ////////////////////////////

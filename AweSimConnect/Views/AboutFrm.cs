@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AweSimConnect.Controllers;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -49,7 +50,7 @@ namespace AweSimConnect.Views
 
         private void linkAweSim_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(AWESIM_SITE);
+            WebTools.LaunchBrowser(AWESIM_SITE);
         }
     }
 }

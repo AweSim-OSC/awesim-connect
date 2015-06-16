@@ -8,7 +8,7 @@ namespace AweSimConnect.Controllers
     /// <summary>
     /// This class handles the SFTP client.
     /// </summary>
-    class SFTPController
+    class SFTPControllerFileZilla
     {
         private static String FILEZILLA_PROCESS = "filezilla";
         private static String FILEZILLA_FOLDER_CONTAINS = "FileZilla";
@@ -25,13 +25,13 @@ namespace AweSimConnect.Controllers
         private bool process_embedded;
         private bool searching = true;
         
-        public SFTPController(Connection connection)
+        public SFTPControllerFileZilla(Connection connection)
         {
             this.connection = connection;
         }
 
         //Use this constructor if we already know the path of the SFTP client.
-        public SFTPController(Connection connection, String path)
+        public SFTPControllerFileZilla(Connection connection, String path)
         {
             this.connection = connection;
             this.FilezillaPath = path;

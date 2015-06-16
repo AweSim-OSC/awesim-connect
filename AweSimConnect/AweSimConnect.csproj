@@ -82,7 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\NetworkTools.cs" />
-    <Compile Include="Controllers\SFTPController.cs" />
+    <Compile Include="Controllers\SFTPControllerFileZilla.cs" />
+    <Compile Include="Controllers\SFTPControllerWinSCP.cs" />
     <Compile Include="Controllers\VNCControllerTurbo.cs" />
     <Compile Include="Controllers\WebTools.cs" />
     <Compile Include="Models\AdvancedSettings.cs" />

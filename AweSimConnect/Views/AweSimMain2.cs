@@ -56,7 +56,7 @@ namespace AweSimConnect.Views
 
         Connection _connection;
 
-        private SFTPController _ftpc;
+        private SFTPControllerFileZilla _ftpc;
         private ClipboardController _clipc;
         private OSCClusterController _clusterc;
 
@@ -104,7 +104,7 @@ namespace AweSimConnect.Views
             //Initialize controllers.
             _clipc = new ClipboardController();
             _clusterc = new OSCClusterController();
-            _ftpc = new SFTPController(_connection);
+            _ftpc = new SFTPControllerFileZilla(_connection);
             _abtFrm = new AboutFrm();
             _advFrm = new AdvSettingsFrm();
             _settings = new AdvancedSettings();
@@ -427,7 +427,7 @@ namespace AweSimConnect.Views
             // If the app has created any processes. (SFTP clients, for example)
             if (_processes.Count > 0)
             {
-                // Close all processes that haven't already existed.
+                // Close all processes that haven't already existed.hb
                 foreach (ProcessData process in _processes)
                 {
                     if (process.IsRunning())

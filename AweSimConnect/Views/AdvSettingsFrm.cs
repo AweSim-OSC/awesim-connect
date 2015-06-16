@@ -33,6 +33,8 @@ namespace AweSimConnect.Views
                 }
             }
             cbHosts.SelectedIndex = clusterSelected;
+            cbAutoOpen.Checked = _settings.AutoOpenApp();
+            cbClipboardDetect.Checked = _settings.DetectClipboard();
         }
 
         private void AdvSettingsFrm_Load(object sender, EventArgs e)

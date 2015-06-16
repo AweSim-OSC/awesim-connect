@@ -51,7 +51,7 @@ namespace AweSimConnect
 
         private PuTTYController pc;
         private VNCControllerGGI vc;
-        private SFTPController ftpc;
+        private SFTPControllerFileZilla ftpc;
         private ClipboardController cbc;
         private OSCClusterController clc;
         Connection connection;
@@ -93,7 +93,7 @@ namespace AweSimConnect
             clc = new OSCClusterController();
             pc = new PuTTYController(connection);
             vc = new VNCControllerGGI(connection);
-            ftpc = new SFTPController(connection);
+            ftpc = new SFTPControllerFileZilla(connection);
             abtFrm = new AboutFrm();       
 
             // Adds the Clusters to the Combobox

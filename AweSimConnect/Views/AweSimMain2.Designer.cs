@@ -312,6 +312,7 @@
             this.bConnect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bConnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bConnect.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.bConnect.Location = new System.Drawing.Point(183, 367);
             this.bConnect.Margin = new System.Windows.Forms.Padding(0);
             this.bConnect.Name = "bConnect";
@@ -319,7 +320,7 @@
             this.bConnect.TabIndex = 10;
             this.toolTipNoDelay.SetToolTip(this.bConnect, "Connect to Session. Enter your session information and click here to connect to t" +
         "he session.");
-            this.bConnect.UseVisualStyleBackColor = false;
+            this.bConnect.UseVisualStyleBackColor = true;
             this.bConnect.Click += new System.EventHandler(this.bConnect_Click);
             // 
             // bSFTP
@@ -333,6 +334,7 @@
             this.bSFTP.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bSFTP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bSFTP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSFTP.ForeColor = System.Drawing.Color.White;
             this.bSFTP.Location = new System.Drawing.Point(12, 367);
             this.bSFTP.Margin = new System.Windows.Forms.Padding(0);
             this.bSFTP.Name = "bSFTP";
@@ -362,7 +364,7 @@
             this.bDashboard.TabIndex = 1;
             this.bDashboard.Tag = "Dashboard";
             this.toolTipNoDelay.SetToolTip(this.bDashboard, "Click to Access the AweSim web dashboard.");
-            this.bDashboard.UseVisualStyleBackColor = false;
+            this.bDashboard.UseVisualStyleBackColor = true;
             this.bDashboard.Click += new System.EventHandler(this.bDashboard_Click);
             // 
             // gbSessionType

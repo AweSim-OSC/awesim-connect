@@ -325,13 +325,13 @@ namespace AweSimConnect.Views
             {
                 toolTipNoDelay.SetToolTip(bSFTP,
                     "File Transfer. A supported SFTP client has been detected. Click here to launch.");
-                bSFTP.Image = null;
+                //bSFTP.Image = null;
                 bSFTP.Text = String.Empty;
             }
             else
             {
                 toolTipNoDelay.SetToolTip(bSFTP, "No supported SFTP client detected.");
-                bSFTP.Image = Resources.cross_gry;
+                bSFTP.BackgroundImage = null;
                 bSFTP.Text = SFTP_NOT_DETECTED;
             }
         }

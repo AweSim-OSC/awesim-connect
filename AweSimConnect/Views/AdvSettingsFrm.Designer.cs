@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdvSettingsFrm));
             this.labelVersion = new System.Windows.Forms.Label();
             this.cbSaveUser = new System.Windows.Forms.CheckBox();
@@ -35,6 +36,7 @@
             this.labelSSHHost = new System.Windows.Forms.Label();
             this.cbClipboardDetect = new System.Windows.Forms.CheckBox();
             this.cbAutoOpen = new System.Windows.Forms.CheckBox();
+            this.toolTipAdvSettings = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // labelVersion
@@ -58,6 +60,8 @@
             this.cbSaveUser.Size = new System.Drawing.Size(131, 17);
             this.cbSaveUser.TabIndex = 31;
             this.cbSaveUser.Text = "Save User Credentials";
+            this.toolTipAdvSettings.SetToolTip(this.cbSaveUser, "Save your user credentials. Credentials will be accessible by this windows user a" +
+        "ccount. Do not use on a public account.");
             this.cbSaveUser.UseVisualStyleBackColor = true;
             this.cbSaveUser.CheckedChanged += new System.EventHandler(this.cbSaveUser_CheckedChanged);
             // 
@@ -73,6 +77,7 @@
             this.cbHosts.Size = new System.Drawing.Size(121, 21);
             this.cbHosts.TabIndex = 32;
             this.cbHosts.Tag = "SSHHost";
+            this.toolTipAdvSettings.SetToolTip(this.cbHosts, "Select the default SSH login host.");
             this.cbHosts.SelectedIndexChanged += new System.EventHandler(this.cbHosts_SelectedIndexChanged);
             // 
             // labelSSHHost
@@ -95,6 +100,7 @@
             this.cbClipboardDetect.Size = new System.Drawing.Size(142, 17);
             this.cbClipboardDetect.TabIndex = 34;
             this.cbClipboardDetect.Text = "Detect Clipboard Activity";
+            this.toolTipAdvSettings.SetToolTip(this.cbClipboardDetect, "Toggle the clipboard detection functionality.");
             this.cbClipboardDetect.UseVisualStyleBackColor = true;
             this.cbClipboardDetect.CheckedChanged += new System.EventHandler(this.cbClipboardDetect_CheckedChanged);
             // 
@@ -104,9 +110,11 @@
             this.cbAutoOpen.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.cbAutoOpen.Location = new System.Drawing.Point(12, 98);
             this.cbAutoOpen.Name = "cbAutoOpen";
-            this.cbAutoOpen.Size = new System.Drawing.Size(171, 17);
+            this.cbAutoOpen.Size = new System.Drawing.Size(157, 17);
             this.cbAutoOpen.TabIndex = 35;
-            this.cbAutoOpen.Text = "Automatically Open VNC Client";
+            this.cbAutoOpen.Text = "Automatically Open Session";
+            this.toolTipAdvSettings.SetToolTip(this.cbAutoOpen, "When activated, the VNC client or browser will be launched automatically after a " +
+        "connection is established.");
             this.cbAutoOpen.UseVisualStyleBackColor = true;
             this.cbAutoOpen.CheckedChanged += new System.EventHandler(this.cbAutoOpen_CheckedChanged);
             // 
@@ -143,5 +151,6 @@
         private System.Windows.Forms.Label labelSSHHost;
         private System.Windows.Forms.CheckBox cbClipboardDetect;
         private System.Windows.Forms.CheckBox cbAutoOpen;
+        private System.Windows.Forms.ToolTip toolTipAdvSettings;
     }
 }

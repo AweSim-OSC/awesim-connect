@@ -45,7 +45,7 @@ namespace AweSimConnect.Controllers
             this.selectedCluster = selected;
         }
 
-        public void SetCluster(String code)
+        public void SetCluster(string code)
         {
             if (code.Equals(ruby.Code))
             {
@@ -106,13 +106,13 @@ namespace AweSimConnect.Controllers
         }
 
         // Returns the name of the currently selected cluster.
-        public String ClusterName()
+        public string ClusterName()
         {
             return this.selectedCluster.Name;
         }
 
         // Returns the domain name of the currently selected cluster.
-        public String ClusterDomain()
+        public string ClusterDomain()
         {
             return this.selectedCluster.Domain;
         }
@@ -123,7 +123,7 @@ namespace AweSimConnect.Controllers
             return this.clusterList;
         }
 
-        public String GetDomainAtIndex(int index)
+        public string GetDomainAtIndex(int index)
         {
             try
             {

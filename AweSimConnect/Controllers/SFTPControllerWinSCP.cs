@@ -7,15 +7,15 @@ namespace AweSimConnect.Controllers
 {
     class SFTPControllerWinSCP
     {
-        private static String WINSCP_PROCESS = "winscp";
-        private static String WINSCP_FOLDER_CONTAINS = "WinSCP";
-        private static String WINSCP_FILE = "winscp.exe";
-        private String WinSCPPath = "";
+        private static string WINSCP_PROCESS = "winscp";
+        private static string WINSCP_FOLDER_CONTAINS = "WinSCP";
+        private static string WINSCP_FILE = "winscp.exe";
+        private string WinSCPPath = "";
 
-        private static String SFTP_PORT = "22";
+        private static string SFTP_PORT = "22";
         
         //The arguments for filezilla
-        private static String FILEZILLA_ARGS = "sftp://{0}:{1}@{2}:{3}";
+        private static string FILEZILLA_ARGS = "sftp://{0}:{1}@{2}:{3}";
 
         private Connection connection;
         private Process process;
@@ -28,7 +28,7 @@ namespace AweSimConnect.Controllers
         }
 
         //Use this constructor if we already know the path of the SFTP client.
-        public SFTPControllerWinSCP(Connection connection, String path)
+        public SFTPControllerWinSCP(Connection connection, string path)
         {
             this.connection = connection;
             this.WinSCPPath = path;
@@ -54,7 +54,7 @@ namespace AweSimConnect.Controllers
         }
 
         //Launch sftp client with a password
-        public void StartSFTPProcess(String password)
+        public void StartSFTPProcess(string password)
         {
             //TODO This will probably break if the password is empty.
             String sftpCommand = WinSCPPath;

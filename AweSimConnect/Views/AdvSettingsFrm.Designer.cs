@@ -123,7 +123,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(201, 141);
+            this.ClientSize = new System.Drawing.Size(201, 144);
             this.Controls.Add(this.cbAutoOpen);
             this.Controls.Add(this.cbClipboardDetect);
             this.Controls.Add(this.labelSSHHost);

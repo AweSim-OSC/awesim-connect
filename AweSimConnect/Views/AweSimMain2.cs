@@ -80,11 +80,9 @@ namespace AweSimConnect.Views
 
             InitializeComponent();
             this.Text = CLIENT_TITLE;
-
             
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
-            
             
         }
 
@@ -159,8 +157,8 @@ namespace AweSimConnect.Views
 
                 ConnectionForm connectionForm = new ConnectionForm(_connection, tbPassword.Text);
                 connectionForm.StartPosition = FormStartPosition.CenterScreen;
-                _connectionForms.Add(connectionForm);
                 connectionForm.Show();
+                _connectionForms.Add(connectionForm);
             }
         }
 

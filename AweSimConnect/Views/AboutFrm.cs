@@ -1,6 +1,5 @@
 ﻿using AweSimConnect.Controllers;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -12,7 +11,6 @@ namespace AweSimConnect.Views
         private string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         Assembly assembly;
-        StreamReader textStreamReader;
         static string RESOURCE_NAME = "AweSimConnect.LICENSE.txt";
         static string AWESIM_SITE = "http://apps.awesim.org/devapps";
 

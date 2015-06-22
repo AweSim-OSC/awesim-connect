@@ -45,7 +45,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(83, 136);
+            this.labelVersion.Location = new System.Drawing.Point(83, 144);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -128,6 +128,8 @@
             this.cbUseDefaultSFTP.Size = new System.Drawing.Size(148, 17);
             this.cbUseDefaultSFTP.TabIndex = 36;
             this.cbUseDefaultSFTP.Text = "Use Included SFTP Client";
+            this.toolTipAdvSettings.SetToolTip(this.cbUseDefaultSFTP, "Override the use of a detected supported sftp client and use the bundled SFTP cli" +
+        "ent.");
             this.cbUseDefaultSFTP.UseVisualStyleBackColor = true;
             this.cbUseDefaultSFTP.CheckedChanged += new System.EventHandler(this.cbUseDefaultSFTP_CheckedChanged);
             // 

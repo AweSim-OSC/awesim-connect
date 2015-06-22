@@ -1,37 +1,110 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using AweSimConnect.Models;
+using AweSimConnect.Properties;
 
 namespace AweSimConnect.Controllers
 {
     class SFTPControllerWinSCP
     {
+        //WinSCP - GPLv2 License.
         private static string WINSCP_PROCESS = "winscp";
         private static string WINSCP_FOLDER_CONTAINS = "WinSCP";
         private static string WINSCP_FILE = "winscp.exe";
         private string WinSCPPath = "";
 
+        internal Connection Connection { get; set; }
+        private Process process;
+        private bool _processKilled;
+
         private static string SFTP_PORT = "22";
         
-        //The arguments for filezilla
-        private static string FILEZILLA_ARGS = "sftp://{0}:{1}@{2}:{3}";
+        //The arguments for WinSCP
+        private static string WINSCP_ARGS = "sftp://{0}:{1}@{2}:{3} /noupdate";
 
-        private Connection connection;
-        private Process process;
-        private bool process_embedded;
-        private bool searching = true;
+        //The full current path of the executable.
+        private static readonly string WINSCP_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), WINSCP_FILE);
+
         
         public SFTPControllerWinSCP(Connection connection)
         {
-            this.connection = connection;
+            InstallWinSCP();
+            this.Connection = connection;
         }
 
-        //Use this constructor if we already know the path of the SFTP client.
-        public SFTPControllerWinSCP(Connection connection, string path)
+        //Installs ggivnc.exe to current directory if it isn't there.
+        public bool InstallWinSCP()
         {
-            this.connection = connection;
-            this.WinSCPPath = path;
+            if (!IsWinSCPInstalled())
+            {
+                using (FileStream fs = new FileStream(WINSCP_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
+                {
+                    byte[] bytes = getWinSCP();
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+            }
+            return true;
+        }
+
+        //Gets vncviewer.exe from the embedded resources.
+        private byte[] getWinSCP()
+        {
+            return Resources.WinSCP;
+        }
+
+        //Launch TurboVNC 
+        public void StartSFTPProcess(string password)
+        {
+            //TODO This will probably break if the password is empty.
+            String sftpCommand = WinSCPPath;
+            ProcessStartInfo info = new ProcessStartInfo(WINSCP_CURRENT_DIR);
+            info.Arguments = String.Format(WINSCP_ARGS, this.Connection.UserName, password, Connection.SSHHost, SFTP_PORT);
+            info.UseShellExecute = true;
+
+            try
+            {
+                this.process = Process.Start(info);
+            }
+            catch (Exception)
+            {
+                //TODO probably should put up a message here.
+            }
+        }
+
+        // Check to see if TurboVNC exists in the AweSim connect folder.
+        internal bool IsWinSCPInstalled()
+        {
+            return FileController.ExistsOnPath(WINSCP_FILE);
+        }
+
+        internal void KillProcess()
+        {
+            if (process != null)
+            {
+                if (!process.HasExited)
+                {
+                    process.Close();
+                    process = null;
+                    //process.Kill();
+                    _processKilled = true;
+                }
+            }
+
+        }
+
+        // Check to see if plink is in the running processes.
+        internal bool IsSFTPRunning()
+        {
+            if (!_processKilled)
+            {
+                return FileController.IsProcessRunning(WINSCP_PROCESS);
+            }
+            else
+            {
+                return _processKilled;
+            }
         }
 
         public void DetectSFTPPath()
@@ -52,53 +125,10 @@ namespace AweSimConnect.Controllers
         {
             return WinSCPPath;
         }
-
-        //Launch sftp client with a password
-        public void StartSFTPProcess(string password)
-        {
-            //TODO This will probably break if the password is empty.
-            String sftpCommand = WinSCPPath;
-            ProcessStartInfo info = new ProcessStartInfo(sftpCommand);
-            info.Arguments = String.Format(FILEZILLA_ARGS, this.connection.UserName, password, connection.SSHHost, SFTP_PORT);
-            info.UseShellExecute = true;
-
-            try
-            {
-                this.process = Process.Start(info);
-            }
-            catch (Exception)
-            {
-                //TODO probably should put up a message here.
-            }
-        }
-
+        
         internal Process GetThisProcess()
         {
             return process;
         }
-
-        internal void EmbedProcess()
-        {
-            process_embedded = true;
-        }
-
-        internal bool IsProcessEmbedded()
-        {
-            return process_embedded;
-        }
-
-        internal void KillProcess()
-        {
-            process.Kill();
-        }
-
-        // Asynchronous file detection.
-        public String DetectSFTPAsyncMethod(int callDuration, out int threadID)
-        {
-            threadID = Thread.CurrentThread.ManagedThreadId;
-            return FileController.FindExecutableInProgramFiles(WINSCP_FILE);
-        }
-        
-        private delegate String DetectSFTPAsyncMethodCaller(int callDuration, out int threadID);
     }
 }

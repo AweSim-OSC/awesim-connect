@@ -10,15 +10,15 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class SFTPControllerFileZilla
     {
-        private static String FILEZILLA_PROCESS = "filezilla";
-        private static String FILEZILLA_FOLDER_CONTAINS = "FileZilla";
-        private static String FILEZILLA_FILE = "filezilla.exe";
-        private String FilezillaPath = "";
+        private static string FILEZILLA_PROCESS = "filezilla";
+        private static string FILEZILLA_FOLDER_CONTAINS = "FileZilla";
+        private static string FILEZILLA_FILE = "filezilla.exe";
+        private string FilezillaPath = "";
 
-        private static String SFTP_PORT = "22";
+        private static string SFTP_PORT = "22";
         
         //The arguments for filezilla
-        private static String FILEZILLA_ARGS = "sftp://{0}:{1}@{2}:{3}";
+        private static string FILEZILLA_ARGS = "sftp://{0}:{1}@{2}:{3}";
 
         private Connection connection;
         private Process process;
@@ -31,7 +31,7 @@ namespace AweSimConnect.Controllers
         }
 
         //Use this constructor if we already know the path of the SFTP client.
-        public SFTPControllerFileZilla(Connection connection, String path)
+        public SFTPControllerFileZilla(Connection connection, string path)
         {
             this.connection = connection;
             this.FilezillaPath = path;
@@ -51,16 +51,16 @@ namespace AweSimConnect.Controllers
             return false;
         }
 
-        public String GetSFTPPath()
+        public string GetSFTPPath()
         {
             return FilezillaPath;
         }
 
         //Launch sftp client with a password
-        public void StartSFTPProcess(String password)
+        public void StartSFTPProcess(string password)
         {
             //TODO This will probably break if the password is empty.
-            String sftpCommand = FilezillaPath;
+            string sftpCommand = FilezillaPath;
             ProcessStartInfo info = new ProcessStartInfo(sftpCommand);
             info.Arguments = String.Format(FILEZILLA_ARGS, this.connection.UserName, password, connection.SSHHost, SFTP_PORT);
             info.UseShellExecute = true;
@@ -96,13 +96,13 @@ namespace AweSimConnect.Controllers
         }
 
         // Asynchronous file detection.
-        public String DetectSFTPAsyncMethod(int callDuration, out int threadID)
+        public string DetectSFTPAsyncMethod(int callDuration, out int threadID)
         {
             threadID = Thread.CurrentThread.ManagedThreadId;
             return FileController.FindExecutableInProgramFiles(FILEZILLA_FILE);
         }
         
-        private delegate String DetectSFTPAsyncMethodCaller(int callDuration, out int threadID);
+        private delegate string DetectSFTPAsyncMethodCaller(int callDuration, out int threadID);
         
     }
 }

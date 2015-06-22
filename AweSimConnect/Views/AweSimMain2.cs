@@ -176,6 +176,15 @@ namespace AweSimConnect.Views
                         _processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
                     }
                 }
+                else
+                {
+                    SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection);
+                    winscp.StartSFTPProcess(tbPassword.Text);
+                    if (winscp.GetThisProcess() != null)
+                    {
+                        _processes.Add(new ProcessData(winscp.GetThisProcess(), _connection));
+                    }
+                }
             }
         }
 
@@ -567,11 +576,12 @@ namespace AweSimConnect.Views
 
             if (_secondsElapsed % 2 == 0)
             {
-                _sftpAvailable = _ftpc.IsSFTPInstalled();
+                //_sftpAvailable = _ftpc.IsSFTPInstalled();
+                _sftpAvailable = true;
                 EnableSFTPOptions(_sftpAvailable && _networkAvailable);
             }
 
-            if (_secondsElapsed%3 == 0)
+            if (_secondsElapsed % 3 == 0)
             {
                 //Checks if the state was toggled in the about form an updates main.
                 if (_advFrm.AdvancedSettingsChanged())

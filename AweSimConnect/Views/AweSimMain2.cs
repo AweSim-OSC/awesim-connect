@@ -22,7 +22,6 @@ namespace AweSimConnect.Views
     * -URI Parsing
     * -Move magic strings to resources
     * -Allow user to select other ssh host in options.
-    * -Add WinSCP option
     * 
     * /
 
@@ -168,7 +167,7 @@ namespace AweSimConnect.Views
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
                 SaveUserSettings();
-                if (_ftpc.IsSFTPInstalled())
+                if (_ftpc.IsSFTPInstalled() && !_settings.UseDefaultFTPClient())
                 {
                     _ftpc.StartSFTPProcess(tbPassword.Text);
                     if (_ftpc.GetThisProcess() != null)

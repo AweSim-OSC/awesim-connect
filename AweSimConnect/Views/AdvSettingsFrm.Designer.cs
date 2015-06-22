@@ -37,6 +37,7 @@
             this.cbClipboardDetect = new System.Windows.Forms.CheckBox();
             this.cbAutoOpen = new System.Windows.Forms.CheckBox();
             this.toolTipAdvSettings = new System.Windows.Forms.ToolTip(this.components);
+            this.cbUseDefaultSFTP = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelVersion
@@ -44,7 +45,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(83, 118);
+            this.labelVersion.Location = new System.Drawing.Point(83, 136);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -118,12 +119,25 @@
             this.cbAutoOpen.UseVisualStyleBackColor = true;
             this.cbAutoOpen.CheckedChanged += new System.EventHandler(this.cbAutoOpen_CheckedChanged);
             // 
+            // cbUseDefaultSFTP
+            // 
+            this.cbUseDefaultSFTP.AutoSize = true;
+            this.cbUseDefaultSFTP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.cbUseDefaultSFTP.Location = new System.Drawing.Point(12, 121);
+            this.cbUseDefaultSFTP.Name = "cbUseDefaultSFTP";
+            this.cbUseDefaultSFTP.Size = new System.Drawing.Size(148, 17);
+            this.cbUseDefaultSFTP.TabIndex = 36;
+            this.cbUseDefaultSFTP.Text = "Use Included SFTP Client";
+            this.cbUseDefaultSFTP.UseVisualStyleBackColor = true;
+            this.cbUseDefaultSFTP.CheckedChanged += new System.EventHandler(this.cbUseDefaultSFTP_CheckedChanged);
+            // 
             // AdvSettingsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(201, 144);
+            this.ClientSize = new System.Drawing.Size(201, 161);
+            this.Controls.Add(this.cbUseDefaultSFTP);
             this.Controls.Add(this.cbAutoOpen);
             this.Controls.Add(this.cbClipboardDetect);
             this.Controls.Add(this.labelSSHHost);
@@ -152,5 +166,6 @@
         private System.Windows.Forms.CheckBox cbClipboardDetect;
         private System.Windows.Forms.CheckBox cbAutoOpen;
         private System.Windows.Forms.ToolTip toolTipAdvSettings;
+        private System.Windows.Forms.CheckBox cbUseDefaultSFTP;
     }
 }

@@ -19,3 +19,7 @@ Free Commercial License
 TurboVNC 1.2.90beta
 http://sourceforge.net/projects/turbovnc/
 GPLv2
+
+WinSCP
+http://winscp.net/eng/docs/license
+GPL

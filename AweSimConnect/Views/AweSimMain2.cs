@@ -13,15 +13,10 @@ namespace AweSimConnect.Views
     /*
     * TODO Wishlist
     *
-    * -Make sure closing main form kills all processes opened by the app.
     * -NEED TO ASYNC THE NETWORK CALLS
-    * -Async maplocalport
-    * -Allow user to save password. (External prefs file, use user encryption.)
-    * -Save external file locations in prefs to speed up startup.
     * -Antialiased Font
     * -URI Parsing
     * -Move magic strings to resources
-    * -Allow user to select other ssh host in options.
     * 
     * /
 
@@ -51,8 +46,7 @@ namespace AweSimConnect.Views
         private static string UNABLE_TO_CONNECT =
             "Unable to Connect to AweSim Server. Check your connection or contact your system administrator.";
         private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
-
-
+        
         Connection _connection;
 
         private SFTPControllerFileZilla _ftpc;

@@ -181,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
+    <None Include="Resources\WinSCP.exe" />
     <None Include="Resources\officine2.png" />
     <None Include="Resources\officine.png" />
     <None Include="Resources\home-wifi.png" />

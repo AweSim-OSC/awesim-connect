@@ -70,13 +70,11 @@ namespace AweSimConnect.Views
 
         public AweSimMain2()
         {
-
             InitializeComponent();
             this.Text = CLIENT_TITLE;
             
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
-            
         }
 
         // Form Load
@@ -130,7 +128,6 @@ namespace AweSimConnect.Views
             {
                 MessageBox.Show(BROWSER_ERROR + AWESIM_DASHBOARD_URL, "Browser not found", MessageBoxButtons.OK);
             }
-
         }
 
         // Handle the connect button actions

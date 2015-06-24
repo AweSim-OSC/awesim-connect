@@ -135,6 +135,12 @@ namespace AweSimConnect.Views
         {
             if (Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword) && Validator.IsInt32(tbPort) && Validator.IsPresent(tbHost))
             {
+                //If there is AweSim data on the clipboard, clear it now 
+                if (_clipc.CheckClipboardForAweSim())
+                {
+                    Clipboard.Clear();
+                }
+
                 // Saves user settings if checked.
                 SaveUserSettings();
 

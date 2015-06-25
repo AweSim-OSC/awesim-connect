@@ -538,12 +538,12 @@ namespace AweSimConnect.Views
             if (isNetworkConnected)
             {
                 pbIsNetworkConnected.Image = Resources.wifi;
-                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Network Available");
+                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Network Available\nConnected to " + _sshHost);
             }
             else
             {
                 pbIsNetworkConnected.Image = Resources.cross_gry;
-                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, UNABLE_TO_CONNECT);
+                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, UNABLE_TO_CONNECT + "\n" + _sshHost);
             }
         }
 

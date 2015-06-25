@@ -187,7 +187,8 @@ namespace AweSimConnect.Views
         // Throws up a popup window if the app isn't able to connect to the selected SSH host.
         private void LimitedConnectionPopup()
         {
-            _networkAvailable = NetworkTools.CanTelnetToOakley();
+            //_networkAvailable = NetworkTools.CanTelnetToOakley();
+            _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
             if (!_networkAvailable)
             {
                 MessageBox.Show(LIMITED_CONNECTION_ERROR, "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -565,7 +566,8 @@ namespace AweSimConnect.Views
             // Disable the connection button if can not connect to OSC.
             if (_secondsElapsed % 15 == 0)
             {
-                _networkAvailable = NetworkTools.CanTelnetToOakley();
+                //_networkAvailable = NetworkTools.CanTelnetToOakley();
+                _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
                 EnableTunnelOptions(_networkAvailable);
             }
 

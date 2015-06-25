@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using AweSimConnect.Views;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace AweSimConnect
 {

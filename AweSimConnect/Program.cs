@@ -13,7 +13,7 @@ namespace AweSimConnect
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             // get application GUID as defined in AssemblyInfo.cs
             string appGuid = ((GuidAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(GuidAttribute), false).GetValue(0)).Value.ToString();
@@ -23,10 +23,15 @@ namespace AweSimConnect
 
             // Need a place to store a return value in Mutex() constructor call
             bool createdNew;
-
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AweSimMain2());
         }
+    }
+
+    class App : WindowsFormsApplicationBase
+    {
+         
     }
 }

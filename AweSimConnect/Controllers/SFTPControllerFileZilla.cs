@@ -10,7 +10,7 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class SFTPControllerFileZilla
     {
-        private static string FILEZILLA_PROCESS = "filezilla";
+        //private static string FILEZILLA_PROCESS = "filezilla";
         private static string FILEZILLA_FOLDER_CONTAINS = "FileZilla";
         private static string FILEZILLA_FILE = "filezilla.exe";
         private string FilezillaPath = "";
@@ -23,7 +23,7 @@ namespace AweSimConnect.Controllers
         private Connection connection;
         private Process process;
         private bool process_embedded;
-        private bool searching = true;
+        //private bool searching = true;
         
         public SFTPControllerFileZilla(Connection connection)
         {

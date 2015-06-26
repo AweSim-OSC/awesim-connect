@@ -42,8 +42,8 @@ namespace AweSimConnect
 
         public App()
         {
-            base.IsSingleInstance = true;
-            base.EnableVisualStyles = true;
+            IsSingleInstance = true;
+            EnableVisualStyles = true;
         }
 
         public static void Run(Form form)

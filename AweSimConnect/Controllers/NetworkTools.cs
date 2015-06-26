@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
+using Microsoft.VisualStudio.QualityTools.UnitTestFramework;
 
 namespace AweSimConnect.Controllers
 {
@@ -10,10 +11,11 @@ namespace AweSimConnect.Controllers
     {
         private static int TELNET_PORT = 22;
 
-        //Checks for connectivity to Oakley. (Use for diagnostic)
-        public static bool CanTelnetToOakley()
+        //Checks for connectivity to Default server (currently Oakley). Use for diagnostic.
+        public static bool CanTelnetToDefault()
         {
-            return CanTelnetToHost("oakley.osc.edu");
+            string oakley = new OSCClusterController().ClusterDomain();
+            return CanTelnetToHost(oakley);
         }
 
         // Checks the localhost for an open port.

@@ -38,6 +38,12 @@
             this.cbAutoOpen = new System.Windows.Forms.CheckBox();
             this.toolTipAdvSettings = new System.Windows.Forms.ToolTip(this.components);
             this.cbUseDefaultSFTP = new System.Windows.Forms.CheckBox();
+            this.gbConnection = new System.Windows.Forms.GroupBox();
+            this.gbSystem = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbConnection.SuspendLayout();
+            this.gbSystem.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelVersion
@@ -45,7 +51,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(83, 144);
+            this.labelVersion.Location = new System.Drawing.Point(104, 214);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -56,7 +62,7 @@
             // 
             this.cbSaveUser.AutoSize = true;
             this.cbSaveUser.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.cbSaveUser.Location = new System.Drawing.Point(12, 50);
+            this.cbSaveUser.Location = new System.Drawing.Point(13, 19);
             this.cbSaveUser.Name = "cbSaveUser";
             this.cbSaveUser.Size = new System.Drawing.Size(131, 17);
             this.cbSaveUser.TabIndex = 31;
@@ -73,7 +79,7 @@
             this.cbHosts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbHosts.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cbHosts.FormattingEnabled = true;
-            this.cbHosts.Location = new System.Drawing.Point(12, 14);
+            this.cbHosts.Location = new System.Drawing.Point(13, 22);
             this.cbHosts.Name = "cbHosts";
             this.cbHosts.Size = new System.Drawing.Size(121, 21);
             this.cbHosts.TabIndex = 32;
@@ -86,7 +92,7 @@
             this.labelSSHHost.AutoSize = true;
             this.labelSSHHost.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelSSHHost.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelSSHHost.Location = new System.Drawing.Point(139, 17);
+            this.labelSSHHost.Location = new System.Drawing.Point(140, 25);
             this.labelSSHHost.Name = "labelSSHHost";
             this.labelSSHHost.Size = new System.Drawing.Size(54, 13);
             this.labelSSHHost.TabIndex = 33;
@@ -96,7 +102,7 @@
             // 
             this.cbClipboardDetect.AutoSize = true;
             this.cbClipboardDetect.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.cbClipboardDetect.Location = new System.Drawing.Point(12, 74);
+            this.cbClipboardDetect.Location = new System.Drawing.Point(13, 19);
             this.cbClipboardDetect.Name = "cbClipboardDetect";
             this.cbClipboardDetect.Size = new System.Drawing.Size(142, 17);
             this.cbClipboardDetect.TabIndex = 34;
@@ -109,7 +115,7 @@
             // 
             this.cbAutoOpen.AutoSize = true;
             this.cbAutoOpen.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.cbAutoOpen.Location = new System.Drawing.Point(12, 98);
+            this.cbAutoOpen.Location = new System.Drawing.Point(13, 42);
             this.cbAutoOpen.Name = "cbAutoOpen";
             this.cbAutoOpen.Size = new System.Drawing.Size(157, 17);
             this.cbAutoOpen.TabIndex = 35;
@@ -123,7 +129,7 @@
             // 
             this.cbUseDefaultSFTP.AutoSize = true;
             this.cbUseDefaultSFTP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.cbUseDefaultSFTP.Location = new System.Drawing.Point(12, 121);
+            this.cbUseDefaultSFTP.Location = new System.Drawing.Point(13, 42);
             this.cbUseDefaultSFTP.Name = "cbUseDefaultSFTP";
             this.cbUseDefaultSFTP.Size = new System.Drawing.Size(148, 17);
             this.cbUseDefaultSFTP.TabIndex = 36;
@@ -133,18 +139,51 @@
             this.cbUseDefaultSFTP.UseVisualStyleBackColor = true;
             this.cbUseDefaultSFTP.CheckedChanged += new System.EventHandler(this.cbUseDefaultSFTP_CheckedChanged);
             // 
+            // gbConnection
+            // 
+            this.gbConnection.Controls.Add(this.labelSSHHost);
+            this.gbConnection.Controls.Add(this.cbHosts);
+            this.gbConnection.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbConnection.Location = new System.Drawing.Point(12, 12);
+            this.gbConnection.Name = "gbConnection";
+            this.gbConnection.Size = new System.Drawing.Size(202, 53);
+            this.gbConnection.TabIndex = 37;
+            this.gbConnection.TabStop = false;
+            this.gbConnection.Text = "Connection Settings";
+            // 
+            // gbSystem
+            // 
+            this.gbSystem.Controls.Add(this.cbClipboardDetect);
+            this.gbSystem.Controls.Add(this.cbUseDefaultSFTP);
+            this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbSystem.Location = new System.Drawing.Point(12, 71);
+            this.gbSystem.Name = "gbSystem";
+            this.gbSystem.Size = new System.Drawing.Size(202, 67);
+            this.gbSystem.TabIndex = 38;
+            this.gbSystem.TabStop = false;
+            this.gbSystem.Text = "System Settings";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cbSaveUser);
+            this.groupBox1.Controls.Add(this.cbAutoOpen);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox1.Location = new System.Drawing.Point(12, 145);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(202, 66);
+            this.groupBox1.TabIndex = 39;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Automation Settings";
+            // 
             // AdvSettingsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(201, 161);
-            this.Controls.Add(this.cbUseDefaultSFTP);
-            this.Controls.Add(this.cbAutoOpen);
-            this.Controls.Add(this.cbClipboardDetect);
-            this.Controls.Add(this.labelSSHHost);
-            this.Controls.Add(this.cbHosts);
-            this.Controls.Add(this.cbSaveUser);
+            this.ClientSize = new System.Drawing.Size(224, 237);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbSystem);
+            this.Controls.Add(this.gbConnection);
             this.Controls.Add(this.labelVersion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -154,8 +193,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Advanced Settings";
             this.Load += new System.EventHandler(this.AdvSettingsFrm_Load);
+            this.gbConnection.ResumeLayout(false);
+            this.gbConnection.PerformLayout();
+            this.gbSystem.ResumeLayout(false);
+            this.gbSystem.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -169,5 +213,8 @@
         private System.Windows.Forms.CheckBox cbAutoOpen;
         private System.Windows.Forms.ToolTip toolTipAdvSettings;
         private System.Windows.Forms.CheckBox cbUseDefaultSFTP;
+        private System.Windows.Forms.GroupBox gbConnection;
+        private System.Windows.Forms.GroupBox gbSystem;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

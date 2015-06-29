@@ -56,6 +56,12 @@
             this.gbSystem = new System.Windows.Forms.GroupBox();
             this.pbIsNetworkConnected = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.gbFileTransfer = new System.Windows.Forms.GroupBox();
+            this.gbConnect = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lConnectionStatus = new System.Windows.Forms.Label();
             this.gbCredentials.SuspendLayout();
             this.gbSessionInfo.SuspendLayout();
             this.gbSessionType.SuspendLayout();
@@ -63,6 +69,10 @@
             this.gbSystem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIsNetworkConnected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.gbFileTransfer.SuspendLayout();
+            this.gbConnect.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbCredentials
@@ -275,9 +285,9 @@
             this.buttonAdvanced.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.buttonAdvanced.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonAdvanced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdvanced.Location = new System.Drawing.Point(86, 12);
+            this.buttonAdvanced.Location = new System.Drawing.Point(6, 17);
             this.buttonAdvanced.Name = "buttonAdvanced";
-            this.buttonAdvanced.Size = new System.Drawing.Size(22, 22);
+            this.buttonAdvanced.Size = new System.Drawing.Size(62, 59);
             this.buttonAdvanced.TabIndex = 3;
             this.toolTipNoDelay.SetToolTip(this.buttonAdvanced, "Advanced Options");
             this.buttonAdvanced.UseVisualStyleBackColor = true;
@@ -293,9 +303,9 @@
             this.buttonInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.buttonInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonInfo.Location = new System.Drawing.Point(114, 12);
+            this.buttonInfo.Location = new System.Drawing.Point(6, 17);
             this.buttonInfo.Name = "buttonInfo";
-            this.buttonInfo.Size = new System.Drawing.Size(22, 22);
+            this.buttonInfo.Size = new System.Drawing.Size(62, 59);
             this.buttonInfo.TabIndex = 2;
             this.toolTipNoDelay.SetToolTip(this.buttonInfo, "About");
             this.buttonInfo.UseVisualStyleBackColor = true;
@@ -313,10 +323,10 @@
             this.bConnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bConnect.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bConnect.Location = new System.Drawing.Point(183, 367);
+            this.bConnect.Location = new System.Drawing.Point(6, 20);
             this.bConnect.Margin = new System.Windows.Forms.Padding(0);
             this.bConnect.Name = "bConnect";
-            this.bConnect.Size = new System.Drawing.Size(154, 158);
+            this.bConnect.Size = new System.Drawing.Size(142, 138);
             this.bConnect.TabIndex = 10;
             this.toolTipNoDelay.SetToolTip(this.bConnect, "Connect to Session. Enter your session information and click here to connect to t" +
         "he session.");
@@ -335,10 +345,10 @@
             this.bSFTP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bSFTP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSFTP.ForeColor = System.Drawing.Color.White;
-            this.bSFTP.Location = new System.Drawing.Point(12, 367);
+            this.bSFTP.Location = new System.Drawing.Point(6, 17);
             this.bSFTP.Margin = new System.Windows.Forms.Padding(0);
             this.bSFTP.Name = "bSFTP";
-            this.bSFTP.Size = new System.Drawing.Size(154, 158);
+            this.bSFTP.Size = new System.Drawing.Size(62, 59);
             this.bSFTP.TabIndex = 11;
             this.bSFTP.Tag = "File Transfer";
             this.toolTipNoDelay.SetToolTip(this.bSFTP, "File Transfer. Enter your user credentials and click here to open an SFTP file tr" +
@@ -392,8 +402,7 @@
             // 
             // gbSystem
             // 
-            this.gbSystem.Controls.Add(this.buttonAdvanced);
-            this.gbSystem.Controls.Add(this.buttonInfo);
+            this.gbSystem.Controls.Add(this.lConnectionStatus);
             this.gbSystem.Controls.Add(this.pbIsNetworkConnected);
             this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gbSystem.Location = new System.Drawing.Point(12, 179);
@@ -401,12 +410,13 @@
             this.gbSystem.Size = new System.Drawing.Size(154, 40);
             this.gbSystem.TabIndex = 13;
             this.gbSystem.TabStop = false;
+            this.gbSystem.Text = "Connection Status";
             // 
             // pbIsNetworkConnected
             // 
             this.pbIsNetworkConnected.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbIsNetworkConnected.Image = global::AweSimConnect.Properties.Resources.cross_gry;
-            this.pbIsNetworkConnected.Location = new System.Drawing.Point(19, 12);
+            this.pbIsNetworkConnected.Location = new System.Drawing.Point(9, 13);
             this.pbIsNetworkConnected.Name = "pbIsNetworkConnected";
             this.pbIsNetworkConnected.Size = new System.Drawing.Size(22, 22);
             this.pbIsNetworkConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -425,18 +435,85 @@
             this.pbLogo.TabStop = false;
             this.pbLogo.Tag = "Logo";
             // 
+            // gbFileTransfer
+            // 
+            this.gbFileTransfer.Controls.Add(this.bSFTP);
+            this.gbFileTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.gbFileTransfer.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbFileTransfer.Location = new System.Drawing.Point(12, 360);
+            this.gbFileTransfer.Name = "gbFileTransfer";
+            this.gbFileTransfer.Size = new System.Drawing.Size(75, 82);
+            this.gbFileTransfer.TabIndex = 14;
+            this.gbFileTransfer.TabStop = false;
+            this.gbFileTransfer.Text = "SFTP";
+            // 
+            // gbConnect
+            // 
+            this.gbConnect.Controls.Add(this.bConnect);
+            this.gbConnect.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbConnect.Location = new System.Drawing.Point(183, 360);
+            this.gbConnect.Name = "gbConnect";
+            this.gbConnect.Size = new System.Drawing.Size(154, 170);
+            this.gbConnect.TabIndex = 15;
+            this.gbConnect.TabStop = false;
+            this.gbConnect.Text = "Connect";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox1.Location = new System.Drawing.Point(91, 360);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(75, 82);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Console";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.buttonAdvanced);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox2.Location = new System.Drawing.Point(12, 448);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(75, 82);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Settings";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.buttonInfo);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox3.Location = new System.Drawing.Point(91, 448);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(75, 82);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "About";
+            // 
+            // lConnectionStatus
+            // 
+            this.lConnectionStatus.AutoSize = true;
+            this.lConnectionStatus.Location = new System.Drawing.Point(38, 18);
+            this.lConnectionStatus.Name = "lConnectionStatus";
+            this.lConnectionStatus.Size = new System.Drawing.Size(79, 13);
+            this.lConnectionStatus.TabIndex = 2;
+            this.lConnectionStatus.Text = "Not Connected";
+            // 
             // AweSimMain2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(349, 538);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbConnect);
+            this.Controls.Add(this.gbFileTransfer);
             this.Controls.Add(this.gbSystem);
             this.Controls.Add(this.gbVNCPassword);
             this.Controls.Add(this.gbSessionType);
-            this.Controls.Add(this.bConnect);
             this.Controls.Add(this.gbSessionInfo);
-            this.Controls.Add(this.bSFTP);
             this.Controls.Add(this.gbCredentials);
             this.Controls.Add(this.bDashboard);
             this.Controls.Add(this.pbLogo);
@@ -457,8 +534,13 @@
             this.gbVNCPassword.ResumeLayout(false);
             this.gbVNCPassword.PerformLayout();
             this.gbSystem.ResumeLayout(false);
+            this.gbSystem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIsNetworkConnected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            this.gbFileTransfer.ResumeLayout(false);
+            this.gbConnect.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -491,6 +573,12 @@
         private System.Windows.Forms.Button buttonInfo;
         private System.Windows.Forms.Button buttonAdvanced;
         private System.Windows.Forms.CheckBox cbRememberMe;
+        private System.Windows.Forms.GroupBox gbFileTransfer;
+        private System.Windows.Forms.GroupBox gbConnect;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lConnectionStatus;
 
 
 

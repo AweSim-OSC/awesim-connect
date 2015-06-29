@@ -539,11 +539,13 @@ namespace AweSimConnect.Views
             {
                 pbIsNetworkConnected.Image = Resources.wifi;
                 toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Network Available\nConnected to " + _sshHost);
+                lConnectionStatus.Text = _sshHost + " connected";
             }
             else
             {
                 pbIsNetworkConnected.Image = Resources.cross_gry;
                 toolTipNoDelay.SetToolTip(pbIsNetworkConnected, UNABLE_TO_CONNECT + "\n" + _sshHost);
+                lConnectionStatus.Text = _sshHost + " unavailable";
             }
         }
 

@@ -416,7 +416,7 @@
             // 
             this.pbIsNetworkConnected.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbIsNetworkConnected.Image = global::AweSimConnect.Properties.Resources.cross_gry;
-            this.pbIsNetworkConnected.Location = new System.Drawing.Point(9, 13);
+            this.pbIsNetworkConnected.Location = new System.Drawing.Point(7, 14);
             this.pbIsNetworkConnected.Name = "pbIsNetworkConnected";
             this.pbIsNetworkConnected.Size = new System.Drawing.Size(22, 22);
             this.pbIsNetworkConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -440,7 +440,7 @@
             this.gbFileTransfer.Controls.Add(this.bSFTP);
             this.gbFileTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.gbFileTransfer.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbFileTransfer.Location = new System.Drawing.Point(12, 360);
+            this.gbFileTransfer.Location = new System.Drawing.Point(12, 359);
             this.gbFileTransfer.Name = "gbFileTransfer";
             this.gbFileTransfer.Size = new System.Drawing.Size(75, 82);
             this.gbFileTransfer.TabIndex = 14;
@@ -461,9 +461,9 @@
             // groupBox1
             // 
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox1.Location = new System.Drawing.Point(91, 360);
+            this.groupBox1.Location = new System.Drawing.Point(91, 358);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(75, 82);
+            this.groupBox1.Size = new System.Drawing.Size(75, 83);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Console";
@@ -493,9 +493,10 @@
             // lConnectionStatus
             // 
             this.lConnectionStatus.AutoSize = true;
-            this.lConnectionStatus.Location = new System.Drawing.Point(38, 18);
+            this.lConnectionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.lConnectionStatus.Location = new System.Drawing.Point(32, 18);
             this.lConnectionStatus.Name = "lConnectionStatus";
-            this.lConnectionStatus.Size = new System.Drawing.Size(79, 13);
+            this.lConnectionStatus.Size = new System.Drawing.Size(77, 13);
             this.lConnectionStatus.TabIndex = 2;
             this.lConnectionStatus.Text = "Not Connected";
             // 

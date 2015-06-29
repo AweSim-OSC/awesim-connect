@@ -483,10 +483,12 @@ namespace AweSimConnect.Views
                             if ((tbHost.Text != "") && (tbPort.Text != "") && (tbVNCPassword.Text != ""))
                             {
                                 bConnect.Visible = true;
+                                gbConnect.Visible = true;
                             }
                             else
                             {
                                 bConnect.Visible = false;
+                                gbConnect.Visible = false;
                             }
                         }
                         else if (rbCOMSOL.Checked)
@@ -498,10 +500,12 @@ namespace AweSimConnect.Views
                             if ((tbHost.Text != "") && (tbPort.Text != ""))
                             {
                                 bConnect.Visible = true;
+                                gbConnect.Visible = true;
                             }
                             else
                             {
                                 bConnect.Visible = false;
+                                gbConnect.Visible = false;
                             }
                         }
                     }
@@ -510,6 +514,7 @@ namespace AweSimConnect.Views
                         gbSessionInfo.Visible = false;
                         gbVNCPassword.Visible = false;
                         bConnect.Visible = false;
+                        gbConnect.Visible = false;
                     }
                 }
                 else
@@ -518,6 +523,7 @@ namespace AweSimConnect.Views
                     gbSessionType.Visible = false;
                     gbVNCPassword.Visible = false;
                     bConnect.Visible = false;
+                    gbConnect.Visible = false;
                     bSFTP.Visible = false;
                 }
             }
@@ -528,6 +534,7 @@ namespace AweSimConnect.Views
                 gbSessionType.Visible = false;
                 gbVNCPassword.Visible = false;
                 bConnect.Visible = false;
+                gbConnect.Visible = false;
                 bSFTP.Visible = false;
             }
 

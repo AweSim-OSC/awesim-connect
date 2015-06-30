@@ -10,7 +10,7 @@ namespace AweSimConnect.Views
     public partial class ConnectionPanel : UserControl
     {
         private readonly Connection _connection;
-        private readonly PuTTYController _pc;
+        private readonly PlinkController _pc;
         private readonly AdvancedSettings _advSettings;
         private readonly VNCControllerTurbo _vnc;
 
@@ -25,7 +25,7 @@ namespace AweSimConnect.Views
             InitializeComponent();
             Parent_Form = parentForm;
             _connection = inputConnection;
-            _pc = new PuTTYController(_connection);
+            _pc = new PlinkController(_connection);
             _advSettings = new AdvancedSettings();
             _pc.StartPlinkProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);

@@ -163,23 +163,7 @@ namespace AweSimConnect.Views
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
                 SaveUserSettings();
-                if (_ftpc.IsSFTPInstalled() && !_settings.UseDefaultFTPClient())
-                {
-                    _ftpc.StartSFTPProcess(tbPassword.Text);
-                    if (_ftpc.GetThisProcess() != null)
-                    {
-                        _processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
-                    }
-                }
-                else
-                {
-                    SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection);
-                    winscp.StartSFTPProcess(tbPassword.Text);
-                    if (winscp.GetThisProcess() != null)
-                    {
-                        _processes.Add(new ProcessData(winscp.GetThisProcess(), _connection));
-                    }
-                }
+                //TODO Open a putty console.
             }
         }
 

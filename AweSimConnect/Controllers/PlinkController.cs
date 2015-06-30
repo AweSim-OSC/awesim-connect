@@ -9,7 +9,7 @@ namespace AweSimConnect.Controllers
     /// <summary>
     /// This class controls the plink application.
     /// </summary>
-    class PuTTYController
+    class PlinkController
     {
         private static String PLINK_PROCESS = "plink";
         private static String PLINK_FILE = "plink.exe";
@@ -33,7 +33,7 @@ namespace AweSimConnect.Controllers
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1}:{0} -C -N -T {2}@{3} -l {4}";
         private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
 
-        public PuTTYController(Connection connection)
+        public PlinkController(Connection connection)
         {
             InstallPlink();
             this.connection = connection;

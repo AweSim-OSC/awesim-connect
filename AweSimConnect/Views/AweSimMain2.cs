@@ -465,6 +465,7 @@ namespace AweSimConnect.Views
                 {
                     gbSessionType.Visible = true;
                     bSFTP.Visible = true;
+                    buttonConsole.Visible = true;
 
                     if (rbVNC.Checked || rbCOMSOL.Checked)
                     {
@@ -518,6 +519,7 @@ namespace AweSimConnect.Views
                     bConnect.Visible = false;
                     gbConnect.Visible = false;
                     bSFTP.Visible = false;
+                    buttonConsole.Visible = false;
                 }
             }
             else
@@ -529,6 +531,7 @@ namespace AweSimConnect.Views
                 bConnect.Visible = false;
                 gbConnect.Visible = false;
                 bSFTP.Visible = false;
+                buttonConsole.Visible = false;
             }
 
         }

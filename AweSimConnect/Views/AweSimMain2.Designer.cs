@@ -164,7 +164,7 @@
             this.gbSessionInfo.Controls.Add(this.lPort);
             this.gbSessionInfo.Controls.Add(this.lHost);
             this.gbSessionInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionInfo.Location = new System.Drawing.Point(183, 246);
+            this.gbSessionInfo.Location = new System.Drawing.Point(12, 425);
             this.gbSessionInfo.Name = "gbSessionInfo";
             this.gbSessionInfo.Size = new System.Drawing.Size(154, 60);
             this.gbSessionInfo.TabIndex = 6;
@@ -282,7 +282,7 @@
             this.gbSessionType.Controls.Add(this.rbCOMSOL);
             this.gbSessionType.Controls.Add(this.rbVNC);
             this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionType.Location = new System.Drawing.Point(183, 179);
+            this.gbSessionType.Location = new System.Drawing.Point(12, 358);
             this.gbSessionType.Name = "gbSessionType";
             this.gbSessionType.Size = new System.Drawing.Size(154, 62);
             this.gbSessionType.TabIndex = 4;
@@ -293,7 +293,7 @@
             // 
             this.gbVNCPassword.Controls.Add(this.tbVNCPassword);
             this.gbVNCPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbVNCPassword.Location = new System.Drawing.Point(183, 312);
+            this.gbVNCPassword.Location = new System.Drawing.Point(12, 491);
             this.gbVNCPassword.Name = "gbVNCPassword";
             this.gbVNCPassword.Size = new System.Drawing.Size(154, 41);
             this.gbVNCPassword.TabIndex = 8;
@@ -327,7 +327,7 @@
             this.gbSFTP.Controls.Add(this.bSFTP);
             this.gbSFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.gbSFTP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSFTP.Location = new System.Drawing.Point(12, 359);
+            this.gbSFTP.Location = new System.Drawing.Point(182, 269);
             this.gbSFTP.Name = "gbSFTP";
             this.gbSFTP.Size = new System.Drawing.Size(75, 82);
             this.gbSFTP.TabIndex = 14;
@@ -338,7 +338,7 @@
             // 
             this.gbConnect.Controls.Add(this.bConnect);
             this.gbConnect.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbConnect.Location = new System.Drawing.Point(183, 358);
+            this.gbConnect.Location = new System.Drawing.Point(182, 358);
             this.gbConnect.Name = "gbConnect";
             this.gbConnect.Size = new System.Drawing.Size(154, 172);
             this.gbConnect.TabIndex = 15;
@@ -349,7 +349,7 @@
             // 
             this.gbConsole.Controls.Add(this.buttonConsole);
             this.gbConsole.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbConsole.Location = new System.Drawing.Point(91, 358);
+            this.gbConsole.Location = new System.Drawing.Point(261, 268);
             this.gbConsole.Name = "gbConsole";
             this.gbConsole.Size = new System.Drawing.Size(75, 83);
             this.gbConsole.TabIndex = 16;
@@ -360,7 +360,7 @@
             // 
             this.gbSettings.Controls.Add(this.buttonAdvanced);
             this.gbSettings.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSettings.Location = new System.Drawing.Point(12, 446);
+            this.gbSettings.Location = new System.Drawing.Point(182, 179);
             this.gbSettings.Name = "gbSettings";
             this.gbSettings.Size = new System.Drawing.Size(75, 84);
             this.gbSettings.TabIndex = 17;
@@ -371,7 +371,7 @@
             // 
             this.gbAbout.Controls.Add(this.buttonInfo);
             this.gbAbout.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbAbout.Location = new System.Drawing.Point(91, 446);
+            this.gbAbout.Location = new System.Drawing.Point(261, 179);
             this.gbAbout.Name = "gbAbout";
             this.gbAbout.Size = new System.Drawing.Size(75, 84);
             this.gbAbout.TabIndex = 18;
@@ -503,7 +503,7 @@
             this.bDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDashboard.Location = new System.Drawing.Point(183, 12);
+            this.bDashboard.Location = new System.Drawing.Point(182, 12);
             this.bDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.bDashboard.Name = "bDashboard";
             this.bDashboard.Size = new System.Drawing.Size(154, 158);
@@ -530,7 +530,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(349, 538);
+            this.ClientSize = new System.Drawing.Size(347, 538);
             this.Controls.Add(this.gbAbout);
             this.Controls.Add(this.gbSettings);
             this.Controls.Add(this.gbConsole);

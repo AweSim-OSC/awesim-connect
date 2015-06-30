@@ -32,8 +32,6 @@ namespace AweSimConnect.Views
     */
     public partial class AweSimMain2 : Form
     {
-        
-
         // The version number. The first and second numbers are set in the assembly info.
         // The third number is the number of days since the year 2000
         // The fourth number is the number of seconds since midnight divided by 2.
@@ -69,8 +67,10 @@ namespace AweSimConnect.Views
         private AdvancedSettings _settings;
         private string _sshHost;
 
+        private string test;
 
-        public AweSimMain2()
+
+        public AweSimMain2(string[] args)
         {
             InitializeComponent();
             this.Text = CLIENT_TITLE;
@@ -82,11 +82,10 @@ namespace AweSimConnect.Views
         // Form Load
         private void AweSimMain2_Load(object sender, EventArgs e)
         {
-
             //GUI Setup
             this.CenterToParent();
             this.AcceptButton = bConnect;
-
+            
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();
             _connection = new Connection();

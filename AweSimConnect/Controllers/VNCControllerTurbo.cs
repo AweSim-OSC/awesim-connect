@@ -74,7 +74,6 @@ namespace AweSimConnect.Controllers
                 {
                     process.Close();
                     process = null;
-                    //process.Kill();
                     _processKilled = true;
                 }
             }

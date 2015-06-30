@@ -27,7 +27,7 @@ namespace AweSimConnect
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new AweSimMain2());
-            App.Run(new AweSimMain2());
+            App.Run(new AweSimMain2(args));
         }
     }
 

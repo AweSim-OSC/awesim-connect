@@ -24,7 +24,7 @@ namespace AweSimConnect.Controllers
         }
         
         //The full current path of the putty executable.
-        private static String PUTTY_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), PUTTY_FILE);
+        private static String PUTTY_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH, PUTTY_FILE);
         
         // PuTTY command line argument placeholder.        
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh {0} -l {1}";
@@ -39,15 +39,7 @@ namespace AweSimConnect.Controllers
         //Installs putty.exe to current directory if it isn't there.
         public bool InstallPutty()
         {
-            if (!IsPuttyInstalled())
-            {
-                using (FileStream fs = new FileStream(PUTTY_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
-                {
-                    byte[] bytes = getPutty();
-                    fs.Write(bytes, 0, bytes.Length);
-                }
-            }
-            return true;
+            return FileController.DeployResourceToAweSimFilesFolder(getPutty(), PUTTY_FILE);
         }
 
         //Gets putty.exe from the embedded resources.
@@ -55,10 +47,9 @@ namespace AweSimConnect.Controllers
         {
             return Resources.putty;
         }
-
         
         //Launch Putty with a password
-        public void StartPuttyProcess(String password)
+        public void StartPuttyProcess(string password)
         {
             //TODO This will probably break if the password is empty, but the view currently prevents that.
             String puttyCommand = String.Format(PUTTY_CURRENT_DIR);

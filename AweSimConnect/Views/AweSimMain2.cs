@@ -50,6 +50,7 @@ namespace AweSimConnect.Views
         Connection _connection;
 
         private SFTPControllerFileZilla _ftpc;
+        private ConsoleController _consolec;
         private ClipboardController _clipc;
         private OSCClusterController _clusterc;
 
@@ -163,7 +164,13 @@ namespace AweSimConnect.Views
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
                 SaveUserSettings();
-                //TODO Open a putty console.
+
+                _consolec = new ConsoleController(_connection);
+                _consolec.StartPuttyProcess(tbPassword.Text);
+                if (_consolec.GetThisProcess() != null)
+                {
+                    _processes.Add(new ProcessData(_consolec.GetThisProcess(), _connection));
+                }
             }
         }
 
@@ -449,7 +456,9 @@ namespace AweSimConnect.Views
                 {
                     gbSessionType.Visible = true;
                     bSFTP.Visible = true;
+                    gbSFTP.Visible = true;
                     buttonConsole.Visible = true;
+                    gbConsole.Visible = true;
 
                     if (rbVNC.Checked || rbCOMSOL.Checked)
                     {
@@ -503,7 +512,9 @@ namespace AweSimConnect.Views
                     bConnect.Visible = false;
                     gbConnect.Visible = false;
                     bSFTP.Visible = false;
+                    gbSFTP.Visible = false;
                     buttonConsole.Visible = false;
+                    gbConsole.Visible = false;
                 }
             }
             else
@@ -515,7 +526,9 @@ namespace AweSimConnect.Views
                 bConnect.Visible = false;
                 gbConnect.Visible = false;
                 bSFTP.Visible = false;
+                gbSFTP.Visible = false;
                 buttonConsole.Visible = false;
+                gbConsole.Visible = false;
             }
 
         }

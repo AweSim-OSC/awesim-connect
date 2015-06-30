@@ -406,7 +406,7 @@
             this.buttonAdvanced.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.buttonAdvanced.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonAdvanced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdvanced.Location = new System.Drawing.Point(7, 17);
+            this.buttonAdvanced.Location = new System.Drawing.Point(6, 16);
             this.buttonAdvanced.Name = "buttonAdvanced";
             this.buttonAdvanced.Size = new System.Drawing.Size(62, 59);
             this.buttonAdvanced.TabIndex = 3;

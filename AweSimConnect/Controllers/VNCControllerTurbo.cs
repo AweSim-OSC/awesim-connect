@@ -20,7 +20,7 @@ namespace AweSimConnect.Controllers
         private bool _processKilled;
 
         //The full current path of the executable.
-        private static readonly String TURBOVNC_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), TURBOVNC_FILE);
+        private static readonly String TURBOVNC_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH, TURBOVNC_FILE);
 
         //The arguments for turbovnc
         private static String TURBO_ARGS = "/password {0} localhost::{1}";
@@ -34,15 +34,7 @@ namespace AweSimConnect.Controllers
         //Installs ggivnc.exe to current directory if it isn't there.
         public bool InstallVNC()
         {
-            if (!IsVNCInstalled())
-            {
-                using (FileStream fs = new FileStream(TURBOVNC_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
-                {
-                    byte[] bytes = getTurboVnc();
-                    fs.Write(bytes, 0, bytes.Length);
-                }
-            }
-            return true;
+            return FileController.DeployResourceToAweSimFilesFolder(getTurboVnc(), TURBOVNC_FILE);
         }
 
         //Gets vncviewer.exe from the embedded resources.

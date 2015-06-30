@@ -25,7 +25,7 @@ namespace AweSimConnect.Controllers
         private static string WINSCP_ARGS = "sftp://{0}:{1}@{2}:{3} /noupdate";
 
         //The full current path of the executable.
-        private static readonly string WINSCP_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), WINSCP_FILE);
+        private static readonly string WINSCP_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH, WINSCP_FILE);
 
         
         public SFTPControllerWinSCP(Connection connection)
@@ -37,15 +37,7 @@ namespace AweSimConnect.Controllers
         //Installs ggivnc.exe to current directory if it isn't there.
         public bool InstallWinSCP()
         {
-            if (!IsWinSCPInstalled())
-            {
-                using (FileStream fs = new FileStream(WINSCP_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
-                {
-                    byte[] bytes = getWinSCP();
-                    fs.Write(bytes, 0, bytes.Length);
-                }
-            }
-            return true;
+            return FileController.DeployResourceToAweSimFilesFolder(getWinSCP(), WINSCP_FILE);
         }
 
         //Gets vncviewer.exe from the embedded resources.

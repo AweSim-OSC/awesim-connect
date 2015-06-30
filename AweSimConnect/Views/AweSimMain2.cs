@@ -158,6 +158,31 @@ namespace AweSimConnect.Views
             }
         }
 
+        private void buttonConsole_Click(object sender, EventArgs e)
+        {
+            if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
+            {
+                SaveUserSettings();
+                if (_ftpc.IsSFTPInstalled() && !_settings.UseDefaultFTPClient())
+                {
+                    _ftpc.StartSFTPProcess(tbPassword.Text);
+                    if (_ftpc.GetThisProcess() != null)
+                    {
+                        _processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
+                    }
+                }
+                else
+                {
+                    SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection);
+                    winscp.StartSFTPProcess(tbPassword.Text);
+                    if (winscp.GetThisProcess() != null)
+                    {
+                        _processes.Add(new ProcessData(winscp.GetThisProcess(), _connection));
+                    }
+                }
+            }
+        }
+
         // The click handler for the SFTP button
         private void buttonSFTP_Click(object sender, EventArgs e)
         {
@@ -274,23 +299,6 @@ namespace AweSimConnect.Views
             return localPort;
         }
 
-        // The click handler for the SFTP button
-        private void bSFTP_Click(object sender, EventArgs e)
-        {
-            if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
-            {
-                if (_ftpc.IsSFTPInstalled())
-                {
-                    _ftpc.StartSFTPProcess(tbPassword.Text);
-                    if (_ftpc.GetThisProcess() != null)
-                    {
-                        _processes.Add(new ProcessData(_ftpc.GetThisProcess(), _connection));
-                    }
-                }
-            }
-        }
-
-
         //Changes the color of a label
         private void LabelColorChanger(Label label, bool valid)
         {
@@ -338,21 +346,6 @@ namespace AweSimConnect.Views
                 bSFTP.BackgroundImage = null;
                 bSFTP.Text = SFTP_NOT_DETECTED;
             }
-        }
-
-        // Handles the click for the web button.
-        private void bWeb_Click(object sender, EventArgs e)
-        {
-            if (_connection.LocalPort > 0)
-            {
-                WebTools.LaunchLocalhostBrowser(_connection.LocalPort);
-            }
-        }
-
-        // When the user leaves the VNC password box the focus returns to the main connect button.
-        private void tbVNCPassword_Leave(object sender, EventArgs e)
-        {
-            this.AcceptButton = bConnect;
         }
 
         private void BringMainWindowToFront()
@@ -695,6 +688,8 @@ namespace AweSimConnect.Views
         {
             cbRememberMe.Checked = check;
         }
+
+        
 
         
 

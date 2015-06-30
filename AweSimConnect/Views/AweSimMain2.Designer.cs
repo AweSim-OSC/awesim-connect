@@ -434,6 +434,7 @@
             this.buttonConsole.Tag = "Console";
             this.toolTipNoDelay.SetToolTip(this.buttonConsole, "Open a console session.");
             this.buttonConsole.UseVisualStyleBackColor = false;
+            this.buttonConsole.Click += new System.EventHandler(this.buttonConsole_Click);
             // 
             // bConnect
             // 

@@ -27,8 +27,7 @@ namespace AweSimConnect.Controllers
         }
         
         //The full current path of the plink executable.
-        private static String AWESIM_FOLDER = Path.Combine(Directory.GetCurrentDirectory(), "awesim");
-        private static String PLINK_CURRENT_DIR = Path.Combine(AWESIM_FOLDER, PLINK_FILE);
+        private static String PLINK_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH, PLINK_FILE);
         
         // PuTTY/Plink command line argument placeholder.        
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1}:{0} -C -N -T {2}@{3} -l {4}";
@@ -43,15 +42,7 @@ namespace AweSimConnect.Controllers
         //Installs plink.exe to current directory if it isn't there.
         public bool InstallPlink()
         {
-            if (!IsPlinkInstalled())
-            {
-                using (FileStream fs = new FileStream(PLINK_CURRENT_DIR, FileMode.CreateNew, FileAccess.Write))
-                {
-                    byte[] bytes = getPlink();
-                    fs.Write(bytes, 0, bytes.Length);
-                }
-            }
-            return true;
+            return FileController.DeployResourceToAweSimFilesFolder(getPlink(), PLINK_FILE);
         }
 
         //Gets plink.exe from the embedded resources.
@@ -64,7 +55,7 @@ namespace AweSimConnect.Controllers
         //Currently not implemented. the form validates for password.
         public void StartPlinkProcess()
         {
-            String plinkCommand = String.Format(PLINK_CURRENT_DIR);
+            String plinkCommand = String.Format(PLINK_CURRENT_PATH);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
             info.Arguments = String.Format(PUTTY_ARGS_NOPASSWORD, this.connection.LocalPort, this.connection.GetServerAndPort(), this.connection.UserName, this.connection.SSHHost, this.connection.UserName);
             info.UseShellExecute = true;
@@ -84,7 +75,7 @@ namespace AweSimConnect.Controllers
         public void StartPlinkProcess(String password)
         {
             //TODO This will probably break if the password is empty, but the view currently prevents that.
-            String plinkCommand = String.Format(PLINK_CURRENT_DIR);
+            String plinkCommand = String.Format(PLINK_CURRENT_PATH);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
             info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.connection.LocalPort, this.connection.GetServerAndPort(), this.connection.UserName, this.connection.SSHHost, this.connection.UserName, password);
             info.UseShellExecute = true;

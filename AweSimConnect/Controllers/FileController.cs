@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace AweSimConnect.Controllers
@@ -11,18 +12,36 @@ namespace AweSimConnect.Controllers
     class FileController
     {
         public static string FILE_FOLDER = "AweSimFiles";
+        public static string FILE_FOLDER_PATH = Path.Combine(Directory.GetCurrentDirectory(), FILE_FOLDER);
 
-        public static DirectoryInfo CreateAweSimFilesFolder()
+        public static void CreateAweSimFilesFolder()
         {
             try
             {
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), FILE_FOLDER));
+                Directory.CreateDirectory(FILE_FOLDER_PATH);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error Creating Folder");
             }
-            
+        }
+
+        public static bool DeployResourceToAweSimFilesFolder(byte[] resource, string fileName)
+        {
+            if (!IsResourceInstalled(fileName))
+            {
+                string path = Path.Combine(FILE_FOLDER_PATH, fileName);
+                using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
+                {
+                    fs.Write(resource, 0, resource.Length);
+                }
+            }
+            return true;
+        }
+
+        public static bool IsResourceInstalled(string fileName)
+        {
+            return ExistsOnPath(fileName);
         }
 
         public static String FindExecutableInProgramFiles(String filename)

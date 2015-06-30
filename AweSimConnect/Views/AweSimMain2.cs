@@ -546,7 +546,7 @@ namespace AweSimConnect.Views
             {
                 pbIsNetworkConnected.Image = Resources.wifi;
                 toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Network Available\nConnected to " + _sshHost);
-                lConnectionStatus.Text = _sshHost + " connected";
+                lConnectionStatus.Text = _sshHost + " available";
             }
             else
             {
@@ -694,6 +694,10 @@ namespace AweSimConnect.Views
         internal void CheckRememberBox(bool check)
         {
             cbRememberMe.Checked = check;
-        } 
+        }
+
+        
+
+        
     }
 }

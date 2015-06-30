@@ -13,7 +13,7 @@ To connect to AweSim services, a secure tunnel to a session is required. This ca
 
 #### Download the latest release of `AweSimConnect.exe` from the AweSim Dashboard
 
-Binary releases are available 
+[Download Latest Build](https://apps.awesim.org/assets/wiag/connect/latest/AweSimConnect.exe)
 
 #### Save the file to a folder of your choice
 

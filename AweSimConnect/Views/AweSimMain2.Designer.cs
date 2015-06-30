@@ -51,9 +51,11 @@
             this.bConnect = new System.Windows.Forms.Button();
             this.bSFTP = new System.Windows.Forms.Button();
             this.bDashboard = new System.Windows.Forms.Button();
+            this.buttonConsole = new System.Windows.Forms.Button();
             this.gbSessionType = new System.Windows.Forms.GroupBox();
             this.gbVNCPassword = new System.Windows.Forms.GroupBox();
             this.gbSystem = new System.Windows.Forms.GroupBox();
+            this.lConnectionStatus = new System.Windows.Forms.Label();
             this.pbIsNetworkConnected = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.gbSFTP = new System.Windows.Forms.GroupBox();
@@ -61,7 +63,6 @@
             this.gbConsole = new System.Windows.Forms.GroupBox();
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.gbAbout = new System.Windows.Forms.GroupBox();
-            this.lConnectionStatus = new System.Windows.Forms.Label();
             this.gbCredentials.SuspendLayout();
             this.gbSessionInfo.SuspendLayout();
             this.gbSessionType.SuspendLayout();
@@ -71,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.gbSFTP.SuspendLayout();
             this.gbConnect.SuspendLayout();
+            this.gbConsole.SuspendLayout();
             this.gbSettings.SuspendLayout();
             this.gbAbout.SuspendLayout();
             this.SuspendLayout();
@@ -377,6 +379,27 @@
             this.bDashboard.UseVisualStyleBackColor = true;
             this.bDashboard.Click += new System.EventHandler(this.bDashboard_Click);
             // 
+            // buttonConsole
+            // 
+            this.buttonConsole.BackColor = System.Drawing.Color.Transparent;
+            this.buttonConsole.BackgroundImage = global::AweSimConnect.Properties.Resources.hdd_gry;
+            this.buttonConsole.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonConsole.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonConsole.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonConsole.FlatAppearance.BorderSize = 0;
+            this.buttonConsole.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.buttonConsole.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonConsole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConsole.ForeColor = System.Drawing.Color.White;
+            this.buttonConsole.Location = new System.Drawing.Point(6, 17);
+            this.buttonConsole.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonConsole.Name = "buttonConsole";
+            this.buttonConsole.Size = new System.Drawing.Size(62, 59);
+            this.buttonConsole.TabIndex = 12;
+            this.buttonConsole.Tag = "Console";
+            this.toolTipNoDelay.SetToolTip(this.buttonConsole, "Open a console session.");
+            this.buttonConsole.UseVisualStyleBackColor = false;
+            // 
             // gbSessionType
             // 
             this.gbSessionType.Controls.Add(this.rbCOMSOL);
@@ -410,7 +433,17 @@
             this.gbSystem.Size = new System.Drawing.Size(154, 40);
             this.gbSystem.TabIndex = 13;
             this.gbSystem.TabStop = false;
-            this.gbSystem.Text = "Connection Status";
+            this.gbSystem.Text = "Network Status";
+            // 
+            // lConnectionStatus
+            // 
+            this.lConnectionStatus.AutoSize = true;
+            this.lConnectionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.lConnectionStatus.Location = new System.Drawing.Point(32, 18);
+            this.lConnectionStatus.Name = "lConnectionStatus";
+            this.lConnectionStatus.Size = new System.Drawing.Size(77, 13);
+            this.lConnectionStatus.TabIndex = 2;
+            this.lConnectionStatus.Text = "Not Connected";
             // 
             // pbIsNetworkConnected
             // 
@@ -460,6 +493,7 @@
             // 
             // gbConsole
             // 
+            this.gbConsole.Controls.Add(this.buttonConsole);
             this.gbConsole.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gbConsole.Location = new System.Drawing.Point(91, 358);
             this.gbConsole.Name = "gbConsole";
@@ -489,16 +523,6 @@
             this.gbAbout.TabIndex = 18;
             this.gbAbout.TabStop = false;
             this.gbAbout.Text = "About";
-            // 
-            // lConnectionStatus
-            // 
-            this.lConnectionStatus.AutoSize = true;
-            this.lConnectionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.lConnectionStatus.Location = new System.Drawing.Point(32, 18);
-            this.lConnectionStatus.Name = "lConnectionStatus";
-            this.lConnectionStatus.Size = new System.Drawing.Size(77, 13);
-            this.lConnectionStatus.TabIndex = 2;
-            this.lConnectionStatus.Text = "Not Connected";
             // 
             // AweSimMain2
             // 
@@ -540,6 +564,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.gbSFTP.ResumeLayout(false);
             this.gbConnect.ResumeLayout(false);
+            this.gbConsole.ResumeLayout(false);
             this.gbSettings.ResumeLayout(false);
             this.gbAbout.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -580,6 +605,7 @@
         private System.Windows.Forms.GroupBox gbSettings;
         private System.Windows.Forms.GroupBox gbAbout;
         private System.Windows.Forms.Label lConnectionStatus;
+        private System.Windows.Forms.Button buttonConsole;
 
 
 

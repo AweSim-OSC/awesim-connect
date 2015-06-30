@@ -118,7 +118,6 @@
     <Compile Include="Controllers\OSCClusterController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\PlinkController.cs" />
-    <Compile Include="Controllers\VNCControllerGGI.cs" />
     <Compile Include="Models\OSCCluster.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Program.cs" />

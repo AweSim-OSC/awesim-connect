@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AweSimConnect.Controllers
 {
@@ -10,6 +11,19 @@ namespace AweSimConnect.Controllers
     class FileController
     {
         public static string FILE_FOLDER = "AweSimFiles";
+
+        public static DirectoryInfo CreateAweSimFilesFolder()
+        {
+            try
+            {
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), FILE_FOLDER));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Creating Folder");
+            }
+            
+        }
 
         public static String FindExecutableInProgramFiles(String filename)
         {

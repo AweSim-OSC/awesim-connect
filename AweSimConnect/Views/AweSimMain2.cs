@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -89,6 +90,7 @@ namespace AweSimConnect.Views
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();
             _connection = new Connection();
+            FileController.CreateAweSimFilesFolder();
             timerMain.Start();
 
             //Initialize controllers.

@@ -27,7 +27,8 @@ namespace AweSimConnect.Controllers
         }
         
         //The full current path of the plink executable.
-        private static String PLINK_CURRENT_DIR = Path.Combine(Directory.GetCurrentDirectory(), PLINK_FILE);
+        private static String AWESIM_FOLDER = Path.Combine(Directory.GetCurrentDirectory(), "awesim");
+        private static String PLINK_CURRENT_DIR = Path.Combine(AWESIM_FOLDER, PLINK_FILE);
         
         // PuTTY/Plink command line argument placeholder.        
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1}:{0} -C -N -T {2}@{3} -l {4}";

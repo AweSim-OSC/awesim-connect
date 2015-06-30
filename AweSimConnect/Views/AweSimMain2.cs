@@ -167,6 +167,8 @@ namespace AweSimConnect.Views
 
                 _consolec = new ConsoleController(_connection);
                 _consolec.StartPuttyProcess(tbPassword.Text);
+                
+                //If the process started up, add it to the list of processes so we can kill it later.
                 if (_consolec.GetThisProcess() != null)
                 {
                     _processes.Add(new ProcessData(_consolec.GetThisProcess(), _connection));

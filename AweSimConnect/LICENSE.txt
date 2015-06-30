@@ -8,6 +8,10 @@ Plink 0.64
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 MIT License
 
+PuTTY 0.64
+http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+MIT License
+
 Costura.Fody
 https://github.com/Fody/Costura
 MIT License
@@ -20,6 +24,6 @@ TurboVNC 1.2.90beta
 http://sourceforge.net/projects/turbovnc/
 GPLv2
 
-WinSCP
+WinSCP 5.7.4
 http://winscp.net/eng/docs/license
 GPL

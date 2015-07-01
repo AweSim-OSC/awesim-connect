@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
@@ -57,6 +58,7 @@ namespace AweSimConnect.Views
         private List<ConnectionForm> _connectionForms;
 
         private bool _networkAvailable = false;
+        private bool _sshAvailable = false;
 
         private int _secondsElapsed = 0;
 
@@ -87,7 +89,6 @@ namespace AweSimConnect.Views
             _connectionForms = new List<ConnectionForm>();
             _connection = new Connection();
             FileController.CreateAweSimFilesFolder();
-            timerMain.Start();
 
             //Initialize controllers.
             _clipc = new ClipboardController();
@@ -114,6 +115,8 @@ namespace AweSimConnect.Views
             DisplayGroupBoxes();
             
             PopulateFromClipboard();
+
+            timerMain.Start();
             
         }
 
@@ -331,7 +334,7 @@ namespace AweSimConnect.Views
             {
                 toolTipNoDelay.SetToolTip(bSFTP,
                     "File Transfer. A supported SFTP client has been detected. Click here to launch.");
-                //bSFTP.Image = null;
+                bSFTP.BackgroundImage = Resources.hdd_gry;
                 bSFTP.Text = String.Empty;
             }
             else
@@ -558,11 +561,13 @@ namespace AweSimConnect.Views
         //////////////////////////////////////////////////////
         private void timerMain_Tick(object sender, EventArgs e)
         {
+            _secondsElapsed++;
+            
             DisplayGroupBoxes();
 
             NetworkConnected(_networkAvailable);
-
-            if (_secondsElapsed == 0)
+            
+            if (_secondsElapsed == 1)
             {
                 _ftpc.DetectSFTPPath();
             }
@@ -574,6 +579,9 @@ namespace AweSimConnect.Views
                 //TODO Async this
                 _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
                 EnableTunnelOptions(_networkAvailable);
+
+                //TODO Testing. Remove. 
+                label1.Text = SSHController.CheckSSHConnectionToHostMessage("oakley.osc.edu");
             }
 
             if (_secondsElapsed % 2 == 0)
@@ -593,7 +601,6 @@ namespace AweSimConnect.Views
                     _connection.SSHHost = _sshHost;
                 }
             }
-            _secondsElapsed++;
         }
 
 

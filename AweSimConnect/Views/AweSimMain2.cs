@@ -66,15 +66,12 @@ namespace AweSimConnect.Views
         private AdvSettingsFrm _advFrm;
         private AdvancedSettings _settings;
         private string _sshHost;
-
-        private string test;
-
-
+        
         public AweSimMain2(string[] args)
         {
             InitializeComponent();
             this.Text = CLIENT_TITLE;
-            
+             
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
         }
@@ -114,8 +111,12 @@ namespace AweSimConnect.Views
                 cbRememberMe.Checked = true;
             }
 
+            DisplayGroupBoxes();
+            
             PopulateFromClipboard();
+            
         }
+
 
         //////////////////////////// BUTTONS ////////////////////////////
 
@@ -206,7 +207,6 @@ namespace AweSimConnect.Views
         // Throws up a popup window if the app isn't able to connect to the selected SSH host.
         private void LimitedConnectionPopup()
         {
-            //_networkAvailable = NetworkTools.CanTelnetToOakley();
             _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
             if (!_networkAvailable)
             {
@@ -571,11 +571,10 @@ namespace AweSimConnect.Views
             // Disable the connection button if can not connect to OSC.
             if (_secondsElapsed % 15 == 0)
             {
-                //_networkAvailable = NetworkTools.CanTelnetToOakley();
+                //TODO Async this
                 _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
                 EnableTunnelOptions(_networkAvailable);
             }
-
 
             if (_secondsElapsed % 2 == 0)
             {
@@ -618,7 +617,6 @@ namespace AweSimConnect.Views
             {
                 LabelColorChanger(lPort, false);
             }
-
         }
 
         // Set the host variable when the text changes`
@@ -691,11 +689,5 @@ namespace AweSimConnect.Views
         {
             cbRememberMe.Checked = check;
         }
-
-        
-
-        
-
-        
     }
 }

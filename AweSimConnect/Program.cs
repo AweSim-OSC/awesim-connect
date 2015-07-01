@@ -36,7 +36,7 @@ namespace AweSimConnect
     /// This allows me to keep the same application open and still get command line arguments when passed
     /// in to a new instance (which is how we will handle the URI scheme)
     /// </summary>
-    class App : WindowsFormsApplicationBase
+    internal class App : WindowsFormsApplicationBase
     {
         private static App _app;
 
@@ -46,7 +46,7 @@ namespace AweSimConnect
             EnableVisualStyles = true;
         }
 
-        public static void Run(Form form)
+        public static void Run(AweSimMain2 form)
         {
             _app = new App { MainForm = form };
             _app.StartupNextInstance += NextInstanceHandler;
@@ -56,7 +56,7 @@ namespace AweSimConnect
         private static void NextInstanceHandler(object sender, StartupNextInstanceEventArgs e)
         {
             _app.MainForm.WindowState = FormWindowState.Normal;
+            _app.MainForm.BringToFront();
         }
-
     }
 }

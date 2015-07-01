@@ -4,6 +4,10 @@ JSON.net
 http://www.newtonsoft.com/json
 MIT License
 
+Tamir.SharpSSH 1.1.1.13
+http://www.tamirgal.com/blog/page/SharpSSH.aspx
+BSD-3-Clause
+
 Plink 0.64
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 MIT License

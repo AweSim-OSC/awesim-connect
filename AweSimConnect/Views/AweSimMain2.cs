@@ -59,6 +59,7 @@ namespace AweSimConnect.Views
 
         private bool _networkAvailable = false;
         private bool _sshAvailable = false;
+        private bool _networkChanged = false;
 
         private int _secondsElapsed = 0;
 
@@ -214,6 +215,10 @@ namespace AweSimConnect.Views
             if (!_networkAvailable)
             {
                 MessageBox.Show(LIMITED_CONNECTION_ERROR, "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                _networkChanged = true;
             }
         }
 
@@ -541,6 +546,8 @@ namespace AweSimConnect.Views
 
         private void NetworkConnected(bool isNetworkConnected)
         {
+            CheckSSHConnection(_networkChanged);
+
             if (isNetworkConnected)
             {
                 pbIsNetworkConnected.Image = Resources.wifi;
@@ -552,6 +559,15 @@ namespace AweSimConnect.Views
                 pbIsNetworkConnected.Image = Resources.cross_gry;
                 toolTipNoDelay.SetToolTip(pbIsNetworkConnected, UNABLE_TO_CONNECT + "\n" + _sshHost);
                 lConnectionStatus.Text = _sshHost + " unavailable";
+            }
+        }
+
+        private void CheckSSHConnection(bool networkChanged)
+        {
+            if (networkChanged)
+            {
+                _networkChanged = false;
+                _sshAvailable = SSHController.CheckSSHConnectionToHost(_sshHost);
             }
         }
 
@@ -577,11 +593,12 @@ namespace AweSimConnect.Views
             if (_secondsElapsed % 15 == 0)
             {
                 //TODO Async this
+                bool availableBeforeCheck = _networkAvailable;
                 _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
+                _networkChanged = (availableBeforeCheck != _networkAvailable);
+                CheckSSHConnection(_networkChanged);
                 EnableTunnelOptions(_networkAvailable);
 
-                //TODO Testing. Remove. 
-                label1.Text = SSHController.CheckSSHConnectionToHostMessage("oakley.osc.edu");
             }
 
             if (_secondsElapsed % 2 == 0)

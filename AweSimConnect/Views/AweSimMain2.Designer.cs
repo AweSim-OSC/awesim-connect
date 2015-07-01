@@ -63,7 +63,6 @@
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.gbAbout = new System.Windows.Forms.GroupBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbCredentials.SuspendLayout();
             this.gbSessionInfo.SuspendLayout();
             this.gbSessionType.SuspendLayout();
@@ -527,22 +526,12 @@
             this.pbLogo.TabStop = false;
             this.pbLogo.Tag = "Logo";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(182, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "label1";
-            // 
             // AweSimMain2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(347, 538);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.gbAbout);
             this.Controls.Add(this.gbSettings);
             this.Controls.Add(this.gbConsole);
@@ -581,7 +570,6 @@
             this.gbAbout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -620,7 +608,6 @@
         private System.Windows.Forms.GroupBox gbAbout;
         private System.Windows.Forms.Label lConnectionStatus;
         private System.Windows.Forms.Button buttonConsole;
-        private System.Windows.Forms.Label label1;
 
 
 

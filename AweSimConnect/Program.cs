@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using AweSimConnect.Controllers;
 using AweSimConnect.Views;
 using Microsoft.VisualBasic.ApplicationServices;
 
@@ -30,7 +31,7 @@ namespace AweSimConnect
             App.Run(new AweSimMain2(args));
         }
     }
-
+    
     /// <summary>
     /// This inherits from the VB.Net WindowsFormsApplicationBase, which has single-instance funtionality.
     /// This allows me to keep the same application open and still get command line arguments when passed
@@ -40,6 +41,24 @@ namespace AweSimConnect
     {
         private static App _app;
 
+        protected override bool OnStartup(StartupEventArgs eventArgs)
+        {
+            if (eventArgs.CommandLine.Count > 1)
+            {
+                //MessageBox.Show(CommandLineController.GetCommandLineArgs(eventArgs));
+            }
+            return base.OnStartup(eventArgs);
+        }
+
+        protected override void OnStartupNextInstance(StartupNextInstanceEventArgs eventArgs)
+        {
+            if (eventArgs.CommandLine.Count > 1)
+            {
+                //MessageBox.Show(CommandLineController.GetCommandLineArgs(eventArgs));
+            }
+            base.OnStartupNextInstance(eventArgs);
+        }
+        
         public App()
         {
             IsSingleInstance = true;

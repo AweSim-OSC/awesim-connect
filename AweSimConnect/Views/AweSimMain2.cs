@@ -220,6 +220,7 @@ namespace AweSimConnect.Views
             {
                 _networkChanged = true;
             }
+            NetworkConnected(_networkChanged);
         }
 
         // Update the form fields from a connection object.

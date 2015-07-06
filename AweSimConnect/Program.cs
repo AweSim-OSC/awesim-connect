@@ -2,7 +2,6 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using AweSimConnect.Controllers;
 using AweSimConnect.Views;
 using Microsoft.VisualBasic.ApplicationServices;
 

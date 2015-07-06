@@ -423,7 +423,7 @@
             this.gbVNCPassword.Size = new System.Drawing.Size(154, 41);
             this.gbVNCPassword.TabIndex = 8;
             this.gbVNCPassword.TabStop = false;
-            this.gbVNCPassword.Text = "4. VNC Password";
+            this.gbVNCPassword.Text = "4. VNC Passphrase";
             // 
             // gbSystem
             // 

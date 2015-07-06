@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -64,6 +65,46 @@ namespace AweSimConnect.Controllers
         public static bool IsArgsChanged()
         {
             return _settings.GetArgsChanged();
+        }
+
+        internal static Connection ProcessStringCollection(StringCollection collection)
+        {
+            //If there is more than one item, then there were some command line args passed in.
+            if (collection.Count > 1)
+            {
+                Connection newConnection = new Connection();
+
+                try
+                {
+                    string connectionString = collection[1];
+
+                    if (connectionString.Contains("@"))
+                    {
+
+                        int index = connectionString.IndexOf("@", StringComparison.Ordinal);
+                        string vncInfo = connectionString.Substring(0, index);
+                        newConnection.UserName = vncInfo.Split(':')[0];
+                        newConnection.VNCPassword = vncInfo.Split(':')[1];
+                        string hostInfo = connectionString.Substring(index);
+                        newConnection.PUAServer = hostInfo.Split(':')[0];
+                        newConnection.RemotePort = int.Parse(hostInfo.Split(':')[1]);
+                    }
+                    else
+                    {
+                        newConnection.PUAServer = connectionString.Split(':')[0];
+                        newConnection.RemotePort = int.Parse(connectionString.Split(':')[1]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException("Unable to process argument: \n\n"+ex.Message);
+                }
+                return newConnection;
+            }
+            else
+            {
+                return new Connection();
+            }
         }
     }
 }

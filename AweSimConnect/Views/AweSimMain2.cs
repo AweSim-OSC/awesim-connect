@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -52,6 +53,7 @@ namespace AweSimConnect.Views
         private SFTPControllerFileZilla _ftpc;
         private ConsoleController _consolec;
         private ClipboardController _clipc;
+        private CommandLineController _commandc;
         private OSCClusterController _clusterc;
 
         private List<ProcessData> _processes;
@@ -118,6 +120,7 @@ namespace AweSimConnect.Views
             PopulateFromClipboard();
 
             timerMain.Start();
+
             
         }
 
@@ -617,6 +620,24 @@ namespace AweSimConnect.Views
                     cbRememberMe.Checked = _settings.IsUserSaved();
                     _sshHost = _clusterc.GetCluster(_settings.GetSSHHostCode()).Domain;
                     _connection.SSHHost = _sshHost;
+                }
+
+                CheckForCommandLineUpdate();
+            }
+        }
+
+        private void CheckForCommandLineUpdate()
+        {
+            if (CommandLineController.IsArgsChanged())
+            {
+                try
+                {
+                    StringCollection collection = CommandLineController.GetArgsFromSettings();
+                    Connection commandLineConnection = CommandLineController.ProcessStringCollection(collection);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Invalid Aruments: \n\n" + ex.Message, "Invalid Arguments", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

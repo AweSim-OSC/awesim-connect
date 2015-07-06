@@ -47,35 +47,53 @@ namespace AweSimConnect.Controllers
 
             if (Clipboard.ContainsText())
             {
-                try
+                //If the clipboard text is an AweSim URI, process that.
+                string clipboardText = Clipboard.GetText().Trim();
+                if (clipboardText.ToLower().Contains(CommandLineController.URI_PREFACE))
                 {
-                    // Get the text from the clipboard.
-                    string json = Clipboard.GetText().Trim();
-
-                    // Attempt to parse the clipboard text.
                     try
                     {
-                        Connection connection = JsonConvert.DeserializeObject<Connection>(json);
-                        
-                        // Set the local Connection object.
-                        connectionData = connection;
-
-                        // If we've made it this far, it's a valid json.
+                        connectionData =
+                            CommandLineController.ProcessCommandLineString(clipboardText);
                         isValid = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        isValid = false;
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        // Get the text from the clipboard.
+                        string json = Clipboard.GetText().Trim();
+
+                        // Attempt to parse the clipboard text.
+                        try
+                        {
+                            Connection connection = JsonConvert.DeserializeObject<Connection>(json);
+
+                            // Set the local Connection object.
+                            connectionData = connection;
+
+                            // If we've made it this far, it's a valid json.
+                            isValid = true;
+                        }
+                        catch (ArgumentException)
+                        {
+                            isValid = false;
+                        }
                     }
                     catch (ArgumentException)
                     {
                         isValid = false;
                     }
-                }
-                catch (ArgumentException)
-                {
-                    isValid = false;
-                }
-                catch (Exception)
-                {
-                    // If we get an error, it's not a valid json string.
-                    isValid = false;
+                    catch (Exception)
+                    {
+                        // If we get an error, it's not a valid json string.
+                        isValid = false;
+                    }
                 }
             }
             else

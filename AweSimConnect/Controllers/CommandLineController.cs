@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Text;
+using System.Text.RegularExpressions;
 using AweSimConnect.Models;
 using Microsoft.VisualBasic.ApplicationServices;
 
@@ -12,6 +13,8 @@ namespace AweSimConnect.Controllers
 {
     class CommandLineController
     {
+        public static string URI_PREFACE = "awesim://";
+
         private static AdvancedSettings _settings = new AdvancedSettings();
 
         public static string GetFirstCommandLineArg(StartupEventArgs eventArgs)
@@ -74,6 +77,8 @@ namespace AweSimConnect.Controllers
             try
             {
                 string connectionString = commandArgString;
+                connectionString = Regex.Replace(connectionString, URI_PREFACE, "", RegexOptions.IgnoreCase);
+
 
                 if (connectionString.Contains("@"))
                 {

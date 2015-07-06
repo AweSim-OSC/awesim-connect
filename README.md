@@ -3,11 +3,11 @@
 # Connecting to AweSim
 ## How to use the AweSim Connect App to Securely Connect a Windows PC to an AweSim Session
 
-AweSim connect is a native windows application written in C# and compiled for .NET 2.0, providing compatibility for Windows versions from XP through 8.1.
+AweSim connect is a native windows application written in C# and compiled for .NET 2.0, providing compatibility for Windows versions from XP through Windows 10.
 
 ### Why AweSim Connect?
 
-To connect to AweSim services, a secure tunnel to a session is required. This can be done relatively simply in OSX and Linux by using the SSH functionality built into the system, but Windows users have had to configure and use third party applications like PuTTY or Java to access secure resources at OSC. AweSim Connect provides preconfigured management of secure tunnel connections for Windows users, as well as providing a launcher for secure file transfer, VNC, and web based services.
+To connect to AweSim services, a secure tunnel to a session is required. This can be done relatively simply in OSX and Linux by using the SSH functionality built into the system, but Windows users have had to configure and use third party applications like PuTTY or Java to access secure resources at OSC. AweSim Connect provides preconfigured management of secure tunnel connections for Windows users, as well as providing a launcher for secure file transfer, VNC, terminal, and web based services.
 
 ## Getting Started
 
@@ -17,9 +17,10 @@ To connect to AweSim services, a secure tunnel to a session is required. This ca
 
 #### Save the file to a folder of your choice
 
-When you first run AweSim Connect, three additional files may be added to this folder. These are required for proper functionality of the application.
+When you first run AweSim Connect, an additional folder will be created and four additional files may be added to this folder. These are required for proper functionality of the application. Please ensure that these files are permitted by your IT administrator.
 
-* `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources.
+* `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources. 
+* `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to AweSim resources.
 * `vncviewer.exe` is the VNC viewer client used to view a remote desktop session. Currently TurboVNC Viewer 1.2.9beta.
 * `WinSCP.exe` AweSim Connect includes WinSCP 5.7.4 as the default SFTP client. AweSim connect also supports the FileZilla Client for SFTP transfers. If FileZilla is installed on your machine, AweSim Connect will attempt to use it, you can override this feature and used the embedded client by selecting the `Use Included SFTP Client` in the Advanced Settings (indicated by the wrench icon).
 
@@ -96,13 +97,15 @@ The AweSim Connect application will detect if you have a supported SFTP client o
 If the supported SFTP client is detected, a link will be enabled to connect directly via SFTP.
 
 * [FileZilla](https://filezilla-project.org/) is currently the supported SFTP client across all operating systems. FileZilla must be installed separately on your system.
-Download from: [https://filezilla-project.org/download.php](https://filezilla-project.org/download.php) **(0.43)** AweSim Connect now uses WinSCP as the SFTP fallback if FileZilla is not detected.  
+Download from: [https://filezilla-project.org/download.php](https://filezilla-project.org/download.php) 
+
+AweSim Connect now uses WinSCP as the SFTP fallback if FileZilla is not detected.  
 
 * [WinSCP](http://winscp.net/eng/index.php) is the embedded SFTP client. If FileZilla is not detected on your system, the AweSim Connect application will deploy and run a WinSCP process. If you prefer to use the WinSCP client you can select the "Use Included SFTP Client" option in the advanced settings menu.
 
 ## Developer Notes
 
-* AweSim Connect is built to comply with the Microsoft .NET  runtime 2.0. 2.0 is considered "pure" .NET and the compiled binaries should function without additional dependencies on Windows XP/7/8/8.1.
+* AweSim Connect is built to comply with the Microsoft .NET  runtime 2.0. 2.0 is considered "pure" .NET and the compiled binaries should function without additional dependencies on Windows XP/7/8/8.1/10.
 * AweSim Connect is developed using primarily the [C# language](https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx).
 
 #### Build Instructions
@@ -125,6 +128,21 @@ The application can detect when a properly formatted string is copied to the Win
 
 Examples of valid json strings:
 
-* {'H':'n0580.ten.osc.edu','R': '5901','U':'an0018','V':'Yh8d89tf'}
-* {'RemotePort':'5901','VNCPassword': 'ty56u3J7','PUAServer':'r0004.ten.osc.edu','UserName': 'bmcmichael'}   
+* ```{'H':'n0580.ten.osc.edu','R': '5901','U':'an0018','V':'Yh8d89tf'}```
+* ```{'RemotePort':'5901','VNCPassword': 'ty56u3J7','PUAServer':'r0004.ten.osc.edu','UserName': 'bmcmichael'}```
 
+#### Automatic connection via command line arguments.
+
+AweSim Connect accepts command line arguments in the pattern:
+
+* ```AweSimConnect.exe <UserName>:<VNCPassword>@<PUAServer>:<RemotePort>```
+
+#### Automatic connection via `awesim://` URI
+
+(v0.50) AweSim Connect has custom URI support planned for future editions. For now, copying an AweSim URI string to the clipboard will activate the parser and populate data in the same manner as the JSON method.
+Examples of valid patterns:
+
+* VNC: ```awesim://<UserName>:<VNCPassword>@<PUAServer><RemoteHost>```
+* VNC (no user): ```awesim://:<VNCPassword>@<PUAServer><RemoteHost>```
+* COMSOL: ```awesim://<UserName>@<PUAServer><RemoteHost>```
+* COMSOL (no user): ```awesim://<PUAServer>:<RemoteHost>``` 

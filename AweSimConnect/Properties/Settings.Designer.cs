@@ -106,5 +106,28 @@ namespace AweSimConnect.Properties {
                 this["UseDefaultSFTP"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection CommandLineArgsArray {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["CommandLineArgsArray"]));
+            }
+            set {
+                this["CommandLineArgsArray"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CommandLineUpdated {
+            get {
+                return ((bool)(this["CommandLineUpdated"]));
+            }
+            set {
+                this["CommandLineUpdated"] = value;
+            }
+        }
     }
 }

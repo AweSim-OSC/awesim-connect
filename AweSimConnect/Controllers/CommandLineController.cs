@@ -67,39 +67,59 @@ namespace AweSimConnect.Controllers
             return _settings.GetArgsChanged();
         }
 
-        internal static Connection ProcessStringCollection(StringCollection collection)
+        internal static Connection ProcessCommandLineString(string commandArgString)
         {
-            //If there is more than one item, then there were some command line args passed in.
-            if (collection.Count > 1)
+            Connection newConnection = new Connection();
+
+            try
             {
-                Connection newConnection = new Connection();
+                string connectionString = commandArgString;
 
-                try
+                if (connectionString.Contains("@"))
                 {
-                    string connectionString = collection[1];
 
-                    if (connectionString.Contains("@"))
+                    int index = connectionString.IndexOf("@", StringComparison.Ordinal);
+                    string vncInfo = connectionString.Substring(0, index);
+                    if (vncInfo.Contains(":"))
                     {
-
-                        int index = connectionString.IndexOf("@", StringComparison.Ordinal);
-                        string vncInfo = connectionString.Substring(0, index);
                         newConnection.UserName = vncInfo.Split(':')[0];
                         newConnection.VNCPassword = vncInfo.Split(':')[1];
-                        string hostInfo = connectionString.Substring(index);
+                    }
+                    else
+                    {
+                        newConnection.UserName = vncInfo;
+                    }
+                    string hostInfo = connectionString.Substring(index + 1);
+                    if (hostInfo.Contains(":"))
+                    {
                         newConnection.PUAServer = hostInfo.Split(':')[0];
                         newConnection.RemotePort = int.Parse(hostInfo.Split(':')[1]);
                     }
                     else
                     {
-                        newConnection.PUAServer = connectionString.Split(':')[0];
-                        newConnection.RemotePort = int.Parse(connectionString.Split(':')[1]);
+                        throw new ArgumentException("Host must follow format <host>:<port>");
                     }
+
                 }
-                catch (Exception ex)
+                else
                 {
-                    throw new ArgumentException("Unable to process argument: \n\n"+ex.Message);
+                    newConnection.PUAServer = connectionString.Split(':')[0];
+                    newConnection.RemotePort = int.Parse(connectionString.Split(':')[1]);
                 }
-                return newConnection;
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
+            return newConnection;
+        }
+
+        internal static Connection ProcessStringCollection(StringCollection collection)
+        {
+            //If there is more than one item, then there were some command line args passed in.
+            if (collection.Count > 1)
+            {
+                return ProcessCommandLineString(collection[1]);
             }
             else
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using AweSimConnect.Properties;
 
 namespace AweSimConnect.Models
@@ -98,6 +99,33 @@ namespace AweSimConnect.Models
         public bool UseDefaultFTPClient()
         {
             return Settings.Default.UseDefaultSFTP;
+        }
+
+        public void SetArgStringCollection(StringCollection args)
+        {
+            Settings.Default.CommandLineArgsArray = args;
+            Settings.Default.Save();
+        }
+
+        public StringCollection GetArgStringCollection()
+        {
+            return Settings.Default.CommandLineArgsArray;
+        }
+
+        public void SetArgsChanged(bool changed)
+        {
+            Settings.Default.CommandLineUpdated = changed;
+            Settings.Default.Save();
+        }
+
+        public void SetArgsChanged()
+        {
+            SetArgsChanged(true);
+        }
+
+        public bool GetArgsChanged()
+        {
+            return Settings.Default.CommandLineUpdated;
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using AweSimConnect.Controllers;
 using AweSimConnect.Views;
 using Microsoft.VisualBasic.ApplicationServices;
 
@@ -42,10 +44,7 @@ namespace AweSimConnect
 
         protected override bool OnStartup(StartupEventArgs eventArgs)
         {
-            if (eventArgs.CommandLine.Count > 1)
-            {
-                //MessageBox.Show(CommandLineController.GetCommandLineArgs(eventArgs));
-            }
+            CommandLineController.SaveArgsToSettings(eventArgs);
             return base.OnStartup(eventArgs);
         }
 

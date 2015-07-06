@@ -634,8 +634,7 @@ namespace AweSimConnect.Views
                 {
                     StringCollection collection = CommandLineController.GetArgsFromSettings();
                     Connection commandLineConnection = CommandLineController.ProcessStringCollection(collection);
-                    MessageBox.Show("Host: "+commandLineConnection.PUAServer + " \nPort: "+commandLineConnection.RemotePort + " \nUserName: " +
-                                    commandLineConnection.UserName + " \nVNCPAssword: " + commandLineConnection.VNCPassword);
+                    UpdateData(commandLineConnection);
                 }
                 catch (Exception ex)
                 {

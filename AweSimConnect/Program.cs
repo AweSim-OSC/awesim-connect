@@ -44,16 +44,13 @@ namespace AweSimConnect
 
         protected override bool OnStartup(StartupEventArgs eventArgs)
         {
-            CommandLineController.SaveArgsToSettings(eventArgs);
+            CommandLineController.SaveArgsToSettings(eventArgs.CommandLine);
             return base.OnStartup(eventArgs);
         }
 
         protected override void OnStartupNextInstance(StartupNextInstanceEventArgs eventArgs)
         {
-            if (eventArgs.CommandLine.Count > 1)
-            {
-                //MessageBox.Show(CommandLineController.GetCommandLineArgs(eventArgs));
-            }
+            CommandLineController.SaveArgsToSettings(eventArgs.CommandLine);
             base.OnStartupNextInstance(eventArgs);
         }
         

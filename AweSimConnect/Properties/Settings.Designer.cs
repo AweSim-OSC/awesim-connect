@@ -129,5 +129,17 @@ namespace AweSimConnect.Properties {
                 this["CommandLineUpdated"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LaunchSSHOnImport {
+            get {
+                return ((bool)(this["LaunchSSHOnImport"]));
+            }
+            set {
+                this["LaunchSSHOnImport"] = value;
+            }
+        }
     }
 }

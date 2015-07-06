@@ -127,5 +127,16 @@ namespace AweSimConnect.Models
         {
             return Settings.Default.CommandLineUpdated;
         }
+
+        internal bool LaunchTunnelAutomatically()
+        {
+            return Settings.Default.LaunchSSHOnImport;
+        }
+
+        internal void SetLaunchSSHTunnelAutomatically(bool launch)
+        {
+            Settings.Default.LaunchSSHOnImport = launch;
+            Settings.Default.Save();
+        }
     }
 }

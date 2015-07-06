@@ -38,6 +38,7 @@
             this.cbAutoOpen = new System.Windows.Forms.CheckBox();
             this.toolTipAdvSettings = new System.Windows.Forms.ToolTip(this.components);
             this.cbUseDefaultSFTP = new System.Windows.Forms.CheckBox();
+            this.cbLaunchTunnel = new System.Windows.Forms.CheckBox();
             this.gbConnection = new System.Windows.Forms.GroupBox();
             this.gbSystem = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -51,7 +52,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(104, 214);
+            this.labelVersion.Location = new System.Drawing.Point(104, 237);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -115,7 +116,7 @@
             // 
             this.cbAutoOpen.AutoSize = true;
             this.cbAutoOpen.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.cbAutoOpen.Location = new System.Drawing.Point(13, 42);
+            this.cbAutoOpen.Location = new System.Drawing.Point(13, 65);
             this.cbAutoOpen.Name = "cbAutoOpen";
             this.cbAutoOpen.Size = new System.Drawing.Size(157, 17);
             this.cbAutoOpen.TabIndex = 35;
@@ -138,6 +139,19 @@
         "ent.");
             this.cbUseDefaultSFTP.UseVisualStyleBackColor = true;
             this.cbUseDefaultSFTP.CheckedChanged += new System.EventHandler(this.cbUseDefaultSFTP_CheckedChanged);
+            // 
+            // cbLaunchTunnel
+            // 
+            this.cbLaunchTunnel.AutoSize = true;
+            this.cbLaunchTunnel.Location = new System.Drawing.Point(13, 42);
+            this.cbLaunchTunnel.Name = "cbLaunchTunnel";
+            this.cbLaunchTunnel.Size = new System.Drawing.Size(147, 17);
+            this.cbLaunchTunnel.TabIndex = 36;
+            this.cbLaunchTunnel.Text = "Launch Tunnel On Import";
+            this.toolTipAdvSettings.SetToolTip(this.cbLaunchTunnel, "Use this option to allow the application to automatically attempt to create a SSH" +
+        " tunnel when connection data is imported to the application.");
+            this.cbLaunchTunnel.UseVisualStyleBackColor = true;
+            this.cbLaunchTunnel.CheckedChanged += new System.EventHandler(this.cbLaunchTunnel_CheckedChanged);
             // 
             // gbConnection
             // 
@@ -165,12 +179,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbLaunchTunnel);
             this.groupBox1.Controls.Add(this.cbSaveUser);
             this.groupBox1.Controls.Add(this.cbAutoOpen);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox1.Location = new System.Drawing.Point(12, 145);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 66);
+            this.groupBox1.Size = new System.Drawing.Size(202, 89);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Automation Settings";
@@ -180,7 +195,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(224, 235);
+            this.ClientSize = new System.Drawing.Size(224, 255);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbSystem);
             this.Controls.Add(this.gbConnection);
@@ -216,5 +231,6 @@
         private System.Windows.Forms.GroupBox gbConnection;
         private System.Windows.Forms.GroupBox gbSystem;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox cbLaunchTunnel;
     }
 }

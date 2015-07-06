@@ -275,6 +275,15 @@ namespace AweSimConnect.Views
             }
         }
 
+        private void ClickConnectButton()
+        {
+            if (_settings.LaunchTunnelAutomatically() && !string.IsNullOrEmpty(tbUsername.Text) &&
+                    !string.IsNullOrEmpty(tbPassword.Text) && bConnect.Enabled)
+            {
+                bConnect.PerformClick();
+            }
+        }
+
         // Recursive check and assign localport
         private int MapLocalPort(int port)
         {
@@ -412,9 +421,11 @@ namespace AweSimConnect.Views
                     if (_clipc.CheckClipboardForAweSim())
                     {
                         //Add a thread sleep while the parser finishes up.
-                        Thread.Sleep(100);
+                        Thread.Sleep(50);
                         Connection clipData = _clipc.GetClipboardConnection();
                         UpdateData(clipData);
+                        DisplayGroupBoxes();
+                        ClickConnectButton();
                     }
                 }
             }
@@ -635,6 +646,8 @@ namespace AweSimConnect.Views
                     StringCollection collection = CommandLineController.GetArgsFromSettings();
                     Connection commandLineConnection = CommandLineController.ProcessStringCollection(collection);
                     UpdateData(commandLineConnection);
+                    DisplayGroupBoxes();
+                    ClickConnectButton();
                 }
                 catch (Exception ex)
                 {

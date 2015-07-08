@@ -194,7 +194,7 @@
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
-    <None Include="Resources\putty.exe" />
+    <Content Include="Resources\putty.exe" />
     <None Include="Resources\console.png" />
     <None Include="Resources\WinSCP.exe" />
     <None Include="Resources\officine2.png" />

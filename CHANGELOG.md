@@ -1,5 +1,9 @@
 #AweSim Connect Change Log
 
+## v0.51
+
+* Fix bug where app doesn't deploy to subfolder when existing in base folder.
+
 ## v0.50
 
 * UI Revamp

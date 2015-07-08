@@ -28,7 +28,7 @@ namespace AweSimConnect.Controllers
 
         public static bool DeployResourceToAweSimFilesFolder(byte[] resource, string fileName)
         {
-            if (!IsResourceInstalled(fileName))
+            if (!IsResourceInstalledInAweSimFolder(fileName))
             {
                 string path = Path.Combine(FILE_FOLDER_PATH, fileName);
                 using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
@@ -39,9 +39,9 @@ namespace AweSimConnect.Controllers
             return true;
         }
 
-        public static bool IsResourceInstalled(string fileName)
+        public static bool IsResourceInstalledInAweSimFolder(string fileName)
         {
-            return ExistsOnPath(fileName);
+            return ExistsOnPath(Path.Combine(FILE_FOLDER_PATH, fileName));
         }
 
         public static String FindExecutableInProgramFiles(String filename)
@@ -146,6 +146,7 @@ namespace AweSimConnect.Controllers
                 try
                 {
                     String fullPath = Path.Combine(path.Trim(), fileName);
+                    
                     if (File.Exists(fullPath))
                     {
                         return fullPath;

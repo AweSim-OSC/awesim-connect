@@ -55,6 +55,7 @@ namespace AweSimConnect.Views
         private ClipboardController _clipc;
         private CommandLineController _commandc;
         private OSCClusterController _clusterc;
+        private RegistryHook _registry;
 
         private List<ProcessData> _processes;
         private List<ConnectionForm> _connectionForms;
@@ -100,6 +101,7 @@ namespace AweSimConnect.Views
             _abtFrm = new AboutFrm();
             _advFrm = new AdvSettingsFrm();
             _settings = new AdvancedSettings();
+            _registry = new RegistryHook();
 
             // Check for connectivity to the servers
             LimitedConnectionPopup();
@@ -121,7 +123,6 @@ namespace AweSimConnect.Views
 
             timerMain.Start();
 
-            
         }
 
 

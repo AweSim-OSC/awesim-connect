@@ -13,7 +13,6 @@ namespace AweSimConnect.Controllers
 {
     class CommandLineController
     {
-        public static string URI_PREFACE = "awesim://";
 
         private static AdvancedSettings _settings = new AdvancedSettings();
 
@@ -77,8 +76,11 @@ namespace AweSimConnect.Controllers
             try
             {
                 string connectionString = commandArgString;
-                connectionString = Regex.Replace(connectionString, URI_PREFACE, "", RegexOptions.IgnoreCase);
 
+                // If the user used the URI as the command line string, remove the prefix.
+                connectionString = Regex.Replace(connectionString, RegistryHook.URI_PREFIX, "", RegexOptions.IgnoreCase);
+                // Windows adds an extra slash to the end of the URI args, remove it.
+                connectionString = Regex.Replace(connectionString, "/", "");
 
                 if (connectionString.Contains("@"))
                 {

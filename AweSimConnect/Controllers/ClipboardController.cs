@@ -42,6 +42,7 @@ namespace AweSimConnect.Controllers
         bool isValid;
 
         //Checks the clipboard for valid data and returns true if found.
+        // TODO Refactor this into separate methods. I'm doing too much here.
         public bool CheckClipboardForAweSim()
         {
 
@@ -49,7 +50,7 @@ namespace AweSimConnect.Controllers
             {
                 //If the clipboard text is an AweSim URI, process that.
                 string clipboardText = Clipboard.GetText().Trim();
-                if (clipboardText.ToLower().Contains(CommandLineController.URI_PREFACE))
+                if (clipboardText.ToLower().Contains(RegistryHook.URI_PREFIX))
                 {
                     try
                     {

@@ -50,14 +50,15 @@ namespace AweSimConnect.Controllers
 
         private bool installHook()
         {
+            //TODO Add the DefaultIcon key. This works without it, but it's windows convention.
+
             try
             {
                 RegistryKey rKey = Registry.CurrentUser.OpenSubKey(CONNECT_REG_POS, true);
-            
                 rKey.SetValue("", "URL: awesim Protocol");
                 rKey.SetValue("URL Protocol", "");
                 rKey = rKey.CreateSubKey(@"shell\open\command");
-                rKey.SetValue("", "\""+Application.ExecutablePath + "\" %1", RegistryValueKind.String);
+                rKey.SetValue("", "\"" + Application.ExecutablePath + "\" \"%1\"", RegistryValueKind.String);
             
                 if (rKey != null)
                 {

@@ -118,8 +118,11 @@ namespace AweSimConnect.Views
             }
 
             DisplayGroupBoxes();
-            
-            PopulateFromClipboard();
+
+            if (!_settings.GetArgsChanged())
+            {
+                PopulateFromClipboard();
+            }
 
             timerMain.Start();
 

@@ -194,6 +194,8 @@
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
+    <None Include="Resources\awesim_logo.png" />
+    <Content Include="Resources\awesim_logo2.png" />
     <Content Include="Resources\putty.exe" />
     <None Include="Resources\console.png" />
     <None Include="Resources\WinSCP.exe" />

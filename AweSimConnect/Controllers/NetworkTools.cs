@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Sockets;
-using Microsoft.VisualStudio.QualityTools.UnitTestFramework;
 
 namespace AweSimConnect.Controllers
 {

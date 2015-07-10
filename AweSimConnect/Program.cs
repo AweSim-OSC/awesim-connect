@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;

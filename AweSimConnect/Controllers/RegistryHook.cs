@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Security.AccessControl;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Xml;
 using Microsoft.Win32;
 
 namespace AweSimConnect.Controllers

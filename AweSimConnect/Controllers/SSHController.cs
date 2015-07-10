@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Tamir.SharpSsh;
-using AweSimConnect.Models;
+﻿using Tamir.SharpSsh;
 using Tamir.SharpSsh.jsch;
 
 namespace AweSimConnect.Controllers

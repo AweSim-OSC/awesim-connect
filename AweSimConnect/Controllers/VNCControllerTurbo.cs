@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using AweSimConnect.Models;
 using AweSimConnect.Properties;
 
@@ -70,9 +71,17 @@ namespace AweSimConnect.Controllers
         {
             if (process != null)
             {
+                int processID = process.Id;
+
                 if (!process.HasExited)
                 {
                     process.Close();
+
+                    // If the VNC app throws open a "connection closed" window, just kill it.
+                    if (Process.GetProcessById(processID).Responding)
+                    {
+                        Process.GetProcessById(processID).Kill();
+                    }
                     process = null;
                     _processKilled = true;
                 }

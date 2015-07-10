@@ -104,7 +104,6 @@ namespace AweSimConnect.Views
             // Check for connectivity to the servers
             LimitedConnectionPopup();
 
-            // For now, I'm using oakley as the SSH host. I'd like to make this user-selectable.
             _sshHost = _clusterc.GetCluster(_settings.GetSSHHostCode()).Domain;
             this._connection.SSHHost = _sshHost;
 
@@ -640,7 +639,7 @@ namespace AweSimConnect.Views
                 CheckForCommandLineUpdate();
             }
         }
-
+        
         private void CheckForCommandLineUpdate()
         {
             if (CommandLineController.IsArgsChanged())

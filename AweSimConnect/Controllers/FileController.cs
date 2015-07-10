@@ -24,7 +24,19 @@ namespace AweSimConnect.Controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error Creating Folder");
+                MessageBox.Show(ex.Message, "Error Creating Helper Files Folder. Please run AweSim Connect in a writeable folder.");
+            }
+        }
+
+        public static void DeleteAweSimFilesFolder()
+        {
+            try
+            {
+                Directory.Delete(FILE_FOLDER_PATH);
+            }
+            catch (Exception ex)
+            {
+                //Attempt to clean up folder failed.
             }
         }
 

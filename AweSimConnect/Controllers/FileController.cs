@@ -14,7 +14,7 @@ namespace AweSimConnect.Controllers
         //public static string FILE_FOLDER_PATH = Path.Combine(Directory.GetCurrentDirectory(), FILE_FOLDER);
         public static string FILE_FOLDER_PATH = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), FILE_FOLDER);
 
-
+        // Create an empty AweSim files folder.
         public static void CreateAweSimFilesFolder()
         {
             try
@@ -27,11 +27,12 @@ namespace AweSimConnect.Controllers
             }
         }
 
+        // Delete the AweSim files folder recursively.
         public static void DeleteAweSimFilesFolder()
         {
             try
             {
-                Directory.Delete(FILE_FOLDER_PATH);
+                Directory.Delete(FILE_FOLDER_PATH, true);
             }
             catch (Exception ex)
             {

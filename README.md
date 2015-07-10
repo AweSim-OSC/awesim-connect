@@ -17,12 +17,12 @@ To connect to AweSim services, a secure tunnel to a session is required. This ca
 
 #### Save the file to a folder of your choice
 
-When you first run AweSim Connect, an additional folder will be created and four additional files may be added to this folder. These are required for proper functionality of the application. Please ensure that these files are permitted by your IT administrator.
+When you first run AweSim Connect, an temporary folder with four additional files will be added to this folder. These are required for proper functionality of the application. Please ensure that these files are permitted by your IT administrator.
 
-* `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources. 
-* `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to AweSim resources.
+* `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources. (version 0.64)
+* `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to AweSim resources. (version 0.64)
 * `vncviewer.exe` is the VNC viewer client used to view a remote desktop session. Currently TurboVNC Viewer 1.2.9beta.
-* `WinSCP.exe` AweSim Connect includes WinSCP 5.7.4 as the default SFTP client. AweSim connect also supports the FileZilla Client for SFTP transfers. If FileZilla is installed on your machine, AweSim Connect will attempt to use it, you can override this feature and used the embedded client by selecting the `Use Included SFTP Client` in the Advanced Settings (indicated by the wrench icon).
+* `WinSCP.exe` AweSim Connect includes WinSCP 5.7.4 as the default SFTP client. AweSim connect also supports the FileZilla Client for SFTP transfers. If FileZilla is installed on your machine, AweSim Connect will attempt to use it. If you prefer, you can override this feature and used the embedded client by selecting the `Use Included SFTP Client` in the Advanced Settings (indicated by the wrench icon).
 
 #### Double-Click the `AweSimConnect.exe` file to run the application
 
@@ -30,7 +30,7 @@ No further installation is required. In the current state, AweSim Connect is ent
 
 ## Connecting to a Session
 
-The AweSim Connect application can be used to connect to a running session. Sessions are launched through the AweSim web dashboard. AweSim Connect does not have the ability to launch a session.
+The AweSim Connect application can be used to connect to a running session. Sessions are launched through the AweSim web dashboard. AweSim Connect does not have the ability to launch a new session.
 
 #### Navigate to the AweSim Dashboard and create a session
 
@@ -42,20 +42,21 @@ Click the button with the globe in the upper-right side of the application to la
 
 * Entering your credentials reveals file transfer options and allows you to select a Session type.
 
-### Two ways to Connect
+### Three ways to Connect
 
-#### Option One: Copy to clipboard
+#### Option One: Click the `awesim://` link.
+
+ AweSim Connect supports a custom URI scheme that is registered when you launch the application. After the app is run once, just click the link provided in the Session App to launch AweSim Connect and populate the configuration information. Then, just click the lightning bolt icon to connect to your session.
+
+#### Option Two: Copy to clipboard
 
  Click the blue "Connection Information" button associated with your session, then just copy the provided code to your windows clipboard. The application will detect the code and populate the fields for you. Then, just click the lightning bolt icon to connect to your session.
 
- If your information has been entered correctly, you will be automatically connected to our system. You may see a window open and close briefly, this is the secure tunnel being established. 
+ If your information has been entered correctly, you will be automatically connected to our system. You may see a window open and close briefly, this is the secure tunnel being established.
 
 * If your password was entered incorrectly on the main form, this window will remain open while the system prompts you for a valid password.
 
-
-![v0.3guide](https://cloud.githubusercontent.com/assets/2374718/8111048/7281a128-102d-11e5-9d10-2d551bed39e8.png)
-
-#### Option Two: Manually enter the connection data.  
+#### Option Three: Manually enter the connection data.  
 
 ##### Select a session type
 
@@ -69,7 +70,7 @@ Click the button with the globe in the upper-right side of the application to la
 
 ##### Click to Connect the tunnel
 
-When all of the fields are populated, click the lightning bolt icon to establish the secure tunnel. If your information has been entered correctly, you will be automatically connected to our system. You may see a window open and close briefly, this is the secure tunnel being established. 
+When all of the fields are populated, click the lightning bolt icon to establish the secure tunnel. If your information has been entered correctly, you will be automatically connected to our system. You may see a window open and close briefly, this is the secure tunnel being established.
 
 * If your password was entered incorrectly on the main form, this window will remain open while the system prompts you for a valid password.
 
@@ -81,9 +82,45 @@ Once the connection is established, you will be presented with a connection wind
 
 * Click the red button to disconnect the tunnel.
 
-* This form includes an optional tag to help you manage multiple tunnels.
+* This form includes an optional tag to help you manage multiple tunnels across windows.
 
 ![v0.2 Connection](https://cloud.githubusercontent.com/assets/2374718/8045063/d022218a-0dfe-11e5-8571-df87f09285dd.png)
+
+## Settings and Automation options
+
+The settings menu (indicated by the wrench icon) contains several configuration options to modify the behavior of the application.
+
+### Connection Settings
+
+#### SSH Host
+
+Use this dropdown to select the default host. Selecting a server here will change the endpoint for tunneling, sftp connections, console connections, and connectivity checking. ( Default: oakley.osc.edu )
+
+### System Settings
+
+#### Detect Clipboard Activity
+
+When this option is enabled, the application will detect valid data on the Windows clipboard and populate the application. ( Default: On )
+
+#### Use Included SFTP Client
+
+When this options is checked, the application will use the embedded SFTP client as the default client. ( Default: Off )
+
+### Automation Settings
+
+Several automation functions are available to reduce the amount of interaction required with the AweSim Connect application.
+
+#### Save User Credentials
+
+When checked, allows the application to remember the user when the application is reopened. This saves the user credentials to the user settings using DPAPI Encryption. Passwords are decrypted only by current the Windows user account. ( Default: Off )
+
+#### Launch Tunnel on Import
+
+When checked, the tunnel will automatically connect when the application detects a valid clipboard string and the user credentials have been entered. ( Default: Off )
+
+#### Automatically Open Session
+
+When checked, the application will automatically launch a browser or vnc session when the tunnel is detected.
 
 ## Secure File Transfer
 
@@ -96,7 +133,7 @@ The AweSim Connect application will detect if you have a supported SFTP client o
 If the supported SFTP client is detected, the application will resort to the embedded option. You can enable the embedded option as the default in the Advanced Settings Menu.
 
 * [FileZilla](https://filezilla-project.org/) is currently the supported SFTP client across all operating systems. FileZilla must be installed separately on your system.
-Download from: [https://filezilla-project.org/download.php](https://filezilla-project.org/download.php) 
+Download from: [https://filezilla-project.org/download.php](https://filezilla-project.org/download.php)
 
 AweSim Connect now uses WinSCP as the SFTP fallback if FileZilla is not detected.  
 
@@ -111,12 +148,33 @@ AweSim Connect now uses WinSCP as the SFTP fallback if FileZilla is not detected
 
 * Download and install [Visual Studio Community 2013](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
 * Visual Studio includes team support. If you are accustomed to command-line git, download and install [Git for Windows](https://msysgit.github.io/) to gain access to Git Bash.
-* Git clone the AweSim Connect repository to your system.
-* Open the project in Visual Studio by clicking **File > Open > Project/Solution** and selecting **AweSimConnect.sln** in the file dialog. You can also load the project in Visual Studio by double-clicking the **AweSimConnect.sln** file in the Windows Explorer. 
+* `git clone` the AweSim Connect repository to your system.
+* Open the project in Visual Studio by clicking **File > Open > Project/Solution** and selecting **AweSimConnect.sln** in the file dialog. You can also load the project in Visual Studio by double-clicking the **AweSimConnect.sln** file in the Windows Explorer.
 * Download the required dependencies using the NuGet Package Manager
 * Click the button with the green arrow and the word "Start" to build and run the solution.
 
-#### Automatic connection via valid json string.
+
+#### Automatic connection via `awesim://` URI
+
+AweSim Connect has custom URI support. Run the application once to enable this feature. Clicking an AweSim URI provided by the web session manager will activate and populate the application with connection data.
+
+Examples of valid patterns:
+
+* VNC: ```awesim://<UserName>:<VNCPassword>@<PUAServer><RemoteHost>```
+* VNC (no user): ```awesim://:<VNCPassword>@<PUAServer><RemoteHost>```
+* COMSOL: ```awesim://<UserName>@<PUAServer><RemoteHost>```
+* COMSOL (no user): ```awesim://<PUAServer>:<RemoteHost>```
+
+#### Automatic connection via command line arguments.
+
+AweSim Connect accepts command line arguments in the patterns:
+
+* ```AweSimConnect.exe <UserName>:<VNCPassword>@<PUAServer>:<RemotePort>```
+* ```AweSimConnect.exe :<VNCPassword>@<PUAServer>:<RemotePort>```
+* ```AweSimConnect.exe <UserName>@<PUAServer>:<RemotePort>```
+* ```AweSimConnect.exe <PUAServer>:<RemotePort>```
+
+#### [Deprecated] Automatic connection via valid json string.
 
 The application can detect when a properly formatted string is copied to the Windows clipboard and it will automatically parse the input data. In this version, the application can expect 4 inputs. The inputs are case-sensitive.
 
@@ -129,19 +187,3 @@ Examples of valid json strings:
 
 * ```{'H':'n0580.ten.osc.edu','R': '5901','U':'an0018','V':'Yh8d89tf'}```
 * ```{'RemotePort':'5901','VNCPassword': 'ty56u3J7','PUAServer':'r0004.ten.osc.edu','UserName': 'bmcmichael'}```
-
-#### Automatic connection via command line arguments.
-
-AweSim Connect accepts command line arguments in the pattern:
-
-* ```AweSimConnect.exe <UserName>:<VNCPassword>@<PUAServer>:<RemotePort>```
-
-#### Automatic connection via `awesim://` URI
-
-(v0.50) AweSim Connect has custom URI support planned for future editions. For now, copying an AweSim URI string to the clipboard will activate the parser and populate data in the same manner as the JSON method.
-Examples of valid patterns:
-
-* VNC: ```awesim://<UserName>:<VNCPassword>@<PUAServer><RemoteHost>```
-* VNC (no user): ```awesim://:<VNCPassword>@<PUAServer><RemoteHost>```
-* COMSOL: ```awesim://<UserName>@<PUAServer><RemoteHost>```
-* COMSOL (no user): ```awesim://<PUAServer>:<RemoteHost>``` 

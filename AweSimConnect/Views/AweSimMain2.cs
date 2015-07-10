@@ -100,7 +100,7 @@ namespace AweSimConnect.Views
             _advFrm = new AdvSettingsFrm();
             _settings = new AdvancedSettings();
             _registry = new RegistryHook();
-
+            
             // Check for connectivity to the servers
             LimitedConnectionPopup();
 
@@ -606,6 +606,11 @@ namespace AweSimConnect.Views
                 _ftpc.DetectSFTPPath();
             }
 
+            if (_secondsElapsed == 2)
+            {
+                deployHelperApps();
+            }
+
             // Check for network connectivity every 15 seconds.
             // Disable the connection button if can not connect to OSC.
             if (_secondsElapsed % 15 == 0)
@@ -639,7 +644,16 @@ namespace AweSimConnect.Views
                 CheckForCommandLineUpdate();
             }
         }
-        
+
+        //This method deploys the helper apps to the helper apps folder. The objects will get garbage collected.
+        private void deployHelperApps()
+        {
+            new SFTPControllerWinSCP(_connection);
+            new ConsoleController(_connection);
+            new PlinkController(_connection);
+            new VNCControllerTurbo(_connection);
+        }
+
         private void CheckForCommandLineUpdate()
         {
             if (CommandLineController.IsArgsChanged())

@@ -28,7 +28,7 @@ namespace AweSimConnect.Models
         public string H
         {
             get { return PUAServer; }
-            set { PUAServer = value;  }
+            set { PUAServer = value; }
         }
 
         public string GetServerAndPort()
@@ -62,7 +62,7 @@ namespace AweSimConnect.Models
         public string S
         {
             get { return SSHHost; }
-            set { SSHHost = value;  }
+            set { SSHHost = value; }
         }
 
         // EX: an0018
@@ -70,7 +70,7 @@ namespace AweSimConnect.Models
 
         public string U
         {
-            get { return UserName; } 
+            get { return UserName; }
             set { UserName = value; }
         }
 
@@ -80,7 +80,7 @@ namespace AweSimConnect.Models
         public string V
         {
             get { return VNCPassword; }
-            set { VNCPassword = value;  }
+            set { VNCPassword = value; }
         }
 
         public bool SetValidVNCPassword(String pass)

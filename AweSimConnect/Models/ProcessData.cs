@@ -21,7 +21,8 @@ namespace AweSimConnect.Models
         }
 
         // True if program has not exited.
-        public bool IsRunning() {
+        public bool IsRunning()
+        {
             return !Process.HasExited;
         }
 
@@ -44,7 +45,7 @@ namespace AweSimConnect.Models
                     }
                 }
             }
-            
+
             return false;
         }
     }

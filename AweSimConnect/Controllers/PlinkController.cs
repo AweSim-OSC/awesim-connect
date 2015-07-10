@@ -25,10 +25,10 @@ namespace AweSimConnect.Controllers
             get { return connection; }
             set { connection = value; }
         }
-        
+
         //The full current path of the plink executable.
         private static String PLINK_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH, PLINK_FILE);
-        
+
         // PuTTY/Plink command line argument placeholder.        
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1}:{0} -C -N -T {2}@{3} -l {4}";
         private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";

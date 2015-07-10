@@ -38,14 +38,14 @@ namespace AweSimConnect.Views
         static readonly string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         static readonly string CLIENT_TITLE = "AweSim Connect v." + CLIENT_VERSION;
         static string AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
-        
+
         private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
         private static string LIMITED_CONNECTION_ERROR =
             "Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.";
         private static string UNABLE_TO_CONNECT =
             "Unable to Connect to AweSim Server. Check your connection or contact your system administrator.";
         private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
-        
+
         Connection _connection;
 
         private SFTPControllerFileZilla _ftpc;
@@ -70,12 +70,12 @@ namespace AweSimConnect.Views
         private AdvSettingsFrm _advFrm;
         private AdvancedSettings _settings;
         private string _sshHost;
-        
+
         public AweSimMain2(string[] args)
         {
             InitializeComponent();
             this.Text = CLIENT_TITLE;
-             
+
             // Tell the clipboard viewer to notify this app when the clipboard changes.
             _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
         }
@@ -86,7 +86,7 @@ namespace AweSimConnect.Views
             //GUI Setup
             this.CenterToParent();
             this.AcceptButton = bConnect;
-            
+
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();
             _connection = new Connection();
@@ -178,7 +178,7 @@ namespace AweSimConnect.Views
 
                 _consolec = new ConsoleController(_connection);
                 _consolec.StartPuttyProcess(tbPassword.Text);
-                
+
                 //If the process started up, add it to the list of processes so we can kill it later.
                 if (_consolec.GetThisProcess() != null)
                 {
@@ -247,7 +247,7 @@ namespace AweSimConnect.Views
                 }
                 else
                     tbPort.Text = "";
-                
+
 
                 if (!String.IsNullOrEmpty(newConnection.PUAServer))
                 {
@@ -321,7 +321,7 @@ namespace AweSimConnect.Views
         {
             label.ForeColor = valid ? Color.Gray : Color.Red;
         }
-        
+
         private void LabelColorChanger(GroupBox groupBox, bool valid)
         {
             groupBox.ForeColor = valid ? Color.Gray : Color.Red;
@@ -374,7 +374,7 @@ namespace AweSimConnect.Views
         public static extern Int32 SetForegroundWindow(int windowHandle);
 
         // Clipboard monitoring
-        [DllImport("user32.dll", CharSet=CharSet.Auto)]
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
         protected static extern int SetClipboardViewer(int hWndNewViewer);
 
         // Add the app to the chain of apps that windows notifies on clipboard updates.
@@ -595,11 +595,11 @@ namespace AweSimConnect.Views
         private void timerMain_Tick(object sender, EventArgs e)
         {
             _secondsElapsed++;
-            
+
             DisplayGroupBoxes();
 
             NetworkConnected(_networkAvailable);
-            
+
             if (_secondsElapsed == 1)
             {
                 _ftpc.DetectSFTPPath();
@@ -693,7 +693,7 @@ namespace AweSimConnect.Views
             tbPort.Enabled = true;
             if ((tbPort.Text == Connection.COMSOL_SERVER_PORT.ToString()) || tbPort.Text == "")
             {
-                tbPort.Text = ""+Connection.VNC_DISPLAY_DEFAULT;
+                tbPort.Text = "" + Connection.VNC_DISPLAY_DEFAULT;
             }
         }
 
@@ -701,7 +701,7 @@ namespace AweSimConnect.Views
         private void rbCOMSOL_CheckedChanged(object sender, EventArgs e)
         {
             tbPort.Enabled = false;
-            tbPort.Text = ""+Connection.COMSOL_SERVER_PORT.ToString();
+            tbPort.Text = "" + Connection.COMSOL_SERVER_PORT.ToString();
         }
 
         // Open the about form when the user clicks a button

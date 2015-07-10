@@ -10,21 +10,19 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class SFTPControllerFileZilla
     {
-        //private static string FILEZILLA_PROCESS = "filezilla";
         private static string FILEZILLA_FOLDER_CONTAINS = "FileZilla";
         private static string FILEZILLA_FILE = "filezilla.exe";
         private string FilezillaPath = "";
 
         private static string SFTP_PORT = "22";
-        
+
         //The arguments for filezilla
         private static string FILEZILLA_ARGS = "sftp://{0}:{1}@{2}:{3}";
 
         private Connection connection;
         private Process process;
         private bool process_embedded;
-        //private bool searching = true;
-        
+
         public SFTPControllerFileZilla(Connection connection)
         {
             this.connection = connection;
@@ -43,7 +41,7 @@ namespace AweSimConnect.Controllers
         }
 
         public bool IsSFTPInstalled()
-        {            
+        {
             if (FilezillaPath != "")
             {
                 return true;
@@ -101,8 +99,8 @@ namespace AweSimConnect.Controllers
             threadID = Thread.CurrentThread.ManagedThreadId;
             return FileController.FindExecutableInProgramFiles(FILEZILLA_FILE);
         }
-        
+
         private delegate string DetectSFTPAsyncMethodCaller(int callDuration, out int threadID);
-        
+
     }
 }

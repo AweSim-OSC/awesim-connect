@@ -21,7 +21,7 @@ namespace AweSimConnect.Models
             }
             catch (Exception)
             {
-                
+
             }
             return name;
         }

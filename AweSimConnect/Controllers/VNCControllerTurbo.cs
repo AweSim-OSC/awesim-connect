@@ -24,7 +24,7 @@ namespace AweSimConnect.Controllers
 
         //The arguments for turbovnc
         private static String TURBO_ARGS = "/password {0} localhost::{1}";
-        
+
         public VNCControllerTurbo(Connection connection)
         {
             InstallVNC();
@@ -93,5 +93,5 @@ namespace AweSimConnect.Controllers
             }
         }
     }
-    
+
 }

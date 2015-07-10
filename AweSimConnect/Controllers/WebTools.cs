@@ -27,8 +27,8 @@ namespace AweSimConnect.Controllers
             {
                 try
                 {
-                Process.Start("IEXPLORE", url);
-                launched = true;
+                    Process.Start("IEXPLORE", url);
+                    launched = true;
                 }
                 catch (Exception)
                 {
@@ -53,6 +53,7 @@ namespace AweSimConnect.Controllers
             //TODO if we get here without launching, I may want to add an embedded browser.
         }
 
+        // Launch the custom browser launcher on a specified port.
         public static void LaunchLocalhostBrowser(int port)
         {
             string url = HTTP_LOCALHOST + port;

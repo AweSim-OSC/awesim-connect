@@ -31,7 +31,7 @@ namespace AweSimConnect.Controllers
             }
             return args;
         }
-        
+
         // Saves a readonly collection of string arguments to the settings 
         // and updates settings to show commandline has been updated.
         public static bool SaveArgsToSettings(ReadOnlyCollection<string> commandLine)

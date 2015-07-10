@@ -19,14 +19,14 @@ namespace AweSimConnect.Controllers
         private bool _processKilled;
 
         private static string SFTP_PORT = "22";
-        
+
         //The arguments for WinSCP
         private static string WINSCP_ARGS = "sftp://{0}:{1}@{2}:{3} /noupdate";
 
         //The full current path of the executable.
         private static readonly string WINSCP_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH, WINSCP_FILE);
 
-        
+
         public SFTPControllerWinSCP(Connection connection)
         {
             InstallWinSCP();
@@ -104,7 +104,7 @@ namespace AweSimConnect.Controllers
         }
 
         public bool IsSFTPInstalled()
-        {            
+        {
             if (WinSCPPath != "")
             {
                 return true;
@@ -116,7 +116,7 @@ namespace AweSimConnect.Controllers
         {
             return WinSCPPath;
         }
-        
+
         internal Process GetThisProcess()
         {
             return process;

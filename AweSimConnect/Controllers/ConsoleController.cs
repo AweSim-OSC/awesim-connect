@@ -22,10 +22,10 @@ namespace AweSimConnect.Controllers
             get { return connection; }
             set { connection = value; }
         }
-        
+
         //The full current path of the putty executable.
         private static String PUTTY_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH, PUTTY_FILE);
-        
+
         // PuTTY command line argument placeholder.        
         private static String PUTTY_ARGS_NOPASSWORD = "-ssh {0} -l {1}";
         private static String PUTTY_ARGS_PASSWORD = "-ssh {0} -l {1} -pw {2}";
@@ -47,7 +47,7 @@ namespace AweSimConnect.Controllers
         {
             return Resources.putty;
         }
-        
+
         //Launch Putty with a password
         public void StartPuttyProcess(string password)
         {

@@ -15,7 +15,7 @@ namespace AweSimConnect.Controllers
         private string WinSCPPath = "";
 
         internal Connection Connection { get; set; }
-        private Process process;
+        private Process _process;
         private bool _processKilled;
 
         private static string SFTP_PORT = "22";
@@ -56,7 +56,7 @@ namespace AweSimConnect.Controllers
 
             try
             {
-                this.process = Process.Start(info);
+                this._process = Process.Start(info);
             }
             catch (Exception)
             {
@@ -68,21 +68,6 @@ namespace AweSimConnect.Controllers
         internal bool IsWinSCPInstalled()
         {
             return FileController.ExistsOnPath(WINSCP_FILE);
-        }
-
-        internal void KillProcess()
-        {
-            if (process != null)
-            {
-                if (!process.HasExited)
-                {
-                    process.Close();
-                    process = null;
-                    //process.Kill();
-                    _processKilled = true;
-                }
-            }
-
         }
 
         // Check to see if plink is in the running processes.
@@ -119,7 +104,13 @@ namespace AweSimConnect.Controllers
 
         internal Process GetThisProcess()
         {
-            return process;
+            return _process;
+        }
+
+        internal void KillProcess()
+        {
+            _processKilled = ProcessController.KillProcess(_process);
+            _process = null;
         }
     }
 }

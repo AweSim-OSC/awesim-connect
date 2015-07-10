@@ -11,16 +11,16 @@ namespace AweSimConnect.Controllers
         private static String PUTTY_PROCESS = "putty";
         private static String PUTTY_FILE = "putty.exe";
 
-        private Connection connection;
-        private Process process;
+        private Connection _connection;
+        private Process _process;
 
-        private bool process_embedded = false;
+        private bool _process_embedded = false;
         private bool _processKilled = false;
 
         internal Connection Connection
         {
-            get { return connection; }
-            set { connection = value; }
+            get { return _connection; }
+            set { _connection = value; }
         }
 
         //The full current path of the putty executable.
@@ -33,7 +33,7 @@ namespace AweSimConnect.Controllers
         public ConsoleController(Connection connection)
         {
             InstallPutty();
-            this.connection = connection;
+            this._connection = connection;
         }
 
         //Installs putty.exe to current directory if it isn't there.
@@ -54,12 +54,12 @@ namespace AweSimConnect.Controllers
             //TODO This will probably break if the password is empty, but the view currently prevents that.
             String puttyCommand = String.Format(PUTTY_CURRENT_DIR);
             ProcessStartInfo info = new ProcessStartInfo(puttyCommand);
-            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.connection.SSHHost, this.connection.UserName, password);
+            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this._connection.SSHHost, this._connection.UserName, password);
             info.UseShellExecute = true;
 
             try
             {
-                this.process = Process.Start(info);
+                this._process = Process.Start(info);
             }
             catch (Exception)
             {
@@ -97,7 +97,7 @@ namespace AweSimConnect.Controllers
             {
                 if (IsPuttyRunning())
                 {
-                    return NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort);
+                    return NetworkTools.IsPortOpenOnLocalHost(_connection.LocalPort);
                 }
             }
             catch (Exception)
@@ -109,30 +109,23 @@ namespace AweSimConnect.Controllers
 
         internal Process GetThisProcess()
         {
-            return process;
+            return _process;
         }
 
         internal void EmbedProcess()
         {
-            process_embedded = true;
+            _process_embedded = true;
         }
 
         public bool IsProcessEmbedded()
         {
-            return process_embedded;
+            return _process_embedded;
         }
 
         public void KillProcess()
         {
-            if (process != null)
-            {
-                if (!process.HasExited)
-                {
-                    process.Kill();
-                    process = null;
-                    _processKilled = true;
-                }
-            }
+            _processKilled = ProcessController.KillProcess(_process);
+            _process = null;
         }
     }
 }

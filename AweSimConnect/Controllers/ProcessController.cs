@@ -7,8 +7,6 @@ namespace AweSimConnect.Controllers
 {
     class ProcessController
     {
-
-
         public static bool IsProcessRunning(String processName)
         {
             Process[] pname = Process.GetProcessesByName(processName);
@@ -29,9 +27,24 @@ namespace AweSimConnect.Controllers
             }
         }
 
-        public static void KillProcess(Process process)
+        // This is a pretty thourough way to ensure the process dies.
+        public static bool KillProcess(Process process)
         {
-            
+            if (process != null)
+            {
+                int processId = process.Id;
+
+                if (!process.HasExited)
+                {
+                    process.Close();
+
+                    if (Process.GetProcessById(processId).Responding)
+                    {
+                        Process.GetProcessById(processId).Kill();
+                    }
+                }
+            }
+            return true;
         }
 
     }

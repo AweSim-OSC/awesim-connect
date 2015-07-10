@@ -17,7 +17,7 @@ namespace AweSimConnect.Controllers
         private static string TURBOVNC_PROCESS = "vncviewer";
 
         internal Connection Connection { get; set; }
-        private Process process;
+        private Process _process;
         private bool _processKilled;
 
         //The full current path of the executable.
@@ -53,7 +53,7 @@ namespace AweSimConnect.Controllers
 
             try
             {
-                process = Process.Start(info);
+                _process = Process.Start(info);
             }
             catch (Exception)
             {
@@ -69,24 +69,8 @@ namespace AweSimConnect.Controllers
 
         internal void KillProcess()
         {
-            if (process != null)
-            {
-                int processID = process.Id;
-
-                if (!process.HasExited)
-                {
-                    process.Close();
-
-                    // If the VNC app throws open a "connection closed" window, just kill it.
-                    if (Process.GetProcessById(processID).Responding)
-                    {
-                        Process.GetProcessById(processID).Kill();
-                    }
-                    process = null;
-                    _processKilled = true;
-                }
-            }
-
+            _processKilled = ProcessController.KillProcess(_process);
+            _process = null;
         }
 
         // Check to see if plink is in the running processes.

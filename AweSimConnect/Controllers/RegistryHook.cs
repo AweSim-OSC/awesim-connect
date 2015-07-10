@@ -23,11 +23,11 @@ namespace AweSimConnect.Controllers
         private static string CONNECT_REG_POS = "Software\\Classes\\awesim";
         private static string CONNECT_REG_PROTOCOL = "awesim";
 
-        private bool installed;
+        private bool _installed;
 
         public RegistryHook()
         {
-            installed = installHook();
+            _installed = installHook();
         }
 
         /* Key Location:
@@ -72,7 +72,7 @@ namespace AweSimConnect.Controllers
 
         public bool IsHookInstalled()
         {
-            return installed;
+            return _installed;
         }
         
     }

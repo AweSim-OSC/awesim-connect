@@ -94,7 +94,7 @@ namespace AweSimConnect.Controllers
         {
             if (!_processKilled)
             {
-                return FileController.IsProcessRunning(TURBOVNC_PROCESS);
+                return ProcessController.IsProcessRunning(TURBOVNC_PROCESS);
             }
             else
             {

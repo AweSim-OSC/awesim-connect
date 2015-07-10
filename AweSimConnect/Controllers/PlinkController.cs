@@ -101,7 +101,7 @@ namespace AweSimConnect.Controllers
         {
             if (!_processKilled)
             {
-                return FileController.IsProcessRunning(PLINK_PROCESS);
+                return ProcessController.IsProcessRunning(PLINK_PROCESS);
             }
             else
             {

@@ -3,8 +3,9 @@
 ## v0.60
 
 * Add support for clickable awesim:// links.
-* Clean up deployed resources on close.
+* Clean up deployed resources and processes on close.
 * PuTTY version update.
+* Optimizations and bug fixes.
 
 ## v0.51
 

@@ -90,7 +90,7 @@ namespace AweSimConnect.Controllers
         {
             if (!_processKilled)
             {
-                return FileController.IsProcessRunning(WINSCP_PROCESS);
+                return ProcessController.IsProcessRunning(WINSCP_PROCESS);
             }
             else
             {

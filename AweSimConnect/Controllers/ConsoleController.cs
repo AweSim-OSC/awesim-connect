@@ -78,7 +78,7 @@ namespace AweSimConnect.Controllers
         {
             if (!_processKilled)
             {
-                return FileController.IsProcessRunning(PUTTY_PROCESS);
+                return ProcessController.IsProcessRunning(PUTTY_PROCESS);
             }
             else
             {

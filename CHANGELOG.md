@@ -1,5 +1,11 @@
 #AweSim Connect Change Log
 
+## v0.60
+
+* Add support for clickable awesim:// links.
+* Clean up deployed resources on close.
+* PuTTY version update.
+
 ## v0.51
 
 * Fix bug where app doesn't deploy to subfolder when existing in base folder.

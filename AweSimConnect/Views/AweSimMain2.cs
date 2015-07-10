@@ -436,7 +436,6 @@ namespace AweSimConnect.Views
         // Actions to perform when closing the app.
         private void AweSimMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-
             // Remove the app from the clipboard view chain
             ChangeClipboardChain(Handle, _nextClipboardViewer);
 
@@ -463,6 +462,9 @@ namespace AweSimConnect.Views
                     connectionForm.Close();
                 }
             }
+
+            //Clean up installed files.
+            FileController.DeleteAweSimFilesFolder();
         }
 
         // When the user changes the text in the VNC password box, check for validity.

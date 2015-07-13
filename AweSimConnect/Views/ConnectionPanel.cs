@@ -145,6 +145,8 @@ namespace AweSimConnect.Views
 
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
+            _ticks++;
+
             if (_ticks == 1)
             {
                 SetUpConnection();
@@ -166,8 +168,6 @@ namespace AweSimConnect.Views
                 //If the tunnel is connected, enable the buttons, otherwise disable.
                 EnableConnectedFeatures(_tunnelAvailable);
             }
-
-            _ticks++;
         }
 
         private void SetTagText()

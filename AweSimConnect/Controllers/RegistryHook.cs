@@ -44,8 +44,7 @@ namespace AweSimConnect.Controllers
         {
             try
             {
-                Registry.CurrentUser.CreateSubKey(CONNECT_REG_POS);
-                RegistryKey rKey = Registry.CurrentUser.OpenSubKey(CONNECT_REG_POS, true);
+                RegistryKey rKey = Registry.CurrentUser.CreateSubKey(CONNECT_REG_POS);
                 rKey.SetValue("", "URL: awesim Protocol");
                 rKey.SetValue("URL Protocol", "");
                 rKey.CreateSubKey("DefaultIcon").SetValue("", "\"" + Application.ExecutablePath + "\",0");

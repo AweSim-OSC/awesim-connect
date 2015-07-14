@@ -162,11 +162,37 @@ namespace AweSimConnect.Views
                 // Call the remap method here to check and remap to the internal domain.
                 _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);
 
-                ConnectionForm connectionForm = new ConnectionForm(_connection, tbPassword.Text);
-                connectionForm.StartPosition = FormStartPosition.CenterScreen;
-                connectionForm.Show();
-                _connectionForms.Add(connectionForm);
+                BuildConnectionForm(_connection, tbPassword.Text);
             }
+        }
+
+        private void BuildConnectionForm(Connection connection, string s)
+        {
+            int width = this.Width;
+            int height = this.Height;
+            Point form_location = this.Location;
+            Rectangle screen_rectangle = Screen.FromControl(this).Bounds;
+            int form_instance = _connectionForms.Count + 1;
+
+            int new_x = form_location.X + width;
+            int new_y = form_location.Y + (form_instance * 125) - 125;
+
+            if (new_x < screen_rectangle.X)
+                new_x = screen_rectangle.X;
+            if (new_x > ((screen_rectangle.X + screen_rectangle.Width) - 400))
+                new_x = ((screen_rectangle.X + screen_rectangle.Width) - 400);
+            if (new_y < screen_rectangle.Y)
+                new_y = screen_rectangle.Y;
+            if (new_y > ((screen_rectangle.Y + screen_rectangle.Height) - 200))
+                new_y = ((screen_rectangle.Y + screen_rectangle.Height) - 200);
+
+            Point newStartLocation = new Point(new_x, new_y);
+
+            ConnectionForm connectionForm = new ConnectionForm(_connection, tbPassword.Text);
+            connectionForm.StartPosition = FormStartPosition.Manual;
+            connectionForm.Location = newStartLocation;
+            connectionForm.Show();
+            _connectionForms.Add(connectionForm);
         }
 
         private void buttonConsole_Click(object sender, EventArgs e)

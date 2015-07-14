@@ -59,7 +59,7 @@
             this.buttonConnection.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnection.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.buttonConnection.Location = new System.Drawing.Point(278, 19);
+            this.buttonConnection.Location = new System.Drawing.Point(278, 15);
             this.buttonConnection.Name = "buttonConnection";
             this.buttonConnection.Size = new System.Drawing.Size(70, 71);
             this.buttonConnection.TabIndex = 23;
@@ -76,7 +76,7 @@
             this.lSession.AutoSize = true;
             this.lSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lSession.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lSession.Location = new System.Drawing.Point(97, 9);
+            this.lSession.Location = new System.Drawing.Point(97, 5);
             this.lSession.Name = "lSession";
             this.lSession.Size = new System.Drawing.Size(90, 18);
             this.lSession.TabIndex = 18;
@@ -105,7 +105,7 @@
             this.buttonDisconnect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.buttonDisconnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDisconnect.Location = new System.Drawing.Point(354, 40);
+            this.buttonDisconnect.Location = new System.Drawing.Point(354, 36);
             this.buttonDisconnect.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDisconnect.Name = "buttonDisconnect";
             this.buttonDisconnect.Size = new System.Drawing.Size(28, 28);
@@ -117,7 +117,7 @@
             // 
             // tbTag
             // 
-            this.tbTag.Location = new System.Drawing.Point(164, 31);
+            this.tbTag.Location = new System.Drawing.Point(164, 27);
             this.tbTag.Name = "tbTag";
             this.tbTag.Size = new System.Drawing.Size(108, 20);
             this.tbTag.TabIndex = 26;
@@ -127,7 +127,7 @@
             // 
             this.labelTag.AutoSize = true;
             this.labelTag.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelTag.Location = new System.Drawing.Point(84, 34);
+            this.labelTag.Location = new System.Drawing.Point(84, 30);
             this.labelTag.Name = "labelTag";
             this.labelTag.Size = new System.Drawing.Size(74, 13);
             this.labelTag.TabIndex = 27;
@@ -135,7 +135,7 @@
             // 
             // tbConnectionInfo
             // 
-            this.tbConnectionInfo.Location = new System.Drawing.Point(87, 54);
+            this.tbConnectionInfo.Location = new System.Drawing.Point(87, 50);
             this.tbConnectionInfo.Multiline = true;
             this.tbConnectionInfo.Name = "tbConnectionInfo";
             this.tbConnectionInfo.ReadOnly = true;
@@ -145,7 +145,7 @@
             // pbTunnel
             // 
             this.pbTunnel.Image = global::AweSimConnect.Properties.Resources.cross_gry;
-            this.pbTunnel.Location = new System.Drawing.Point(9, 19);
+            this.pbTunnel.Location = new System.Drawing.Point(9, 15);
             this.pbTunnel.Name = "pbTunnel";
             this.pbTunnel.Size = new System.Drawing.Size(70, 71);
             this.pbTunnel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -157,7 +157,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(278, 89);
+            this.labelVersion.Location = new System.Drawing.Point(278, 85);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 29;
@@ -179,7 +179,7 @@
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.lSession);
             this.Name = "ConnectionPanel";
-            this.Size = new System.Drawing.Size(391, 105);
+            this.Size = new System.Drawing.Size(391, 102);
             this.Load += new System.EventHandler(this.ConnectionPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
             this.ResumeLayout(false);

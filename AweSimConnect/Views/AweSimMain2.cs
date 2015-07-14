@@ -191,7 +191,7 @@ namespace AweSimConnect.Views
             ConnectionForm connectionForm = new ConnectionForm(_connection, tbPassword.Text);
             connectionForm.StartPosition = FormStartPosition.Manual;
             connectionForm.Location = newStartLocation;
-            connectionForm.Show();
+            connectionForm.Show(this);
             _connectionForms.Add(connectionForm);
         }
 
@@ -792,5 +792,7 @@ namespace AweSimConnect.Views
         {
             cbRememberMe.Checked = check;
         }
+
+        
     }
 }

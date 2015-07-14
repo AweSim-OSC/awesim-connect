@@ -22,6 +22,7 @@ namespace AweSimConnect.Views
             return connection;
         }
 
+
         // Form load.
         private void ConnectionForm_Load(object sender, EventArgs e)
         {

@@ -1,5 +1,10 @@
 #AweSim Connect Change Log
 
+## Upcoming
+
+* Connection windows now spawn to the right of the main form.
+* All child windows are brought to fore when app is activated. 
+
 ## v0.60
 
 * Add support for clickable awesim:// links.

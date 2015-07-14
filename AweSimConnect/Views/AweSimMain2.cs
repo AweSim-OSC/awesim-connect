@@ -162,35 +162,56 @@ namespace AweSimConnect.Views
                 // Call the remap method here to check and remap to the internal domain.
                 _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);
 
-                BuildConnectionForm(_connection, tbPassword.Text);
+                Point newWindowPoint = BuildNewConnectionWindowCoordinates();
+                BuildConnectionForm(_connection, tbPassword.Text, newWindowPoint);
             }
         }
 
-        private void BuildConnectionForm(Connection connection, string s)
+        private Point BuildNewConnectionWindowCoordinates()
         {
+            // The current width and height of the main application.
             int width = this.Width;
             int height = this.Height;
+
+            //This is the current location of the main app window.
             Point form_location = this.Location;
+
+            // This is the size of the user's screen.
             Rectangle screen_rectangle = Screen.FromControl(this).Bounds;
-            int form_instance = _connectionForms.Count + 1;
 
+            // This gets the size of a connection form if we've already spawned one.
+            int form_instance = _connectionForms.Count;
+            int connection_form_height = 0;
+            int connection_form_width = 0;
+            if (_connectionForms.Count > 0)
+            {
+                Size connection_form_size = _connectionForms[0].Size;
+                connection_form_height = connection_form_size.Height;
+                connection_form_width = connection_form_size.Width;
+            }
+
+            // Set the new coordinates of window.
             int new_x = form_location.X + width;
-            int new_y = form_location.Y + (form_instance * 125) - 125;
+            int new_y = form_location.Y + (form_instance * connection_form_height);
 
+            // Checks to prevent new form from spawning off-screen.
             if (new_x < screen_rectangle.X)
                 new_x = screen_rectangle.X;
-            if (new_x > ((screen_rectangle.X + screen_rectangle.Width) - 400))
-                new_x = ((screen_rectangle.X + screen_rectangle.Width) - 400);
+            if (new_x > ((screen_rectangle.X + screen_rectangle.Width) - connection_form_width))
+                new_x = ((screen_rectangle.X + screen_rectangle.Width) - connection_form_width);
             if (new_y < screen_rectangle.Y)
                 new_y = screen_rectangle.Y;
-            if (new_y > ((screen_rectangle.Y + screen_rectangle.Height) - 200))
-                new_y = ((screen_rectangle.Y + screen_rectangle.Height) - 200);
+            if (new_y > ((screen_rectangle.Y + screen_rectangle.Height) - connection_form_height))
+                new_y = ((screen_rectangle.Y + screen_rectangle.Height) - connection_form_height);
 
-            Point newStartLocation = new Point(new_x, new_y);
+            return new Point(new_x, new_y);
+        }
 
-            ConnectionForm connectionForm = new ConnectionForm(_connection, tbPassword.Text);
+        private void BuildConnectionForm(Connection connection, String password, Point startPoint)
+        {
+            ConnectionForm connectionForm = new ConnectionForm(connection, password);
             connectionForm.StartPosition = FormStartPosition.Manual;
-            connectionForm.Location = newStartLocation;
+            connectionForm.Location = startPoint;
             connectionForm.Show(this);
             _connectionForms.Add(connectionForm);
         }

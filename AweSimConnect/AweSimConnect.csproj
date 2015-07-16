@@ -115,6 +115,7 @@
     <Compile Include="Controllers\VNCControllerTurbo.cs" />
     <Compile Include="Controllers\WebTools.cs" />
     <Compile Include="Models\AdvancedSettings.cs" />
+    <Compile Include="Models\ObjectCopier.cs" />
     <Compile Include="Models\PasswordEncryption.cs" />
     <Compile Include="Models\ProcessData.cs" />
     <Compile Include="Models\VisualizationNode.cs" />

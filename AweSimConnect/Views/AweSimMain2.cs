@@ -209,8 +209,8 @@ namespace AweSimConnect.Views
 
         private void BuildConnectionForm(Connection connection, String password, Point startPoint)
         {
-            
-            ConnectionForm connectionForm = new ConnectionForm(connection, password);
+            Connection newConnection = ObjectCopier.Clone(connection);
+            ConnectionForm connectionForm = new ConnectionForm(newConnection, password);
             connectionForm.StartPosition = FormStartPosition.Manual;
             connectionForm.Location = startPoint;
             connectionForm.Show(this);

@@ -14,16 +14,16 @@ namespace AweSimConnect.Controllers
         private static String PLINK_PROCESS = "plink";
         private static String PLINK_FILE = "plink.exe";
 
-        private Connection connection;
-        private Process process;
+        private Connection _connection;
+        private Process _process;
 
-        private bool process_embedded = false;
+        private bool _process_embedded = false;
         private bool _processKilled = false;
 
         internal Connection Connection
         {
-            get { return connection; }
-            set { connection = value; }
+            get { return _connection; }
+            set { _connection = value; }
         }
 
         //The full current path of the plink executable.
@@ -36,7 +36,7 @@ namespace AweSimConnect.Controllers
         public PlinkController(Connection connection)
         {
             InstallPlink();
-            this.connection = connection;
+            _connection = connection;
         }
 
         //Installs plink.exe to current directory if it isn't there.
@@ -57,32 +57,32 @@ namespace AweSimConnect.Controllers
         {
             String plinkCommand = String.Format(PLINK_CURRENT_PATH);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
-            info.Arguments = String.Format(PUTTY_ARGS_NOPASSWORD, this.connection.LocalPort, this.connection.GetServerAndPort(), this.connection.UserName, this.connection.SSHHost, this.connection.UserName);
+            info.Arguments = String.Format(PUTTY_ARGS_NOPASSWORD, this._connection.LocalPort, this._connection.GetServerAndPort(), this._connection.UserName, this._connection.SSHHost, this._connection.UserName);
             info.UseShellExecute = true;
 
             try
             {
-                process = Process.Start(info);
+                _process = Process.Start(info);
             }
             catch (Exception)
             {
-                process = new Process();
+                _process = new Process();
                 //TODO probably should put up a message or throw another exception here.
             }
         }
 
         //Launch Plink with a password
-        public void StartPlinkProcess(String password)
+        public void StartPlinkProcess(string password)
         {
             //TODO This will probably break if the password is empty, but the view currently prevents that.
             String plinkCommand = String.Format(PLINK_CURRENT_PATH);
             ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
-            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, this.connection.LocalPort, this.connection.GetServerAndPort(), this.connection.UserName, this.connection.SSHHost, this.connection.UserName, password);
+            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, _connection.LocalPort, _connection.GetServerAndPort(), _connection.UserName, _connection.SSHHost, _connection.UserName, password);
             info.UseShellExecute = true;
 
             try
             {
-                this.process = Process.Start(info);
+                _process = Process.Start(info);
             }
             catch (Exception)
             {
@@ -101,7 +101,8 @@ namespace AweSimConnect.Controllers
         {
             if (!_processKilled)
             {
-                return ProcessController.IsProcessRunning(PLINK_PROCESS);
+                //return ProcessController.IsProcessRunning(PLINK_PROCESS);
+                return ProcessController.IsProcessRunning(_process.Id);
             }
             else
             {
@@ -120,7 +121,7 @@ namespace AweSimConnect.Controllers
             {
                 if (IsPlinkRunning())
                 {
-                    return NetworkTools.IsPortOpenOnLocalHost(connection.LocalPort);
+                    return NetworkTools.IsPortOpenOnLocalHost(_connection.LocalPort);
                 }
             }
             catch (Exception)
@@ -132,30 +133,23 @@ namespace AweSimConnect.Controllers
 
         internal Process GetThisProcess()
         {
-            return process;
+            return _process;
         }
 
         internal void EmbedProcess()
         {
-            process_embedded = true;
+            _process_embedded = true;
         }
 
         public bool IsProcessEmbedded()
         {
-            return process_embedded;
+            return _process_embedded;
         }
 
         public void KillProcess()
         {
-            if (process != null)
-            {
-                if (!process.HasExited)
-                {
-                    process.Kill();
-                    process = null;
-                    _processKilled = true;
-                }
-            }
+            _processKilled = ProcessController.KillProcess(_process);
+            _process = null;
         }
     }
 }

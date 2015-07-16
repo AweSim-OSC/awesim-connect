@@ -181,10 +181,5 @@ namespace AweSimConnect.Views
             SetTagText();
         }
 
-        private void ConnectionPanel_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

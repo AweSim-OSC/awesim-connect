@@ -180,7 +180,6 @@
             this.Controls.Add(this.lSession);
             this.Name = "ConnectionPanel";
             this.Size = new System.Drawing.Size(391, 102);
-            this.Load += new System.EventHandler(this.ConnectionPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

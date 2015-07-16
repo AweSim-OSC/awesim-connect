@@ -181,6 +181,7 @@ namespace AweSimConnect.Views
 
             // This gets the size of a connection form if we've already spawned one.
             int form_instance = _connectionForms.Count;
+
             int connection_form_height = 0;
             int connection_form_width = 0;
             if (_connectionForms.Count > 0)

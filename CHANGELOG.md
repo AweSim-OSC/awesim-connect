@@ -4,6 +4,7 @@
 
 * Connection windows now spawn to the right of the main form.
 * All child windows are brought to fore when app is activated. 
+* Fix bug with multiple windows to the same point not maintaining connection properly.
 
 ## v0.60
 

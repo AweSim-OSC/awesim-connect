@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
 using AweSimConnect.Properties;

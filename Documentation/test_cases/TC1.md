@@ -1,4 +1,4 @@
-![AweSim](./Documentation/img/awesim-small.png)
+![AweSim](../img/awesim-small.png)
 
 # AweSim Connect Test Case 1
 

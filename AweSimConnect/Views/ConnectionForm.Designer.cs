@@ -44,6 +44,7 @@
             this.Name = "ConnectionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connection";
+            this.Activated += new System.EventHandler(this.ConnectionForm_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConnectionForm_FormClosing);
             this.Load += new System.EventHandler(this.ConnectionForm_Load);
             this.ResumeLayout(false);

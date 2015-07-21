@@ -314,7 +314,15 @@ namespace AweSimConnect.Views
                     _connection.VNCPassword = null;
                 }
 
-                tbPassword.Focus();
+                if (tbUsername.Text == "")
+                {
+                    tbUsername.Focus();
+                }
+                else
+                {
+                    tbPassword.Focus();
+                }
+
                 BringMainWindowToFront();
             }
         }

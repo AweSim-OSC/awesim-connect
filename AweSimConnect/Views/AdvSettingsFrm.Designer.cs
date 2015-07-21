@@ -37,7 +37,6 @@
             this.cbClipboardDetect = new System.Windows.Forms.CheckBox();
             this.cbAutoOpen = new System.Windows.Forms.CheckBox();
             this.toolTipAdvSettings = new System.Windows.Forms.ToolTip(this.components);
-            this.cbUseDefaultSFTP = new System.Windows.Forms.CheckBox();
             this.cbLaunchTunnel = new System.Windows.Forms.CheckBox();
             this.gbConnection = new System.Windows.Forms.GroupBox();
             this.gbSystem = new System.Windows.Forms.GroupBox();
@@ -52,7 +51,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(104, 237);
+            this.labelVersion.Location = new System.Drawing.Point(104, 213);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -126,20 +125,6 @@
             this.cbAutoOpen.UseVisualStyleBackColor = true;
             this.cbAutoOpen.CheckedChanged += new System.EventHandler(this.cbAutoOpen_CheckedChanged);
             // 
-            // cbUseDefaultSFTP
-            // 
-            this.cbUseDefaultSFTP.AutoSize = true;
-            this.cbUseDefaultSFTP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.cbUseDefaultSFTP.Location = new System.Drawing.Point(13, 42);
-            this.cbUseDefaultSFTP.Name = "cbUseDefaultSFTP";
-            this.cbUseDefaultSFTP.Size = new System.Drawing.Size(148, 17);
-            this.cbUseDefaultSFTP.TabIndex = 36;
-            this.cbUseDefaultSFTP.Text = "Use Included SFTP Client";
-            this.toolTipAdvSettings.SetToolTip(this.cbUseDefaultSFTP, "Override the use of a detected supported sftp client and use the bundled SFTP cli" +
-        "ent.");
-            this.cbUseDefaultSFTP.UseVisualStyleBackColor = true;
-            this.cbUseDefaultSFTP.CheckedChanged += new System.EventHandler(this.cbUseDefaultSFTP_CheckedChanged);
-            // 
             // cbLaunchTunnel
             // 
             this.cbLaunchTunnel.AutoSize = true;
@@ -168,11 +153,10 @@
             // gbSystem
             // 
             this.gbSystem.Controls.Add(this.cbClipboardDetect);
-            this.gbSystem.Controls.Add(this.cbUseDefaultSFTP);
             this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gbSystem.Location = new System.Drawing.Point(12, 71);
             this.gbSystem.Name = "gbSystem";
-            this.gbSystem.Size = new System.Drawing.Size(202, 67);
+            this.gbSystem.Size = new System.Drawing.Size(202, 44);
             this.gbSystem.TabIndex = 38;
             this.gbSystem.TabStop = false;
             this.gbSystem.Text = "System Settings";
@@ -183,7 +167,7 @@
             this.groupBox1.Controls.Add(this.cbSaveUser);
             this.groupBox1.Controls.Add(this.cbAutoOpen);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox1.Location = new System.Drawing.Point(12, 145);
+            this.groupBox1.Location = new System.Drawing.Point(12, 121);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(202, 89);
             this.groupBox1.TabIndex = 39;
@@ -195,7 +179,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(224, 255);
+            this.ClientSize = new System.Drawing.Size(224, 233);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbSystem);
             this.Controls.Add(this.gbConnection);
@@ -227,7 +211,6 @@
         private System.Windows.Forms.CheckBox cbClipboardDetect;
         private System.Windows.Forms.CheckBox cbAutoOpen;
         private System.Windows.Forms.ToolTip toolTipAdvSettings;
-        private System.Windows.Forms.CheckBox cbUseDefaultSFTP;
         private System.Windows.Forms.GroupBox gbConnection;
         private System.Windows.Forms.GroupBox gbSystem;
         private System.Windows.Forms.GroupBox groupBox1;

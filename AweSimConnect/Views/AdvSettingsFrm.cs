@@ -35,7 +35,6 @@ namespace AweSimConnect.Views
             cbHosts.SelectedIndex = clusterSelected;
             cbAutoOpen.Checked = _settings.AutoOpenApp();
             cbClipboardDetect.Checked = _settings.DetectClipboard();
-            cbUseDefaultSFTP.Checked = _settings.UseDefaultFTPClient();
             cbLaunchTunnel.Checked = _settings.LaunchTunnelAutomatically();
         }
 
@@ -76,12 +75,7 @@ namespace AweSimConnect.Views
         {
             _settings.SetAutoOpenApp(cbAutoOpen.Checked);
         }
-
-        private void cbUseDefaultSFTP_CheckedChanged(object sender, EventArgs e)
-        {
-            _settings.SetUseDefaultFTPClient(cbUseDefaultSFTP.Checked);
-        }
-
+        
         private void cbLaunchTunnel_CheckedChanged(object sender, EventArgs e)
         {
             _settings.SetLaunchSSHTunnelAutomatically(cbLaunchTunnel.Checked);

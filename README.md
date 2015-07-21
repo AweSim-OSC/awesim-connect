@@ -22,7 +22,7 @@ When you first run AweSim Connect, an temporary folder with four additional file
 * `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources. (version 0.64)
 * `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to AweSim resources. (version 0.64)
 * `vncviewer.exe` is the VNC viewer client used to view a remote desktop session. Currently TurboVNC Viewer 1.2.9beta.
-* `WinSCP.exe` AweSim Connect includes WinSCP 5.7.4 as the default SFTP client. AweSim connect also supports the FileZilla Client for SFTP transfers. If FileZilla is installed on your machine, AweSim Connect will attempt to use it. If you prefer, you can override this feature and used the embedded client by selecting the `Use Included SFTP Client` in the Advanced Settings (indicated by the wrench icon).
+* `WinSCP.exe` AweSim Connect includes WinSCP 5.7.4 as the default SFTP client.
 
 #### Double-Click the `AweSimConnect.exe` file to run the application
 
@@ -130,14 +130,9 @@ The AweSim Connect application will detect if you have a supported SFTP client o
 
 #### Click the file transfer button in the bottom left.
 
-If the supported SFTP client is detected, the application will resort to the embedded option. You can enable the embedded option as the default in the Advanced Settings Menu.
+AweSim Connect now uses WinSCP as the default SFTP client.  
 
-* [FileZilla](https://filezilla-project.org/) is currently the supported SFTP client across all operating systems. FileZilla must be installed separately on your system.
-Download from: [https://filezilla-project.org/download.php](https://filezilla-project.org/download.php)
-
-AweSim Connect now uses WinSCP as the SFTP fallback if FileZilla is not detected.  
-
-* [WinSCP](http://winscp.net/eng/index.php) is the embedded SFTP client. If FileZilla is not detected on your system, the AweSim Connect application will deploy and run a WinSCP process. If you prefer to use the WinSCP client you can select the "Use Included SFTP Client" option in the advanced settings menu.
+* [WinSCP](http://winscp.net/eng/index.php) is the embedded SFTP client. The AweSim Connect application will deploy and run a WinSCP process.
 
 ## Developer Notes
 
@@ -146,7 +141,7 @@ AweSim Connect now uses WinSCP as the SFTP fallback if FileZilla is not detected
 
 #### Build Instructions
 
-* Download and install [Visual Studio Community 2013](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
+* Download and install [Visual Studio Community 2015](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
 * Visual Studio includes team support. If you are accustomed to command-line git, download and install [Git for Windows](https://msysgit.github.io/) to gain access to Git Bash.
 * `git clone` the AweSim Connect repository to your system.
 * Open the project in Visual Studio by clicking **File > Open > Project/Solution** and selecting **AweSimConnect.sln** in the file dialog. You can also load the project in Visual Studio by double-clicking the **AweSimConnect.sln** file in the Windows Explorer.

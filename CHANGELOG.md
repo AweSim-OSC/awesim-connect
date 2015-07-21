@@ -7,6 +7,7 @@
 * Fix bug with multiple windows to the same point not maintaining connection properly.
 * Remove FileZilla handling and use WinSCP by default.
 * Add the time launched to the optional panel window.
+* Compiler updated to .NET Native. (VS2015)
 
 ## v0.60
 

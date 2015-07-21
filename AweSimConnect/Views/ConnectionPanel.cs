@@ -58,6 +58,9 @@ namespace AweSimConnect.Views
                 tbTag.Text = "COMSOL";
                 buttonConnection.BackgroundImage = Resources.browser_sizes;
             }
+            tbTag.Text += " ";
+            tbTag.Text += String.Format("{0:t}", DateTime.Now);
+            
             lSession.Text = _connection.GetServerAndPort();
             SetTagText();
         }

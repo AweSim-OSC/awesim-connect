@@ -89,18 +89,7 @@ namespace AweSimConnect.Models
         {
             return Settings.Default.DetectClipboard;
         }
-
-        public void SetUseDefaultFTPClient(bool useDefault)
-        {
-            Settings.Default.UseDefaultSFTP = useDefault;
-            Settings.Default.Save();
-        }
-
-        public bool UseDefaultFTPClient()
-        {
-            return Settings.Default.UseDefaultSFTP;
-        }
-
+        
         public void SetArgStringCollection(StringCollection args)
         {
             Settings.Default.CommandLineArgsArray = args;

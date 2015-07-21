@@ -59,7 +59,7 @@ namespace AweSimConnect.Views
                 buttonConnection.BackgroundImage = Resources.browser_sizes;
             }
             tbTag.Text += " ";
-            tbTag.Text += String.Format("{0:t}", DateTime.Now);
+            tbTag.Text += String.Format("{0:T}", DateTime.Now);
             
             lSession.Text = _connection.GetServerAndPort();
             SetTagText();

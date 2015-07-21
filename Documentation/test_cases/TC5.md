@@ -13,19 +13,18 @@
 ## Steps
 
 #### 1. Open the AweSim Connect application.
-#### 2. Click the 'Settings' button and check the box labeled 'Use Included SFTP Client'.
 
 * Expected: AweSim Connect application launches successfully.
 
-#### 3. Enter AweSim Credentials in AweSim Connect.
+#### 2. Enter AweSim Credentials in AweSim Connect.
 
 * Expected: SFTP button will activate.
 
-#### 4. Click the SFTP Button
+#### 3. Click the SFTP Button
 
 * Expected: The WinSCP application will launch and attempt to connect to the default server.
 
-#### 5. Ensure that the client connects to your account.
+#### 4. Ensure that the client connects to your account.
 
 * Expected: You will be connected to your user folder on the remote server.
 

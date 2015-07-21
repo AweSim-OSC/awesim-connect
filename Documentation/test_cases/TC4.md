@@ -4,31 +4,30 @@
 
 ## Title
 
-### Connect to AweSim via FileZilla SFTP
+### Connect to AweSim via Command Line Shell (PuTTY)
 
 ## Description
 
-### Open a FileZilla connection to AweSim
+### Open a Shell connection to AweSim using AweSim Connect
 
 ## Steps
 
-#### 1. Ensure FileZilla is installed to the default location.
-#### 2. Open the AweSim Connect application.
+#### 1. Open the AweSim Connect application.
 
 * Expected: AweSim Connect application launches successfully.
 
-#### 3. Enter AweSim Credentials in AweSim Connect.
+#### 2. Enter AweSim Credentials in AweSim Connect.
 
-* Expected: SFTP button will activate.
+* Expected: Console button will activate.
 
-#### 4. Click the SFTP Button
+#### 3. Click the Console Button
 
-* Expected: The FileZilla application will launch and attempt to connect to the default server.
+* Expected: The PuTTY application will launch and attempt to connect to the default server.
 
-#### 5. Ensure that the client connects to your account.
+#### 4. Ensure that the client connects to your account.
 
-* Expected: You will be connected to your user folder on the remote server.
+* Expected: You will be connected over an SSH terminal session to your user folder on the remote server.
 
 ## Expected Results
 
-* #### AweSim Connect connects to FileZilla when it is installed on a machine.
+* #### AweSim Connect launches and connects via secure shell connection.

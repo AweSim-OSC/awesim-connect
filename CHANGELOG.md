@@ -3,8 +3,10 @@
 ## Upcoming
 
 * Connection windows now spawn to the right of the main form.
-* All child windows are brought to fore when app is activated. 
+* All child windows are brought to fore when app is activated.
 * Fix bug with multiple windows to the same point not maintaining connection properly.
+* Remove FileZilla handling and use WinSCP by default.
+* Add the time launched to the optional panel window.
 
 ## v0.60
 

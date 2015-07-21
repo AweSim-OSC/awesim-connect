@@ -49,7 +49,7 @@ namespace AweSimConnect.Views
 
         Connection _connection;
 
-        private SFTPControllerFileZilla _ftpc;
+        private SFTPControllerWinSCP _ftpc;
         private ConsoleController _consolec;
         private ClipboardController _clipc;
         private CommandLineController _commandc;
@@ -96,7 +96,7 @@ namespace AweSimConnect.Views
             //Initialize controllers.
             _clipc = new ClipboardController();
             _clusterc = new OSCClusterController();
-            _ftpc = new SFTPControllerFileZilla(_connection);
+            _ftpc = new SFTPControllerWinSCP(_connection);
             _abtFrm = new AboutFrm();
             _advFrm = new AdvSettingsFrm();
             _settings = new AdvancedSettings();
@@ -650,12 +650,7 @@ namespace AweSimConnect.Views
             DisplayGroupBoxes();
 
             NetworkConnected(_networkAvailable);
-
-            if (_secondsElapsed == 1)
-            {
-                _ftpc.DetectSFTPPath();
-            }
-
+            
             if (_secondsElapsed == 2)
             {
                 deployHelperApps();

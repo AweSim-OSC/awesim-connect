@@ -10,6 +10,8 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class SFTPControllerFileZilla
     {
+        /* Code deprecated. Keeping it here for reference.
+
         private static string FILEZILLA_FOLDER_CONTAINS = "FileZilla";
         private static string FILEZILLA_FILE = "filezilla.exe";
         private string FilezillaPath = "";
@@ -102,5 +104,6 @@ namespace AweSimConnect.Controllers
 
         private delegate string DetectSFTPAsyncMethodCaller(int callDuration, out int threadID);
 
+    */
     }
 }

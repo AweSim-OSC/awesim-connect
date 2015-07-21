@@ -1,13 +1,13 @@
 #AweSim Connect Change Log
 
-## Upcoming
+## v0.61
 
 * Connection windows now spawn to the right of the main form.
 * All child windows are brought to fore when app is activated.
 * Fix bug with multiple windows to the same point not maintaining connection properly.
 * Remove FileZilla handling and use WinSCP by default.
 * Add the time launched to the optional panel window.
-* Compiler updated to .NET Native. (VS2015)
+* Compiler updated to .NET Native for improved performance. (VS2015)
 
 ## v0.60
 

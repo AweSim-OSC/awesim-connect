@@ -171,8 +171,10 @@ namespace AweSimConnect.Views
         private Point BuildNewConnectionWindowCoordinates()
         {
             // The current width and height of the main application.
-            int width = this.Width;
-            int height = this.Height;
+            int width = this.Width + SystemInformation.BorderSize.Width;
+            //int width = this.Width;
+            int height = this.Height + SystemInformation.BorderSize.Height;
+            //int height = this.Height;
 
             //This is the current location of the main app window.
             Point form_location = this.Location;
@@ -182,6 +184,8 @@ namespace AweSimConnect.Views
 
             // This gets the size of a connection form if we've already spawned one.
             int form_instance = _connectionForms.Count;
+            int form_batch = form_instance/3;
+            int form_offset = form_instance%3;
 
             int connection_form_height = 0;
             int connection_form_width = 0;
@@ -189,13 +193,14 @@ namespace AweSimConnect.Views
             {
                 Size connection_form_size = _connectionForms[0].Size;
                 connection_form_height = connection_form_size.Height;
-                connection_form_width = connection_form_size.Width;
+                connection_form_width = connection_form_size.Width + (SystemInformation.FixedFrameBorderSize.Width * 2); 
             }
 
             // Set the new coordinates of window.
-            int new_x = form_location.X + width;
-            int new_y = form_location.Y + (form_instance * connection_form_height);
-
+            int new_x = (form_batch*50) + Right + (SystemInformation.FixedFrameBorderSize.Width * 2);
+            int new_y = ((form_batch*50) + (form_offset*50)) + form_location.Y +
+                        (form_offset*(connection_form_height + SystemInformation.FixedFrameBorderSize.Height));  
+            
             // Checks to prevent new form from spawning off-screen.
             if (new_x < screen_rectangle.X)
                 new_x = screen_rectangle.X;

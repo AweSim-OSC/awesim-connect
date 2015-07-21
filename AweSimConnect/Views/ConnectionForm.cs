@@ -37,10 +37,5 @@ namespace AweSimConnect.Views
             panel.Parent_Form = new ConnectionForm(connection, userPass);
             panel.buttonDisconnect_Click(sender, e);
         }
-
-        private void ConnectionForm_Activated(object sender, EventArgs e)
-        {
-            this.BringToFront();
-        }
     }
 }

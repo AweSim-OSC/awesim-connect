@@ -10,7 +10,7 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class SFTPControllerFileZilla
     {
-        /* Code deprecated. Keeping it here for reference.
+        /* Code deprecated. Keeping it here for reference temporarily.
 
         private static string FILEZILLA_FOLDER_CONTAINS = "FileZilla";
         private static string FILEZILLA_FILE = "filezilla.exe";
@@ -59,7 +59,6 @@ namespace AweSimConnect.Controllers
         //Launch sftp client with a password
         public void StartSFTPProcess(string password)
         {
-            //TODO This will probably break if the password is empty.
             string sftpCommand = FilezillaPath;
             ProcessStartInfo info = new ProcessStartInfo(sftpCommand);
             info.Arguments = String.Format(FILEZILLA_ARGS, this.connection.UserName, password, connection.SSHHost, SFTP_PORT);
@@ -71,7 +70,6 @@ namespace AweSimConnect.Controllers
             }
             catch (Exception)
             {
-                //TODO probably should put up a message here.
             }
         }
 

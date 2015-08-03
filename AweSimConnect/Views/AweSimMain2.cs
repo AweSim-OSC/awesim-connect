@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -417,7 +418,8 @@ namespace AweSimConnect.Views
 
         private void BringMainWindowToFront()
         {
-            SetForegroundWindow((int)this.Handle);
+            Process thisProcess = Process.GetCurrentProcess();
+            SetForegroundWindow((int)thisProcess.Handle);
         }
 
         [DllImport("user32.dll")]
@@ -665,7 +667,6 @@ namespace AweSimConnect.Views
                 bool availableBeforeCheck = _networkAvailable;
                 _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
                 _networkChanged = (availableBeforeCheck != _networkAvailable);
-                CheckSSHConnection(_networkChanged);
                 EnableTunnelOptions(_networkAvailable);
 
             }

@@ -418,7 +418,7 @@ namespace AweSimConnect.Views
 
         private void BringMainWindowToFront()
         {
-            int SW_RESTORE = 9;
+            int SW_RESTORE = 9; // https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548(v=vs.85).aspx
             Process thisProcess = Process.GetCurrentProcess();
             IntPtr windowHandle = thisProcess.MainWindowHandle;
             SetForegroundWindow(windowHandle);

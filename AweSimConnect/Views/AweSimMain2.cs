@@ -418,17 +418,23 @@ namespace AweSimConnect.Views
 
         private void BringMainWindowToFront()
         {
+            int SW_RESTORE = 9;
             Process thisProcess = Process.GetCurrentProcess();
-            SetForegroundWindow((int)thisProcess.Handle);
+            IntPtr windowHandle = thisProcess.MainWindowHandle;
+            SetForegroundWindow(windowHandle);
+            ShowWindow(windowHandle, SW_RESTORE);
         }
 
         [DllImport("user32.dll")]
-        public static extern Int32 SetForegroundWindow(int windowHandle);
+        public static extern IntPtr SetForegroundWindow(IntPtr windowHandle);
+
+        [DllImport("user32.dll")]
+        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         // Clipboard monitoring
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         protected static extern int SetClipboardViewer(int hWndNewViewer);
-
+        
         // Add the app to the chain of apps that windows notifies on clipboard updates.
         [DllImport("user32.dll")]
         public static extern bool ChangeClipboardChain(IntPtr handleWindowRemove, IntPtr handleWindowNewNext);

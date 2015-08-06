@@ -15,7 +15,7 @@
       <Value Profile="(Default)">OAK</Value>
     </Setting>
     <Setting Name="AutoOpenApp" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="DetectClipboard" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -27,7 +27,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LaunchSSHOnImport" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

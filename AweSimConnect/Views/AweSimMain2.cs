@@ -79,7 +79,7 @@ namespace AweSimConnect.Views
             this.Text = CLIENT_TITLE;
 
             // Tell the clipboard viewer to notify this app when the clipboard changes.
-            _nextClipboardViewer = (IntPtr)SetClipboardViewer((int)this.Handle);
+            _nextClipboardViewer = (IntPtr)User32.SetClipboardViewer((int)this.Handle);
         }
 
         // Form Load
@@ -421,26 +421,10 @@ namespace AweSimConnect.Views
             int SW_RESTORE = 9; // https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548(v=vs.85).aspx
             Process thisProcess = Process.GetCurrentProcess();
             IntPtr windowHandle = thisProcess.MainWindowHandle;
-            SetForegroundWindow(windowHandle);
-            ShowWindow(windowHandle, SW_RESTORE);
+            User32.SetForegroundWindow(windowHandle);
+            User32.ShowWindow(windowHandle, SW_RESTORE);
         }
-
-        [DllImport("user32.dll")]
-        public static extern IntPtr SetForegroundWindow(IntPtr windowHandle);
-
-        [DllImport("user32.dll")]
-        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        // Clipboard monitoring
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        protected static extern int SetClipboardViewer(int hWndNewViewer);
         
-        // Add the app to the chain of apps that windows notifies on clipboard updates.
-        [DllImport("user32.dll")]
-        public static extern bool ChangeClipboardChain(IntPtr handleWindowRemove, IntPtr handleWindowNewNext);
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr handleWindow, int windowMessage, IntPtr wParam, IntPtr lParam);
-
         // Override of the WndProc in order to hook this app into the clipboard notification chain.
         protected override void WndProc(ref Message m)
         {
@@ -452,7 +436,7 @@ namespace AweSimConnect.Views
             {
                 case WM_DRAWCLIPBOARD:
                     PopulateFromClipboard();
-                    SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
+                    User32.SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
                     m.LParam);
                     break;
 
@@ -462,7 +446,7 @@ namespace AweSimConnect.Views
                         _nextClipboardViewer = m.LParam;
                     }
                     else
-                        SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
+                        User32.SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
                             m.LParam);
                     break;
 
@@ -516,7 +500,7 @@ namespace AweSimConnect.Views
         private void AweSimMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Remove the app from the clipboard view chain
-            ChangeClipboardChain(Handle, _nextClipboardViewer);
+            User32.ChangeClipboardChain(Handle, _nextClipboardViewer);
 
             // If the app has created any processes. (SFTP clients, for example)
             if (_processes.Count > 0)

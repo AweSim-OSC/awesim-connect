@@ -115,6 +115,7 @@
     <Compile Include="Controllers\SFTPControllerFileZilla.cs" />
     <Compile Include="Controllers\SFTPControllerWinSCP.cs" />
     <Compile Include="Controllers\SSHController.cs" />
+    <Compile Include="Controllers\User32.cs" />
     <Compile Include="Controllers\VNCControllerTurbo.cs" />
     <Compile Include="Controllers\WebTools.cs" />
     <Compile Include="Models\AdvancedSettings.cs" />

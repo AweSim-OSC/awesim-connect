@@ -133,19 +133,10 @@ namespace AweSimConnect.Views
                 //ShowWindow(_pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
                 // This command will embed the putty process in the main window. 
-                SetParent(_pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                User32.SetParent(_pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
             }
         }
-
-        // Used for embedding process into the app
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool ShowWindow(IntPtr windowHandle, int command);
-
-        // Used for embedding process into the app
-        [DllImport("user32.dll")]
-        private static extern IntPtr SetParent(IntPtr windowChild, IntPtr windowParent);
-
+        
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
             _ticks++;

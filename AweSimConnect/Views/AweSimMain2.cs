@@ -441,6 +441,7 @@ namespace AweSimConnect.Views
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr handleWindow, int windowMessage, IntPtr wParam, IntPtr lParam);
 
+        // Override of the WndProc in order to hook this app into the clipboard notification chain.
         protected override void WndProc(ref Message m)
         {
             // defined in winuser.h
@@ -487,6 +488,26 @@ namespace AweSimConnect.Views
                         DisplayGroupBoxes();
                         ClickConnectButton();
                     }
+                }
+            }
+        }
+
+        // Checks the settings for data from the command line.
+        private void CheckForCommandLineUpdate()
+        {
+            if (CommandLineController.IsArgsChanged())
+            {
+                try
+                {
+                    StringCollection collection = CommandLineController.GetArgsFromSettings();
+                    Connection commandLineConnection = CommandLineController.ProcessStringCollection(collection);
+                    UpdateData(commandLineConnection);
+                    DisplayGroupBoxes();
+                    ClickConnectButton();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Invalid Aruments: \n\n" + ex.Message, "Invalid Arguments", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -706,26 +727,6 @@ namespace AweSimConnect.Views
             new PlinkController(_connection);
             new VNCControllerTurbo(_connection);
         }
-
-        private void CheckForCommandLineUpdate()
-        {
-            if (CommandLineController.IsArgsChanged())
-            {
-                try
-                {
-                    StringCollection collection = CommandLineController.GetArgsFromSettings();
-                    Connection commandLineConnection = CommandLineController.ProcessStringCollection(collection);
-                    UpdateData(commandLineConnection);
-                    DisplayGroupBoxes();
-                    ClickConnectButton();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Invalid Aruments: \n\n" + ex.Message, "Invalid Arguments", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
 
         // Set the username when the user enters text.
         private void tbUsername_TextChanged(object sender, EventArgs e)

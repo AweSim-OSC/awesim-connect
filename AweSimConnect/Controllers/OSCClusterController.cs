@@ -16,9 +16,14 @@ namespace AweSimConnect.Controllers
             GLENN
         }
 
+        // SSH Nodes
         static OSCCluster oakley = new OSCCluster("OAK", "Oakley", "oakley.osc.edu");
         static OSCCluster ruby = new OSCCluster("RBY", "Ruby", "ruby.osc.edu");
         static OSCCluster glenn = new OSCCluster("OPT", "Glenn", "glenn.osc.edu");
+
+        // Other Hosts
+        public static OSCCluster SFTP_CLUSTER = new OSCCluster("FTP", "SFTP", "sftp.osc.edu");
+        public static OSCCluster SCP_CLUSTER = new OSCCluster("SCP", "SCP", "scp.osc.edu");
 
         private OSCCluster selectedCluster;
 

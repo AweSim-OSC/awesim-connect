@@ -14,6 +14,8 @@ namespace AweSimConnect.Controllers
         private static string WINSCP_FILE = "winscp.exe";
         private string WinSCPPath = "";
 
+
+
         internal Connection Connection { get; set; }
         private Process _process;
         private bool _processKilled;
@@ -51,7 +53,7 @@ namespace AweSimConnect.Controllers
             //TODO This will probably break if the password is empty.
             String sftpCommand = WinSCPPath;
             ProcessStartInfo info = new ProcessStartInfo(WINSCP_CURRENT_DIR);
-            info.Arguments = String.Format(WINSCP_ARGS, this.Connection.UserName, password, Connection.SSHHost, SFTP_PORT);
+            info.Arguments = String.Format(WINSCP_ARGS, this.Connection.UserName, password, OSCClusterController.SFTP_CLUSTER.Domain, SFTP_PORT);
             info.UseShellExecute = true;
 
             try

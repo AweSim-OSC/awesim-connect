@@ -225,6 +225,7 @@ namespace AweSimConnect.Views
             _connectionForms.Add(connectionForm);
         }
 
+        // Actions performed when the user clicks the Console button
         private void buttonConsole_Click(object sender, EventArgs e)
         {
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
@@ -328,6 +329,7 @@ namespace AweSimConnect.Views
             }
         }
 
+        // Actions performed when the user clicks the Connect button 
         private void ClickConnectButton()
         {
             if (_settings.LaunchTunnelAutomatically() && !string.IsNullOrEmpty(tbUsername.Text) &&
@@ -367,12 +369,13 @@ namespace AweSimConnect.Views
             return localPort;
         }
 
-        //Changes the color of a label
+        // Changes the color of a label.
         private void LabelColorChanger(Label label, bool valid)
         {
             label.ForeColor = valid ? Color.Gray : Color.Red;
         }
 
+        // Changes the color of a GroupBox object.
         private void LabelColorChanger(GroupBox groupBox, bool valid)
         {
             groupBox.ForeColor = valid ? Color.Gray : Color.Red;
@@ -416,6 +419,7 @@ namespace AweSimConnect.Views
             }
         }
 
+        // Uses calls to the system to bring the window to the front.
         private void BringMainWindowToFront()
         {
             int SW_RESTORE = 9; // https://msdn.microsoft.com/en-us/library/windows/desktop/ms633548(v=vs.85).aspx
@@ -626,6 +630,7 @@ namespace AweSimConnect.Views
 
         }
 
+        // Checks for network connectivity.
         private void NetworkConnected(bool isNetworkConnected)
         {
             CheckSSHConnection(_networkChanged);
@@ -644,6 +649,7 @@ namespace AweSimConnect.Views
             }
         }
 
+        // Makes an ssh connection check if the network status is changed.
         private void CheckSSHConnection(bool networkChanged)
         {
             if (networkChanged)

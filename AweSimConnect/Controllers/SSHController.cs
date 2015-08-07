@@ -13,7 +13,7 @@ namespace AweSimConnect.Controllers
         {
             try
             {
-                SshShell ssh = new SshShell(host, "bmcmichael");
+                SshShell ssh = new SshShell(host, "AweSim");
                 ssh.Connect();
                 var connected = ssh.Connected;
                 ssh.Close();
@@ -36,7 +36,7 @@ namespace AweSimConnect.Controllers
         {
             try
             {
-                SshShell ssh = new SshShell(host, "bmcmichael");
+                SshShell ssh = new SshShell(host, "AweSim");
                 ssh.Connect();
                 ssh.Close();
                 return "Connected";

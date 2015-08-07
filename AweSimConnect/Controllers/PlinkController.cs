@@ -51,26 +51,6 @@ namespace AweSimConnect.Controllers
             return Resources.plink;
         }
 
-        //Launch Plink without a password
-        //Currently not implemented. the form validates for password.
-        public void StartPlinkProcess()
-        {
-            String plinkCommand = String.Format(PLINK_CURRENT_PATH);
-            ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
-            info.Arguments = String.Format(PUTTY_ARGS_NOPASSWORD, this._connection.LocalPort, this._connection.GetServerAndPort(), this._connection.UserName, this._connection.SSHHost, this._connection.UserName);
-            info.UseShellExecute = true;
-
-            try
-            {
-                _process = Process.Start(info);
-            }
-            catch (Exception)
-            {
-                _process = new Process();
-                //TODO probably should put up a message or throw another exception here.
-            }
-        }
-
         //Launch Plink with a password
         public void StartPlinkProcess(string password)
         {

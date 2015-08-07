@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Windows.Forms;
 
 namespace AweSimConnect.Controllers
 {
@@ -39,6 +40,7 @@ namespace AweSimConnect.Controllers
                 }
                 catch (SocketException ex)
                 {
+                    // Windows Sockets error codes: https://msdn.microsoft.com/en-us/library/windows/desktop/ms740668(v=vs.85).aspx
                     if (ex.SocketErrorCode == SocketError.ConnectionRefused)
                     {
                         return false;

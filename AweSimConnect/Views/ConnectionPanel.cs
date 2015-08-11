@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
@@ -10,7 +11,7 @@ namespace AweSimConnect.Views
     public partial class ConnectionPanel : UserControl
     {
         private readonly Connection _connection;
-        private readonly TunnelController _pc;
+        private readonly TunnelController _tc;
         private readonly AdvancedSettings _advSettings;
         private readonly VNCControllerTurbo _vnc;
 
@@ -25,9 +26,9 @@ namespace AweSimConnect.Views
             InitializeComponent();
             Parent_Form = parentForm;
             _connection = inputConnection;
-            _pc = new TunnelController(_connection);
+            _tc = new TunnelController(_connection);
             _advSettings = new AdvancedSettings();
-            _pc.StartTunnelerProcess(userPass);
+            _tc.StartTunnelerProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
             toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a " + SessionType() + " connection to " + _connection.GetServerAndPort());
                 
@@ -76,12 +77,12 @@ namespace AweSimConnect.Views
 
         internal void KillProcess()
         {
-            _pc.KillProcess();
+            _tc.KillProcess();
             _vnc.KillProcess();
             _tunnelAvailable = false;
-            if (_pc.IsTunnelerRunning())
+            if (_tc.IsTunnelerRunning())
             {
-                _pc.KillProcess();
+                _tc.KillProcess();
             }
         }
 
@@ -116,7 +117,7 @@ namespace AweSimConnect.Views
 
         private void CheckTunnel()
         {
-            _tunnelAvailable = (_pc.IsTunnelerConnected() && _pc.IsTunnelerRunning());
+            _tunnelAvailable = (_tc.IsTunnelerConnected() && _tc.IsTunnelerRunning());
         }
         
         internal bool EmbedProcess()
@@ -124,9 +125,9 @@ namespace AweSimConnect.Views
             bool embedded = false;
 
             //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
-            if (_tunnelAvailable && !_pc.IsProcessEmbedded() && (_pc.GetThisProcess() != null))
+            if (_tunnelAvailable && !_tc.IsProcessEmbedded() && (_tc.GetThisProcess() != null))
             {
-                _pc.EmbedProcess();
+                _tc.EmbedProcess();
                 
                 // This is the only place these are used right now. Move them up or out if we need to.
                 // int MAXIMIZE_WINDOW = 3;
@@ -135,10 +136,9 @@ namespace AweSimConnect.Views
                 //ShowWindow(_pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
                 // This command will embed the putty process in the main window. 
-                User32.SetParent(_pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                User32.SetParent(_tc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
 
                 embedded = true;
-                
             }
 
             return embedded;
@@ -153,18 +153,24 @@ namespace AweSimConnect.Views
                 SetUpConnection();
             }
 
-            if ((_ticks % 25 == 0))
+            if ((_ticks % 30 ==0 ))
             {
-                CheckTunnel();
+                // If the tunnel process hasn't been embedded into the app, run a check for the connection.
+                if (!_tc.IsProcessEmbedded())
+                {
+                    CheckTunnel();
+                }
+
+                // If the tunnel is connected, enable the buttons, otherwise disable.
+                EnableConnectedFeatures(_tunnelAvailable);
+
+                // If the process is successfully embedded, run the associated app and hide the window.
                 if (EmbedProcess())
                 {
                     buttonConnection.PerformClick();
 
                     Parent_Form.Hide();
                 }
-
-                //If the tunnel is connected, enable the buttons, otherwise disable.
-                EnableConnectedFeatures(_tunnelAvailable);
             }
         }
 

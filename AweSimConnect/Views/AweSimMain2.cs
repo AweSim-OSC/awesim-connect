@@ -163,8 +163,9 @@ namespace AweSimConnect.Views
                 // Call the remap method here to check and remap to the internal domain.
                 _connection.PUAServer = new VisualizationNode().RemapPublicHostToInternalHost(_connection.PUAServer);
 
-                Point newWindowPoint = BuildNewConnectionWindowCoordinates();
-                BuildConnectionForm(_connection, tbPassword.Text, newWindowPoint);
+                //Point newWindowPoint = BuildNewConnectionWindowCoordinates();
+                //BuildConnectionForm(_connection, tbPassword.Text, newWindowPoint);
+                BuildConnectionForm(_connection, tbPassword.Text);
             }
         }
 
@@ -220,6 +221,15 @@ namespace AweSimConnect.Views
             ConnectionForm connectionForm = new ConnectionForm(newConnection, password);
             connectionForm.StartPosition = FormStartPosition.Manual;
             connectionForm.Location = startPoint;
+            connectionForm.Show(this);
+            _connectionForms.Add(connectionForm);
+        }
+
+        private void BuildConnectionForm(Connection connection, String password)
+        {
+            Connection newConnection = ObjectCopier.Clone(connection);
+            ConnectionForm connectionForm = new ConnectionForm(newConnection, password);
+            connectionForm.StartPosition = FormStartPosition.CenterScreen;
             connectionForm.Show(this);
             _connectionForms.Add(connectionForm);
         }

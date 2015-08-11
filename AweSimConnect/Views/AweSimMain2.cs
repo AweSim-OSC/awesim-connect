@@ -53,7 +53,6 @@ namespace AweSimConnect.Views
         private SFTPControllerWinSCP _ftpc;
         private ConsoleController _consolec;
         private ClipboardController _clipc;
-        private CommandLineController _commandc;
         private OSCClusterController _clusterc;
         private RegistryHook _registry;
 
@@ -714,7 +713,7 @@ namespace AweSimConnect.Views
         {
             new SFTPControllerWinSCP(_connection);
             new ConsoleController(_connection);
-            new PlinkController(_connection);
+            new TunnelController(_connection);
             new VNCControllerTurbo(_connection);
         }
 

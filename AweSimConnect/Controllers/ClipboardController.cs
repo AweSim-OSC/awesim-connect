@@ -58,7 +58,7 @@ namespace AweSimConnect.Controllers
                             CommandLineController.ProcessCommandLineString(clipboardText);
                         isValid = true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         isValid = false;
                     }

@@ -10,7 +10,7 @@ namespace AweSimConnect.Views
     public partial class ConnectionPanel : UserControl
     {
         private readonly Connection _connection;
-        private readonly PlinkController _pc;
+        private readonly TunnelController _pc;
         private readonly AdvancedSettings _advSettings;
         private readonly VNCControllerTurbo _vnc;
 
@@ -25,9 +25,9 @@ namespace AweSimConnect.Views
             InitializeComponent();
             Parent_Form = parentForm;
             _connection = inputConnection;
-            _pc = new PlinkController(_connection);
+            _pc = new TunnelController(_connection);
             _advSettings = new AdvancedSettings();
-            _pc.StartPlinkProcess(userPass);
+            _pc.StartTunnelerProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
             toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a " + SessionType() + " connection to " + _connection.GetServerAndPort());
                 
@@ -79,7 +79,7 @@ namespace AweSimConnect.Views
             _pc.KillProcess();
             _vnc.KillProcess();
             _tunnelAvailable = false;
-            if (_pc.IsPlinkRunning())
+            if (_pc.IsTunnelerRunning())
             {
                 _pc.KillProcess();
             }
@@ -116,7 +116,7 @@ namespace AweSimConnect.Views
 
         private void CheckTunnel()
         {
-            _tunnelAvailable = (_pc.IsPlinkConnected() && _pc.IsPlinkRunning());
+            _tunnelAvailable = (_pc.IsTunnelerConnected() && _pc.IsTunnelerRunning());
         }
         
         internal void EmbedProcess()

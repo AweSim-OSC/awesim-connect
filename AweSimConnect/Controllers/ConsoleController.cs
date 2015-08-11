@@ -27,7 +27,7 @@ namespace AweSimConnect.Controllers
         private static String PUTTY_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH, PUTTY_FILE);
 
         // PuTTY command line argument placeholder.        
-        private static String PUTTY_ARGS_NOPASSWORD = "-ssh {0} -l {1}";
+        //private static String PUTTY_ARGS_NOPASSWORD = "-ssh {0} -l {1}";
         private static String PUTTY_ARGS_PASSWORD = "-ssh {0} -l {1} -pw {2}";
 
         public ConsoleController(Connection connection)

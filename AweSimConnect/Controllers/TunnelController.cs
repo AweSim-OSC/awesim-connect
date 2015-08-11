@@ -7,12 +7,12 @@ using System.IO;
 namespace AweSimConnect.Controllers
 {
     /// <summary>
-    /// This class controls the plink application.
+    /// This class controls the tunneler application. Currently PuTTY
     /// </summary>
-    class PlinkController
+    class TunnelController
     {
-        private static String PLINK_PROCESS = "plink";
-        private static String PLINK_FILE = "plink.exe";
+        private static String PUTTY_PROCESS = "putty";
+        private static String PUTTY_FILE = "putty.exe";
 
         private Connection _connection;
         private Process _process;
@@ -26,37 +26,36 @@ namespace AweSimConnect.Controllers
             set { _connection = value; }
         }
 
-        //The full current path of the plink executable.
-        private static String PLINK_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH, PLINK_FILE);
+        //The full current path of the putty executable.
+        private static String PUTTY_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH, PUTTY_FILE);
 
         // PuTTY/Plink command line argument placeholder.        
-        private static String PUTTY_ARGS_NOPASSWORD = "-ssh -L {0}:{1}:{0} -C -N -T {2}@{3} -l {4}";
         private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
 
-        public PlinkController(Connection connection)
+        public TunnelController(Connection connection)
         {
-            InstallPlink();
+            InstallTunneler();
             _connection = connection;
         }
 
-        //Installs plink.exe to current directory if it isn't there.
-        public bool InstallPlink()
+        //Installs putty.exe to current directory if it isn't there.
+        public bool InstallTunneler()
         {
-            return FileController.DeployResourceToAweSimFilesFolder(getPlink(), PLINK_FILE);
+            return FileController.DeployResourceToAweSimFilesFolder(getTunneler(), PUTTY_FILE);
         }
 
-        //Gets plink.exe from the embedded resources.
-        private byte[] getPlink()
+        //Gets putty.exe from the embedded resources.
+        private byte[] getTunneler()
         {
-            return Resources.plink;
+            return Resources.putty;
         }
 
-        //Launch Plink with a password
-        public void StartPlinkProcess(string password)
+        //Launch putty with a password
+        public void StartTunnelerProcess(string password)
         {
             //TODO This will probably break if the password is empty, but the view currently prevents that.
-            String plinkCommand = String.Format(PLINK_CURRENT_PATH);
-            ProcessStartInfo info = new ProcessStartInfo(plinkCommand);
+            String puttyCommand = String.Format(PUTTY_CURRENT_PATH);
+            ProcessStartInfo info = new ProcessStartInfo(puttyCommand);
             info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, _connection.LocalPort, _connection.GetServerAndPort(), _connection.UserName, _connection.SSHHost, _connection.UserName, password);
             //info.UseShellExecute = true;
 
@@ -65,7 +64,6 @@ namespace AweSimConnect.Controllers
             info.RedirectStandardInput = true;
             info.CreateNoWindow = true;
             info.UseShellExecute = false;
-
 
             try
             {
@@ -77,14 +75,14 @@ namespace AweSimConnect.Controllers
             }
         }
 
-        // Check to see if plink exists in the AweSim connect folder.
-        internal bool IsPlinkInstalled()
+        // Check to see if putty exists in the AweSim connect folder.
+        internal bool IsTunnelerInstalled()
         {
-            return FileController.ExistsOnPath(PLINK_FILE);
+            return FileController.ExistsOnPath(PUTTY_FILE);
         }
 
-        // Check to see if plink is in the running processes.
-        internal bool IsPlinkRunning()
+        // Check to see if putty is in the running processes.
+        internal bool IsTunnelerRunning()
         {
             if (!_processKilled)
             {
@@ -97,16 +95,16 @@ namespace AweSimConnect.Controllers
             }
         }
 
-        internal Process[] GetPlinkProcesses()
+        internal Process[] GetTunnelerProcesses()
         {
-            return Process.GetProcessesByName(PLINK_PROCESS);
+            return Process.GetProcessesByName(PUTTY_PROCESS);
         }
 
-        internal bool IsPlinkConnected()
+        internal bool IsTunnelerConnected()
         {
             try
             {
-                if (IsPlinkRunning())
+                if (IsTunnelerRunning())
                 {
                     return NetworkTools.IsPortOpenOnLocalHost(_connection.LocalPort);
                 }

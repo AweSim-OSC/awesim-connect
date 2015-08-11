@@ -34,7 +34,7 @@ namespace AweSimConnect.Controllers
             {
                 Directory.Delete(FILE_FOLDER_PATH, true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Attempt to clean up folder failed.
                 //TODO Maybe add an error log.

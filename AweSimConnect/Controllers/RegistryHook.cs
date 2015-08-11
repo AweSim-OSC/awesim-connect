@@ -13,7 +13,7 @@ namespace AweSimConnect.Controllers
         public static string URI_PREFIX = "awesim://";
 
         private static string CONNECT_REG_POS = "Software\\Classes\\awesim";
-        private static string CONNECT_REG_PROTOCOL = "awesim";
+        //private static string CONNECT_REG_PROTOCOL = "awesim";
 
         private bool _installed;
 
@@ -56,7 +56,7 @@ namespace AweSimConnect.Controllers
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

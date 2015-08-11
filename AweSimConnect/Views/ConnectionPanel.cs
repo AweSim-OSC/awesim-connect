@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
@@ -33,8 +31,6 @@ namespace AweSimConnect.Views
             _advSettings = new AdvancedSettings();
             _tc.StartTunnelerProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
-                
-            //_vnc = new VNCControllerGGI(_connection);
             _vnc = new VNCControllerTurbo(_connection);
             labelVersion.Text = "v"+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             timerConnectionPanel.Start();
@@ -151,6 +147,7 @@ namespace AweSimConnect.Views
             return embedded;
         }
         
+        // 1 tick = 100 ms.
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
             _ticks++;

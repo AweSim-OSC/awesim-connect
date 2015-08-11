@@ -3,6 +3,7 @@ using AweSimConnect.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace AweSimConnect.Controllers
 {
@@ -57,13 +58,13 @@ namespace AweSimConnect.Controllers
             String puttyCommand = String.Format(PUTTY_CURRENT_PATH);
             ProcessStartInfo info = new ProcessStartInfo(puttyCommand);
             info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, _connection.LocalPort, _connection.GetServerAndPort(), _connection.UserName, _connection.SSHHost, _connection.UserName, password);
-            //info.UseShellExecute = true;
+            info.UseShellExecute = true;
 
             //info.RedirectStandardError = true;
             //info.RedirectStandardOutput = true;
             //info.RedirectStandardInput = true;
             //info.CreateNoWindow = true;
-            info.UseShellExecute = false;
+            //info.UseShellExecute = false;
 
             try
             {

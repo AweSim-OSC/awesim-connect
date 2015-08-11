@@ -8,13 +8,15 @@ namespace AweSimConnect.Controllers
         private static string HTTP_LOCALHOST = @"http://localhost:";
 
         // Custom tool to launch web browsers since .Net 2.0 and Win8 don't agree.
-        public static void LaunchBrowser(String url)
+        public static Process LaunchBrowser(string url)
         {
             bool launched = false;
+            Process browserProcess = new Process();
+            
 
             try
             {
-                Process.Start(url);
+                browserProcess = Process.Start("explorer.exe", url);
                 launched = true;
             }
             catch (Exception)
@@ -27,7 +29,7 @@ namespace AweSimConnect.Controllers
             {
                 try
                 {
-                    Process.Start("IEXPLORE", url);
+                    browserProcess = Process.Start("IEXPLORE", url);
                     launched = true;
                 }
                 catch (Exception)
@@ -41,23 +43,25 @@ namespace AweSimConnect.Controllers
             {
                 try
                 {
-                    Process.Start("explorer.exe", url);
+                    browserProcess = Process.Start(url);
                     launched = true;
                 }
                 catch (Exception)
                 {
-                    //Internet Explorer doesn't work.
+                    //Another way to try the default browser.
                 }
             }
-
+            
             //TODO if we get here without launching, I may want to add an embedded browser.
+
+            return browserProcess;
         }
 
         // Launch the custom browser launcher on a specified port.
-        public static void LaunchLocalhostBrowser(int port)
+        public static Process LaunchLocalhostBrowser(int port)
         {
             string url = HTTP_LOCALHOST + port;
-            LaunchBrowser(url);
+            return LaunchBrowser(url);
         }
     }
 }

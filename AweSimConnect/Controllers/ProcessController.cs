@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Management;
 using System.Text;
+using System.Windows.Forms;
 
 namespace AweSimConnect.Controllers
 {
@@ -33,10 +35,11 @@ namespace AweSimConnect.Controllers
             if (process != null)
             {
                 int processId = process.Id;
-
+                
                 if (!process.HasExited)
                 {
                     process.Close();
+                    Process.GetProcessById(processId).Close();
 
                     if (Process.GetProcessById(processId).Responding)
                     {
@@ -46,6 +49,5 @@ namespace AweSimConnect.Controllers
             }
             return true;
         }
-
     }
 }

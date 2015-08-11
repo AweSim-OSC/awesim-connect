@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,6 +17,8 @@ namespace AweSimConnect.Views
         private readonly VNCControllerTurbo _vnc;
 
         public Form Parent_Form { get; set; }
+
+        private Process _launchedProcess;
         
         private int _ticks = 0;
         private bool _tunnelAvailable;
@@ -68,11 +71,7 @@ namespace AweSimConnect.Views
 
         internal void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            KillProcess();
-            if (Parent_Form != null)
-            {
-                Parent_Form.Close();
-            }
+            KillEverything();
         }
 
         internal void KillProcess()
@@ -86,13 +85,23 @@ namespace AweSimConnect.Views
             }
         }
 
+        internal void KillEverything()
+        {
+            KillProcess();
+            if (Parent_Form != null)
+            {
+                Parent_Form.Close();
+            }
+        }
+
         private void buttonConnection_Click(object sender, EventArgs e)
         {
             if (!_isVnc)
             {
                 try
                 {
-                    WebTools.LaunchLocalhostBrowser(_connection.LocalPort);
+                    // TODO: This is returning the explorer process that spawns the browser, not the browser. I want to find a way to detect the broweser process that gets launched.
+                    _launchedProcess = WebTools.LaunchLocalhostBrowser(_connection.LocalPort);
                 }
                 catch (Exception)
                 {
@@ -103,7 +112,8 @@ namespace AweSimConnect.Views
             {
                 if (_tunnelAvailable)
                 {
-                    _vnc.StartVNCProcess();
+                    //_vnc.StartVNCProcess();
+                    _launchedProcess = _vnc.StartVNCProcess();
                 }
             }
         }
@@ -153,7 +163,7 @@ namespace AweSimConnect.Views
                 SetUpConnection();
             }
 
-            if ((_ticks % 30 ==0 ))
+            if (_ticks % 30 == 0)
             {
                 // If the tunnel process hasn't been embedded into the app, run a check for the connection.
                 if (!_tc.IsProcessEmbedded())
@@ -171,6 +181,23 @@ namespace AweSimConnect.Views
 
                     Parent_Form.Hide();
                 }
+            }
+
+            // Every 8 seconds, check to see if the user has closed the process we opened.
+            // If they have, disconnect the tunnel.
+            if (((_ticks % 80) == 0) && _tc.IsProcessEmbedded() && (_launchedProcess != null))
+            {
+                // TODO Find a way to track the spawned browser window
+                if (_launchedProcess.HasExited && _isVnc)
+                {
+                    KillEverything();
+                }
+            }
+
+            // After 24 hours (36000 ticks/hour) kill the tunnel
+            if ((_ticks % 864000) == 0)
+            {
+                KillEverything();
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using System.Windows.Forms;
 using AweSimConnect.Models;
 using AweSimConnect.Properties;
 
@@ -45,7 +46,7 @@ namespace AweSimConnect.Controllers
         }
 
         //Launch TurboVNC 
-        public void StartVNCProcess()
+        public Process StartVNCProcess()
         {
             ProcessStartInfo info = new ProcessStartInfo(TURBOVNC_CURRENT_DIR);
             info.Arguments = String.Format(TURBO_ARGS, Connection.VNCPassword, Connection.LocalPort);
@@ -55,10 +56,11 @@ namespace AweSimConnect.Controllers
             {
                 _process = Process.Start(info);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO Put up a message that it didn't work.
+                _process = new Process();
             }
+            return _process;
         }
 
         // Check to see if TurboVNC exists in the AweSim connect folder.

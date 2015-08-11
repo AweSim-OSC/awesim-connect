@@ -33,7 +33,6 @@ namespace AweSimConnect.Views
             _advSettings = new AdvancedSettings();
             _tc.StartTunnelerProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
-            toolTipConnectionPanel.SetToolTip(buttonConnection, "Launch a " + SessionType() + " connection to " + _connection.GetServerAndPort());
                 
             //_vnc = new VNCControllerGGI(_connection);
             _vnc = new VNCControllerTurbo(_connection);
@@ -49,24 +48,23 @@ namespace AweSimConnect.Views
         //Set the info box text.
         internal void SetUpConnection()
         {
+            string formTitle = "";
             if (_isVnc)
             {
-                tbConnectionInfo.Text = @"Using a VNC client, connect to localhost:" + _connection.LocalPort +
-                                       " and use password " + _connection.VNCPassword + " or click the eye button.";
-                tbTag.Text = "VNC";
-                buttonConnection.BackgroundImage = Resources.eye_gray;
+                tbConnectionInfo.Text = @"Attempting to connect to a VNC session at localhost:" + _connection.LocalPort +
+                                       " using password " + _connection.VNCPassword + ".";
+                formTitle += "VNC";
             }
             else
             {
-                tbConnectionInfo.Text = @"Using a web browser, navigate to http://localhost:" + _connection.LocalPort + " or click the button to the right to launch.";
-                tbTag.Text = "COMSOL";
-                buttonConnection.BackgroundImage = Resources.browser_sizes;
+                tbConnectionInfo.Text = @"Attempting to connect to a browser session at http://localhost:" + _connection.LocalPort + ".";
+               formTitle += "COMSOL";
             }
-            tbTag.Text += " ";
-            tbTag.Text += String.Format("{0:T}", DateTime.Now);
+            formTitle += " ";
+            formTitle += String.Format("{0:T}", DateTime.Now);
             
             lSession.Text = _connection.GetServerAndPort();
-            SetTagText();
+            Parent_Form.Text = formTitle;
         }
 
         internal void buttonDisconnect_Click(object sender, EventArgs e)
@@ -94,7 +92,7 @@ namespace AweSimConnect.Views
             }
         }
 
-        private void buttonConnection_Click(object sender, EventArgs e)
+        private void ConnectToApp()
         {
             if (!_isVnc)
             {
@@ -122,7 +120,6 @@ namespace AweSimConnect.Views
         {
             pbTunnel.Image = (tunnelAvailable) ? Resources.shield : Resources.cross_gry;
             toolTipConnectionPanel.SetToolTip(pbTunnel, (tunnelAvailable) ? "Secure Tunnel Detected" : "Secure Tunnel Disconnected");
-            buttonConnection.Enabled = tunnelAvailable;
         }
 
         private void CheckTunnel()
@@ -177,7 +174,7 @@ namespace AweSimConnect.Views
                 // If the process is successfully embedded, run the associated app and hide the window.
                 if (EmbedProcess())
                 {
-                    buttonConnection.PerformClick();
+                    ConnectToApp();
 
                     Parent_Form.Hide();
                 }
@@ -200,17 +197,5 @@ namespace AweSimConnect.Views
                 KillEverything();
             }
         }
-
-        private void SetTagText()
-        {
-            Parent_Form.Text = ((tbTag.Text != "") ? tbTag.Text+" " : "")
-            +_connection.GetServerAndPort();
-        }
-
-        private void tbTag_TextChanged(object sender, EventArgs e)
-        {
-            SetTagText();
-        }
-
     }
 }

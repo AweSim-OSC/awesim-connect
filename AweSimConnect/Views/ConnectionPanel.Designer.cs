@@ -30,13 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timerConnectionPanel = new System.Windows.Forms.Timer(this.components);
-            this.buttonConnection = new System.Windows.Forms.Button();
             this.lSession = new System.Windows.Forms.Label();
             this.panelProcesses = new System.Windows.Forms.Panel();
             this.toolTipConnectionPanel = new System.Windows.Forms.ToolTip(this.components);
             this.buttonDisconnect = new System.Windows.Forms.Button();
-            this.tbTag = new System.Windows.Forms.TextBox();
-            this.labelTag = new System.Windows.Forms.Label();
             this.tbConnectionInfo = new System.Windows.Forms.TextBox();
             this.pbTunnel = new System.Windows.Forms.PictureBox();
             this.labelVersion = new System.Windows.Forms.Label();
@@ -46,27 +43,6 @@
             // timerConnectionPanel
             // 
             this.timerConnectionPanel.Tick += new System.EventHandler(this.timerConnectionPanel_Tick);
-            // 
-            // buttonConnection
-            // 
-            this.buttonConnection.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonConnection.BackColor = System.Drawing.Color.Transparent;
-            this.buttonConnection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonConnection.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonConnection.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonConnection.FlatAppearance.BorderSize = 0;
-            this.buttonConnection.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.buttonConnection.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConnection.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.buttonConnection.Location = new System.Drawing.Point(278, 15);
-            this.buttonConnection.Name = "buttonConnection";
-            this.buttonConnection.Size = new System.Drawing.Size(70, 71);
-            this.buttonConnection.TabIndex = 23;
-            this.buttonConnection.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTipConnectionPanel.SetToolTip(this.buttonConnection, "Launch App");
-            this.buttonConnection.UseVisualStyleBackColor = false;
-            this.buttonConnection.Click += new System.EventHandler(this.buttonConnection_Click);
             // 
             // lSession
             // 
@@ -105,7 +81,7 @@
             this.buttonDisconnect.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.buttonDisconnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDisconnect.Location = new System.Drawing.Point(354, 36);
+            this.buttonDisconnect.Location = new System.Drawing.Point(273, 36);
             this.buttonDisconnect.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDisconnect.Name = "buttonDisconnect";
             this.buttonDisconnect.Size = new System.Drawing.Size(28, 28);
@@ -115,27 +91,9 @@
             this.buttonDisconnect.UseVisualStyleBackColor = true;
             this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
             // 
-            // tbTag
-            // 
-            this.tbTag.Location = new System.Drawing.Point(164, 27);
-            this.tbTag.Name = "tbTag";
-            this.tbTag.Size = new System.Drawing.Size(108, 20);
-            this.tbTag.TabIndex = 26;
-            this.tbTag.TextChanged += new System.EventHandler(this.tbTag_TextChanged);
-            // 
-            // labelTag
-            // 
-            this.labelTag.AutoSize = true;
-            this.labelTag.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelTag.Location = new System.Drawing.Point(84, 30);
-            this.labelTag.Name = "labelTag";
-            this.labelTag.Size = new System.Drawing.Size(74, 13);
-            this.labelTag.TabIndex = 27;
-            this.labelTag.Text = "Tag (Optional)";
-            // 
             // tbConnectionInfo
             // 
-            this.tbConnectionInfo.Location = new System.Drawing.Point(87, 50);
+            this.tbConnectionInfo.Location = new System.Drawing.Point(85, 26);
             this.tbConnectionInfo.Multiline = true;
             this.tbConnectionInfo.Name = "tbConnectionInfo";
             this.tbConnectionInfo.ReadOnly = true;
@@ -157,7 +115,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(278, 85);
+            this.labelVersion.Location = new System.Drawing.Point(160, 77);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 29;
@@ -171,15 +129,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.tbConnectionInfo);
-            this.Controls.Add(this.labelTag);
-            this.Controls.Add(this.tbTag);
             this.Controls.Add(this.panelProcesses);
-            this.Controls.Add(this.buttonConnection);
             this.Controls.Add(this.pbTunnel);
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.lSession);
             this.Name = "ConnectionPanel";
-            this.Size = new System.Drawing.Size(391, 102);
+            this.Size = new System.Drawing.Size(313, 102);
             ((System.ComponentModel.ISupportInitialize)(this.pbTunnel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -189,14 +144,11 @@
         #endregion
 
         private System.Windows.Forms.Timer timerConnectionPanel;
-        private System.Windows.Forms.Button buttonConnection;
         private System.Windows.Forms.Button buttonDisconnect;
         private System.Windows.Forms.Label lSession;
         private System.Windows.Forms.PictureBox pbTunnel;
         private System.Windows.Forms.Panel panelProcesses;
         private System.Windows.Forms.ToolTip toolTipConnectionPanel;
-        private System.Windows.Forms.TextBox tbTag;
-        private System.Windows.Forms.Label labelTag;
         private System.Windows.Forms.TextBox tbConnectionInfo;
         private System.Windows.Forms.Label labelVersion;
     }

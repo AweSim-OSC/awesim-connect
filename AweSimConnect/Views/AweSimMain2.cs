@@ -102,11 +102,11 @@ namespace AweSimConnect.Views
             _settings = new AdvancedSettings();
             _registry = new RegistryHook();
             
-            // Check for connectivity to the servers
-            LimitedConnectionPopup();
-
             _sshHost = _clusterc.GetCluster(_settings.GetSSHHostCode()).Domain;
             this._connection.SSHHost = _sshHost;
+
+            // Check for connectivity to the servers
+            LimitedConnectionPopup();
 
             tbUsername.Text = _settings.GetUsername();
             tbPassword.Text = _settings.GetPassword();
@@ -642,10 +642,11 @@ namespace AweSimConnect.Views
         // Checks for network connectivity.
         private void NetworkConnected(bool isNetworkConnected)
         {
-            CheckSSHConnection(_networkChanged);
+            
 
             if (isNetworkConnected)
             {
+                CheckSSHConnection(_networkChanged);
                 pbIsNetworkConnected.Image = Resources.wifi;
                 toolTipNoDelay.SetToolTip(pbIsNetworkConnected, "Network Available\nConnected to " + _sshHost);
                 lConnectionStatus.Text = _sshHost + " available";
@@ -689,17 +690,15 @@ namespace AweSimConnect.Views
             // Disable the connection button if can not connect to OSC.
             if (_secondsElapsed % 15 == 0)
             {
-                //TODO Async this
                 bool availableBeforeCheck = _networkAvailable;
                 _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
                 _networkChanged = (availableBeforeCheck != _networkAvailable);
-                EnableTunnelOptions(_networkAvailable);
+                EnableTunnelOptions(_networkAvailable && _sshAvailable);
 
             }
 
             if (_secondsElapsed % 2 == 0)
             {
-                //_sftpAvailable = _ftpc.IsSFTPInstalled();
                 _sftpAvailable = true;
                 EnableSFTPOptions(_sftpAvailable && _networkAvailable);
             }

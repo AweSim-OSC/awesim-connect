@@ -33,7 +33,6 @@ namespace AweSimConnect.Views
                 }
             }
             cbHosts.SelectedIndex = clusterSelected;
-            cbAutoOpen.Checked = _settings.AutoOpenApp();
             cbClipboardDetect.Checked = _settings.DetectClipboard();
             cbLaunchTunnel.Checked = _settings.LaunchTunnelAutomatically();
         }
@@ -69,11 +68,6 @@ namespace AweSimConnect.Views
         private void cbClipboardDetect_CheckedChanged(object sender, EventArgs e)
         {
             _settings.SetDetectClipboard(cbClipboardDetect.Checked);
-        }
-
-        private void cbAutoOpen_CheckedChanged(object sender, EventArgs e)
-        {
-            _settings.SetAutoOpenApp(cbAutoOpen.Checked);
         }
         
         private void cbLaunchTunnel_CheckedChanged(object sender, EventArgs e)

@@ -35,7 +35,6 @@
             this.cbHosts = new System.Windows.Forms.ComboBox();
             this.labelSSHHost = new System.Windows.Forms.Label();
             this.cbClipboardDetect = new System.Windows.Forms.CheckBox();
-            this.cbAutoOpen = new System.Windows.Forms.CheckBox();
             this.toolTipAdvSettings = new System.Windows.Forms.ToolTip(this.components);
             this.cbLaunchTunnel = new System.Windows.Forms.CheckBox();
             this.gbConnection = new System.Windows.Forms.GroupBox();
@@ -51,7 +50,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(104, 213);
+            this.labelVersion.Location = new System.Drawing.Point(104, 193);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -111,20 +110,6 @@
             this.cbClipboardDetect.UseVisualStyleBackColor = true;
             this.cbClipboardDetect.CheckedChanged += new System.EventHandler(this.cbClipboardDetect_CheckedChanged);
             // 
-            // cbAutoOpen
-            // 
-            this.cbAutoOpen.AutoSize = true;
-            this.cbAutoOpen.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.cbAutoOpen.Location = new System.Drawing.Point(13, 65);
-            this.cbAutoOpen.Name = "cbAutoOpen";
-            this.cbAutoOpen.Size = new System.Drawing.Size(157, 17);
-            this.cbAutoOpen.TabIndex = 35;
-            this.cbAutoOpen.Text = "Automatically Open Session";
-            this.toolTipAdvSettings.SetToolTip(this.cbAutoOpen, "When activated, the VNC client or browser will be launched automatically after a " +
-        "connection is established.");
-            this.cbAutoOpen.UseVisualStyleBackColor = true;
-            this.cbAutoOpen.CheckedChanged += new System.EventHandler(this.cbAutoOpen_CheckedChanged);
-            // 
             // cbLaunchTunnel
             // 
             this.cbLaunchTunnel.AutoSize = true;
@@ -165,11 +150,10 @@
             // 
             this.groupBox1.Controls.Add(this.cbLaunchTunnel);
             this.groupBox1.Controls.Add(this.cbSaveUser);
-            this.groupBox1.Controls.Add(this.cbAutoOpen);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox1.Location = new System.Drawing.Point(12, 121);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 89);
+            this.groupBox1.Size = new System.Drawing.Size(202, 69);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Automation Settings";
@@ -179,7 +163,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(224, 233);
+            this.ClientSize = new System.Drawing.Size(224, 213);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbSystem);
             this.Controls.Add(this.gbConnection);
@@ -209,7 +193,6 @@
         private System.Windows.Forms.ComboBox cbHosts;
         private System.Windows.Forms.Label labelSSHHost;
         private System.Windows.Forms.CheckBox cbClipboardDetect;
-        private System.Windows.Forms.CheckBox cbAutoOpen;
         private System.Windows.Forms.ToolTip toolTipAdvSettings;
         private System.Windows.Forms.GroupBox gbConnection;
         private System.Windows.Forms.GroupBox gbSystem;

@@ -119,8 +119,10 @@ namespace AweSimConnect.Views
             _tunnelAvailable = (_pc.IsTunnelerConnected() && _pc.IsTunnelerRunning());
         }
         
-        internal void EmbedProcess()
+        internal bool EmbedProcess()
         {
+            bool embedded = false;
+
             //If the tunnel is connected and the process hasn't been embedded, pull it into the app.
             if (_tunnelAvailable && !_pc.IsProcessEmbedded() && (_pc.GetThisProcess() != null))
             {
@@ -134,7 +136,12 @@ namespace AweSimConnect.Views
 
                 // This command will embed the putty process in the main window. 
                 User32.SetParent(_pc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+
+                embedded = true;
+                
             }
+
+            return embedded;
         }
         
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
@@ -146,18 +153,15 @@ namespace AweSimConnect.Views
                 SetUpConnection();
             }
 
-            if ((_ticks == 15) && _tunnelAvailable)
-            {
-                if (_advSettings.AutoOpenApp())
-                {
-                    buttonConnection_Click(sender, e);
-                }
-            }
-
             if ((_ticks % 25 == 0))
             {
                 CheckTunnel();
-                EmbedProcess();
+                if (EmbedProcess())
+                {
+                    buttonConnection.PerformClick();
+
+                    Parent_Form.Hide();
+                }
 
                 //If the tunnel is connected, enable the buttons, otherwise disable.
                 EnableConnectedFeatures(_tunnelAvailable);

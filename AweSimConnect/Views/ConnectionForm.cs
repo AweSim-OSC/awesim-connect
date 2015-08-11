@@ -29,6 +29,7 @@ namespace AweSimConnect.Views
             panel = new ConnectionPanel(connection, userPass, this);
             this.Controls.Add(panel);
             this.Text = (connection.GetServerAndPort());
+            
         }
         
         // Make sure that we disconnect the process in the panel when we close the form.

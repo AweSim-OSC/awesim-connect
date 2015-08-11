@@ -63,28 +63,18 @@ namespace AweSimConnect.Controllers
                         isValid = false;
                     }
                 }
-                else
+                else if (clipboardText.StartsWith("{") && clipboardText.EndsWith("}"))
                 {
                     try
                     {
-                        // Get the text from the clipboard.
-                        string json = Clipboard.GetText().Trim();
-
                         // Attempt to parse the clipboard text.
-                        try
-                        {
-                            Connection connection = JsonConvert.DeserializeObject<Connection>(json);
+                        Connection connection = JsonConvert.DeserializeObject<Connection>(clipboardText);
 
-                            // Set the local Connection object.
-                            connectionData = connection;
+                        // Set the local Connection object.
+                        connectionData = connection;
 
-                            // If we've made it this far, it's a valid json.
-                            isValid = true;
-                        }
-                        catch (ArgumentException)
-                        {
-                            isValid = false;
-                        }
+                        // If we've made it this far, it's a valid json.
+                        isValid = true;
                     }
                     catch (ArgumentException)
                     {

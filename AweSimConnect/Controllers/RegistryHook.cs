@@ -12,8 +12,9 @@ namespace AweSimConnect.Controllers
         // The URL handler for this app
         public static string URI_PREFIX = "awesim://";
 
-        private static string CONNECT_REG_POS = "Software\\Classes\\awesim";
-        //private static string CONNECT_REG_PROTOCOL = "awesim";
+        private static string CONNECT_REG_PROTOCOL = "awesim";
+        private static string CONNECT_REG_POS = "Software\\Classes\\"+CONNECT_REG_PROTOCOL;
+        
 
         private bool _installed;
 

@@ -148,6 +148,16 @@ AweSim Connect now uses WinSCP as the default SFTP client.
 * Download the required dependencies using the NuGet Package Manager
 * Click the button with the green arrow and the word "Start" to build and run the solution.
 
+#### Version Checking
+
+* The deployment folder currently hosts a php file that returns the windows assembly file info.
+
+This file returns a string response with the current windows assembly file version of the executable in the deployment folder.
+This process is dynamic, so updating the executable in the deployment folder automatically updates the response.
+The app uses this response to determine if the deployed version is newer than the client version.
+
+* https://apps.awesim.org/assets/wiag/connect/latest/awesimconnectversion.php
+
 
 #### Automatic connection via `awesim://` URI
 

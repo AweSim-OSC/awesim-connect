@@ -116,6 +116,7 @@ namespace AweSimConnect.Views
             }
 
             DisplayGroupBoxes();
+            DisplayNewVersionOptions(_settings.NewerVersionAvailable());
 
             if (!_settings.GetArgsChanged())
             {
@@ -686,7 +687,7 @@ namespace AweSimConnect.Views
                 deployHelperApps();
             }
 
-            if (_secondsElapsed == 30)
+            if (_secondsElapsed == 10)
             {
                 checkForNewVersion();
             } 
@@ -732,12 +733,11 @@ namespace AweSimConnect.Views
                     _settings.SetNewerVersionAvailable(VersionChecker.IsNewerVersionAvailable());
                 }
 
-                displayNewVersionOptions(_settings.NewerVersionAvailable());
-                
+                DisplayNewVersionOptions(_settings.NewerVersionAvailable());
             }
         }
 
-        private void displayNewVersionOptions(bool newerAvailable)
+        private void DisplayNewVersionOptions(bool newerAvailable)
         {
             lNewVersion.Visible = newerAvailable;
         }

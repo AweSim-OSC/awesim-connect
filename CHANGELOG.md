@@ -8,6 +8,7 @@
 * Update WinSCP to 5.7.5
 * WinSCP now connects to 'sftp.osc.edu' by default.
 * Version checking enabled.
+* Clipboard behavior disabled by default.
 
 ## v0.61
 

@@ -1,5 +1,14 @@
 #AweSim Connect Change Log
 
+## v0.70
+
+* One-click connect via URI is now the default behavior.
+* Switch plink to PuTTY tunnel to provide GUI RSH key accept notification.
+* Little windows disappear on connect now.
+* Update WinSCP to 5.7.5
+* WinSCP now connects to 'sftp.osc.edu' by default.
+* Version checking enabled.
+
 ## v0.61
 
 * Connection windows now spawn to the right of the main form.

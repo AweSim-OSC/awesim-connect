@@ -123,6 +123,7 @@ namespace AweSimConnect.Views
             }
 
             timerMain.Start();
+            
         }
 
 

@@ -145,5 +145,31 @@ namespace AweSimConnect.Models
             Settings.Default.LaunchSSHOnImport = launch;
             Settings.Default.Save();
         }
+
+        // This should be true if there is a new version available.
+        internal bool NewerVersionAvailable()
+        {
+            return Settings.Default.NewerVersionAvailable;
+        }
+
+        // Set the option if there is a new version available.
+        internal void SetNewerVersionAvailable(bool isNewerVersion)
+        {
+            Settings.Default.NewerVersionAvailable = isNewerVersion;
+            Settings.Default.Save();
+        }
+
+        // This should be true to automatically check for new versions.
+        internal bool AutoCheckNewVersion()
+        {
+            return Settings.Default.AutoCheckNewVersion;
+        }
+
+        // Set the option to enable or diable auto version checks.
+        internal void SetAutoCheckNewVersion(bool autoCheckNewVersion)
+        {
+            Settings.Default.AutoCheckNewVersion = autoCheckNewVersion;
+            Settings.Default.Save();
+        }
     }
 }

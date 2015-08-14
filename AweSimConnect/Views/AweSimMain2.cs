@@ -686,6 +686,11 @@ namespace AweSimConnect.Views
                 deployHelperApps();
             }
 
+            if (_secondsElapsed == 30)
+            {
+                checkForNewVersion();
+            } 
+
             // Check for network connectivity every 15 seconds.
             // Disable the connection button if can not connect to OSC.
             if (_secondsElapsed % 15 == 0)
@@ -715,6 +720,26 @@ namespace AweSimConnect.Views
 
                 CheckForCommandLineUpdate();
             }
+        }
+
+        private void checkForNewVersion()
+        {
+            if (_settings.AutoCheckNewVersion())
+            {
+                // If we already know there is a newer version out there we don't need to check again.
+                if (!_settings.NewerVersionAvailable())
+                {
+                    _settings.SetNewerVersionAvailable(VersionChecker.IsNewerVersionAvailable());
+                }
+
+                displayNewVersionOptions(_settings.NewerVersionAvailable());
+                
+            }
+        }
+
+        private void displayNewVersionOptions(bool newerAvailable)
+        {
+            lNewVersion.Visible = newerAvailable;
         }
 
         //This method deploys the helper apps to the helper apps folder. The objects will get garbage collected.
@@ -819,6 +844,9 @@ namespace AweSimConnect.Views
             cbRememberMe.Checked = check;
         }
 
-        
+        private void lNewVersion_Click(object sender, EventArgs e)
+        {
+            WebTools.LaunchBrowser(VersionChecker.LATEST_DOWNLOAD_PAGE);
+        }
     }
 }

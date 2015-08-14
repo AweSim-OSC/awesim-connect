@@ -129,5 +129,29 @@ namespace AweSimConnect.Properties {
                 this["LaunchSSHOnImport"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool NewerVersionAvailable {
+            get {
+                return ((bool)(this["NewerVersionAvailable"]));
+            }
+            set {
+                this["NewerVersionAvailable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoCheckNewVersion {
+            get {
+                return ((bool)(this["AutoCheckNewVersion"]));
+            }
+            set {
+                this["AutoCheckNewVersion"] = value;
+            }
+        }
     }
 }

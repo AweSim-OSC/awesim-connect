@@ -35,6 +35,7 @@ namespace AweSimConnect.Views
             cbHosts.SelectedIndex = clusterSelected;
             cbClipboardDetect.Checked = _settings.DetectClipboard();
             cbLaunchTunnel.Checked = _settings.LaunchTunnelAutomatically();
+            cbNewVersionCheck.Checked = _settings.AutoCheckNewVersion();
         }
 
         private void AdvSettingsFrm_Load(object sender, EventArgs e)
@@ -75,6 +76,9 @@ namespace AweSimConnect.Views
             _settings.SetLaunchSSHTunnelAutomatically(cbLaunchTunnel.Checked);
         }
 
-
+        private void cbNewVersionCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            _settings.SetAutoCheckNewVersion(cbNewVersionCheck.Checked);
+        }
     }
 }

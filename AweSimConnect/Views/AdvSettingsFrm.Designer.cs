@@ -39,6 +39,7 @@
             this.cbLaunchTunnel = new System.Windows.Forms.CheckBox();
             this.gbConnection = new System.Windows.Forms.GroupBox();
             this.gbSystem = new System.Windows.Forms.GroupBox();
+            this.cbNewVersionCheck = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbConnection.SuspendLayout();
             this.gbSystem.SuspendLayout();
@@ -50,7 +51,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(104, 193);
+            this.labelVersion.Location = new System.Drawing.Point(104, 210);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -137,23 +138,35 @@
             // 
             // gbSystem
             // 
+            this.gbSystem.Controls.Add(this.cbNewVersionCheck);
             this.gbSystem.Controls.Add(this.cbClipboardDetect);
             this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gbSystem.Location = new System.Drawing.Point(12, 71);
             this.gbSystem.Name = "gbSystem";
-            this.gbSystem.Size = new System.Drawing.Size(202, 44);
+            this.gbSystem.Size = new System.Drawing.Size(202, 65);
             this.gbSystem.TabIndex = 38;
             this.gbSystem.TabStop = false;
             this.gbSystem.Text = "System Settings";
+            // 
+            // cbNewVersionCheck
+            // 
+            this.cbNewVersionCheck.AutoSize = true;
+            this.cbNewVersionCheck.Location = new System.Drawing.Point(13, 43);
+            this.cbNewVersionCheck.Name = "cbNewVersionCheck";
+            this.cbNewVersionCheck.Size = new System.Drawing.Size(140, 17);
+            this.cbNewVersionCheck.TabIndex = 35;
+            this.cbNewVersionCheck.Text = "Check for New Versions";
+            this.cbNewVersionCheck.UseVisualStyleBackColor = true;
+            this.cbNewVersionCheck.CheckedChanged += new System.EventHandler(this.cbNewVersionCheck_CheckedChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cbLaunchTunnel);
             this.groupBox1.Controls.Add(this.cbSaveUser);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox1.Location = new System.Drawing.Point(12, 121);
+            this.groupBox1.Location = new System.Drawing.Point(12, 142);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 69);
+            this.groupBox1.Size = new System.Drawing.Size(202, 65);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Automation Settings";
@@ -163,7 +176,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(224, 213);
+            this.ClientSize = new System.Drawing.Size(224, 229);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbSystem);
             this.Controls.Add(this.gbConnection);
@@ -198,5 +211,6 @@
         private System.Windows.Forms.GroupBox gbSystem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cbLaunchTunnel;
+        private System.Windows.Forms.CheckBox cbNewVersionCheck;
     }
 }

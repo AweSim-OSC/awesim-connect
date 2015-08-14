@@ -59,10 +59,14 @@
 		return $Version;
 	}
 
-	echo "{	\"version\": \"";
+	$isFirst = true;
 	foreach (GetFileVersion("AweSimConnect.exe") as $subvers) {
-                echo $subvers.".";
-        }
-    echo "\" }";
+                if ($isFirst) {
+                        $isFirst = false;
+                        echo $subvers;
+                        continue;
+                }
+                echo ".".$subvers;
+    }
 
 ?>

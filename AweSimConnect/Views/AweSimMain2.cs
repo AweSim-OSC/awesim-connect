@@ -739,7 +739,7 @@ namespace AweSimConnect.Views
 
         private void DisplayNewVersionOptions(bool newerAvailable)
         {
-            lNewVersion.Visible = newerAvailable;
+            linkLabelNewVersion.Visible = newerAvailable;
         }
 
         //This method deploys the helper apps to the helper apps folder. The objects will get garbage collected.
@@ -844,7 +844,7 @@ namespace AweSimConnect.Views
             cbRememberMe.Checked = check;
         }
 
-        private void lNewVersion_Click(object sender, EventArgs e)
+        private void linkLabelNewVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             WebTools.LaunchBrowser(VersionChecker.LATEST_DOWNLOAD_PAGE);
         }

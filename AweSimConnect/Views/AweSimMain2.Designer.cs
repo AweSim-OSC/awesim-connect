@@ -63,7 +63,7 @@
             this.gbSettings = new System.Windows.Forms.GroupBox();
             this.gbAbout = new System.Windows.Forms.GroupBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.lNewVersion = new System.Windows.Forms.Label();
+            this.linkLabelNewVersion = new System.Windows.Forms.LinkLabel();
             this.gbCredentials.SuspendLayout();
             this.gbSessionInfo.SuspendLayout();
             this.gbSessionType.SuspendLayout();
@@ -527,20 +527,20 @@
             this.pbLogo.TabStop = false;
             this.pbLogo.Tag = "Logo";
             // 
-            // lNewVersion
+            // linkLabelNewVersion
             // 
-            this.lNewVersion.AutoSize = true;
-            this.lNewVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lNewVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lNewVersion.ForeColor = System.Drawing.Color.Blue;
-            this.lNewVersion.Location = new System.Drawing.Point(16, 127);
-            this.lNewVersion.Name = "lNewVersion";
-            this.lNewVersion.Size = new System.Drawing.Size(147, 32);
-            this.lNewVersion.TabIndex = 19;
-            this.lNewVersion.Text = "New Version Available!\r\nClick to Download";
-            this.lNewVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lNewVersion.Visible = false;
-            this.lNewVersion.Click += new System.EventHandler(this.lNewVersion_Click);
+            this.linkLabelNewVersion.AllowDrop = true;
+            this.linkLabelNewVersion.AutoSize = true;
+            this.linkLabelNewVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelNewVersion.Location = new System.Drawing.Point(17, 127);
+            this.linkLabelNewVersion.Name = "linkLabelNewVersion";
+            this.linkLabelNewVersion.Size = new System.Drawing.Size(144, 32);
+            this.linkLabelNewVersion.TabIndex = 20;
+            this.linkLabelNewVersion.TabStop = true;
+            this.linkLabelNewVersion.Text = "New Version Available\r\nClick to Download";
+            this.linkLabelNewVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabelNewVersion.Visible = false;
+            this.linkLabelNewVersion.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelNewVersion_LinkClicked);
             // 
             // AweSimMain2
             // 
@@ -548,7 +548,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(347, 537);
-            this.Controls.Add(this.lNewVersion);
+            this.Controls.Add(this.linkLabelNewVersion);
             this.Controls.Add(this.gbAbout);
             this.Controls.Add(this.gbSettings);
             this.Controls.Add(this.gbConsole);
@@ -626,6 +626,6 @@
         private System.Windows.Forms.GroupBox gbAbout;
         private System.Windows.Forms.Label lConnectionStatus;
         private System.Windows.Forms.Button buttonConsole;
-        private System.Windows.Forms.Label lNewVersion;
+        private System.Windows.Forms.LinkLabel linkLabelNewVersion;
     }
 }

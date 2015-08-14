@@ -56,7 +56,7 @@ namespace AweSimConnect.Controllers
             {
                 _process = Process.Start(info);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _process = new Process();
             }

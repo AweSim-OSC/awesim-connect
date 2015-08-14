@@ -85,7 +85,7 @@ namespace AweSimConnect.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool DetectClipboard {
             get {
                 return ((bool)(this["DetectClipboard"]));

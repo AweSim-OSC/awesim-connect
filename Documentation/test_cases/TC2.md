@@ -36,7 +36,7 @@
 #### 10. Click the lightning bolt icon to connect a secure session.
 
 * Expected: A popup window to maintain the connection will appear.
-* Expected: The VNC client will automatically open and present the COMSOL Server view.
+* Expected: A web browser will automatically open and present the COMSOL Server view.
 
 ## Expected Results
 

@@ -36,10 +36,8 @@
 #### 10. Click the lightning bolt icon to connect a secure session.
 
 * Expected: A popup window to maintain the connection will appear.
+* Expected: The VNC client will automatically open and present the Desktop view.
 
-#### 11. Use the provided button to connect to a VNC session using the embedded VNC client.
-
-* Expected: The embedded VNC client will launch and display the remote desktop.
 
 ## Expected Results
 

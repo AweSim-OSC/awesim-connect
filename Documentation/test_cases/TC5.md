@@ -24,7 +24,9 @@
 
 * Expected: The WinSCP application will launch and attempt to connect to the default server.
 
-#### 4. Ensure that the client connects to your account.
+#### 4. If this is the first time connecting to SFTP server, you will be presented with a message to accept the RSH key. Click to accept and proceed.
+
+#### 5. Ensure that the client connects to your account.
 
 * Expected: You will be connected to your user folder on the remote server.
 

@@ -13,6 +13,9 @@
 ## Steps
 
 #### 1. Using any web browser, navigate to the AweSim Dashboard.
+
+* [http://apps.awesim.org/devapps](http://apps.awesim.org/devapps)
+
 #### 2. Locate the "AweSim Connect" tab.
 
 * Expected: AweSim Connect tab is easily visible.

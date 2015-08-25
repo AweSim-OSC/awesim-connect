@@ -29,6 +29,11 @@ namespace AweSimConnect.Controllers
             }
         }
 
+        public static bool IsProcessRunning(Process process)
+        {
+            return IsProcessRunning(process.Id);
+        }
+
         // This is a pretty thourough way to ensure the process dies.
         public static bool KillProcess(Process process)
         {

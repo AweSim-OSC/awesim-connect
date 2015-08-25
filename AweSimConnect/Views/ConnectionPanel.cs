@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
@@ -157,23 +158,25 @@ namespace AweSimConnect.Views
                 SetUpConnection();
             }
 
-            if (_ticks % 30 == 0)
+            if (_ticks%30 == 0)
             {
                 // If the tunnel process hasn't been embedded into the app, run a check for the connection.
                 if (!_tc.IsProcessEmbedded())
                 {
                     CheckTunnel();
-                }
 
-                // If the tunnel is connected, enable the buttons, otherwise disable.
-                EnableConnectedFeatures(_tunnelAvailable);
+                    // If the tunnel is connected, enable the buttons, otherwise disable.
+                    EnableConnectedFeatures(_tunnelAvailable);
 
-                // If the process is successfully embedded, run the associated app and hide the window.
-                if (EmbedProcess())
-                {
-                    ConnectToApp();
+                    // If the process is successfully embedded, run the associated app and hide the window.
+                    if (EmbedProcess())
+                    {
+                        ConnectToApp();
 
-                    Parent_Form.Hide();
+                        Thread.Sleep(500);
+
+                        Parent_Form.Hide();
+                    }
                 }
             }
 

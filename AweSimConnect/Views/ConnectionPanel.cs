@@ -183,6 +183,11 @@ namespace AweSimConnect.Views
             // Every 8 seconds,
             if ((_ticks % 80) == 0)
             {
+                // If the user has closed the PuTTY window without logging in...
+                if (!_tc.IsProcessRunning())
+                {
+                    KillEverything();
+                }
 
                 // Check to see if the user has closed the process we opened.
                 // If they have, disconnect the tunnel.
@@ -193,16 +198,7 @@ namespace AweSimConnect.Views
                         KillEverything();
                     }
                 }
-
-                if (!_tc.IsProcessRunning())
-                {
-                    KillEverything();
-                }
             }
-
-
-
-
 
             // After 24 hours (36000 ticks/hour) kill the tunnel
             if ((_ticks % 864000) == 0)

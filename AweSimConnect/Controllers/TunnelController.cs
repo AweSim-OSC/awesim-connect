@@ -132,6 +132,11 @@ namespace AweSimConnect.Controllers
             return _process_embedded;
         }
 
+        public bool IsProcessRunning()
+        {
+            return ProcessController.IsProcessRunning(_process);
+        }
+
         public void KillProcess()
         {
             _processKilled = ProcessController.KillProcess(_process);

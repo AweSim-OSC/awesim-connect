@@ -180,16 +180,29 @@ namespace AweSimConnect.Views
                 }
             }
 
-            // Every 8 seconds, check to see if the user has closed the process we opened.
-            // If they have, disconnect the tunnel.
-            if (((_ticks % 80) == 0) && _tc.IsProcessEmbedded() && (_launchedProcess != null))
+            // Every 8 seconds,
+            if ((_ticks % 80) == 0)
             {
-                // TODO Find a way to track the spawned browser window
-                if (_launchedProcess.HasExited && _isVnc)
+
+                // Check to see if the user has closed the process we opened.
+                // If they have, disconnect the tunnel.
+                if (_tc.IsProcessEmbedded() && (_launchedProcess != null))
+                {
+                    if (_launchedProcess.HasExited && _isVnc)
+                    {
+                        KillEverything();
+                    }
+                }
+
+                if (!_tc.IsProcessRunning())
                 {
                     KillEverything();
                 }
             }
+
+
+
+
 
             // After 24 hours (36000 ticks/hour) kill the tunnel
             if ((_ticks % 864000) == 0)

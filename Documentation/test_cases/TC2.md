@@ -13,8 +13,8 @@
 ## Steps
 
 #### 1. Using any web browser, navigate to the AweSim Dashboard.
-#### 2. Locate the "COMSOL Server" application.
-#### 3. Launch a COMSOL Server compute session.
+#### 2. Locate the "HeatSinkSim" application.
+#### 3. Launch a compute session from within the application.
 #### 4. Launch the AweSim Connect application.
 
 * Expected: AweSim Connect application launches successfully.
@@ -36,10 +36,7 @@
 #### 10. Click the lightning bolt icon to connect a secure session.
 
 * Expected: A popup window to maintain the connection will appear.
-
-#### 11. Click the button to connect to COMSOL over the `localhost` port.
-
-* Expected: A browser will launch and display the COMSOL login screen.
+* Expected: A web browser will automatically open and present the COMSOL Server view.
 
 ## Expected Results
 

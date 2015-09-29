@@ -1,5 +1,10 @@
 #AweSim Connect Change Log
 
+## v0.71
+
+* Allow dynamic COMSOL ports.
+* Bug fixes.
+
 ## v0.70
 
 * One-click connect via URI is now the default behavior.

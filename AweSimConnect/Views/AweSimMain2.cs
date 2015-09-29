@@ -783,17 +783,14 @@ namespace AweSimConnect.Views
         private void rbVNC_CheckedChanged(object sender, EventArgs e)
         {
             tbPort.Enabled = true;
-            if ((tbPort.Text == Connection.COMSOL_SERVER_PORT.ToString()) || tbPort.Text == "")
-            {
-                tbPort.Text = "" + Connection.VNC_DISPLAY_DEFAULT;
-            }
         }
 
         // Handle the action when the user selects the COMSOL button
         private void rbCOMSOL_CheckedChanged(object sender, EventArgs e)
         {
-            tbPort.Enabled = false;
-            tbPort.Text = "" + Connection.COMSOL_SERVER_PORT.ToString();
+            //tbPort.Enabled = false;
+            //tbPort.Text = "" + Connection.COMSOL_SERVER_PORT.ToString();
+
         }
 
         // Open the about form when the user clicks a button

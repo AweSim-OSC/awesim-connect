@@ -730,7 +730,7 @@ namespace AweSimConnect.Views
                 // If we already know there is a newer version out there we don't need to check again.
                 if (!_settings.NewerVersionAvailable())
                 {
-                    _settings.SetNewerVersionAvailable(VersionChecker.IsNewerVersionAvailable());
+                    _settings.SetNewerVersionAvailable(VersionChecker.IsNewerVersionAvailable(tbUsername.Text));
                 }
 
                 DisplayNewVersionOptions(_settings.NewerVersionAvailable());

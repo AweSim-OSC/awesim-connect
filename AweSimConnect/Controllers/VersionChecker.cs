@@ -9,7 +9,7 @@ namespace AweSimConnect.Controllers
     {
         // The version response php is hosted here. A get response will return the format: 0.61.0.0
         public static string VERSION_RESPONSE_PAGE =
-            @"https://apps.awesim.org/assets/wiag/connect/latest/awesimconnectversion.php";
+            "https://apps.awesim.org/assets/wiag/connect/latest/awesimconnectversion.php?user={0}";
         
         // The location of the latest deployed executable.
         public static string LATEST_DOWNLOAD_PAGE = @"https://apps.awesim.org/assets/wiag/connect/latest/AweSimConnect.exe";
@@ -20,8 +20,13 @@ namespace AweSimConnect.Controllers
         // Gets the string of the current version of the executable at LATEST_DOWNLOAD_PAGE
         public static string GetRemoteVersion()
         {
+            return GetRemoteVersion("");
+        }
+
+        public static string GetRemoteVersion(String username)
+        {
             WebClient client = new WebClient();
-            byte[] html = client.DownloadData(VERSION_RESPONSE_PAGE);
+            byte[] html = client.DownloadData(String.Format(VERSION_RESPONSE_PAGE, username));
             UTF8Encoding utf = new UTF8Encoding();
             return utf.GetString(html);
         }
@@ -52,12 +57,12 @@ namespace AweSimConnect.Controllers
         }
 
         // Returns true if a newer version is detected on the remote server, otherwise false if same or connection error.
-        public static bool IsNewerVersionAvailable()
+        public static bool IsNewerVersionAvailable(string username)
         {
             bool newer = false;
             try
             {
-                newer = isNewerVersion(GetRemoteVersion());
+                newer = isNewerVersion(GetRemoteVersion(username));
             }
             catch (Exception)
             {

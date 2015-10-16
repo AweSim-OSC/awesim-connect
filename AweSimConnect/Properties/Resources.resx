@@ -3245,9 +3245,6 @@
         LpcPAM7SXnpPK5cCAPhv7cW5QxkfGOlf//pfTet8Cx42axsAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="vncviewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\vncviewer.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="wifi" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
@@ -3571,5 +3568,8 @@
   </data>
   <data name="awesim_ball1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\awesim-ball.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vncviewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vncviewer.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

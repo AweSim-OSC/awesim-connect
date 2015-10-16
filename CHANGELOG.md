@@ -1,5 +1,10 @@
 #AweSim Connect Change Log
 
+## Upcoming
+
+* Update to TurboVNC 2.0
+* Version check update.
+
 ## v0.71
 
 * Allow dynamic COMSOL ports.

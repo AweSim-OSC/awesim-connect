@@ -1,6 +1,7 @@
 ![AweSim](./Documentation/img/awesim-small.png)
 
-# Connecting to AweSim
+# AweSim Connect
+
 ## How to use the AweSim Connect App to Securely Connect a Windows PC to an AweSim Session
 
 AweSim connect is a native windows application written in C# and compiled for .NET 2.0, providing compatibility for Windows versions from XP through Windows 10.
@@ -158,6 +159,21 @@ The app uses this response to determine if the deployed version is newer than th
 
 * https://apps.awesim.org/assets/wiag/connect/latest/awesimconnectversion.php
 
+#### Usage Tracking
+
+* As of version 0.72, calls made to awesimconnectversion.php will include a GET parameter request containing the text of the username box as param['user']. These calls can then be parsed in the future to track app launches and users.
+
+Logs are retained for one year in `ssl_access_log.*` at `/var/log/httpd/apps.awesim.org` on `websvcs02.osc.edu`. Access logs prior to September 30th, 2015 are available in the same path on `websvcs06.osc.edu`.
+
+For access data:
+
+````
+	ssh websvcs02.osc.edu
+	cd /var/log/httpd/apps.awesim.org
+	zgrep 'awesimconnectversion.php' *
+````
+
+This command will need to be modified to distill data for reporting purposes.
 
 #### Automatic connection via `awesim://` URI
 

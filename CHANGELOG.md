@@ -3,7 +3,9 @@
 ## Upcoming
 
 * Update to TurboVNC 2.0
+* Update PuTTY to 0.65
 * Version check update.
+* Error handling when unable to write folder.
 
 ## v0.71
 

@@ -6,6 +6,7 @@
 * Update PuTTY to 0.65
 * Version check update.
 * Error handling when unable to write folder.
+* Deploy helper apps to temp location.
 
 ## v0.71
 

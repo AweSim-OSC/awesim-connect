@@ -314,7 +314,7 @@ namespace AweSimConnect.Views
                 }
                 else
                 {
-                    rbCOMSOL.Checked = true;
+                    rbBROWSER.Checked = true;
                     tbVNCPassword.Text = "";
                     _connection.VNCPassword = null;
                 }
@@ -560,7 +560,7 @@ namespace AweSimConnect.Views
                     buttonConsole.Visible = true;
                     gbConsole.Visible = true;
 
-                    if (rbVNC.Checked || rbCOMSOL.Checked)
+                    if (rbVNC.Checked || rbBROWSER.Checked)
                     {
                         gbSessionInfo.Visible = true;
 
@@ -578,7 +578,7 @@ namespace AweSimConnect.Views
                                 gbConnect.Visible = false;
                             }
                         }
-                        else if (rbCOMSOL.Checked)
+                        else if (rbBROWSER.Checked)
                         {
                             gbVNCPassword.Visible = false;
                             tbVNCPassword.Text = "";
@@ -778,12 +778,11 @@ namespace AweSimConnect.Views
             tbPort.Enabled = true;
         }
 
-        // Handle the action when the user selects the COMSOL button
-        private void rbCOMSOL_CheckedChanged(object sender, EventArgs e)
+        // Handle the action when the user selects the BROWSER button
+        private void rbBROWSER_CheckedChanged(object sender, EventArgs e)
         {
             //tbPort.Enabled = false;
             //tbPort.Text = "" + Connection.COMSOL_SERVER_PORT.ToString();
-
         }
 
         // Open the about form when the user clicks a button

@@ -43,7 +43,7 @@
             this.lHost = new System.Windows.Forms.Label();
             this.tbVNCPassword = new System.Windows.Forms.TextBox();
             this.rbVNC = new System.Windows.Forms.RadioButton();
-            this.rbCOMSOL = new System.Windows.Forms.RadioButton();
+            this.rbBROWSER = new System.Windows.Forms.RadioButton();
             this.timerMain = new System.Windows.Forms.Timer(this.components);
             this.toolTipNoDelay = new System.Windows.Forms.ToolTip(this.components);
             this.buttonInfo = new System.Windows.Forms.Button();
@@ -251,20 +251,20 @@
             this.rbVNC.UseVisualStyleBackColor = true;
             this.rbVNC.CheckedChanged += new System.EventHandler(this.rbVNC_CheckedChanged);
             // 
-            // rbCOMSOL
+            // rbBROWSER
             // 
-            this.rbCOMSOL.AutoSize = true;
-            this.rbCOMSOL.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rbCOMSOL.Location = new System.Drawing.Point(6, 37);
-            this.rbCOMSOL.Name = "rbCOMSOL";
-            this.rbCOMSOL.Size = new System.Drawing.Size(130, 17);
-            this.rbCOMSOL.TabIndex = 5;
-            this.rbCOMSOL.TabStop = true;
-            this.rbCOMSOL.Tag = "COMSOL Radio Box";
-            this.rbCOMSOL.Text = "COMSOL Server Web";
-            this.toolTipNoDelay.SetToolTip(this.rbCOMSOL, "Click this button if you requested a browser-based COMSOL Server session.");
-            this.rbCOMSOL.UseVisualStyleBackColor = true;
-            this.rbCOMSOL.CheckedChanged += new System.EventHandler(this.rbCOMSOL_CheckedChanged);
+            this.rbBROWSER.AutoSize = true;
+            this.rbBROWSER.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.rbBROWSER.Location = new System.Drawing.Point(6, 37);
+            this.rbBROWSER.Name = "rbBROWSER";
+            this.rbBROWSER.Size = new System.Drawing.Size(129, 17);
+            this.rbBROWSER.TabIndex = 5;
+            this.rbBROWSER.TabStop = true;
+            this.rbBROWSER.Tag = "BROWSER Radio Box";
+            this.rbBROWSER.Text = "Web Browser Session";
+            this.toolTipNoDelay.SetToolTip(this.rbBROWSER, "Click this button to use a browser-based session.");
+            this.rbBROWSER.UseVisualStyleBackColor = true;
+            this.rbBROWSER.CheckedChanged += new System.EventHandler(this.rbBROWSER_CheckedChanged);
             // 
             // timerMain
             // 
@@ -405,7 +405,7 @@
             // 
             // gbSessionType
             // 
-            this.gbSessionType.Controls.Add(this.rbCOMSOL);
+            this.gbSessionType.Controls.Add(this.rbBROWSER);
             this.gbSessionType.Controls.Add(this.rbVNC);
             this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gbSessionType.Location = new System.Drawing.Point(12, 358);
@@ -606,7 +606,7 @@
         private System.Windows.Forms.Label lHost;
         private System.Windows.Forms.Button bConnect;
         private System.Windows.Forms.RadioButton rbVNC;
-        private System.Windows.Forms.RadioButton rbCOMSOL;
+        private System.Windows.Forms.RadioButton rbBROWSER;
         private System.Windows.Forms.Button bDashboard;
         private System.Windows.Forms.Button bSFTP;
         private System.Windows.Forms.Timer timerMain;

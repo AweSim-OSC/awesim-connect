@@ -38,7 +38,6 @@ namespace AweSimConnect.Models
             return host;
         }
 
-        // 2036 for comsol
         // 5901-n for vnc
         public int RemotePort { get; set; }
 

@@ -55,7 +55,7 @@ namespace AweSimConnect.Views
             else
             {
                 tbConnectionInfo.Text = @"Attempting to connect to a browser session at http://localhost:" + _connection.LocalPort + ".";
-               formTitle += "COMSOL";
+               formTitle += "BROWSER";
             }
             formTitle += " ";
             formTitle += String.Format("{0:T}", DateTime.Now);

@@ -28,11 +28,11 @@ namespace AweSimConnect.Views
             InitializeComponent();
             Parent_Form = parentForm;
             _connection = inputConnection;
-            _tc = new TunnelController(_connection);
             _advSettings = new AdvancedSettings();
+            _tc = new TunnelController(_connection, _advSettings.IsWriteableUser());
             _tc.StartTunnelerProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
-            _vnc = new VNCControllerTurbo(_connection);
+            _vnc = new VNCControllerTurbo(_connection, _advSettings.IsWriteableUser());
             labelVersion.Text = "v"+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             timerConnectionPanel.Start();
         }

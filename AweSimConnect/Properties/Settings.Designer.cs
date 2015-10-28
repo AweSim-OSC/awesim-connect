@@ -153,5 +153,17 @@ namespace AweSimConnect.Properties {
                 this["AutoCheckNewVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WriteableUser {
+            get {
+                return ((bool)(this["WriteableUser"]));
+            }
+            set {
+                this["WriteableUser"] = value;
+            }
+        }
     }
 }

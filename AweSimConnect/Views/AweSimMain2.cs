@@ -3,26 +3,15 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
-using System.Runtime.InteropServices;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using AweSimConnect.Controllers;
 using AweSimConnect.Models;
 using AweSimConnect.Properties;
 
 namespace AweSimConnect.Views
 {
-    /*
-    * TODO Wishlist
-    *
-    * -NEED TO ASYNC THE NETWORK CALLS
-    * -Antialiased Font
-    * -URI Parsing
-    * -Move magic strings to resources
-    * 
-    * /
-
    /*
     * AweSim Connect
     *
@@ -55,7 +44,7 @@ namespace AweSimConnect.Views
         private ClipboardController _clipc;
         private OSCClusterController _clusterc;
         private RegistryHook _registry;
-
+        
         private List<ProcessData> _processes;
         private List<ConnectionForm> _connectionForms;
 
@@ -71,7 +60,7 @@ namespace AweSimConnect.Views
         private AdvSettingsFrm _advFrm;
         private AdvancedSettings _settings;
         private string _sshHost;
-
+        
         public AweSimMain2(string[] args)
         {
             InitializeComponent();
@@ -91,15 +80,19 @@ namespace AweSimConnect.Views
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();
             _connection = new Connection();
-            FileController.CreateAweSimFilesFolder();
+            _settings = new AdvancedSettings();
+
+            // If the app can't write out a folder to deploy helper apps,
+            // it's because the user doesn't have admin access to write.
+            _settings.SetWriteableUser(FileController.CreateAweSimFilesFolder());
 
             //Initialize controllers.
             _clipc = new ClipboardController();
             _clusterc = new OSCClusterController();
-            _ftpc = new SFTPControllerWinSCP(_connection);
+            _ftpc = new SFTPControllerWinSCP(_connection, _settings.IsWriteableUser());
             _abtFrm = new AboutFrm();
             _advFrm = new AdvSettingsFrm();
-            _settings = new AdvancedSettings();
+            
             _registry = new RegistryHook();
             
             _sshHost = _clusterc.GetCluster(_settings.GetSSHHostCode()).Domain;
@@ -242,7 +235,7 @@ namespace AweSimConnect.Views
             {
                 SaveUserSettings();
 
-                _consolec = new ConsoleController(_connection);
+                _consolec = new ConsoleController(_connection, _settings.IsWriteableUser());
                 _consolec.StartPuttyProcess(tbPassword.Text);
 
                 //If the process started up, add it to the list of processes so we can kill it later.
@@ -258,7 +251,7 @@ namespace AweSimConnect.Views
         {
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
-                SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection);
+                SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection, _settings.IsWriteableUser());
                 winscp.StartSFTPProcess(tbPassword.Text);
                 if (winscp.GetThisProcess() != null)
                 {
@@ -745,10 +738,10 @@ namespace AweSimConnect.Views
         //This method deploys the helper apps to the helper apps folder. The objects will get garbage collected.
         private void deployHelperApps()
         {
-            new SFTPControllerWinSCP(_connection);
-            new ConsoleController(_connection);
-            new TunnelController(_connection);
-            new VNCControllerTurbo(_connection);
+            new SFTPControllerWinSCP(_connection, _settings.IsWriteableUser());
+            new ConsoleController(_connection, _settings.IsWriteableUser());
+            new TunnelController(_connection, _settings.IsWriteableUser());
+            new VNCControllerTurbo(_connection, _settings.IsWriteableUser());
         }
 
         // Set the username when the user enters text.

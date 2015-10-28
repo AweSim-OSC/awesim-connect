@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
@@ -13,19 +11,22 @@ namespace AweSimConnect.Controllers
     {
         public static string FILE_FOLDER = "AweSimFiles";
         //public static string FILE_FOLDER_PATH = Path.Combine(Directory.GetCurrentDirectory(), FILE_FOLDER);
-        public static string FILE_FOLDER_PATH = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), FILE_FOLDER);
-
+        public static string FILE_FOLDER_PATH_ADMIN = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), FILE_FOLDER);
+        public static string FILE_FOLDER_PATH_TEMP = Path.Combine(Path.GetTempPath(), FILE_FOLDER);
+        
         // Create an empty AweSim files folder.
-        public static void CreateAweSimFilesFolder()
+        public static bool CreateAweSimFilesFolder()
         {
             try
             {
-                Directory.CreateDirectory(FILE_FOLDER_PATH);
+                Directory.CreateDirectory(FILE_FOLDER_PATH_ADMIN);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Creating Helper Files Folder. Please run AweSim Connect in a writeable folder or launch as Administrator.\n" + ex.Message, "Error Creating Helper Files Folder.");
+                Directory.CreateDirectory(FILE_FOLDER_PATH_TEMP);
+                return false;
             }
+            return true;
         }
 
         // Delete the AweSim files folder recursively.
@@ -33,7 +34,8 @@ namespace AweSimConnect.Controllers
         {
             try
             {
-                Directory.Delete(FILE_FOLDER_PATH, true);
+                Directory.Delete(FILE_FOLDER_PATH_ADMIN, true);
+                Directory.Delete(FILE_FOLDER_PATH_TEMP, true);
             }
             catch (Exception)
             {
@@ -42,13 +44,41 @@ namespace AweSimConnect.Controllers
             }
         }
 
+        public static void DeleteAweSimFilesFolder(bool admin)
+        {
+            
+            try
+            {
+                if (admin)
+                {
+                    Directory.Delete(FILE_FOLDER_PATH_ADMIN, true);
+                }
+                else
+                {
+                    Directory.Delete(FILE_FOLDER_PATH_TEMP, true);
+                }
+            }
+            catch (Exception)
+            {
+                //Attempt to clean up folder failed.
+                //TODO Maybe add an error log.
+            }
+        }
+
+        public static bool DeployResource(byte[] resource, string fileName, bool admin)
+        {
+            return admin
+                ? DeployResourceToAweSimFilesFolder(resource, fileName)
+                : DeployResourceToTempFolder(resource, fileName);
+        }
+
         public static bool DeployResourceToAweSimFilesFolder(byte[] resource, string fileName)
         {
             try
             {
                 if (!IsResourceInstalledInAweSimFolder(fileName))
                     {
-                        string path = Path.Combine(FILE_FOLDER_PATH, fileName);
+                        string path = Path.Combine(FILE_FOLDER_PATH_ADMIN, fileName);
                         using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
                         {
                             fs.Write(resource, 0, resource.Length);
@@ -61,10 +91,34 @@ namespace AweSimConnect.Controllers
             }
             return true;
         }
+        public static bool DeployResourceToTempFolder(byte[] resource, string fileName)
+        {
+            try
+            {
+                if (!IsResourceInstalledInTempFolder(fileName))
+                {
+                    string path = Path.Combine(FILE_FOLDER_PATH_TEMP, fileName);
+                    using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
+                    {
+                        fs.Write(resource, 0, resource.Length);
+                    }
+                }
+            }
+            catch (DirectoryNotFoundException)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public static bool IsResourceInstalledInAweSimFolder(string fileName)
         {
-            return ExistsOnPath(Path.Combine(FILE_FOLDER_PATH, fileName));
+            return ExistsOnPath(Path.Combine(FILE_FOLDER_PATH_ADMIN, fileName));
+        }
+
+        public static bool IsResourceInstalledInTempFolder(string fileName)
+        {
+            return ExistsOnPath(Path.Combine(FILE_FOLDER_PATH_TEMP, fileName));
         }
 
         public static String FindExecutableInProgramFiles(String filename)

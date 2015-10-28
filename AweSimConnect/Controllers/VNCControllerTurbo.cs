@@ -17,26 +17,38 @@ namespace AweSimConnect.Controllers
         private static string TURBOVNC_FILE = "vncviewer.exe";
         private static string TURBOVNC_PROCESS = "vncviewer";
 
+        private String vncPath = "";
+
         internal Connection Connection { get; set; }
         private Process _process;
         private bool _processKilled;
 
         //The full current path of the executable.
-        private static readonly String TURBOVNC_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH, TURBOVNC_FILE);
+        //private static readonly String TURBOVNC_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, TURBOVNC_FILE);
 
         //The arguments for turbovnc
         private static String TURBO_ARGS = "/password {0} localhost::{1}";
 
-        public VNCControllerTurbo(Connection connection)
+        public VNCControllerTurbo(Connection connection, bool admin)
         {
-            InstallVNC();
+            this.vncPath = InstallVNC(admin);
             this.Connection = connection;
         }
 
         //Installs ggivnc.exe to current directory if it isn't there.
-        public bool InstallVNC()
+        public String InstallVNC(bool admin)
         {
-            return FileController.DeployResourceToAweSimFilesFolder(getTurboVnc(), TURBOVNC_FILE);
+            String path = "";
+            FileController.DeployResource(getTurboVnc(), TURBOVNC_FILE, admin);
+            if (admin)
+            {
+                path = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, TURBOVNC_FILE);
+            }
+            else
+            {
+                path = Path.Combine(FileController.FILE_FOLDER_PATH_TEMP, TURBOVNC_FILE);
+            }
+            return path;
         }
 
         //Gets vncviewer.exe from the embedded resources.
@@ -48,7 +60,7 @@ namespace AweSimConnect.Controllers
         //Launch TurboVNC 
         public Process StartVNCProcess()
         {
-            ProcessStartInfo info = new ProcessStartInfo(TURBOVNC_CURRENT_DIR);
+            ProcessStartInfo info = new ProcessStartInfo(this.vncPath);
             info.Arguments = String.Format(TURBO_ARGS, Connection.VNCPassword, Connection.LocalPort);
             info.UseShellExecute = true;
 

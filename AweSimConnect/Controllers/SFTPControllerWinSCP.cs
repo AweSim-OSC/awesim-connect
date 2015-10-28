@@ -13,9 +13,7 @@ namespace AweSimConnect.Controllers
         private static string WINSCP_FOLDER_CONTAINS = "WinSCP";
         private static string WINSCP_FILE = "winscp.exe";
         private string WinSCPPath = "";
-
-
-
+        
         internal Connection Connection { get; set; }
         private Process _process;
         private bool _processKilled;
@@ -25,34 +23,39 @@ namespace AweSimConnect.Controllers
         //The arguments for WinSCP
         private static string WINSCP_ARGS = "sftp://{0}:{1}@{2}:{3} /noupdate";
 
-        //The full current path of the executable.
-        private static readonly string WINSCP_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH, WINSCP_FILE);
-
-
-        public SFTPControllerWinSCP(Connection connection)
+        public SFTPControllerWinSCP(Connection connection, bool admin)
         {
-            InstallWinSCP();
+            this.WinSCPPath = InstallWinSCP(admin);
             this.Connection = connection;
         }
 
-        //Installs ggivnc.exe to current directory if it isn't there.
-        public bool InstallWinSCP()
+        //Installs winscp.exe to current or temp directory if it isn't there.
+        public String InstallWinSCP(bool admin)
         {
-            return FileController.DeployResourceToAweSimFilesFolder(getWinSCP(), WINSCP_FILE);
+            String path = "";
+            FileController.DeployResource(getWinSCP(), WINSCP_FILE, admin);
+            if (admin)
+            {
+                path = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, WINSCP_FILE);
+            }
+            else
+            {
+                path = Path.Combine(FileController.FILE_FOLDER_PATH_TEMP, WINSCP_FILE);
+            }
+            return path;
         }
 
-        //Gets vncviewer.exe from the embedded resources.
+        //Gets exe from the embedded resources.
         private byte[] getWinSCP()
         {
             return Resources.WinSCP;
         }
 
-        //Launch TurboVNC 
+        //Launch app
         public void StartSFTPProcess(string password)
         {
             //TODO This will probably break if the password is empty.
-            String sftpCommand = WinSCPPath;
-            ProcessStartInfo info = new ProcessStartInfo(WINSCP_CURRENT_DIR);
+            ProcessStartInfo info = new ProcessStartInfo(this.WinSCPPath);
             info.Arguments = String.Format(WINSCP_ARGS, this.Connection.UserName, password, OSCClusterController.SFTP_CLUSTER.Domain, SFTP_PORT);
             info.UseShellExecute = true;
 
@@ -84,7 +87,8 @@ namespace AweSimConnect.Controllers
                 return _processKilled;
             }
         }
-
+        
+        /*
         public void DetectSFTPPath()
         {
             this.WinSCPPath = FileController.SearchProgramFileFoldersForExecutableWithFolderPatternMatch(WINSCP_FILE, WINSCP_FOLDER_CONTAINS);
@@ -98,11 +102,7 @@ namespace AweSimConnect.Controllers
             }
             return false;
         }
-
-        public String GetSFTPPath()
-        {
-            return WinSCPPath;
-        }
+        */
 
         internal Process GetThisProcess()
         {

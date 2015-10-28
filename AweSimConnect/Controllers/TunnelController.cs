@@ -14,6 +14,7 @@ namespace AweSimConnect.Controllers
     {
         private static String PUTTY_PROCESS = "putty";
         private static String PUTTY_FILE = "putty.exe";
+        private String puttyPath = "";
 
         private Connection _connection;
         private Process _process;
@@ -28,21 +29,31 @@ namespace AweSimConnect.Controllers
         }
 
         //The full current path of the putty executable.
-        private static String PUTTY_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH, PUTTY_FILE);
+        //private static String PUTTY_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, PUTTY_FILE);
 
         // PuTTY/Plink command line argument placeholder.        
         private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
 
-        public TunnelController(Connection connection)
+        public TunnelController(Connection connection, bool admin)
         {
-            InstallTunneler();
+            this.puttyPath = InstallTunneler(admin);
             _connection = connection;
         }
 
         //Installs putty.exe to current directory if it isn't there.
-        public bool InstallTunneler()
+        public String InstallTunneler(bool admin)
         {
-            return FileController.DeployResourceToAweSimFilesFolder(getTunneler(), PUTTY_FILE);
+            String path = "";
+            FileController.DeployResource(getTunneler(), PUTTY_FILE, admin);
+            if (admin)
+            {
+                path = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, PUTTY_FILE);
+            }
+            else
+            {
+                path = Path.Combine(FileController.FILE_FOLDER_PATH_TEMP, PUTTY_FILE);
+            }
+            return path;
         }
 
         //Gets putty.exe from the embedded resources.
@@ -55,7 +66,7 @@ namespace AweSimConnect.Controllers
         public void StartTunnelerProcess(string password)
         {
             //TODO This will probably break if the password is empty, but the view currently prevents that.
-            String puttyCommand = String.Format(PUTTY_CURRENT_PATH);
+            String puttyCommand = String.Format(this.puttyPath);
             ProcessStartInfo info = new ProcessStartInfo(puttyCommand);
             info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, _connection.LocalPort, _connection.GetServerAndPort(), _connection.UserName, _connection.SSHHost, _connection.UserName, password);
             info.UseShellExecute = true;

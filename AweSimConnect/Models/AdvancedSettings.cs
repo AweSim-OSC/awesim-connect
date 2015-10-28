@@ -171,5 +171,18 @@ namespace AweSimConnect.Models
             Settings.Default.AutoCheckNewVersion = autoCheckNewVersion;
             Settings.Default.Save();
         }
+
+        // This should be true if the app location is writeable.
+        internal bool IsWriteableUser()
+        {
+            return Settings.Default.WriteableUser;
+        }
+
+        // Set the option if the app is being run from a writable location.
+        internal void SetWriteableUser(bool isWriteableUser)
+        {
+            Settings.Default.WriteableUser = isWriteableUser;
+            Settings.Default.Save();
+        }
     }
 }

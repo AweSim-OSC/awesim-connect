@@ -24,7 +24,7 @@ namespace AweSimConnect.Controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error Creating Helper Files Folder. Please run AweSim Connect in a writeable folder.");
+                MessageBox.Show("Error Creating Helper Files Folder. Please run AweSim Connect in a writeable folder or launch as Administrator.\n" + ex.Message, "Error Creating Helper Files Folder.");
             }
         }
 
@@ -44,13 +44,20 @@ namespace AweSimConnect.Controllers
 
         public static bool DeployResourceToAweSimFilesFolder(byte[] resource, string fileName)
         {
-            if (!IsResourceInstalledInAweSimFolder(fileName))
+            try
             {
-                string path = Path.Combine(FILE_FOLDER_PATH, fileName);
-                using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
-                {
-                    fs.Write(resource, 0, resource.Length);
-                }
+                if (!IsResourceInstalledInAweSimFolder(fileName))
+                    {
+                        string path = Path.Combine(FILE_FOLDER_PATH, fileName);
+                        using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
+                        {
+                            fs.Write(resource, 0, resource.Length);
+                        }
+                    }
+            }
+            catch (DirectoryNotFoundException)
+            {
+                return false;
             }
             return true;
         }

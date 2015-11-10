@@ -16,9 +16,9 @@ To connect to AweSim services, a secure tunnel to a session is required. This ca
 
 [Download Latest Build](https://apps.awesim.org/assets/wiag/connect/latest/AweSimConnect.exe)
 
-#### Save the file to a folder of your choice
+#### Use "Save" or "Save As" to save this file to a folder of your choice
 
-When you first run AweSim Connect, an temporary folder with four additional files will be added to this folder. These are required for proper functionality of the application. Please ensure that these files are permitted by your IT administrator.
+When you first run AweSim Connect, a temporary folder with four additional files will be added to this folder. These are required for proper functionality of the application. Please ensure that these files are permitted by your IT administrator.
 
 * `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources. (version 0.65)
 * `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to AweSim resources. (version 0.65)
@@ -53,7 +53,9 @@ Click the button with the globe in the upper-right side of the application to la
 
 #### Option Two: Copy to clipboard
 
- Click the blue "Connection Information" button associated with your session, then just copy the provided code to your windows clipboard. The application will detect the code and populate the fields for you. Then, just click the lightning bolt icon to connect to your session.
+ The "Copy to clipboard" option is currently disabled by default. If you are having difficulty connecting using the AweSim URI, you can open the Advanced Settings menu and enable the "Detect Clipboard Activity" option.
+ 
+ When this option is enabled just copy the AweSim URI to your windows clipboard. The application will detect the code and populate the fields for you. Then, just click the lightning bolt icon to connect to your session.
 
  If your information has been entered correctly, you will be automatically connected to our system. You may see a window open and close briefly, this is the secure tunnel being established.
 
@@ -77,18 +79,6 @@ When all of the fields are populated, click the lightning bolt icon to establish
 
 * If your password was entered incorrectly on the main form, this window will remain open while the system prompts you for a valid password.
 
-#### Connection Window
-
-Once the connection is established, you will be presented with a connection window that provides the detail of the connection. Look for the icon on the right to display a shield if a secure connection is detected, or an 'x' icon if the connection is closed.
-
-* Using the instructions in the form, connect to the resource, alternatively, click the grey icon on the right to launch the included service.
-
-* Click the red button to disconnect the tunnel.
-
-* This form includes an optional tag to help you manage multiple tunnels across windows.
-
-![v0.2 Connection](https://cloud.githubusercontent.com/assets/2374718/8045063/d022218a-0dfe-11e5-8571-df87f09285dd.png)
-
 ## Settings and Automation options
 
 The settings menu (indicated by the wrench icon) contains several configuration options to modify the behavior of the application.
@@ -103,11 +93,7 @@ Use this dropdown to select the default host. Selecting a server here will chang
 
 #### Detect Clipboard Activity
 
-When this option is enabled, the application will detect valid data on the Windows clipboard and populate the application. ( Default: On )
-
-#### Use Included SFTP Client
-
-When this options is checked, the application will use the embedded SFTP client as the default client. ( Default: Off )
+When this option is enabled, the application will detect valid data on the Windows clipboard and populate the application. ( Default: Off )
 
 ### Automation Settings
 
@@ -119,7 +105,7 @@ When checked, allows the application to remember the user when the application i
 
 #### Launch Tunnel on Import
 
-When checked, the tunnel will automatically connect when the application detects a valid clipboard string and the user credentials have been entered. ( Default: Off )
+When checked, the tunnel will automatically connect when the application detects a valid clipboard string and the user credentials have been entered. ( Default: On )
 
 #### Automatically Open Session
 
@@ -127,7 +113,7 @@ When checked, the application will automatically launch a browser or vnc session
 
 ## Secure File Transfer
 
-The AweSim Connect application will detect if you have a supported SFTP client on your system, or use the embedded client, and allow you to connect to securely connect to the AweSim file system over SFTP.
+The AweSim Connect application will use the embedded client to allow you to connect to securely connect to the AweSim file system over SFTP.
 
 #### Enter your AweSim credentials
 
@@ -136,6 +122,18 @@ The AweSim Connect application will detect if you have a supported SFTP client o
 AweSim Connect now uses WinSCP as the default SFTP client.
 
 * [WinSCP](http://winscp.net/eng/index.php) is the embedded SFTP client. The AweSim Connect application will deploy and run a WinSCP process.
+
+## FAQ
+
+#### I've clicked the `awesim://` link and nothing happened.
+
+Be sure to launch `AweSimConnect.exe` at least once. The initial launch will add a key to your user registry that initializes the URI scheme.
+
+If you move or rename the `AweSimConnect.exe` file, you will need to open the application again manually to update the path in the handler.
+
+#### I've received the error "Unable to open helper application. The porotocol specified in this address is not valid."
+
+This issue appears in some earlier versions of Internet Explorer when attempting to launch the application from a Temporary location. Download and run the `AweSimConnect.exe` application, being sure to click "Save As" or "Save" in your browser to save the file to a non-temporary location.
 
 ## Developer Notes
 

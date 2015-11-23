@@ -3,24 +3,28 @@ using AweSimConnect.Properties;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
 
 namespace AweSimConnect.Controllers
 {
     /// <summary>
-    /// This class controls the tunneler application. Currently PuTTY
+    /// This class controls the tunneler application. Currently Plink
     /// </summary>
     class TunnelController
     {
-        private static String PUTTY_PROCESS = "putty";
-        private static String PUTTY_FILE = "putty.exe";
-        private String puttyPath = "";
+        private static String _tunnelProcess = "plink";
+        private static String _tunnelFile = "plink.exe";
+        private readonly String _tunnelPath;
+
+        //Gets plink.exe from the embedded resources.
+        private byte[] GetTunneler()
+        {
+            return Resources.plink;
+        }
 
         private Connection _connection;
         private Process _process;
 
-        private bool _process_embedded = false;
-        private bool _processKilled = false;
+        private bool _processEmbedded, _processKilled;
 
         internal Connection Connection
         {
@@ -28,48 +32,38 @@ namespace AweSimConnect.Controllers
             set { _connection = value; }
         }
 
-        //The full current path of the putty executable.
-        //private static String PUTTY_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, PUTTY_FILE);
+        //The full current path of the tunnel executable.
+        //private static String TUNNEL_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, TUNNEL_FILE);
 
         // PuTTY/Plink command line argument placeholder.        
-        private static String PUTTY_ARGS_PASSWORD = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
+        private static String _tunnelArgsPassword = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
 
         public TunnelController(Connection connection, bool admin)
         {
-            this.puttyPath = InstallTunneler(admin);
+            _tunnelPath = InstallTunneler(admin);
             _connection = connection;
         }
 
-        //Installs putty.exe to current directory if it isn't there.
+        //Installs tunneler to current directory if it isn't there.
         public String InstallTunneler(bool admin)
         {
-            String path = "";
-            FileController.DeployResource(getTunneler(), PUTTY_FILE, admin);
-            if (admin)
-            {
-                path = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, PUTTY_FILE);
-            }
-            else
-            {
-                path = Path.Combine(FileController.FILE_FOLDER_PATH_TEMP, PUTTY_FILE);
-            }
+            FileController.DeployResource(GetTunneler(), _tunnelFile, admin);
+            var path = Path.Combine(admin ? FileController.FILE_FOLDER_PATH_ADMIN : FileController.FILE_FOLDER_PATH_TEMP, _tunnelFile);
             return path;
         }
 
-        //Gets putty.exe from the embedded resources.
-        private byte[] getTunneler()
-        {
-            return Resources.putty;
-        }
-
-        //Launch putty with a password
+        //Launch TUNNEL with a password
         public void StartTunnelerProcess(string password)
         {
             //TODO This will probably break if the password is empty, but the view currently prevents that.
-            String puttyCommand = String.Format(this.puttyPath);
-            ProcessStartInfo info = new ProcessStartInfo(puttyCommand);
-            info.Arguments = String.Format(PUTTY_ARGS_PASSWORD, _connection.LocalPort, _connection.GetServerAndPort(), _connection.UserName, _connection.SSHHost, _connection.UserName, password);
-            info.UseShellExecute = true;
+            String tunnelCommand = String.Format(_tunnelPath);
+            ProcessStartInfo info = new ProcessStartInfo(tunnelCommand)
+            {
+                Arguments =
+                    String.Format(_tunnelArgsPassword, _connection.LocalPort, _connection.GetServerAndPort(),
+                        _connection.UserName, _connection.SSHHost, _connection.UserName, password),
+                UseShellExecute = true
+            };
 
             //info.RedirectStandardError = true;
             //info.RedirectStandardOutput = true;
@@ -87,13 +81,13 @@ namespace AweSimConnect.Controllers
             }
         }
 
-        // Check to see if putty exists in the AweSim connect folder.
+        // Check to see if TUNNEL exists in the AweSim connect folder.
         internal bool IsTunnelerInstalled()
         {
-            return FileController.ExistsOnPath(PUTTY_FILE);
+            return FileController.ExistsOnPath(_tunnelFile);
         }
 
-        // Check to see if putty is in the running processes.
+        // Check to see if tunneler is in the running processes.
         internal bool IsTunnelerRunning()
         {
             if (!_processKilled)
@@ -109,7 +103,7 @@ namespace AweSimConnect.Controllers
 
         internal Process[] GetTunnelerProcesses()
         {
-            return Process.GetProcessesByName(PUTTY_PROCESS);
+            return Process.GetProcessesByName(_tunnelProcess);
         }
 
         internal bool IsTunnelerConnected()
@@ -135,12 +129,12 @@ namespace AweSimConnect.Controllers
 
         internal void EmbedProcess()
         {
-            _process_embedded = true;
+            _processEmbedded = true;
         }
 
         public bool IsProcessEmbedded()
         {
-            return _process_embedded;
+            return _processEmbedded;
         }
 
         public bool IsProcessRunning()

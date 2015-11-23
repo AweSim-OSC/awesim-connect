@@ -355,10 +355,6 @@
         RK5CYII=
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="plink" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\plink.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="awesim_large" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAArwAAAEkCAYAAADNZ+LwAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -1078,6 +1074,7 @@
         a51of4I4N/2Nv/H/A5hTOXI36jGnAAAAAElFTkSuQmCC
 </value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="awesim_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\awesim_logo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -3554,14 +3551,8 @@
         WwEA/Kn901yhjA+M9D//8/8BmeBcAyaxltEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="WinSCP" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WinSCP.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="console" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\console.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="putty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\putty.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="awesim_logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\awesim_logo2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -3569,7 +3560,16 @@
   <data name="awesim_ball1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\awesim-ball.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="plink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plink.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="putty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\putty.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="vncviewer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vncviewer.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WinSCP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WinSCP.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

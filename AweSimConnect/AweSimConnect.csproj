@@ -209,11 +209,13 @@
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
-    <None Include="Resources\vncviewer.exe" />
     <None Include="Resources\WinSCP.exe" />
+    <None Include="Resources\vncviewer.exe" />
+    <None Include="Resources\README.txt" />
+    <None Include="Resources\putty.exe" />
+    <None Include="Resources\plink.exe" />
     <None Include="Resources\awesim_logo.png" />
     <Content Include="Resources\awesim_logo2.png" />
-    <None Include="Resources\putty.exe" />
     <None Include="Resources\console.png" />
     <None Include="Resources\officine2.png" />
     <None Include="Resources\wifi.png" />
@@ -238,7 +240,6 @@
     <None Include="Resources\eye-gray.png" />
     <None Include="Resources\hdd-gry.png" />
     <None Include="Resources\info-gry.png" />
-    <EmbeddedResource Include="Resources\plink.exe" />
     <None Include="Resources\awesim-sm.png" />
   </ItemGroup>
   <ItemGroup>

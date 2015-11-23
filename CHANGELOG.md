@@ -2,11 +2,13 @@
 
 ## Upcoming
 
-* Update to TurboVNC 2.0
-* Update PuTTY to 0.65
+* Update to TurboVNC 2.0.1
+* Update PuTTY/Plink to 0.66
+* Update WinSCP to 5.7.6
 * Version check update.
 * Error handling when unable to write folder.
 * Deploy helper apps to temp location.
+* Disable WinSCP update nag.
 
 ## v0.71
 

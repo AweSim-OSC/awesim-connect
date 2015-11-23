@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 using AweSimConnect.Models;
 using AweSimConnect.Properties;
+using Microsoft.Win32;
 
 namespace AweSimConnect.Controllers
 {
@@ -61,6 +63,7 @@ namespace AweSimConnect.Controllers
 
             try
             {
+                disableUpdateCheck();
                 this._process = Process.Start(info);
             }
             catch (Exception)
@@ -113,6 +116,40 @@ namespace AweSimConnect.Controllers
         {
             _processKilled = ProcessController.KillProcess(_process);
             _process = null;
+        }
+
+        /*
+        * Registry key modification to prevent update nags when launching WinSCP.
+        *  
+        * Key Location:
+        * 
+        * HKEY_CURRENT_USER
+        *      Software
+        *          Martin Prikryl
+        *              WinSCP 2
+        *                  Configuration
+        *                       Interface
+        *                           Updates
+        *                               "Period"=dword:00000000
+        */
+        private bool disableUpdateCheck()
+        {
+            string WINSCP_REG_POS = "Software\\Martin Prikryl\\WinSCP 2\\Configuration\\Interface\\Updates";
+            try
+            {
+                RegistryKey rKey = Registry.CurrentUser.CreateSubKey(WINSCP_REG_POS);
+                rKey.SetValue("Period", 00000000, RegistryValueKind.DWord);
+                
+                if (rKey != null)
+                {
+                    rKey.Close();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

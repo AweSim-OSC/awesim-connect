@@ -1,6 +1,6 @@
 #AweSim Connect Change Log
 
-## Upcoming
+## v0.80
 
 * Update to TurboVNC 2.0.1
 * Update PuTTY/Plink to 0.66

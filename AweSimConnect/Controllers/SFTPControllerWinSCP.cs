@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
 using AweSimConnect.Models;
 using AweSimConnect.Properties;
 using Microsoft.Win32;
@@ -12,7 +11,7 @@ namespace AweSimConnect.Controllers
     {
         //WinSCP - GPLv2 License.
         private static string WINSCP_PROCESS = "winscp";
-        private static string WINSCP_FOLDER_CONTAINS = "WinSCP";
+        //private static string WINSCP_FOLDER_CONTAINS = "WinSCP";
         private static string WINSCP_FILE = "winscp.exe";
         private string WinSCPPath = "";
         

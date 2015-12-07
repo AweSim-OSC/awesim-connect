@@ -21,7 +21,7 @@ namespace AweSimConnect.Controllers
             {
                 Directory.CreateDirectory(FILE_FOLDER_PATH_ADMIN);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Directory.CreateDirectory(FILE_FOLDER_PATH_TEMP);
                 return false;

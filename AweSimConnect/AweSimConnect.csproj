@@ -212,7 +212,6 @@
     <Content Include="libs\Tamir.SharpSSH.dll" />
     <None Include="Resources\WinSCP.exe" />
     <None Include="Resources\vncviewer.exe" />
-    <None Include="Resources\README.txt" />
     <None Include="Resources\putty.exe" />
     <None Include="Resources\plink.exe" />
     <None Include="Resources\awesim_logo.png" />

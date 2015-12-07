@@ -12,26 +12,26 @@ namespace AweSimConnect.Controllers
     /// </summary>
     class User32
     {
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", SetLastError = true)]
         internal static extern IntPtr SetForegroundWindow(IntPtr windowHandle);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         // Clipboard monitoring
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         internal static extern int SetClipboardViewer(int hWndNewViewer);
 
         // Add the app to the chain of apps that windows notifies on clipboard updates.
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", SetLastError = true)]
         public static extern bool ChangeClipboardChain(IntPtr handleWindowRemove, IntPtr handleWindowNewNext);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", SetLastError = true)]
         public static extern int SendMessage(IntPtr handleWindow, int windowMessage, IntPtr wParam, IntPtr lParam);
         
         // Used for embedding process into the app
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", SetLastError = true)]
         internal static extern IntPtr SetParent(IntPtr windowChild, IntPtr windowParent);
     }
 }

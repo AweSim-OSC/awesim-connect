@@ -12,14 +12,13 @@ namespace AweSimConnect.Views
     {
         private readonly Connection _connection;
         private readonly TunnelController _tc;
-        private readonly AdvancedSettings _advSettings;
         private readonly VNCControllerTurbo _vnc;
 
         public Form Parent_Form { get; set; }
 
         private Process _launchedProcess;
         
-        private int _ticks = 0;
+        private int _ticks;
         private bool _tunnelAvailable;
         private readonly bool _isVnc;
 
@@ -28,12 +27,12 @@ namespace AweSimConnect.Views
             InitializeComponent();
             Parent_Form = parentForm;
             _connection = inputConnection;
-            _advSettings = new AdvancedSettings();
-            _tc = new TunnelController(_connection, _advSettings.IsWriteableUser());
+            var advSettings = new AdvancedSettings();
+            _tc = new TunnelController(_connection, advSettings.IsWriteableUser());
             _tc.StartTunnelerProcess(userPass);
             _isVnc = !string.IsNullOrEmpty(_connection.VNCPassword);
-            _vnc = new VNCControllerTurbo(_connection, _advSettings.IsWriteableUser());
-            labelVersion.Text = "v"+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            _vnc = new VNCControllerTurbo(_connection, advSettings.IsWriteableUser());
+            labelVersion.Text = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
             timerConnectionPanel.Start();
         }
 
@@ -48,14 +47,13 @@ namespace AweSimConnect.Views
             string formTitle = "";
             if (_isVnc)
             {
-                tbConnectionInfo.Text = @"Attempting to connect to a VNC session at localhost:" + _connection.LocalPort +
-                                       " using password " + _connection.VNCPassword + ".";
+                tbConnectionInfo.Text = $"Attempting to connect to a VNC session at localhost:{_connection.LocalPort} using password {_connection.VNCPassword}.";
                 formTitle += "VNC";
             }
             else
             {
-                tbConnectionInfo.Text = @"Attempting to connect to a browser session at http://localhost:" + _connection.LocalPort + ".";
-               formTitle += "BROWSER";
+                tbConnectionInfo.Text = $"Attempting to connect to a browser session at http://localhost:{_connection.LocalPort}.";
+                formTitle += "BROWSER";
             }
             formTitle += " ";
             formTitle += String.Format("{0:T}", DateTime.Now);
@@ -83,10 +81,7 @@ namespace AweSimConnect.Views
         internal void KillEverything()
         {
             KillProcess();
-            if (Parent_Form != null)
-            {
-                Parent_Form.Close();
-            }
+            Parent_Form?.Close();
         }
 
         private void ConnectToApp()
@@ -95,7 +90,6 @@ namespace AweSimConnect.Views
             {
                 try
                 {
-                    // TODO: This is returning the explorer process that spawns the browser, not the browser. I want to find a way to detect the broweser process that gets launched.
                     _launchedProcess = WebTools.LaunchLocalhostBrowser(_connection.LocalPort);
                 }
                 catch (Exception)
@@ -148,6 +142,7 @@ namespace AweSimConnect.Views
             return embedded;
         }
         
+        // The main process loop. Handles system checks and process management.
         // 1 tick = 100 ms.
         private void timerConnectionPanel_Tick(object sender, EventArgs e)
         {
@@ -158,7 +153,7 @@ namespace AweSimConnect.Views
                 SetUpConnection();
             }
 
-            if (_ticks%30 == 0)
+            if (_ticks % 30 == 0)
             {
                 // If the tunnel process hasn't been embedded into the app, run a check for the connection.
                 if (!_tc.IsProcessEmbedded())

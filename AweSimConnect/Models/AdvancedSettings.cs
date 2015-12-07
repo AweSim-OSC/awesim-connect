@@ -99,9 +99,16 @@ namespace AweSimConnect.Models
         {
             return Settings.Default.DetectClipboard;
         }
-        
+
         // Saves a StringCollection of arguments to the settings.
         // Used for passing command line arguements between process instances.
+        //
+        // Note:    StringCollection throws and catches an internal FileNotFound exception here.
+        //          I tried to get rid of it but it's apparently known behavior. It may be wise
+        //          to find a way to replace StringCollection with some other data structure.
+        //          I'm not sure if that's possible in this case.
+        //          http://stackoverflow.com/questions/3494886/filenotfoundexception-in-applicationsettingsbase
+        //
         public void SetArgStringCollection(StringCollection args)
         {
             Settings.Default.CommandLineArgsArray = args;

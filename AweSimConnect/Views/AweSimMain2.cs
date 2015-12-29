@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -65,9 +66,6 @@ namespace AweSimConnect.Views
         {
             InitializeComponent();
             this.Text = CLIENT_TITLE;
-
-            // Tell the clipboard viewer to notify this app when the clipboard changes.
-            _nextClipboardViewer = (IntPtr)User32.SetClipboardViewer((int)this.Handle);
         }
 
         // Form Load
@@ -100,6 +98,16 @@ namespace AweSimConnect.Views
 
             // Check for connectivity to the servers
             LimitedConnectionPopup();
+
+            // Tell the clipboard viewer to notify this app when the clipboard changes.
+            try
+            {
+                _nextClipboardViewer = (IntPtr)User32.SetClipboardViewer((int)this.Handle);
+            }
+            catch (Win32Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
 
             tbUsername.Text = _settings.GetUsername();
             tbPassword.Text = _settings.GetPassword();
@@ -322,13 +330,12 @@ namespace AweSimConnect.Views
                 if (tbUsername.Text == "")
                 {
                     tbUsername.Focus();
+                    BringMainWindowToFront();
                 }
                 else
                 {
                     tbPassword.Focus();
                 }
-
-                BringMainWindowToFront();
             }
         }
 
@@ -443,20 +450,32 @@ namespace AweSimConnect.Views
             {
                 case WM_DRAWCLIPBOARD:
                     PopulateFromClipboard();
-                    User32.SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
-                    m.LParam);
+                    try
+                    {
+                        User32.SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
+                            m.LParam);
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, ex.GetType().ToString());
+                    }
                     break;
-
                 case WM_CHANGECBCHAIN:
                     if (m.WParam == _nextClipboardViewer)
                     {
                         _nextClipboardViewer = m.LParam;
                     }
                     else
-                        User32.SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
-                            m.LParam);
+                        try
+                        {
+                            User32.SendMessage(_nextClipboardViewer, m.Msg, m.WParam,
+                                m.LParam);
+                        }
+                        catch (Win32Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, ex.GetType().ToString());
+                        }
                     break;
-
                 default:
                     base.WndProc(ref m);
                     break;
@@ -506,9 +525,20 @@ namespace AweSimConnect.Views
         // Actions to perform when closing the app.
         private void AweSimMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Remove the app from the clipboard view chain
-            User32.ChangeClipboardChain(Handle, _nextClipboardViewer);
-
+            if (_settings.DetectClipboard())
+            {
+                // Remove the app from the clipboard view chain
+                try
+                {
+                    User32.ChangeClipboardChain(Handle, _nextClipboardViewer);
+                }
+                catch (Win32Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+                
+            }
+            
             // If the app has created any processes. (SFTP clients, for example)
             if (_processes.Count > 0)
             {

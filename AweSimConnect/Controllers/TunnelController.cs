@@ -35,8 +35,12 @@ namespace AweSimConnect.Controllers
         //The full current path of the tunnel executable.
         //private static String TUNNEL_CURRENT_PATH = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, TUNNEL_FILE);
 
-        // PuTTY/Plink command line argument placeholder.        
-        private static String _tunnelArgsPassword = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
+        // PuTTY/Plink command line argument placeholder.
+        // TODO Compression should be a toggleable option.
+        // SSH Compression On
+        //private static String _tunnelArgsPassword = "-ssh -L {0}:{1} -C -N -T {2}@{3} -l {4} -pw {5}";
+        // SSH Compression Off
+        private static String _tunnelArgsPassword = "-ssh -L {0}:{1} -N -T {2}@{3} -l {4} -pw {5}";
 
         public TunnelController(Connection connection, bool admin)
         {

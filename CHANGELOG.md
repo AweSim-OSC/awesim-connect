@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Assembly Versioning](https://msdn.microsoft.com/en-us/library/51ket42z(v=vs.71).aspx).
 
+## Upcoming
+
+* Only bring window to frint when username is empty.
+* Error handling around all Win32 calls.
+
 ## v0.80
 
 * Update to TurboVNC 2.0.1

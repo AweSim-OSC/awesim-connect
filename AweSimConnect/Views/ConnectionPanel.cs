@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
@@ -126,7 +127,7 @@ namespace AweSimConnect.Views
             if (_tunnelAvailable && !_tc.IsProcessEmbedded() && (_tc.GetThisProcess() != null))
             {
                 _tc.EmbedProcess();
-                
+
                 // This is the only place these are used right now. Move them up or out if we need to.
                 // int MAXIMIZE_WINDOW = 3;
                 // int MINIMIZE_WINDOW = 6;
@@ -134,7 +135,14 @@ namespace AweSimConnect.Views
                 //ShowWindow(_pc.GetThisProcess().MainWindowHandle, MINIMIZE_WINDOW);
 
                 // This command will embed the putty process in the main window. 
-                User32.SetParent(_tc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                try
+                {
+                    User32.SetParent(_tc.GetThisProcess().MainWindowHandle, panelProcesses.Handle);
+                }
+                catch (Win32Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
 
                 embedded = true;
             }

@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file. This projec
 
 * Only bring window to frint when username is empty.
 * Error handling around all Win32 calls.
+* Add slider to adjust default VNC quality.
 
 ## v0.80
 

@@ -165,5 +165,17 @@ namespace AweSimConnect.Properties {
                 this["WriteableUser"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("95")]
+        public int VNCQuality {
+            get {
+                return ((int)(this["VNCQuality"]));
+            }
+            set {
+                this["VNCQuality"] = value;
+            }
+        }
     }
 }

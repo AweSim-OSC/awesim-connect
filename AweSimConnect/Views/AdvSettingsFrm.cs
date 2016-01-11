@@ -36,6 +36,8 @@ namespace AweSimConnect.Views
             cbClipboardDetect.Checked = _settings.DetectClipboard();
             cbLaunchTunnel.Checked = _settings.LaunchTunnelAutomatically();
             cbNewVersionCheck.Checked = _settings.AutoCheckNewVersion();
+            tbVNCQuality.Value = _settings.GetVNCQuality();
+            labelQualityValue.Text = _settings.GetVNCQuality().ToString();
         }
 
         private void AdvSettingsFrm_Load(object sender, EventArgs e)
@@ -79,6 +81,12 @@ namespace AweSimConnect.Views
         private void cbNewVersionCheck_CheckedChanged(object sender, EventArgs e)
         {
             _settings.SetAutoCheckNewVersion(cbNewVersionCheck.Checked);
+        }
+
+        private void tbVNCQuality_Scroll(object sender, EventArgs e)
+        {
+            _settings.SetVNCQuality(tbVNCQuality.Value);
+            labelQualityValue.Text = tbVNCQuality.Value.ToString();
         }
     }
 }

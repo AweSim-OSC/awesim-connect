@@ -191,5 +191,21 @@ namespace AweSimConnect.Models
             Settings.Default.WriteableUser = isWriteableUser;
             Settings.Default.Save();
         }
+
+        // Set the value of the VNC Quality (1-100)
+        internal void SetVNCQuality(int quality)
+        {
+            if (quality >= 0 && quality <= 100)
+            {
+                Settings.Default.VNCQuality = quality;
+                Settings.Default.Save();
+            }
+        }
+
+        // Return the VNC quality value.
+        internal int GetVNCQuality()
+        {
+            return Settings.Default.VNCQuality;
+        }
     }
 }

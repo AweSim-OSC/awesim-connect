@@ -41,9 +41,15 @@
             this.gbSystem = new System.Windows.Forms.GroupBox();
             this.cbNewVersionCheck = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbVNCSettings = new System.Windows.Forms.GroupBox();
+            this.labelQualityValue = new System.Windows.Forms.Label();
+            this.labelQuality = new System.Windows.Forms.Label();
+            this.tbVNCQuality = new System.Windows.Forms.TrackBar();
             this.gbConnection.SuspendLayout();
             this.gbSystem.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.gbVNCSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVNCQuality)).BeginInit();
             this.SuspendLayout();
             // 
             // labelVersion
@@ -51,7 +57,7 @@
             this.labelVersion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVersion.Location = new System.Drawing.Point(104, 210);
+            this.labelVersion.Location = new System.Drawing.Point(104, 313);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(110, 16);
             this.labelVersion.TabIndex = 30;
@@ -171,16 +177,58 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Automation Settings";
             // 
+            // gbVNCSettings
+            // 
+            this.gbVNCSettings.Controls.Add(this.labelQualityValue);
+            this.gbVNCSettings.Controls.Add(this.labelQuality);
+            this.gbVNCSettings.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.gbVNCSettings.Location = new System.Drawing.Point(12, 214);
+            this.gbVNCSettings.Name = "gbVNCSettings";
+            this.gbVNCSettings.Size = new System.Drawing.Size(200, 96);
+            this.gbVNCSettings.TabIndex = 40;
+            this.gbVNCSettings.TabStop = false;
+            this.gbVNCSettings.Text = "VNC Settings";
+            // 
+            // labelQualityValue
+            // 
+            this.labelQualityValue.AutoSize = true;
+            this.labelQualityValue.Location = new System.Drawing.Point(58, 25);
+            this.labelQualityValue.Name = "labelQualityValue";
+            this.labelQualityValue.Size = new System.Drawing.Size(13, 13);
+            this.labelQualityValue.TabIndex = 2;
+            this.labelQualityValue.Text = "0";
+            // 
+            // labelQuality
+            // 
+            this.labelQuality.AutoSize = true;
+            this.labelQuality.Location = new System.Drawing.Point(13, 25);
+            this.labelQuality.Name = "labelQuality";
+            this.labelQuality.Size = new System.Drawing.Size(39, 13);
+            this.labelQuality.TabIndex = 1;
+            this.labelQuality.Text = "Quality";
+            // 
+            // tbVNCQuality
+            // 
+            this.tbVNCQuality.Location = new System.Drawing.Point(19, 255);
+            this.tbVNCQuality.Maximum = 100;
+            this.tbVNCQuality.Name = "tbVNCQuality";
+            this.tbVNCQuality.Size = new System.Drawing.Size(187, 45);
+            this.tbVNCQuality.TabIndex = 0;
+            this.tbVNCQuality.TickFrequency = 10;
+            this.tbVNCQuality.Scroll += new System.EventHandler(this.tbVNCQuality_Scroll);
+            // 
             // AdvSettingsFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(224, 229);
+            this.ClientSize = new System.Drawing.Size(224, 339);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.tbVNCQuality);
             this.Controls.Add(this.gbSystem);
             this.Controls.Add(this.gbConnection);
             this.Controls.Add(this.labelVersion);
+            this.Controls.Add(this.gbVNCSettings);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -195,7 +243,11 @@
             this.gbSystem.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.gbVNCSettings.ResumeLayout(false);
+            this.gbVNCSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVNCQuality)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -212,5 +264,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cbLaunchTunnel;
         private System.Windows.Forms.CheckBox cbNewVersionCheck;
+        private System.Windows.Forms.GroupBox gbVNCSettings;
+        private System.Windows.Forms.Label labelQuality;
+        private System.Windows.Forms.TrackBar tbVNCQuality;
+        private System.Windows.Forms.Label labelQualityValue;
     }
 }

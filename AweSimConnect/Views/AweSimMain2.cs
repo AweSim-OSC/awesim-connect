@@ -314,7 +314,7 @@ namespace AweSimConnect.Views
                     tbHost.Text = "";
                 }
 
-                if (!String.IsNullOrEmpty(newConnection.VNCPassword))
+                if (!string.IsNullOrEmpty(newConnection.VNCPassword))
                 {
                     rbVNC.Checked = true;
                     tbVNCPassword.Text = newConnection.VNCPassword;
@@ -329,8 +329,8 @@ namespace AweSimConnect.Views
 
                 if (tbUsername.Text == "")
                 {
-                    tbUsername.Focus();
                     BringMainWindowToFront();
+                    tbUsername.Focus();
                 }
                 else
                 {

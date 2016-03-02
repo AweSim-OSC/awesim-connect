@@ -216,7 +216,7 @@ namespace AweSimConnect.Views
             return new Point(new_x, new_y);
         }
 
-        private void BuildConnectionForm(Connection connection, String password, Point startPoint)
+        private void BuildConnectionForm(Connection connection, string password, Point startPoint)
         {
             Connection newConnection = ObjectCopier.Clone(connection);
             ConnectionForm connectionForm = new ConnectionForm(newConnection, password);
@@ -226,7 +226,7 @@ namespace AweSimConnect.Views
             _connectionForms.Add(connectionForm);
         }
 
-        private void BuildConnectionForm(Connection connection, String password)
+        private void BuildConnectionForm(Connection connection, string password)
         {
             Connection newConnection = ObjectCopier.Clone(connection);
             ConnectionForm connectionForm = new ConnectionForm(newConnection, password);
@@ -255,6 +255,11 @@ namespace AweSimConnect.Views
 
         // The click handler for the SFTP button
         private void buttonSFTP_Click(object sender, EventArgs e)
+        {
+            LaunchSFTP("");
+        }
+
+        private void LaunchSFTP(string path)
         {
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
@@ -288,7 +293,7 @@ namespace AweSimConnect.Views
         {
             if (newConnection != null)
             {
-                if (!String.IsNullOrEmpty(newConnection.UserName))
+                if (!string.IsNullOrEmpty(newConnection.UserName))
                 {
                     tbUsername.Text = newConnection.UserName;
                     this._connection.UserName = newConnection.UserName;
@@ -303,7 +308,7 @@ namespace AweSimConnect.Views
                     tbPort.Text = "";
 
 
-                if (!String.IsNullOrEmpty(newConnection.PUAServer))
+                if (!string.IsNullOrEmpty(newConnection.PUAServer))
                 {
                     tbHost.Text = newConnection.PUAServer;
                     _connection.PUAServer = newConnection.PUAServer;
@@ -418,7 +423,7 @@ namespace AweSimConnect.Views
                 toolTipNoDelay.SetToolTip(bSFTP,
                     "File Transfer. A supported SFTP client has been detected. Click here to launch.");
                 bSFTP.BackgroundImage = Resources.hdd_gry;
-                bSFTP.Text = String.Empty;
+                bSFTP.Text = string.Empty;
             }
             else
             {

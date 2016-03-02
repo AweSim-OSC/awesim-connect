@@ -11,9 +11,9 @@ namespace AweSimConnect.Controllers
     {
         //WinSCP - GPLv2 License.
         private static string WINSCP_PROCESS = "winscp";
-        //private static string WINSCP_FOLDER_CONTAINS = "WinSCP";
         private static string WINSCP_FILE = "winscp.exe";
         private string WinSCPPath = "";
+        private string RemotePath = "";
         
         internal Connection Connection { get; set; }
         private Process _process;
@@ -22,11 +22,22 @@ namespace AweSimConnect.Controllers
         private static string SFTP_PORT = "22";
 
         //The arguments for WinSCP
-        private static string WINSCP_ARGS = "sftp://{0}:{1}@{2}:{3} /noupdate";
+        private static string WINSCP_ARGS = "sftp://{0}:{1}@{2}{3}:{4} /noupdate";
 
         public SFTPControllerWinSCP(Connection connection, bool admin)
         {
+            this.initialize(connection, "", admin);
+        }
+
+        public SFTPControllerWinSCP(Connection connection, string remote_path, bool admin)
+        {
+            this.initialize(connection, remote_path, admin);
+        }
+
+        private void initialize(Connection connection, string remote_path, bool admin)
+        {
             this.WinSCPPath = InstallWinSCP(admin);
+            this.RemotePath = remote_path;
             this.Connection = connection;
         }
 
@@ -57,7 +68,7 @@ namespace AweSimConnect.Controllers
         {
             //TODO This will probably break if the password is empty.
             ProcessStartInfo info = new ProcessStartInfo(this.WinSCPPath);
-            info.Arguments = String.Format(WINSCP_ARGS, this.Connection.UserName, password, OSCClusterController.SFTP_CLUSTER.Domain, SFTP_PORT);
+            info.Arguments = String.Format(WINSCP_ARGS, this.Connection.UserName, password, OSCClusterController.SFTP_CLUSTER.Domain, this.RemotePath, SFTP_PORT);
             info.UseShellExecute = true;
 
             try
@@ -90,22 +101,6 @@ namespace AweSimConnect.Controllers
             }
         }
         
-        /*
-        public void DetectSFTPPath()
-        {
-            this.WinSCPPath = FileController.SearchProgramFileFoldersForExecutableWithFolderPatternMatch(WINSCP_FILE, WINSCP_FOLDER_CONTAINS);
-        }
-
-        public bool IsSFTPInstalled()
-        {
-            if (WinSCPPath != "")
-            {
-                return true;
-            }
-            return false;
-        }
-        */
-
         internal Process GetThisProcess()
         {
             return _process;

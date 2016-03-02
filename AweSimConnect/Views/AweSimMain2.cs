@@ -361,9 +361,17 @@ namespace AweSimConnect.Views
         private void ClickConnectButton()
         {
             if (_settings.LaunchTunnelAutomatically() && !string.IsNullOrEmpty(tbUsername.Text) &&
-                    !string.IsNullOrEmpty(tbPassword.Text) && bConnect.Enabled)
+                    !string.IsNullOrEmpty(tbPassword.Text))
             {
-                bConnect.PerformClick();
+                if (_connection.IsSFTP())
+                {
+                    bSFTP.PerformClick();
+                }
+                else if (bConnect.Enabled)
+                {
+                    bConnect.PerformClick();
+                }
+                
             }
         }
 

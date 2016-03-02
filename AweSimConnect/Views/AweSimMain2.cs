@@ -263,7 +263,7 @@ namespace AweSimConnect.Views
         {
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
-                SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection, _settings.IsWriteableUser());
+                SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection, path, _settings.IsWriteableUser());
                 winscp.StartSFTPProcess(tbPassword.Text);
                 if (winscp.GetThisProcess() != null)
                 {

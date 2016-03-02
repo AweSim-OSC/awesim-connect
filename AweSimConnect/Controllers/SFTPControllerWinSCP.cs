@@ -22,7 +22,7 @@ namespace AweSimConnect.Controllers
         private static string SFTP_PORT = "22";
 
         //The arguments for WinSCP
-        private static string WINSCP_ARGS = "sftp://{0}:{1}@{2}{3}:{4} /noupdate";
+        private static string WINSCP_ARGS = "sftp://{0}:{1}@{2}:{3}/{4} /noupdate";
 
         public SFTPControllerWinSCP(Connection connection, bool admin)
         {
@@ -68,7 +68,7 @@ namespace AweSimConnect.Controllers
         {
             //TODO This will probably break if the password is empty.
             ProcessStartInfo info = new ProcessStartInfo(this.WinSCPPath);
-            info.Arguments = String.Format(WINSCP_ARGS, this.Connection.UserName, password, OSCClusterController.SFTP_CLUSTER.Domain, this.RemotePath, SFTP_PORT);
+            info.Arguments = String.Format(WINSCP_ARGS, this.Connection.UserName, password, OSCClusterController.SFTP_CLUSTER.Domain, SFTP_PORT, this.RemotePath);
             info.UseShellExecute = true;
 
             try

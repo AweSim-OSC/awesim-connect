@@ -256,14 +256,19 @@ namespace AweSimConnect.Views
         // The click handler for the SFTP button
         private void buttonSFTP_Click(object sender, EventArgs e)
         {
-            LaunchSFTP("");
+            LaunchSFTP();
         }
 
-        private void LaunchSFTP(string path)
+        private void LaunchSFTP()
         {
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
-                SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection, path, _settings.IsWriteableUser());
+                string remote_path = "";
+                if (_connection.IsSFTP())
+                {
+                    remote_path = _connection.SFTPPath;
+                }
+                SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection, remote_path, _settings.IsWriteableUser());
                 winscp.StartSFTPProcess(tbPassword.Text);
                 if (winscp.GetThisProcess() != null)
                 {
@@ -329,6 +334,15 @@ namespace AweSimConnect.Views
                     rbBROWSER.Checked = true;
                     tbVNCPassword.Text = "";
                     _connection.VNCPassword = null;
+                }
+
+                if (!string.IsNullOrEmpty(newConnection.SFTPPath))
+                {
+                    _connection.SFTPPath = newConnection.SFTPPath;
+                }
+                else
+                {
+                    _connection.SFTPPath = null;
                 }
 
                 if (tbUsername.Text == "")

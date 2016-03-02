@@ -112,5 +112,13 @@ namespace AweSimConnect.Models
             }
             return false;
         }
+
+        // A path to the SFTP initial start location
+        public string SFTPPath { get; set; }
+
+        public bool IsSFTP()
+        {
+            return !string.IsNullOrEmpty(SFTPPath);
+        }
     }
 }

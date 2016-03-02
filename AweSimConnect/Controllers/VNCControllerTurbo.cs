@@ -26,7 +26,7 @@ namespace AweSimConnect.Controllers
 
         //The arguments for turbovnc
         // Quality ranges 0-100 with '-quality {n}' flag
-        private static String TURBO_ARGS = "-quality {0} /password {1} localhost::{2}";
+        private static String TURBO_ARGS = "/quality {0} /password {1} localhost::{2}";
 
         public VNCControllerTurbo(Connection connection, bool admin)
         {

@@ -20,10 +20,10 @@ To connect to AweSim services, a secure tunnel to a session is required. This ca
 
 When you first run AweSim Connect, a temporary folder with four additional files will be added to this folder. These are required for proper functionality of the application. Please ensure that these files are permitted by your IT administrator.
 
-* `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources. (version 0.65)
-* `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to AweSim resources. (version 0.65)
-* `vncviewer.exe` is the VNC viewer client used to view a remote desktop session. Currently TurboVNC Viewer 2.0.
-* `WinSCP.exe` AweSim Connect includes WinSCP 5.7.5 as the default SFTP client.
+* `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources. (version 0.66)
+* `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to AweSim resources. (version 0.66)
+* `vncviewer.exe` is the VNC viewer client used to view a remote desktop session. Currently TurboVNC Viewer 2.0.1.
+* `WinSCP.exe` AweSim Connect includes WinSCP 5.7.6 as the default SFTP client.
 
 #### Double-Click the `AweSimConnect.exe` file to run the application
 
@@ -185,6 +185,7 @@ Examples of valid patterns:
 * VNC (no user): ```awesim://:<VNCPassword>@<PUAServer><RemoteHost>```
 * COMSOL: ```awesim://<UserName>@<PUAServer><RemoteHost>```
 * COMSOL (no user): ```awesim://<PUAServer>:<RemoteHost>```
+* SFTP: ```awesim://sftp@<RemotePath>```
 
 #### Automatic connection via command line arguments.
 
@@ -194,6 +195,7 @@ AweSim Connect accepts command line arguments in the patterns:
 * ```AweSimConnect.exe :<VNCPassword>@<PUAServer>:<RemotePort>```
 * ```AweSimConnect.exe <UserName>@<PUAServer>:<RemotePort>```
 * ```AweSimConnect.exe <PUAServer>:<RemotePort>```
+* ```AweSimConnect.exe sftp@<RemotePath>```
 
 #### [Deprecated] Automatic connection via valid json string.
 

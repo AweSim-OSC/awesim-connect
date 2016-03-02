@@ -216,7 +216,7 @@ namespace AweSimConnect.Views
             return new Point(new_x, new_y);
         }
 
-        private void BuildConnectionForm(Connection connection, String password, Point startPoint)
+        private void BuildConnectionForm(Connection connection, string password, Point startPoint)
         {
             Connection newConnection = ObjectCopier.Clone(connection);
             ConnectionForm connectionForm = new ConnectionForm(newConnection, password);
@@ -226,7 +226,7 @@ namespace AweSimConnect.Views
             _connectionForms.Add(connectionForm);
         }
 
-        private void BuildConnectionForm(Connection connection, String password)
+        private void BuildConnectionForm(Connection connection, string password)
         {
             Connection newConnection = ObjectCopier.Clone(connection);
             ConnectionForm connectionForm = new ConnectionForm(newConnection, password);
@@ -256,9 +256,19 @@ namespace AweSimConnect.Views
         // The click handler for the SFTP button
         private void buttonSFTP_Click(object sender, EventArgs e)
         {
+            LaunchSFTP();
+        }
+
+        private void LaunchSFTP()
+        {
             if (_networkAvailable && Validator.IsPresent(tbUsername) && Validator.IsPresent(tbPassword))
             {
-                SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection, _settings.IsWriteableUser());
+                string remote_path = "";
+                if (_connection.IsSFTP())
+                {
+                    remote_path = _connection.SFTPPath;
+                }
+                SFTPControllerWinSCP winscp = new SFTPControllerWinSCP(_connection, remote_path, _settings.IsWriteableUser());
                 winscp.StartSFTPProcess(tbPassword.Text);
                 if (winscp.GetThisProcess() != null)
                 {
@@ -288,7 +298,7 @@ namespace AweSimConnect.Views
         {
             if (newConnection != null)
             {
-                if (!String.IsNullOrEmpty(newConnection.UserName))
+                if (!string.IsNullOrEmpty(newConnection.UserName))
                 {
                     tbUsername.Text = newConnection.UserName;
                     this._connection.UserName = newConnection.UserName;
@@ -303,7 +313,7 @@ namespace AweSimConnect.Views
                     tbPort.Text = "";
 
 
-                if (!String.IsNullOrEmpty(newConnection.PUAServer))
+                if (!string.IsNullOrEmpty(newConnection.PUAServer))
                 {
                     tbHost.Text = newConnection.PUAServer;
                     _connection.PUAServer = newConnection.PUAServer;
@@ -326,6 +336,15 @@ namespace AweSimConnect.Views
                     _connection.VNCPassword = null;
                 }
 
+                if (!string.IsNullOrEmpty(newConnection.SFTPPath))
+                {
+                    _connection.SFTPPath = newConnection.SFTPPath;
+                }
+                else
+                {
+                    _connection.SFTPPath = null;
+                }
+
                 if (tbUsername.Text == "")
                 {
                     BringMainWindowToFront();
@@ -342,9 +361,17 @@ namespace AweSimConnect.Views
         private void ClickConnectButton()
         {
             if (_settings.LaunchTunnelAutomatically() && !string.IsNullOrEmpty(tbUsername.Text) &&
-                    !string.IsNullOrEmpty(tbPassword.Text) && bConnect.Enabled)
+                    !string.IsNullOrEmpty(tbPassword.Text))
             {
-                bConnect.PerformClick();
+                if (_connection.IsSFTP())
+                {
+                    bSFTP.PerformClick();
+                }
+                else if (bConnect.Enabled)
+                {
+                    bConnect.PerformClick();
+                }
+                
             }
         }
 
@@ -418,7 +445,7 @@ namespace AweSimConnect.Views
                 toolTipNoDelay.SetToolTip(bSFTP,
                     "File Transfer. A supported SFTP client has been detected. Click here to launch.");
                 bSFTP.BackgroundImage = Resources.hdd_gry;
-                bSFTP.Text = String.Empty;
+                bSFTP.Text = string.Empty;
             }
             else
             {

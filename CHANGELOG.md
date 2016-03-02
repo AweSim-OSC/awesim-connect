@@ -2,11 +2,13 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Assembly Versioning](https://msdn.microsoft.com/en-us/library/51ket42z(v=vs.71).aspx).
 
-## v0.81
+## v0.90
 
 * Only bring window to front when username is empty.
 * Error handling around all Win32 calls.
 * Add slider to adjust default VNC quality.
+* Add SFTP to URI scheme.
+* Uri encode sftp password on launch.
 
 ## v0.80
 

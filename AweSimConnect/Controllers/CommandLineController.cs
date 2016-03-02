@@ -75,11 +75,25 @@ namespace AweSimConnect.Controllers
 
                 // If the user used the URI as the command line string, remove the prefix.
                 connectionString = Regex.Replace(connectionString, RegistryHook.URI_PREFIX, "", RegexOptions.IgnoreCase);
-                // Windows adds an extra slash to the end of the URI args, remove it.
-                connectionString = Regex.Replace(connectionString, "/", "");
-
-                if (connectionString.Contains("@"))
+                               
+                if (connectionString.Contains("sftp?"))
                 {
+                    try
+                    {
+                        int index = connectionString.IndexOf("?", StringComparison.Ordinal);
+                        string hostInfo = connectionString.Substring(index + 1);
+                        newConnection.SFTPPath = hostInfo;
+                    } catch (Exception)
+                    {
+                        // Malformed URL, resort to default
+                        newConnection.SFTPPath = "";
+                    }
+                    
+                }
+                else if (connectionString.Contains("@"))
+                {
+                    // Windows adds an extra slash to the end of the URI args, remove it.
+                    connectionString = Regex.Replace(connectionString, "/", "");
 
                     int index = connectionString.IndexOf("@", StringComparison.Ordinal);
                     string vncInfo = connectionString.Substring(0, index);
@@ -106,6 +120,8 @@ namespace AweSimConnect.Controllers
                 }
                 else
                 {
+                    // Windows adds an extra slash to the end of the URI args, remove it.
+                    connectionString = Regex.Replace(connectionString, "/", "");
                     newConnection.PUAServer = connectionString.Split(':')[0];
                     newConnection.RemotePort = int.Parse(connectionString.Split(':')[1]);
                 }

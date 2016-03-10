@@ -15,11 +15,12 @@ namespace AweSimConnect.Controllers
         private static string TURBOVNC_FILE = "vncviewer.exe";
         private static string TURBOVNC_PROCESS = "vncviewer";
 
-        private String vncPath = "";
+        private String _vncPath = "";
 
-        internal Connection Connection { get; set; }
+        internal Connection _connection { get; set; }
         private Process _process;
         private bool _processKilled;
+        private AdvancedSettings _settings = new AdvancedSettings();
 
         //The full current path of the executable.
         //private static readonly String TURBOVNC_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, TURBOVNC_FILE);
@@ -30,8 +31,8 @@ namespace AweSimConnect.Controllers
 
         public VNCControllerTurbo(Connection connection, bool admin)
         {
-            this.vncPath = InstallVNC(admin);
-            this.Connection = connection;
+            _vncPath = InstallVNC(admin);
+            _connection = connection;
         }
 
         //Installs ggivnc.exe to current directory if it isn't there.
@@ -59,8 +60,9 @@ namespace AweSimConnect.Controllers
         //Launch TurboVNC 
         public Process StartVNCProcess()
         {
-            ProcessStartInfo info = new ProcessStartInfo(this.vncPath);
-            info.Arguments = String.Format(TURBO_ARGS, Settings.Default.VNCQuality, Connection.VNCPassword, Connection.LocalPort);
+            string args = String.Format(TURBO_ARGS, _settings.GetVNCQuality().ToString(), _connection.VNCPassword.Trim(), _connection.LocalPort.ToString());
+            ProcessStartInfo info = new ProcessStartInfo(_vncPath);
+            info.Arguments = args;
             info.UseShellExecute = true;
 
             try

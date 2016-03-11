@@ -76,6 +76,7 @@ namespace AweSimConnect.Controllers
                 // If the user used the URI as the command line string, remove the prefix.
                 connectionString = Regex.Replace(connectionString, RegistryHook.URI_PREFIX, "", RegexOptions.IgnoreCase);
 
+                // Check for sftp connection
                 if (connectionString.Contains("sftp@"))
                 {
                     try
@@ -90,6 +91,8 @@ namespace AweSimConnect.Controllers
                     }
                     
                 }
+
+                // Check for vnc connection
                 else if (connectionString.Contains("@"))
                 {
                     // Windows adds an extra slash to the end of the URI args, remove it.
@@ -118,6 +121,7 @@ namespace AweSimConnect.Controllers
                     }
 
                 }
+                // Process as browser connection
                 else
                 {
                     // Windows adds an extra slash to the end of the URI args, remove it.

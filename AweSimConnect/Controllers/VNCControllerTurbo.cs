@@ -26,8 +26,8 @@ namespace AweSimConnect.Controllers
         //private static readonly String TURBOVNC_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, TURBOVNC_FILE);
 
         //The arguments for turbovnc
-        // Quality ranges 0-100 with '-quality {n}' flag
-        private static String TURBO_ARGS = "/quality {0} /password {1} localhost::{2}";
+        // Quality ranges 0-100 with '/quality {n}' flag
+        private static String TURBO_ARGS = @"/quality {0} /password {1} localhost::{2}";
 
         public VNCControllerTurbo(Connection connection, bool admin)
         {
@@ -64,7 +64,7 @@ namespace AweSimConnect.Controllers
             ProcessStartInfo info = new ProcessStartInfo(_vncPath);
             info.Arguments = args;
             info.UseShellExecute = true;
-
+            
             try
             {
                 _process = Process.Start(info);

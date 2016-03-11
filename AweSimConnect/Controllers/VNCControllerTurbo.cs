@@ -14,6 +14,7 @@ namespace AweSimConnect.Controllers
         //TurboVNC - GPLv2 License.
         private static string TURBOVNC_FILE = "vncviewer.exe";
         private static string TURBOVNC_PROCESS = "vncviewer";
+        private static int TURBOVNC_QUALITY_DEFAULT = 95;
 
         private String _vncPath = "";
 
@@ -25,9 +26,10 @@ namespace AweSimConnect.Controllers
         //The full current path of the executable.
         //private static readonly String TURBOVNC_CURRENT_DIR = Path.Combine(FileController.FILE_FOLDER_PATH_ADMIN, TURBOVNC_FILE);
 
-        //The arguments for turbovnc
+        //The default arguments for turbovnc
+        private static String TURBO_ARGS = @"/password {0} localhost::{1}";
         // Quality ranges 0-100 with '/quality {n}' flag
-        private static String TURBO_ARGS = @"/quality {0} /password {1} localhost::{2}";
+        private static String TURBO_ARGS_QUAL = @"/quality {0} /password {1} localhost::{2}";
 
         public VNCControllerTurbo(Connection connection, bool admin)
         {
@@ -60,9 +62,8 @@ namespace AweSimConnect.Controllers
         //Launch TurboVNC 
         public Process StartVNCProcess()
         {
-            string args = String.Format(TURBO_ARGS, _settings.GetVNCQuality().ToString(), _connection.VNCPassword.Trim(), _connection.LocalPort.ToString());
             ProcessStartInfo info = new ProcessStartInfo(_vncPath);
-            info.Arguments = args;
+            info.Arguments = buildVNCArgs();
             info.UseShellExecute = true;
             
             try
@@ -74,6 +75,20 @@ namespace AweSimConnect.Controllers
                 _process = new Process();
             }
             return _process;
+        }
+
+        private string buildVNCArgs()
+        {
+            string args;
+            if (_settings.GetVNCQuality() == TURBOVNC_QUALITY_DEFAULT)
+            {
+                args = String.Format(TURBO_ARGS, _connection.VNCPassword.Trim(), _connection.LocalPort.ToString());
+            }
+            else
+            {
+                args = String.Format(TURBO_ARGS_QUAL, _settings.GetVNCQuality().ToString(), _connection.VNCPassword.Trim(), _connection.LocalPort.ToString());
+            }
+            return args;
         }
 
         // Check to see if TurboVNC exists in the AweSim connect folder.

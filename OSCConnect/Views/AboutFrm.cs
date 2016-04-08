@@ -12,7 +12,7 @@ namespace OSCConnect.Views
 
         Assembly assembly;
         static string RESOURCE_NAME = "OSCConnect.LICENSE.txt";
-        static string AWESIM_SITE = "http://www.osc.edu";
+        static string OSC_SITE = "http://www.osc.edu";
 
         public AboutFrm()
         {
@@ -25,7 +25,7 @@ namespace OSCConnect.Views
 
             labelAboutTitle.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             labelVersion.Text = "Version " + CLIENT_VERSION;
-            linkAweSim.Text = AWESIM_SITE;
+            linkAweSim.Text = OSC_SITE;
 
             // http://stackoverflow.com/questions/18108725/reading-an-embedded-text-file
             try
@@ -50,7 +50,7 @@ namespace OSCConnect.Views
 
         private void linkAweSim_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            WebTools.LaunchBrowser(AWESIM_SITE);
+            WebTools.LaunchBrowser(OSC_SITE);
         }
     }
 }

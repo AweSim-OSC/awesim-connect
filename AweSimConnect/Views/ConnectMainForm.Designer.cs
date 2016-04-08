@@ -1,6 +1,6 @@
 ﻿namespace AweSimConnect.Views
 {
-    partial class AweSimMain2
+    partial class ConnectMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AweSimMain2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectMainForm));
             this.gbCredentials = new System.Windows.Forms.GroupBox();
             this.cbRememberMe = new System.Windows.Forms.CheckBox();
             this.tbPassword = new System.Windows.Forms.TextBox();

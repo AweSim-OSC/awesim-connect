@@ -20,7 +20,7 @@ namespace AweSimConnect
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new AweSimMain2());
-            App.Run(new AweSimMain2(args));
+            App.Run(new ConnectMainForm(args));
         }
     }
 
@@ -51,7 +51,7 @@ namespace AweSimConnect
             EnableVisualStyles = true;
         }
 
-        public static void Run(AweSimMain2 form)
+        public static void Run(ConnectMainForm form)
         {
             _app = new App { MainForm = form };
             _app.StartupNextInstance += NextInstanceHandler;

@@ -21,7 +21,7 @@ namespace AweSimConnect.Views
     *
     * Brian McMichael: bmcmichael@osc.edu
     */
-    public partial class AweSimMain2 : Form
+    public partial class ConnectMainForm : Form
     {
         // The version number. The first and second numbers are set in the assembly info.
         // The third number is the number of days since the year 2000
@@ -61,7 +61,7 @@ namespace AweSimConnect.Views
         private AdvancedSettings _settings;
         private string _sshHost;
         
-        public AweSimMain2(string[] args)
+        public ConnectMainForm(string[] args)
         {
             InitializeComponent();
             this.Text = CLIENT_TITLE;

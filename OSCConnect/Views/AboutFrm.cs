@@ -17,6 +17,7 @@ namespace OSCConnect.Views
         public AboutFrm()
         {
             InitializeComponent();
+            this.Icon = OSCConnect.Properties.Resources.oscicontransparent;
         }
 
         private void AboutFrm_Load(object sender, EventArgs e)

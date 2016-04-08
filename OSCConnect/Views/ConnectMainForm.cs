@@ -36,6 +36,7 @@ namespace OSCConnect.Views
         private static string UNABLE_TO_CONNECT =
             "Unable to Connect to OSC Server. Check your connection or contact your system administrator.";
         private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
+        private static Icon OSC_ICON = OSCConnect.Properties.Resources.oscicontransparent;
 
         Connection _connection;
 
@@ -74,6 +75,7 @@ namespace OSCConnect.Views
             this.CenterToParent();
             bConnect.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
             this.AcceptButton = bConnect;
+            this.Icon = OSC_ICON;
 
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();

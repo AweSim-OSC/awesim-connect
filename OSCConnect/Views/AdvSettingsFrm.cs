@@ -17,6 +17,7 @@ namespace OSCConnect.Views
         public AdvSettingsFrm()
         {
             InitializeComponent();
+            this.Icon = OSCConnect.Properties.Resources.oscicontransparent;
             _settings = new AdvancedSettings();
             _clusterController = new OSCClusterController();
 

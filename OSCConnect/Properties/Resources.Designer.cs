@@ -231,6 +231,16 @@ namespace OSCConnect.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon oscicontransparent {
+            get {
+                object obj = ResourceManager.GetObject("oscicontransparent", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap osclogo2 {
@@ -247,16 +257,6 @@ namespace OSCConnect.Properties {
             get {
                 object obj = ResourceManager.GetObject("osclogofull", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon osclogot {
-            get {
-                object obj = ResourceManager.GetObject("osclogot", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         

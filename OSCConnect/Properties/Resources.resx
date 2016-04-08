@@ -3572,16 +3572,16 @@
   <data name="WinSCP" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WinSCP.exe;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="osclogo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\osclogo2.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="osclogotext" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OSC-logo-txt.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="oscicontransparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\oscicontransparent.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="osclogo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\osclogo2.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="osclogofull" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\osclogofull.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="osclogot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\osclogot.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

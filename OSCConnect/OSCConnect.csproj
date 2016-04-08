@@ -51,7 +51,7 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\osclogot.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\oscicontransparent.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -211,9 +211,12 @@
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
+    <None Include="Resources\osclogo2.jpg" />
+    <None Include="Resources\osctransparent.png" />
+    <None Include="Resources\oscicontransparent.ico" />
+    <None Include="Resources\osctransparent.ico" />
     <None Include="Resources\osclogot.ico" />
     <None Include="Resources\osclogofull.png" />
-    <None Include="Resources\osclogo2.jpg" />
     <None Include="Resources\osclogo.png" />
     <None Include="Resources\OSC-logo-txt.png" />
     <None Include="Resources\OSC_Logo_Icon-Only.jpg" />

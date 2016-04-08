@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdvSettingsFrm));
             this.labelVersion = new System.Windows.Forms.Label();
             this.cbSaveUser = new System.Windows.Forms.CheckBox();
             this.cbHosts = new System.Windows.Forms.ComboBox();
@@ -247,7 +246,6 @@
             this.Controls.Add(this.gbConnection);
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.gbVNCSettings);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutFrm));
             this.tbLicenseArea = new System.Windows.Forms.TextBox();
             this.labelAboutTitle = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
@@ -124,7 +123,6 @@
             this.Controls.Add(this.labelAboutTitle);
             this.Controls.Add(this.tbLicenseArea);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

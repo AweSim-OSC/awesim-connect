@@ -13,6 +13,7 @@ namespace OSCConnect.Views
         internal ConnectionForm(Connection connection, string userPass)
         {
             InitializeComponent();
+            this.Icon = OSCConnect.Properties.Resources.oscicontransparent;
             this.connection = connection;
             this.userPass = userPass;
         }

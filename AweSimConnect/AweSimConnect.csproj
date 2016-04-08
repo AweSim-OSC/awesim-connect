@@ -113,6 +113,7 @@
     <Compile Include="Controllers\ConsoleController.cs" />
     <Compile Include="Controllers\NetworkTools.cs" />
     <Compile Include="Controllers\ProcessController.cs" />
+    <Compile Include="Controllers\RegistryController.cs" />
     <Compile Include="Controllers\RegistryHook.cs" />
     <Compile Include="Controllers\SFTPControllerFileZilla.cs" />
     <Compile Include="Controllers\SFTPControllerWinSCP.cs" />

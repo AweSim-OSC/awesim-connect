@@ -86,9 +86,11 @@
             this.gbCredentials.Controls.Add(this.labelPassword);
             this.gbCredentials.Controls.Add(this.labelUsername);
             this.gbCredentials.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbCredentials.Location = new System.Drawing.Point(12, 223);
+            this.gbCredentials.Location = new System.Drawing.Point(18, 185);
+            this.gbCredentials.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbCredentials.Name = "gbCredentials";
-            this.gbCredentials.Size = new System.Drawing.Size(154, 130);
+            this.gbCredentials.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbCredentials.Size = new System.Drawing.Size(231, 200);
             this.gbCredentials.TabIndex = 2;
             this.gbCredentials.TabStop = false;
             this.gbCredentials.Text = "1. AweSim Credentials";
@@ -98,10 +100,11 @@
             // 
             this.cbRememberMe.AutoSize = true;
             this.cbRememberMe.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.cbRememberMe.Location = new System.Drawing.Point(6, 107);
+            this.cbRememberMe.Location = new System.Drawing.Point(9, 165);
+            this.cbRememberMe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbRememberMe.Name = "cbRememberMe";
             this.cbRememberMe.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cbRememberMe.Size = new System.Drawing.Size(95, 17);
+            this.cbRememberMe.Size = new System.Drawing.Size(133, 24);
             this.cbRememberMe.TabIndex = 5;
             this.cbRememberMe.Text = "Remember Me";
             this.cbRememberMe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,10 +114,11 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(6, 75);
+            this.tbPassword.Location = new System.Drawing.Point(9, 115);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbPassword.MaxLength = 255;
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(142, 26);
+            this.tbPassword.Size = new System.Drawing.Size(211, 26);
             this.tbPassword.TabIndex = 3;
             this.tbPassword.Tag = "Password";
             this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -124,10 +128,11 @@
             // tbUsername
             // 
             this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.Location = new System.Drawing.Point(6, 31);
+            this.tbUsername.Location = new System.Drawing.Point(9, 48);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbUsername.MaxLength = 255;
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(142, 26);
+            this.tbUsername.Size = new System.Drawing.Size(211, 26);
             this.tbUsername.TabIndex = 2;
             this.tbUsername.Tag = "Username";
             this.tbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -140,7 +145,8 @@
             this.labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.labelPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelPassword.Location = new System.Drawing.Point(51, 59);
+            this.labelPassword.Location = new System.Drawing.Point(76, 91);
+            this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(53, 13);
             this.labelPassword.TabIndex = 4;
@@ -152,7 +158,8 @@
             this.labelUsername.BackColor = System.Drawing.Color.Transparent;
             this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelUsername.Location = new System.Drawing.Point(51, 15);
+            this.labelUsername.Location = new System.Drawing.Point(76, 23);
+            this.labelUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(55, 13);
             this.labelUsername.TabIndex = 3;
@@ -165,9 +172,11 @@
             this.gbSessionInfo.Controls.Add(this.lPort);
             this.gbSessionInfo.Controls.Add(this.lHost);
             this.gbSessionInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionInfo.Location = new System.Drawing.Point(12, 425);
+            this.gbSessionInfo.Location = new System.Drawing.Point(18, 496);
+            this.gbSessionInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSessionInfo.Name = "gbSessionInfo";
-            this.gbSessionInfo.Size = new System.Drawing.Size(154, 60);
+            this.gbSessionInfo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbSessionInfo.Size = new System.Drawing.Size(231, 92);
             this.gbSessionInfo.TabIndex = 6;
             this.gbSessionInfo.TabStop = false;
             this.gbSessionInfo.Text = "3. Session Info";
@@ -176,10 +185,11 @@
             // tbPort
             // 
             this.tbPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPort.Location = new System.Drawing.Point(116, 34);
+            this.tbPort.Location = new System.Drawing.Point(174, 52);
+            this.tbPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbPort.MaxLength = 5;
             this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(32, 20);
+            this.tbPort.Size = new System.Drawing.Size(46, 20);
             this.tbPort.TabIndex = 7;
             this.tbPort.Tag = "Port";
             this.tbPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -190,9 +200,10 @@
             // tbHost
             // 
             this.tbHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHost.Location = new System.Drawing.Point(6, 34);
+            this.tbHost.Location = new System.Drawing.Point(9, 52);
+            this.tbHost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbHost.Name = "tbHost";
-            this.tbHost.Size = new System.Drawing.Size(104, 20);
+            this.tbHost.Size = new System.Drawing.Size(154, 20);
             this.tbHost.TabIndex = 6;
             this.tbHost.Tag = "Host";
             this.tbHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -205,7 +216,8 @@
             this.lPort.AutoSize = true;
             this.lPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.lPort.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lPort.Location = new System.Drawing.Point(119, 18);
+            this.lPort.Location = new System.Drawing.Point(178, 28);
+            this.lPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lPort.Name = "lPort";
             this.lPort.Size = new System.Drawing.Size(26, 13);
             this.lPort.TabIndex = 4;
@@ -216,7 +228,8 @@
             this.lHost.AutoSize = true;
             this.lHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.lHost.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lHost.Location = new System.Drawing.Point(47, 18);
+            this.lHost.Location = new System.Drawing.Point(70, 28);
+            this.lHost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lHost.Name = "lHost";
             this.lHost.Size = new System.Drawing.Size(29, 13);
             this.lHost.TabIndex = 3;
@@ -226,10 +239,11 @@
             // 
             this.tbVNCPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVNCPassword.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.tbVNCPassword.Location = new System.Drawing.Point(6, 16);
+            this.tbVNCPassword.Location = new System.Drawing.Point(9, 25);
+            this.tbVNCPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbVNCPassword.MaxLength = 8;
             this.tbVNCPassword.Name = "tbVNCPassword";
-            this.tbVNCPassword.Size = new System.Drawing.Size(142, 20);
+            this.tbVNCPassword.Size = new System.Drawing.Size(211, 20);
             this.tbVNCPassword.TabIndex = 9;
             this.tbVNCPassword.Tag = "VNC Password";
             this.tbVNCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -240,9 +254,10 @@
             // 
             this.rbVNC.AutoSize = true;
             this.rbVNC.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rbVNC.Location = new System.Drawing.Point(6, 17);
+            this.rbVNC.Location = new System.Drawing.Point(9, 26);
+            this.rbVNC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rbVNC.Name = "rbVNC";
-            this.rbVNC.Size = new System.Drawing.Size(117, 17);
+            this.rbVNC.Size = new System.Drawing.Size(164, 24);
             this.rbVNC.TabIndex = 4;
             this.rbVNC.TabStop = true;
             this.rbVNC.Tag = "VNC Radio Button";
@@ -255,9 +270,10 @@
             // 
             this.rbBROWSER.AutoSize = true;
             this.rbBROWSER.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.rbBROWSER.Location = new System.Drawing.Point(6, 37);
+            this.rbBROWSER.Location = new System.Drawing.Point(9, 57);
+            this.rbBROWSER.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rbBROWSER.Name = "rbBROWSER";
-            this.rbBROWSER.Size = new System.Drawing.Size(129, 17);
+            this.rbBROWSER.Size = new System.Drawing.Size(183, 24);
             this.rbBROWSER.TabIndex = 5;
             this.rbBROWSER.TabStop = true;
             this.rbBROWSER.Tag = "BROWSER Radio Box";
@@ -289,9 +305,10 @@
             this.buttonInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.buttonInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonInfo.Location = new System.Drawing.Point(7, 17);
+            this.buttonInfo.Location = new System.Drawing.Point(10, 26);
+            this.buttonInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonInfo.Name = "buttonInfo";
-            this.buttonInfo.Size = new System.Drawing.Size(62, 59);
+            this.buttonInfo.Size = new System.Drawing.Size(93, 91);
             this.buttonInfo.TabIndex = 2;
             this.toolTipNoDelay.SetToolTip(this.buttonInfo, "About");
             this.buttonInfo.UseVisualStyleBackColor = true;
@@ -307,9 +324,10 @@
             this.buttonAdvanced.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.buttonAdvanced.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonAdvanced.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdvanced.Location = new System.Drawing.Point(6, 16);
+            this.buttonAdvanced.Location = new System.Drawing.Point(9, 25);
+            this.buttonAdvanced.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonAdvanced.Name = "buttonAdvanced";
-            this.buttonAdvanced.Size = new System.Drawing.Size(62, 59);
+            this.buttonAdvanced.Size = new System.Drawing.Size(93, 91);
             this.buttonAdvanced.TabIndex = 3;
             this.toolTipNoDelay.SetToolTip(this.buttonAdvanced, "Advanced Options");
             this.buttonAdvanced.UseVisualStyleBackColor = true;
@@ -327,10 +345,10 @@
             this.buttonConsole.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonConsole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConsole.ForeColor = System.Drawing.Color.White;
-            this.buttonConsole.Location = new System.Drawing.Point(6, 17);
+            this.buttonConsole.Location = new System.Drawing.Point(9, 26);
             this.buttonConsole.Margin = new System.Windows.Forms.Padding(0);
             this.buttonConsole.Name = "buttonConsole";
-            this.buttonConsole.Size = new System.Drawing.Size(62, 59);
+            this.buttonConsole.Size = new System.Drawing.Size(93, 91);
             this.buttonConsole.TabIndex = 12;
             this.buttonConsole.Tag = "Console";
             this.toolTipNoDelay.SetToolTip(this.buttonConsole, "Open a console session.");
@@ -349,10 +367,10 @@
             this.bConnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bConnect.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bConnect.Location = new System.Drawing.Point(6, 21);
+            this.bConnect.Location = new System.Drawing.Point(9, 32);
             this.bConnect.Margin = new System.Windows.Forms.Padding(0);
             this.bConnect.Name = "bConnect";
-            this.bConnect.Size = new System.Drawing.Size(142, 138);
+            this.bConnect.Size = new System.Drawing.Size(213, 212);
             this.bConnect.TabIndex = 10;
             this.toolTipNoDelay.SetToolTip(this.bConnect, "Connect to Session. Enter your session information and click here to connect to t" +
         "he session.");
@@ -371,10 +389,10 @@
             this.bSFTP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bSFTP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSFTP.ForeColor = System.Drawing.Color.White;
-            this.bSFTP.Location = new System.Drawing.Point(7, 15);
+            this.bSFTP.Location = new System.Drawing.Point(10, 23);
             this.bSFTP.Margin = new System.Windows.Forms.Padding(0);
             this.bSFTP.Name = "bSFTP";
-            this.bSFTP.Size = new System.Drawing.Size(62, 59);
+            this.bSFTP.Size = new System.Drawing.Size(93, 91);
             this.bSFTP.TabIndex = 11;
             this.bSFTP.Tag = "File Transfer";
             this.toolTipNoDelay.SetToolTip(this.bSFTP, "File Transfer. Enter your user credentials and click here to open an SFTP file tr" +
@@ -385,7 +403,7 @@
             // bDashboard
             // 
             this.bDashboard.BackColor = System.Drawing.Color.Transparent;
-            this.bDashboard.BackgroundImage = global::AweSimConnect.Properties.Resources.awesim_ball;
+            this.bDashboard.BackgroundImage = global::AweSimConnect.Properties.Resources.osclogo2;
             this.bDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.bDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bDashboard.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -393,10 +411,10 @@
             this.bDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDashboard.Location = new System.Drawing.Point(182, 12);
+            this.bDashboard.Location = new System.Drawing.Point(20, 9);
             this.bDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.bDashboard.Name = "bDashboard";
-            this.bDashboard.Size = new System.Drawing.Size(154, 158);
+            this.bDashboard.Size = new System.Drawing.Size(85, 94);
             this.bDashboard.TabIndex = 1;
             this.bDashboard.Tag = "Dashboard";
             this.toolTipNoDelay.SetToolTip(this.bDashboard, "Click to Access the AweSim web dashboard.");
@@ -408,9 +426,11 @@
             this.gbSessionType.Controls.Add(this.rbBROWSER);
             this.gbSessionType.Controls.Add(this.rbVNC);
             this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionType.Location = new System.Drawing.Point(12, 358);
+            this.gbSessionType.Location = new System.Drawing.Point(18, 393);
+            this.gbSessionType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSessionType.Name = "gbSessionType";
-            this.gbSessionType.Size = new System.Drawing.Size(154, 62);
+            this.gbSessionType.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbSessionType.Size = new System.Drawing.Size(231, 95);
             this.gbSessionType.TabIndex = 4;
             this.gbSessionType.TabStop = false;
             this.gbSessionType.Text = "2. Session Type";
@@ -419,9 +439,11 @@
             // 
             this.gbVNCPassword.Controls.Add(this.tbVNCPassword);
             this.gbVNCPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbVNCPassword.Location = new System.Drawing.Point(12, 491);
+            this.gbVNCPassword.Location = new System.Drawing.Point(18, 597);
+            this.gbVNCPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbVNCPassword.Name = "gbVNCPassword";
-            this.gbVNCPassword.Size = new System.Drawing.Size(154, 41);
+            this.gbVNCPassword.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbVNCPassword.Size = new System.Drawing.Size(231, 63);
             this.gbVNCPassword.TabIndex = 8;
             this.gbVNCPassword.TabStop = false;
             this.gbVNCPassword.Text = "4. VNC Passphrase";
@@ -431,9 +453,11 @@
             this.gbSystem.Controls.Add(this.lConnectionStatus);
             this.gbSystem.Controls.Add(this.pbIsNetworkConnected);
             this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSystem.Location = new System.Drawing.Point(12, 179);
+            this.gbSystem.Location = new System.Drawing.Point(18, 117);
+            this.gbSystem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSystem.Name = "gbSystem";
-            this.gbSystem.Size = new System.Drawing.Size(154, 40);
+            this.gbSystem.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbSystem.Size = new System.Drawing.Size(231, 62);
             this.gbSystem.TabIndex = 13;
             this.gbSystem.TabStop = false;
             this.gbSystem.Text = "Network Status";
@@ -442,7 +466,8 @@
             // 
             this.lConnectionStatus.AutoSize = true;
             this.lConnectionStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.lConnectionStatus.Location = new System.Drawing.Point(32, 18);
+            this.lConnectionStatus.Location = new System.Drawing.Point(48, 28);
+            this.lConnectionStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lConnectionStatus.Name = "lConnectionStatus";
             this.lConnectionStatus.Size = new System.Drawing.Size(77, 13);
             this.lConnectionStatus.TabIndex = 2;
@@ -452,9 +477,10 @@
             // 
             this.pbIsNetworkConnected.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pbIsNetworkConnected.Image = global::AweSimConnect.Properties.Resources.cross_gry;
-            this.pbIsNetworkConnected.Location = new System.Drawing.Point(7, 16);
+            this.pbIsNetworkConnected.Location = new System.Drawing.Point(10, 25);
+            this.pbIsNetworkConnected.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbIsNetworkConnected.Name = "pbIsNetworkConnected";
-            this.pbIsNetworkConnected.Size = new System.Drawing.Size(22, 19);
+            this.pbIsNetworkConnected.Size = new System.Drawing.Size(33, 29);
             this.pbIsNetworkConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbIsNetworkConnected.TabIndex = 1;
             this.pbIsNetworkConnected.TabStop = false;
@@ -464,9 +490,11 @@
             this.gbSFTP.Controls.Add(this.bSFTP);
             this.gbSFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.gbSFTP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSFTP.Location = new System.Drawing.Point(182, 269);
+            this.gbSFTP.Location = new System.Drawing.Point(273, 256);
+            this.gbSFTP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSFTP.Name = "gbSFTP";
-            this.gbSFTP.Size = new System.Drawing.Size(75, 82);
+            this.gbSFTP.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbSFTP.Size = new System.Drawing.Size(112, 126);
             this.gbSFTP.TabIndex = 14;
             this.gbSFTP.TabStop = false;
             this.gbSFTP.Text = "SFTP";
@@ -475,9 +503,11 @@
             // 
             this.gbConnect.Controls.Add(this.bConnect);
             this.gbConnect.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbConnect.Location = new System.Drawing.Point(182, 358);
+            this.gbConnect.Location = new System.Drawing.Point(273, 393);
+            this.gbConnect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbConnect.Name = "gbConnect";
-            this.gbConnect.Size = new System.Drawing.Size(154, 172);
+            this.gbConnect.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbConnect.Size = new System.Drawing.Size(231, 267);
             this.gbConnect.TabIndex = 15;
             this.gbConnect.TabStop = false;
             this.gbConnect.Text = "Connect";
@@ -486,9 +516,11 @@
             // 
             this.gbConsole.Controls.Add(this.buttonConsole);
             this.gbConsole.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbConsole.Location = new System.Drawing.Point(261, 268);
+            this.gbConsole.Location = new System.Drawing.Point(392, 254);
+            this.gbConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbConsole.Name = "gbConsole";
-            this.gbConsole.Size = new System.Drawing.Size(75, 83);
+            this.gbConsole.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbConsole.Size = new System.Drawing.Size(112, 128);
             this.gbConsole.TabIndex = 16;
             this.gbConsole.TabStop = false;
             this.gbConsole.Text = "Console";
@@ -497,9 +529,11 @@
             // 
             this.gbSettings.Controls.Add(this.buttonAdvanced);
             this.gbSettings.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSettings.Location = new System.Drawing.Point(182, 179);
+            this.gbSettings.Location = new System.Drawing.Point(273, 117);
+            this.gbSettings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSettings.Name = "gbSettings";
-            this.gbSettings.Size = new System.Drawing.Size(75, 84);
+            this.gbSettings.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbSettings.Size = new System.Drawing.Size(112, 129);
             this.gbSettings.TabIndex = 17;
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
@@ -508,9 +542,11 @@
             // 
             this.gbAbout.Controls.Add(this.buttonInfo);
             this.gbAbout.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbAbout.Location = new System.Drawing.Point(261, 179);
+            this.gbAbout.Location = new System.Drawing.Point(392, 117);
+            this.gbAbout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbAbout.Name = "gbAbout";
-            this.gbAbout.Size = new System.Drawing.Size(75, 84);
+            this.gbAbout.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gbAbout.Size = new System.Drawing.Size(112, 129);
             this.gbAbout.TabIndex = 18;
             this.gbAbout.TabStop = false;
             this.gbAbout.Text = "About";
@@ -518,11 +554,12 @@
             // pbLogo
             // 
             this.pbLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pbLogo.BackgroundImage = global::AweSimConnect.Properties.Resources.awesim_logo;
+            this.pbLogo.BackgroundImage = global::AweSimConnect.Properties.Resources.osclogotext;
             this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbLogo.Location = new System.Drawing.Point(12, 12);
+            this.pbLogo.Location = new System.Drawing.Point(115, -40);
+            this.pbLogo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(154, 158);
+            this.pbLogo.Size = new System.Drawing.Size(396, 194);
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
             this.pbLogo.Tag = "Logo";
@@ -532,7 +569,8 @@
             this.linkLabelNewVersion.AllowDrop = true;
             this.linkLabelNewVersion.AutoSize = true;
             this.linkLabelNewVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelNewVersion.Location = new System.Drawing.Point(17, 127);
+            this.linkLabelNewVersion.Location = new System.Drawing.Point(363, 80);
+            this.linkLabelNewVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabelNewVersion.Name = "linkLabelNewVersion";
             this.linkLabelNewVersion.Size = new System.Drawing.Size(144, 32);
             this.linkLabelNewVersion.TabIndex = 20;
@@ -544,10 +582,10 @@
             // 
             // AweSimMain2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(347, 537);
+            this.ClientSize = new System.Drawing.Size(520, 670);
             this.Controls.Add(this.linkLabelNewVersion);
             this.Controls.Add(this.gbAbout);
             this.Controls.Add(this.gbSettings);
@@ -563,6 +601,7 @@
             this.Controls.Add(this.pbLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "AweSimMain2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

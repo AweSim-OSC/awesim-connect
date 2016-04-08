@@ -8,11 +8,11 @@ namespace OSCConnect.Controllers
     {
         // The version response php is hosted here. A get response will return the format: 0.61.0.0
         // Username is included for usage tracking.
-        public static string VERSION_RESPONSE_PAGE =
-            "https://apps.awesim.org/assets/wiag/connect/latest/awesimconnectversion.php?user={0}";
+        public static string VERSION_RESPONSE_PAGE = 
+            "https://apps.awesim.org/assets/wiag/connect/latest/oscconnectversion.php?user={0}";
         
         // The location of the latest deployed executable.
-        public static string LATEST_DOWNLOAD_PAGE = @"https://apps.awesim.org/assets/wiag/connect/latest/AweSimConnect.exe";
+        public static string LATEST_DOWNLOAD_PAGE = @"https://apps.awesim.org/assets/wiag/connect/latest/OSCConnect.exe";
 
         // The current version of the running client.
         private static readonly string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();

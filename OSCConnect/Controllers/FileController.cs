@@ -9,13 +9,13 @@ namespace OSCConnect.Controllers
     /// </summary>
     class FileController
     {
-        public static string FILE_FOLDER = "AweSimFiles";
+        public static string FILE_FOLDER = "OSCFiles";
         //public static string FILE_FOLDER_PATH = Path.Combine(Directory.GetCurrentDirectory(), FILE_FOLDER);
         public static string FILE_FOLDER_PATH_ADMIN = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), FILE_FOLDER);
         public static string FILE_FOLDER_PATH_TEMP = Path.Combine(Path.GetTempPath(), FILE_FOLDER);
         
-        // Create an empty AweSim files folder.
-        public static bool CreateAweSimFilesFolder()
+        // Create an empty helper files folder.
+        public static bool CreateFilesFolder()
         {
             try
             {
@@ -29,8 +29,8 @@ namespace OSCConnect.Controllers
             return true;
         }
 
-        // Delete the AweSim files folder recursively.
-        public static void DeleteAweSimFilesFolder()
+        // Delete the helper files folder recursively.
+        public static void DeleteFilesFolder()
         {
             try
             {
@@ -44,7 +44,7 @@ namespace OSCConnect.Controllers
             }
         }
 
-        public static void DeleteAweSimFilesFolder(bool admin)
+        public static void DeleteFilesFolder(bool admin)
         {
             
             try
@@ -68,15 +68,15 @@ namespace OSCConnect.Controllers
         public static bool DeployResource(byte[] resource, string fileName, bool admin)
         {
             return admin
-                ? DeployResourceToAweSimFilesFolder(resource, fileName)
+                ? DeployResourceToFilesFolder(resource, fileName)
                 : DeployResourceToTempFolder(resource, fileName);
         }
 
-        public static bool DeployResourceToAweSimFilesFolder(byte[] resource, string fileName)
+        public static bool DeployResourceToFilesFolder(byte[] resource, string fileName)
         {
             try
             {
-                if (!IsResourceInstalledInAweSimFolder(fileName))
+                if (!IsResourceInstalledInFolder(fileName))
                     {
                         string path = Path.Combine(FILE_FOLDER_PATH_ADMIN, fileName);
                         using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write))
@@ -111,7 +111,7 @@ namespace OSCConnect.Controllers
             return true;
         }
 
-        public static bool IsResourceInstalledInAweSimFolder(string fileName)
+        public static bool IsResourceInstalledInFolder(string fileName)
         {
             return ExistsOnPath(Path.Combine(FILE_FOLDER_PATH_ADMIN, fileName));
         }

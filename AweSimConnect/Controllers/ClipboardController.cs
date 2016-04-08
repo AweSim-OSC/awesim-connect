@@ -50,7 +50,7 @@ namespace AweSimConnect.Controllers
             {
                 //If the clipboard text is an AweSim URI, process that.
                 string clipboardText = Clipboard.GetText().Trim();
-                if (clipboardText.ToLower().Contains(RegistryHook.URI_PREFIX))
+                if (RegistryHook.ContainsPrefix(clipboardText.ToLower()))
                 {
                     try
                     {

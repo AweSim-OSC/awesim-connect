@@ -74,7 +74,7 @@ namespace AweSimConnect.Controllers
                 string connectionString = commandArgString;
 
                 // If the user used the URI as the command line string, remove the prefix.
-                connectionString = Regex.Replace(connectionString, RegistryHook.URI_PREFIX, "", RegexOptions.IgnoreCase);
+                connectionString = RegistryHook.RemovePrefix(connectionString);
 
                 // Check for sftp connection
                 if (connectionString.Contains("sftp@"))

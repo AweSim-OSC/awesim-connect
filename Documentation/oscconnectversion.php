@@ -10,17 +10,17 @@
    * location beside the deployed file.
    *
    * Method returns format: GetFileVersion(File) => [ (int)Major, (int)Minor, 0, 0 ]
-   * Additional code block at the bottom formats the output for the AweSim Connect app.
+   * Additional code block at the bottom formats the output for the OSC Connect app.
    *
    * If the hosted file location is different than the location of the php file, update the
-   * $AweSimConnectFile variable to list the path to the deployed file.
+   * $AOSCConnectFile variable to list the path to the deployed file.
    *
    * The location of the .php file is hard-coded into /Controllers/VersionChecker.cs
    * If the php file is moved, the app will need to be updated with the new location.
    *
    * Currently:
    *    public static string VERSION_RESPONSE_PAGE =
-   *      @"https://apps.awesim.org/assets/wiag/connect/latest/awesimconnectversion.php";
+   *      @"https://apps.awesim.org/assets/wiag/connect/latest/oscconnectversion.php";
    *
    * If the file is moved or the php response is not found by the application, the app will
    * move on gracefully but will not notify the user of updates.

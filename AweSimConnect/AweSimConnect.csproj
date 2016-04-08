@@ -113,7 +113,6 @@
     <Compile Include="Controllers\ConsoleController.cs" />
     <Compile Include="Controllers\NetworkTools.cs" />
     <Compile Include="Controllers\ProcessController.cs" />
-    <Compile Include="Controllers\RegistryController.cs" />
     <Compile Include="Controllers\RegistryHook.cs" />
     <Compile Include="Controllers\SFTPControllerFileZilla.cs" />
     <Compile Include="Controllers\SFTPControllerWinSCP.cs" />
@@ -211,6 +210,8 @@
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
+    <None Include="Resources\OSC-logo-txt.png" />
+    <None Include="Resources\OSC_Logo_Icon-Only.jpg" />
     <None Include="Resources\WinSCP.exe" />
     <None Include="Resources\vncviewer.exe" />
     <None Include="Resources\putty.exe" />

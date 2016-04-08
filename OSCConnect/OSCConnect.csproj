@@ -51,7 +51,7 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>assets\osclogo2.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\osclogot.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -207,10 +207,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\awesim-ball.ico" />
-    <Content Include="assets\osclogo2.ico" />
+    <Content Include="assets\osclogot.ico" />
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
+    <None Include="Resources\osclogot.ico" />
     <None Include="Resources\osclogofull.png" />
     <None Include="Resources\osclogo2.jpg" />
     <None Include="Resources\osclogo.png" />

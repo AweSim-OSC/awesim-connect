@@ -28,13 +28,13 @@ namespace OSCConnect.Views
         // The fourth number is the number of seconds since midnight divided by 2.
         static readonly string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         static readonly string CLIENT_TITLE = "OSC Connect v." + CLIENT_VERSION;
-        static string AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
+        static string OSC_DASHBOARD_URL = "http://www.osc.edu/";
 
         private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
         private static string LIMITED_CONNECTION_ERROR =
             "Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.";
         private static string UNABLE_TO_CONNECT =
-            "Unable to Connect to AweSim Server. Check your connection or contact your system administrator.";
+            "Unable to Connect to OSC Server. Check your connection or contact your system administrator.";
         private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
 
         Connection _connection;
@@ -82,7 +82,7 @@ namespace OSCConnect.Views
 
             // If the app can't write out a folder to deploy helper apps,
             // it's because the user doesn't have admin access to write.
-            _settings.SetWriteableUser(FileController.CreateAweSimFilesFolder());
+            _settings.SetWriteableUser(FileController.CreateFilesFolder());
 
             //Initialize controllers.
             _clipc = new ClipboardController();
@@ -136,11 +136,11 @@ namespace OSCConnect.Views
         {
             try
             {
-                WebTools.LaunchBrowser(AWESIM_DASHBOARD_URL);
+                WebTools.LaunchBrowser(OSC_DASHBOARD_URL);
             }
             catch (Exception)
             {
-                MessageBox.Show(BROWSER_ERROR + AWESIM_DASHBOARD_URL, "Browser not found", MessageBoxButtons.OK);
+                MessageBox.Show(BROWSER_ERROR + OSC_DASHBOARD_URL, "Browser not found", MessageBoxButtons.OK);
             }
         }
 
@@ -591,7 +591,7 @@ namespace OSCConnect.Views
             }
 
             //Clean up installed files.
-            FileController.DeleteAweSimFilesFolder();
+            FileController.DeleteFilesFolder();
         }
 
         // When the user changes the text in the VNC password box, check for validity.

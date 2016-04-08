@@ -605,7 +605,7 @@
             this.MaximizeBox = false;
             this.Name = "AweSimMain2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AweSim Connect";
+            this.Text = "OSC Connect";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AweSimMain_FormClosing);
             this.Load += new System.EventHandler(this.AweSimMain2_Load);
             this.gbCredentials.ResumeLayout(false);

@@ -27,7 +27,7 @@ namespace AweSimConnect.Views
         // The third number is the number of days since the year 2000
         // The fourth number is the number of seconds since midnight divided by 2.
         static readonly string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        static readonly string CLIENT_TITLE = "AweSim Connect v." + CLIENT_VERSION;
+        static readonly string CLIENT_TITLE = "OSC Connect v." + CLIENT_VERSION;
         static string AWESIM_DASHBOARD_URL = "http://apps.awesim.org/devapps/";
 
         private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
@@ -72,6 +72,7 @@ namespace AweSimConnect.Views
         {
             //GUI Setup
             this.CenterToParent();
+            bConnect.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
             this.AcceptButton = bConnect;
 
             _processes = new List<ProcessData>();

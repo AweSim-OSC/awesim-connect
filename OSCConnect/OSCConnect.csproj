@@ -211,6 +211,7 @@
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
+    <None Include="Resources\osclogofull.png" />
     <None Include="Resources\osclogo2.jpg" />
     <None Include="Resources\osclogo.png" />
     <None Include="Resources\OSC-logo-txt.png" />

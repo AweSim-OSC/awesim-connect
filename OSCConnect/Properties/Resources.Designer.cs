@@ -243,6 +243,16 @@ namespace OSCConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap osclogofull {
+            get {
+                object obj = ResourceManager.GetObject("osclogofull", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap osclogotext {
             get {
                 object obj = ResourceManager.GetObject("osclogotext", resourceCulture);

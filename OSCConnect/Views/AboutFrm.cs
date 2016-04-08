@@ -12,7 +12,7 @@ namespace OSCConnect.Views
 
         Assembly assembly;
         static string RESOURCE_NAME = "OSCConnect.LICENSE.txt";
-        static string AWESIM_SITE = "http://apps.awesim.org/devapps";
+        static string AWESIM_SITE = "http://www.osc.edu";
 
         public AboutFrm()
         {
@@ -22,6 +22,7 @@ namespace OSCConnect.Views
         private void AboutFrm_Load(object sender, EventArgs e)
         {
 
+            labelAboutTitle.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             labelVersion.Text = "Version " + CLIENT_VERSION;
             linkAweSim.Text = AWESIM_SITE;
 

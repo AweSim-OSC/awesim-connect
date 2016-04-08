@@ -86,7 +86,7 @@
             this.gbCredentials.Controls.Add(this.labelPassword);
             this.gbCredentials.Controls.Add(this.labelUsername);
             this.gbCredentials.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbCredentials.Location = new System.Drawing.Point(18, 185);
+            this.gbCredentials.Location = new System.Drawing.Point(18, 215);
             this.gbCredentials.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbCredentials.Name = "gbCredentials";
             this.gbCredentials.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -172,7 +172,7 @@
             this.gbSessionInfo.Controls.Add(this.lPort);
             this.gbSessionInfo.Controls.Add(this.lHost);
             this.gbSessionInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionInfo.Location = new System.Drawing.Point(18, 496);
+            this.gbSessionInfo.Location = new System.Drawing.Point(18, 526);
             this.gbSessionInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSessionInfo.Name = "gbSessionInfo";
             this.gbSessionInfo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -411,7 +411,7 @@
             this.bDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.bDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDashboard.Location = new System.Drawing.Point(20, 9);
+            this.bDashboard.Location = new System.Drawing.Point(27, 27);
             this.bDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.bDashboard.Name = "bDashboard";
             this.bDashboard.Size = new System.Drawing.Size(85, 94);
@@ -426,7 +426,7 @@
             this.gbSessionType.Controls.Add(this.rbBROWSER);
             this.gbSessionType.Controls.Add(this.rbVNC);
             this.gbSessionType.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSessionType.Location = new System.Drawing.Point(18, 393);
+            this.gbSessionType.Location = new System.Drawing.Point(18, 423);
             this.gbSessionType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSessionType.Name = "gbSessionType";
             this.gbSessionType.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -439,7 +439,7 @@
             // 
             this.gbVNCPassword.Controls.Add(this.tbVNCPassword);
             this.gbVNCPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbVNCPassword.Location = new System.Drawing.Point(18, 597);
+            this.gbVNCPassword.Location = new System.Drawing.Point(18, 627);
             this.gbVNCPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbVNCPassword.Name = "gbVNCPassword";
             this.gbVNCPassword.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -453,7 +453,7 @@
             this.gbSystem.Controls.Add(this.lConnectionStatus);
             this.gbSystem.Controls.Add(this.pbIsNetworkConnected);
             this.gbSystem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSystem.Location = new System.Drawing.Point(18, 117);
+            this.gbSystem.Location = new System.Drawing.Point(18, 147);
             this.gbSystem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSystem.Name = "gbSystem";
             this.gbSystem.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -490,7 +490,7 @@
             this.gbSFTP.Controls.Add(this.bSFTP);
             this.gbSFTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.gbSFTP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSFTP.Location = new System.Drawing.Point(273, 256);
+            this.gbSFTP.Location = new System.Drawing.Point(273, 286);
             this.gbSFTP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSFTP.Name = "gbSFTP";
             this.gbSFTP.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -503,7 +503,7 @@
             // 
             this.gbConnect.Controls.Add(this.bConnect);
             this.gbConnect.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbConnect.Location = new System.Drawing.Point(273, 393);
+            this.gbConnect.Location = new System.Drawing.Point(273, 423);
             this.gbConnect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbConnect.Name = "gbConnect";
             this.gbConnect.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -516,7 +516,7 @@
             // 
             this.gbConsole.Controls.Add(this.buttonConsole);
             this.gbConsole.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbConsole.Location = new System.Drawing.Point(392, 254);
+            this.gbConsole.Location = new System.Drawing.Point(392, 284);
             this.gbConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbConsole.Name = "gbConsole";
             this.gbConsole.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -529,7 +529,7 @@
             // 
             this.gbSettings.Controls.Add(this.buttonAdvanced);
             this.gbSettings.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbSettings.Location = new System.Drawing.Point(273, 117);
+            this.gbSettings.Location = new System.Drawing.Point(273, 147);
             this.gbSettings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbSettings.Name = "gbSettings";
             this.gbSettings.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -542,7 +542,7 @@
             // 
             this.gbAbout.Controls.Add(this.buttonInfo);
             this.gbAbout.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.gbAbout.Location = new System.Drawing.Point(392, 117);
+            this.gbAbout.Location = new System.Drawing.Point(392, 147);
             this.gbAbout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbAbout.Name = "gbAbout";
             this.gbAbout.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -556,7 +556,7 @@
             this.pbLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbLogo.BackgroundImage = global::AweSimConnect.Properties.Resources.osclogotext;
             this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbLogo.Location = new System.Drawing.Point(115, -40);
+            this.pbLogo.Location = new System.Drawing.Point(119, -21);
             this.pbLogo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(396, 194);
@@ -569,7 +569,7 @@
             this.linkLabelNewVersion.AllowDrop = true;
             this.linkLabelNewVersion.AutoSize = true;
             this.linkLabelNewVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelNewVersion.Location = new System.Drawing.Point(363, 80);
+            this.linkLabelNewVersion.Location = new System.Drawing.Point(326, 110);
             this.linkLabelNewVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabelNewVersion.Name = "linkLabelNewVersion";
             this.linkLabelNewVersion.Size = new System.Drawing.Size(144, 32);
@@ -585,7 +585,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(520, 670);
+            this.ClientSize = new System.Drawing.Size(520, 705);
             this.Controls.Add(this.linkLabelNewVersion);
             this.Controls.Add(this.gbAbout);
             this.Controls.Add(this.gbSettings);

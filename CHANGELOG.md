@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file. This projec
 ## Upcoming
 
 * Only launch VNC with /quality flag when not default.
+* Rebrand to OSC Connect
+* Add `osc://` uri handler.
 * Bug fixes and refactorings.
 
 ## v0.90

@@ -1,61 +1,60 @@
-![AweSim](./Documentation/img/awesim-small.png)
+![OSC](./Documentation/img/osclogofull.png)
 
-# AweSim Connect
+# OSC Connect
 
-## How to use the AweSim Connect App to Securely Connect a Windows PC to an AweSim Session
+## How to use the OSC Connect App to Securely Connect a Windows PC to an OSC Session
 
-AweSim connect is a native windows application written in C# and compiled for .NET 2.0, providing compatibility for Windows versions from XP through Windows 10.
+OSC connect is a native windows application written in C# and compiled for .NET 2.0, providing compatibility for Windows versions from XP through Windows 10.
 
-### Why AweSim Connect?
+### Why OSC Connect?
 
-To connect to AweSim services, a secure tunnel to a session is required. This can be done relatively simply in OSX and Linux by using the SSH functionality built into the system, but Windows users have had to configure and use third party applications like PuTTY or Java to access secure resources at OSC. AweSim Connect provides preconfigured management of secure tunnel connections for Windows users, as well as providing a launcher for secure file transfer, VNC, terminal, and web based services.
+To connect to OSC services, a secure tunnel to a session is required. This can be done relatively simply in OSX and Linux by using the SSH functionality built into the system, but Windows users have had to configure and use third party applications like PuTTY or Java to access secure resources at OSC. OSC Connect provides preconfigured management of secure tunnel connections for Windows users, as well as providing a launcher for secure file transfer, VNC, terminal, and web based services.
 
 ## Getting Started
 
-#### Download the latest release of `AweSimConnect.exe` from the AweSim Dashboard
+#### Download the latest release of `OSCConnect.exe` from the OSC OnDemand or AweSim Dashboard
 
-[Download Latest Build](https://apps.awesim.org/assets/wiag/connect/latest/AweSimConnect.exe)
+[Download Latest Build](https://apps.awesim.org/assets/wiag/connect/latest/OSCConnect.exe)
 
 #### Use "Save" or "Save As" to save this file to a folder of your choice
 
-When you first run AweSim Connect, a temporary folder with four additional files will be added to this folder. These are required for proper functionality of the application. Please ensure that these files are permitted by your IT administrator.
+When you first run OSC Connect, a temporary folder with four additional files will be added to this folder. These are required for proper functionality of the application. Please ensure that these files are permitted by your IT administrator.
 
-* `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to AweSim resources. (version 0.66)
-* `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to AweSim resources. (version 0.66)
+* `plink.exe` is the command-line version of PuTTY and is used by the application to create the secure connection to OSC resources. (version 0.66)
+* `putty.exe` the GUI application of PuTTY is used to provide terminal emulation remote console connections to OSC resources. (version 0.66)
 * `vncviewer.exe` is the VNC viewer client used to view a remote desktop session. Currently TurboVNC Viewer 2.0.1.
-* `WinSCP.exe` AweSim Connect includes WinSCP 5.7.6 as the default SFTP client.
+* `WinSCP.exe` OSC Connect includes WinSCP 5.7.6 as the default SFTP client.
 
-#### Double-Click the `AweSimConnect.exe` file to run the application
+#### Double-Click the `OSCConnect.exe` file to run the application
 
-No further installation is required. In the current state, AweSim Connect is entirely deployed by a single executable file.
+No further installation is required. In the current state, OSC Connect is entirely deployed by a single executable file.
 
 The application will have to be run once manually to provide support for launching sessions through the custom URI scheme.
 
 ## Connecting to a Session
 
-The AweSim Connect application can be used to connect to a running session. Sessions are launched through the AweSim web dashboard. AweSim Connect does not have the ability to launch a new session.
+The OSC Connect application can be used to connect to a running session. Sessions are launched through the OSC web dashboard. OSC Connect does not have the ability to launch a new session.
 
-#### Navigate to the AweSim Dashboard and create a session
+#### Navigate to the OSC OnDemand or AweSim Dashboard and create a session
 
-Click the button with the globe in the upper-right side of the application to launch a default browser connection to the AweSim Dashboard, or navigate your browser directly to [https://apps.awesim.org/devapps/](https://apps.awesim.org/devapps/).
+* [OSC OnDemand](http://www.osc.edu)
+* [AweSim Dashboard](http://apps.awesim.org)
 
-* AweSim Connect currently supports VNC connections and the web-based COMSOL Server connection.
-
-#### Enter your AweSim Credentials in the text boxes
+#### Enter your OSC Credentials in the text boxes
 
 * Entering your credentials reveals file transfer options and allows you to select a Session type.
 
 ### Three ways to Connect
 
-#### Option One: Click the `awesim://` link.
+#### Option One: Click the `osc://` or `awesim://` link.
 
- AweSim Connect supports a custom URI scheme that is registered when you launch the application. After the app is run once, just click the link provided in the Session App to launch AweSim Connect and populate the configuration information. Then, just click the lightning bolt icon to connect to your session.
+ OSC Connect supports a custom URI scheme that is registered when you launch the application. After the app is run once, just click the link provided in the Session App to launch OSC Connect and populate the configuration information. Then, just click the lightning bolt icon to connect to your session.
 
 #### Option Two: Copy to clipboard
 
- The "Copy to clipboard" option is currently disabled by default. If you are having difficulty connecting using the AweSim URI, you can open the Advanced Settings menu and enable the "Detect Clipboard Activity" option.
+ The "Copy to clipboard" option is currently disabled by default. If you are having difficulty connecting using one of the OSC URIs, you can open the Advanced Settings menu and enable the "Detect Clipboard Activity" option.
  
- When this option is enabled just copy the AweSim URI to your windows clipboard. The application will detect the code and populate the fields for you. Then, just click the lightning bolt icon to connect to your session.
+ When this option is enabled just copy the URI link to your windows clipboard. The application will detect the code and populate the fields for you. Then, just click the lightning bolt icon to connect to your session.
 
  If your information has been entered correctly, you will be automatically connected to our system. You may see a window open and close briefly, this is the secure tunnel being established.
 
@@ -97,7 +96,7 @@ When this option is enabled, the application will detect valid data on the Windo
 
 ### Automation Settings
 
-Several automation functions are available to reduce the amount of interaction required with the AweSim Connect application.
+Several automation functions are available to reduce the amount of interaction required with the OSC Connect application.
 
 #### Save User Credentials
 
@@ -113,38 +112,38 @@ When checked, the application will automatically launch a browser or vnc session
 
 ## Secure File Transfer
 
-The AweSim Connect application will use the embedded client to allow you to connect to securely connect to the AweSim file system over SFTP.
+The OSC Connect application will use the embedded client to allow you to connect to securely connect to the OSC file system over SFTP.
 
-#### Enter your AweSim credentials
+#### Enter your OSC credentials
 
 #### Click the file transfer button in the bottom left.
 
-AweSim Connect now uses WinSCP as the default SFTP client.
+OSC Connect now uses WinSCP as the default SFTP client.
 
-* [WinSCP](http://winscp.net/eng/index.php) is the embedded SFTP client. The AweSim Connect application will deploy and run a WinSCP process.
+* [WinSCP](http://winscp.net/eng/index.php) is the embedded SFTP client. The OSC Connect application will deploy and run a WinSCP process.
 
 ## FAQ
 
-#### I've clicked the `awesim://` link and nothing happened.
+#### I've clicked the `awesim://` or `osc://` link and nothing happened.
 
-Be sure to launch `AweSimConnect.exe` at least once. The initial launch will add a key to your user registry that initializes the URI scheme.
+Be sure to launch `OSCConnect.exe` at least once. The initial launch will add a key to your user registry that initializes the URI scheme.
 
-If you move or rename the `AweSimConnect.exe` file, you will need to open the application again manually to update the path in the handler.
+If you move or rename the `OSCConnect.exe` file, you will need to open the application again manually to update the path in the handler.
 
 #### I've received the error "Unable to open helper application. The porotocol specified in this address is not valid."
 
-This issue appears in some earlier versions of Internet Explorer when attempting to launch the application from a Temporary location. Download and run the `AweSimConnect.exe` application, being sure to click "Save As" or "Save" in your browser to save the file to a non-temporary location.
+This issue appears in some earlier versions of Internet Explorer when attempting to launch the application from a Temporary location. Download and run the `OSCConnect.exe` application, being sure to click "Save As" or "Save" in your browser to save the file to a non-temporary location.
 
 ## Developer Notes
 
-* AweSim Connect is built to comply with the Microsoft .NET  runtime 2.0. 2.0 is considered "pure" .NET and the compiled binaries should function without additional dependencies on Windows XP/7/8/8.1/10.
-* AweSim Connect is developed using primarily the [C# language](https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx).
+* OSC Connect is built to comply with the Microsoft .NET  runtime 2.0. 2.0 is considered "pure" .NET and the compiled binaries should function without additional dependencies on Windows XP/7/8/8.1/10.
+* OSC Connect is developed using primarily the [C# language](https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx).
 
 #### Build Instructions
 
 * Download and install [Visual Studio Community 2015](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
 * Visual Studio includes team support. If you are accustomed to command-line git, download and install [Git for Windows](https://msysgit.github.io/) to gain access to Git Bash.
-* `git clone` the AweSim Connect repository to your system.
+* `git clone` the OSC Connect repository to your system.
 * Open the project in Visual Studio by clicking **File > Open > Project/Solution** and selecting **AweSimConnect.sln** in the file dialog. You can also load the project in Visual Studio by double-clicking the **AweSimConnect.sln** file in the Windows Explorer.
 * Download the required dependencies using the NuGet Package Manager
 * Click the button with the green arrow and the word "Start" to build and run the solution.
@@ -158,6 +157,7 @@ This process is dynamic, so updating the executable in the deployment folder aut
 The app uses this response to determine if the deployed version is newer than the client version.
 
 * https://apps.awesim.org/assets/wiag/connect/latest/awesimconnectversion.php
+* https://apps.awesim.org/assets/wiag/connect/latest/oscconnectversion.php
 
 #### Usage Tracking
 
@@ -165,7 +165,7 @@ The app uses this response to determine if the deployed version is newer than th
 
 Logs are retained for one year in `ssl_access_log.*` at `/var/log/httpd/apps.awesim.org` on `websvcs02.osc.edu`. Access logs prior to September 30th, 2015 are available in the same path on `websvcs06.osc.edu`.
 
-For access data:
+For accessing data:
 
 ````
 	ssh websvcs02.osc.edu
@@ -175,12 +175,17 @@ For access data:
 
 This command will need to be modified to distill data for reporting purposes.
 
-#### Automatic connection via `awesim://` URI
+#### Automatic connection via `awesim://` or `osc://` URI
 
-AweSim Connect has custom URI support. Run the application once to enable this feature. Clicking an AweSim URI provided by the web session manager will activate and populate the application with connection data.
+OSC Connect has custom URI support. Run the application once to enable this feature. Clicking an AweSim or OSC URI provided by the web session manager will activate and populate the application with connection data.
 
 Examples of valid patterns:
 
+* VNC: ```osc://<UserName>:<VNCPassword>@<PUAServer><RemoteHost>```
+* VNC (no user): ```osc://:<VNCPassword>@<PUAServer><RemoteHost>```
+* COMSOL: ```osc://<UserName>@<PUAServer><RemoteHost>```
+* COMSOL (no user): ```osc://<PUAServer>:<RemoteHost>```
+* SFTP: ```osc://sftp@<RemotePath>```
 * VNC: ```awesim://<UserName>:<VNCPassword>@<PUAServer><RemoteHost>```
 * VNC (no user): ```awesim://:<VNCPassword>@<PUAServer><RemoteHost>```
 * COMSOL: ```awesim://<UserName>@<PUAServer><RemoteHost>```
@@ -189,19 +194,19 @@ Examples of valid patterns:
 
 #### Automatic connection via command line arguments.
 
-AweSim Connect accepts command line arguments in the patterns:
+OSC Connect accepts command line arguments in the patterns:
 
-* ```AweSimConnect.exe <UserName>:<VNCPassword>@<PUAServer>:<RemotePort>```
-* ```AweSimConnect.exe :<VNCPassword>@<PUAServer>:<RemotePort>```
-* ```AweSimConnect.exe <UserName>@<PUAServer>:<RemotePort>```
-* ```AweSimConnect.exe <PUAServer>:<RemotePort>```
-* ```AweSimConnect.exe sftp@<RemotePath>```
+* ```OSCConnect.exe <UserName>:<VNCPassword>@<PUAServer>:<RemotePort>```
+* ```OSCConnect.exe :<VNCPassword>@<PUAServer>:<RemotePort>```
+* ```OSCConnect.exe <UserName>@<PUAServer>:<RemotePort>```
+* ```OSCConnect.exe <PUAServer>:<RemotePort>```
+* ```OSCConnect.exe sftp@<RemotePath>```
 
 #### [Deprecated] Automatic connection via valid json string.
 
 The application can detect when a properly formatted string is copied to the Windows clipboard and it will automatically parse the input data. In this version, the application can expect 4 inputs. The inputs are case-sensitive.
 
-* **U**, or **UserName** - The AweSim username credential. *(ex: an0018)*
+* **U**, or **UserName** - The OSC username credential. *(ex: an0018)*
 * **H**, or **PUAServer** - The host name of the running session. *(ex: n0580.ten.osc.edu')*
 * **R**, or **RemotePort** - The remote port for the tunnel connection. The application will attempt to set the local port to the same port as the remote port, but if the local port is already in use it will select the next available port. *(ex: 5901)*
 * **V**, or **VNCPassword** - An 8-char password generated by the VNC server. *(ex: VaK55uol)*

@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file. This projec
 * Add `osc://` uri handler.
 * Bug fixes and refactorings.
 * Update PuTTY/Plink to 0.67
+* Update TurboVNC to 2.0.91
+* Update WinSCP to 5.7.7
 
 ## v0.90
 

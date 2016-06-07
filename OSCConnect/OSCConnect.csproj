@@ -211,6 +211,8 @@
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
+    <None Include="Resources\plink.exe" />
+    <None Include="Resources\putty.exe" />
     <None Include="Resources\osclogo2.jpg" />
     <None Include="Resources\osctransparent.png" />
     <None Include="Resources\oscicontransparent.ico" />
@@ -222,8 +224,6 @@
     <None Include="Resources\OSC_Logo_Icon-Only.jpg" />
     <None Include="Resources\WinSCP.exe" />
     <None Include="Resources\vncviewer.exe" />
-    <None Include="Resources\putty.exe" />
-    <None Include="Resources\plink.exe" />
     <None Include="Resources\awesim_logo.png" />
     <Content Include="osclogo2.ico" />
     <Content Include="Resources\awesim_logo2.png" />

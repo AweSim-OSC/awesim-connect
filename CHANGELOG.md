@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file. This projec
 * Rebrand to OSC Connect
 * Add `osc://` uri handler.
 * Bug fixes and refactorings.
+* Update PuTTY/Plink to 0.67
 
 ## v0.90
 

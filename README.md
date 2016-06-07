@@ -14,7 +14,7 @@ To connect to OSC services, a secure tunnel to a session is required. This can b
 
 #### Download the latest release of `OSCConnect.exe` from the OSC OnDemand or AweSim Dashboard
 
-[Download Latest Build](https://apps.awesim.org/assets/wiag/connect/latest/OSCConnect.exe)
+[Download Latest Build](https://github.com/OSC/osc-connect/releases/latest)
 
 #### Use "Save" or "Save As" to save this file to a folder of your choice
 

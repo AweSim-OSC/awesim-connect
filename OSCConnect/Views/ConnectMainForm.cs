@@ -60,6 +60,7 @@ namespace OSCConnect.Views
         private AboutFrm _abtFrm;
         private AdvSettingsFrm _advFrm;
         private AdvancedSettings _settings;
+        private GithubVersionChecker _githubVersion;
         private string _sshHost;
         
         public ConnectMainForm(string[] args)
@@ -695,8 +696,6 @@ namespace OSCConnect.Views
         // Checks for network connectivity.
         private void NetworkConnected(bool isNetworkConnected)
         {
-            
-
             if (isNetworkConnected)
             {
                 CheckSSHConnection(_networkChanged);
@@ -782,7 +781,8 @@ namespace OSCConnect.Views
                 // If we already know there is a newer version out there we don't need to check again.
                 if (!_settings.NewerVersionAvailable())
                 {
-                    _settings.SetNewerVersionAvailable(VersionChecker.IsNewerVersionAvailable(tbUsername.Text));
+                    _githubVersion = new GithubVersionChecker();
+                    _settings.SetNewerVersionAvailable(_githubVersion.IsNewerVersionAvailable());
                 }
 
                 DisplayNewVersionOptions(_settings.NewerVersionAvailable());
@@ -894,7 +894,11 @@ namespace OSCConnect.Views
 
         private void linkLabelNewVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            WebTools.LaunchBrowser(VersionChecker.LATEST_DOWNLOAD_PAGE);
+            if (_githubVersion == null)
+            {
+                _githubVersion = new GithubVersionChecker();
+            }
+            WebTools.LaunchBrowser(_githubVersion.getLatestBinaryPath());
         }
     }
 }

@@ -11,6 +11,8 @@ All notable changes to this project will be documented in this file. This projec
 * Update PuTTY/Plink to 0.67
 * Update TurboVNC to 2.0.91
 * Update WinSCP to 5.7.7
+* Modified app to use github for releases and binaries
+* Update Newtonsoft.JSON to 8.0.3
 
 ## v0.90
 

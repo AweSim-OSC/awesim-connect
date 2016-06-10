@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net;
+using System.Text;
 
 namespace OSCConnect.Controllers
 {
@@ -55,6 +57,16 @@ namespace OSCConnect.Controllers
             //TODO if we get here without launching, I may want to add an embedded browser.
 
             return browserProcess;
+        }
+
+        // Perform a GET request and return the contents as string.
+        public static string GET(string url)
+        {
+            WebClient client = new WebClient();
+            client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+            byte[] html = client.DownloadData(url);
+            UTF8Encoding utf = new UTF8Encoding();
+            return utf.GetString(html);
         }
 
         // Launch the custom browser launcher on a specified port.

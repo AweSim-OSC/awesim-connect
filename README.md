@@ -150,30 +150,10 @@ This issue appears in some earlier versions of Internet Explorer when attempting
 
 #### Version Checking
 
-* The deployment folder currently hosts a php file that returns the windows assembly file info.
+As of version 0.92, OSC Connect relies upon Github for hosting binaries and version information. The app will make a request to the [GitHub API](https://api.github.com/repos/OSC/osc-connect/releases/latest) to obtain the latest tagged release.
 
-This file returns a string response with the current windows assembly file version of the executable in the deployment folder.
-This process is dynamic, so updating the executable in the deployment folder automatically updates the response.
-The app uses this response to determine if the deployed version is newer than the client version.
+If the released version on github is newer than the existing version, the app displays a link to the latest version of the application.
 
-* https://apps.awesim.org/assets/wiag/connect/latest/awesimconnectversion.php
-* https://apps.awesim.org/assets/wiag/connect/latest/oscconnectversion.php
-
-#### Usage Tracking
-
-* As of version 0.72, calls made to awesimconnectversion.php will include a GET parameter request containing the text of the username box as param['user']. These calls can then be parsed in the future to track app launches and users.
-
-Logs are retained for one year in `ssl_access_log.*` at `/var/log/httpd/apps.awesim.org` on `websvcs02.osc.edu`. Access logs prior to September 30th, 2015 are available in the same path on `websvcs06.osc.edu`.
-
-For accessing data:
-
-````
-	ssh websvcs02.osc.edu
-	cd /var/log/httpd/apps.awesim.org
-	zgrep 'awesimconnectversion.php' *
-````
-
-This command will need to be modified to distill data for reporting purposes.
 
 #### Automatic connection via `awesim://` or `osc://` URI
 

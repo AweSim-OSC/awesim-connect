@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Assembly Versioning](https://msdn.microsoft.com/en-us/library/51ket42z(v=vs.71).aspx).
 
-## Upcoming
+## v0.92
 
 * Only launch VNC with /quality flag when not default.
 * Rebrand to OSC Connect

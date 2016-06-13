@@ -31,7 +31,7 @@ namespace OSCConnect.Controllers
         private static readonly string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         public GithubVersionChecker()
-        {            
+        {
             try
             {
                 string data = WebTools.GET(VERSION_RESPONSE_PAGE);

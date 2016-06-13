@@ -60,6 +60,8 @@ namespace OSCConnect.Controllers
         }
 
         // Perform a GET request and return the contents as string.
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown when the host is unknown.</exception>
+        /// <exception cref="System.Net.WebException">Thrown when the host can not be resolved.</exception>
         public static string GET(string url)
         {
             WebClient client = new WebClient();

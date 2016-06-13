@@ -31,10 +31,10 @@ namespace OSCConnect.Controllers
         private static readonly string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         public GithubVersionChecker()
-        {
-            string data = WebTools.GET(VERSION_RESPONSE_PAGE);
+        {            
             try
             {
+                string data = WebTools.GET(VERSION_RESPONSE_PAGE);
                 GithubResponse gResponse = JsonConvert.DeserializeObject<GithubResponse>(data);
                 _latestBinaryPath = gResponse.assets[0].browser_download_url;
                 _latestVersion = gResponse.tag_name;

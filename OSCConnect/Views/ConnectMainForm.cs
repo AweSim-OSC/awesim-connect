@@ -23,11 +23,7 @@ namespace OSCConnect.Views
     */
     public partial class ConnectMainForm : Form
     {
-        // The version number. The first and second numbers are set in the assembly info.
-        // The third number is the number of days since the year 2000
-        // The fourth number is the number of seconds since midnight divided by 2.
-        static readonly string CLIENT_VERSION = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        static readonly string CLIENT_TITLE = "OSC Connect v." + CLIENT_VERSION;
+        static readonly string CLIENT_TITLE = "OSC Connect v." + Application.ProductVersion;
         static string OSC_DASHBOARD_URL = "http://www.osc.edu/";
 
         private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";

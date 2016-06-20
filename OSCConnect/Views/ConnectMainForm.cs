@@ -23,20 +23,21 @@ namespace OSCConnect.Views
     */
     public partial class ConnectMainForm : Form
     {
-        static readonly string CLIENT_TITLE = "OSC Connect v." + Application.ProductVersion;
-        
-        private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
-        private static string LIMITED_CONNECTION_ERROR =
-            "Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.";
-        private static string UNABLE_TO_CONNECT =
-            "Unable to Connect to OSC Server. Check your connection or contact your system administrator.";
-        private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
-        private static Icon OSC_ICON = OSCConnect.Properties.Resources.oscicontransparent;
+        private static Brand _brand = new AweSimBrand();
 
         Connection _connection;
+        
+        // Displayed at the top of the form.
+        private string CLIENT_TITLE = _brand.name() + " Connect v." + Application.ProductVersion;
 
-        private Brand _brand = new OSCBrand();
+        // The icon used in the top-left of the windows pane.
+        private static Icon CLIENT_ICON = _brand.icon();
 
+        private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
+        private static string LIMITED_CONNECTION_ERROR =
+        "Unable to connect to " + _brand.name() + " servers.\n\nPlease check your connection or contact your system administrator to enable access.";
+        private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
+        
         private SFTPControllerWinSCP _ftpc;
         private ConsoleController _consolec;
         private ClipboardController _clipc;
@@ -62,8 +63,12 @@ namespace OSCConnect.Views
         
         public ConnectMainForm(string[] args)
         {
-            InitializeComponent();
+            InitializeComponent();           
+
+            
             this.Text = CLIENT_TITLE;
+
+
         }
 
         // Form Load
@@ -73,7 +78,7 @@ namespace OSCConnect.Views
             this.CenterToParent();
             bConnect.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
             this.AcceptButton = bConnect;
-            this.Icon = OSC_ICON;
+            this.Icon = CLIENT_ICON;
 
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();
@@ -703,7 +708,7 @@ namespace OSCConnect.Views
             else
             {
                 pbIsNetworkConnected.Image = Resources.cross_gry;
-                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, UNABLE_TO_CONNECT + "\n" + _sshHost);
+                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, LIMITED_CONNECTION_ERROR + "\n" + _sshHost);
                 lConnectionStatus.Text = _sshHost + " unavailable";
             }
         }

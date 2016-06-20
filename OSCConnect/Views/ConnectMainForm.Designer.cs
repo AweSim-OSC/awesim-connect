@@ -384,7 +384,7 @@
             // bDashboard
             // 
             this.bDashboard.BackColor = System.Drawing.Color.Transparent;
-            this.bDashboard.BackgroundImage = global::OSCConnect.Properties.Resources.osclogo2;
+            this.bDashboard.BackgroundImage = global::OSCConnect.Properties.Resources.wireframe_globe;
             this.bDashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.bDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bDashboard.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));

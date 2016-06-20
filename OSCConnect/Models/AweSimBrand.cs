@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Drawing;
+using OSCConnect.Models;
 
-namespace OSCConnect.Models
+namespace OSCConnect.Views
 {
-    class OSCBrand : Brand
+    internal class AweSimBrand : Brand
     {
         public string name()
         {
-            return "OSC";
+            return "AweSim";
         }
 
         public string dashboardURI()
         {
-            return "http://www.osc.edu/";
+            return "http://apps.awesim.org/";
         }
 
         public Icon icon()
         {
-            return Properties.Resources.oscicontransparent;
+            return Properties.Resources.awesim_ball1;
         }
 
         public Bitmap dashboardButtonBackground()
         {
-            return Properties.Resources.osclogo2;
+            return Properties.Resources.awesim_ball;
         }
     }
 }

@@ -90,7 +90,7 @@
             this.gbCredentials.Size = new System.Drawing.Size(154, 130);
             this.gbCredentials.TabIndex = 2;
             this.gbCredentials.TabStop = false;
-            this.gbCredentials.Text = "1. AweSim Credentials";
+            this.gbCredentials.Text = "1. Credentials";
             this.toolTipNoDelay.SetToolTip(this.gbCredentials, "Your AweSim Username and Password.");
             // 
             // cbRememberMe

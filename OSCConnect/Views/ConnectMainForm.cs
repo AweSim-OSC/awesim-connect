@@ -23,6 +23,7 @@ namespace OSCConnect.Views
     */
     public partial class ConnectMainForm : Form
     {
+        // Configure the brand by editing OSCBrand.cs or creating a new class from the Brand interface.
         private static Brand _brand = new AweSimBrand();
 
         Connection _connection;
@@ -37,7 +38,8 @@ namespace OSCConnect.Views
         private static string LIMITED_CONNECTION_ERROR =
         "Unable to connect to " + _brand.name() + " servers.\n\nPlease check your connection or contact your system administrator to enable access.";
         private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
-        
+        private static string CREDENTIALS_LABEL = "1. " + _brand.name() + " Credentials";
+                
         private SFTPControllerWinSCP _ftpc;
         private ConsoleController _consolec;
         private ClipboardController _clipc;
@@ -63,12 +65,9 @@ namespace OSCConnect.Views
         
         public ConnectMainForm(string[] args)
         {
-            InitializeComponent();           
-
+            InitializeComponent();
             
             this.Text = CLIENT_TITLE;
-
-
         }
 
         // Form Load
@@ -79,6 +78,10 @@ namespace OSCConnect.Views
             bConnect.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
             this.AcceptButton = bConnect;
             this.Icon = CLIENT_ICON;
+
+            // Enable branding features
+            bDashboard.BackgroundImage = _brand.dashboardButtonBackground();
+            gbCredentials.Text = CREDENTIALS_LABEL;
 
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();

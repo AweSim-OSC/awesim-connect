@@ -24,8 +24,7 @@ namespace OSCConnect.Views
     public partial class ConnectMainForm : Form
     {
         static readonly string CLIENT_TITLE = "OSC Connect v." + Application.ProductVersion;
-        static string OSC_DASHBOARD_URL = "http://www.osc.edu/";
-
+        
         private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
         private static string LIMITED_CONNECTION_ERROR =
             "Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.";
@@ -35,6 +34,8 @@ namespace OSCConnect.Views
         private static Icon OSC_ICON = OSCConnect.Properties.Resources.oscicontransparent;
 
         Connection _connection;
+
+        private Brand _brand = new OSCBrand();
 
         private SFTPControllerWinSCP _ftpc;
         private ConsoleController _consolec;
@@ -135,11 +136,11 @@ namespace OSCConnect.Views
         {
             try
             {
-                WebTools.LaunchBrowser(OSC_DASHBOARD_URL);
+                WebTools.LaunchBrowser(_brand.dashboardURI());
             }
             catch (Exception)
             {
-                MessageBox.Show(BROWSER_ERROR + OSC_DASHBOARD_URL, "Browser not found", MessageBoxButtons.OK);
+                MessageBox.Show(BROWSER_ERROR + _brand.dashboardURI(), "Browser not found", MessageBoxButtons.OK);
             }
         }
 

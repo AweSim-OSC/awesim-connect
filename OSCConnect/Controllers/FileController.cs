@@ -9,7 +9,7 @@ namespace OSCConnect.Controllers
     /// </summary>
     class FileController
     {
-        public static string FILE_FOLDER = "OSCFiles";
+        public static string FILE_FOLDER = "ConnectFiles";
         //public static string FILE_FOLDER_PATH = Path.Combine(Directory.GetCurrentDirectory(), FILE_FOLDER);
         public static string FILE_FOLDER_PATH_ADMIN = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), FILE_FOLDER);
         public static string FILE_FOLDER_PATH_TEMP = Path.Combine(Path.GetTempPath(), FILE_FOLDER);

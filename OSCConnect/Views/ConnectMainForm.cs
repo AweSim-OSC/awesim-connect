@@ -82,6 +82,7 @@ namespace OSCConnect.Views
             // Enable branding features
             bDashboard.BackgroundImage = _brand.dashboardButtonBackground();
             gbCredentials.Text = CREDENTIALS_LABEL;
+            pbLogo.BackgroundImage = _brand.logoImage();
 
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();

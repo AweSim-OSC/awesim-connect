@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Drawing;
 
 namespace OSCConnect.Models
 {
@@ -10,10 +8,11 @@ namespace OSCConnect.Models
 
         string dashboardURI();
 
-        System.Drawing.Bitmap dashboardButtonBackground();
+        Bitmap dashboardButtonBackground();
 
-        System.Drawing.Icon icon();
+        // Icon size ideally 57px x 57px
+        Icon icon();
 
-
+        Bitmap logoImage();
     }
 }

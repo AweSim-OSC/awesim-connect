@@ -23,7 +23,12 @@ namespace OSCConnect.Views
 
         public Bitmap dashboardButtonBackground()
         {
-            return Properties.Resources.awesim_ball;
+            return Properties.Resources.awesim_ball_sm;
+        }
+
+        public Bitmap logoImage()
+        {
+            return Properties.Resources.awesim_logo_txt;
         }
     }
 }

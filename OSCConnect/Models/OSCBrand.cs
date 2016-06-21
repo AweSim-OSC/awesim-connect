@@ -24,5 +24,10 @@ namespace OSCConnect.Models
         {
             return Properties.Resources.osclogo2;
         }
+
+        public Bitmap logoImage()
+        {
+            return Properties.Resources.osclogotext;
+        }
     }
 }

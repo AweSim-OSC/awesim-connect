@@ -1,8 +1,6 @@
-﻿using System;
-using System.Drawing;
-using OSCConnect.Models;
+﻿using System.Drawing;
 
-namespace OSCConnect.Views
+namespace OSCConnect.Models
 {
     internal class AweSimBrand : Brand
     {

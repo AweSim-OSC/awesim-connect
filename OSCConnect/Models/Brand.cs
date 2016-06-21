@@ -2,6 +2,9 @@
 
 namespace OSCConnect.Models
 {
+    /*
+     * Interface class for branding elements. Extend this class to change graphical and link elements.
+     */
     interface Brand
     {
         string name();

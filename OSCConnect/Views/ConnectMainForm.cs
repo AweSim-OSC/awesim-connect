@@ -23,17 +23,14 @@ namespace OSCConnect.Views
     */
     public partial class ConnectMainForm : Form
     {
-        // Configure the brand by editing OSCBrand.cs or creating a new class from the Brand interface.
-        private static Brand _brand = new AweSimBrand();
+        // Configure the brand by editing OSCBrand.cs or creating a new class from the Brand interface and add it to the BrandFactory.
+        private static Brand _brand = new BrandFactory(AppDomain.CurrentDomain.FriendlyName).getBrand();
 
         Connection _connection;
         
         // Displayed at the top of the form.
         private string CLIENT_TITLE = _brand.name() + " Connect v." + Application.ProductVersion;
-
-        // The icon used in the top-left of the windows pane.
-        private static Icon CLIENT_ICON = _brand.icon();
-
+        
         private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
         private static string LIMITED_CONNECTION_ERROR =
         "Unable to connect to " + _brand.name() + " servers.\n\nPlease check your connection or contact your system administrator to enable access.";
@@ -77,11 +74,12 @@ namespace OSCConnect.Views
             this.CenterToParent();
             bConnect.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
             this.AcceptButton = bConnect;
-            this.Icon = CLIENT_ICON;
+            this.Icon = _brand.icon();
 
             // Enable branding features
             bDashboard.BackgroundImage = _brand.dashboardButtonBackground();
             gbCredentials.Text = CREDENTIALS_LABEL;
+            // The icon used in the top-left of the windows pane.
             pbLogo.BackgroundImage = _brand.logoImage();
 
             _processes = new List<ProcessData>();

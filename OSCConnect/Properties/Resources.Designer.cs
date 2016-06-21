@@ -71,6 +71,16 @@ namespace OSCConnect.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap awesim_ball_sm {
+            get {
+                object obj = ResourceManager.GetObject("awesim_ball_sm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         public static System.Drawing.Icon awesim_ball1 {
@@ -96,6 +106,16 @@ namespace OSCConnect.Properties {
         public static System.Drawing.Bitmap awesim_logo {
             get {
                 object obj = ResourceManager.GetObject("awesim_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap awesim_logo_txt {
+            get {
+                object obj = ResourceManager.GetObject("awesim_logo_txt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

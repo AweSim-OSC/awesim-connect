@@ -105,6 +105,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BrandFactory.cs" />
     <Compile Include="Controllers\CommandLineController.cs" />
     <Compile Include="Controllers\ConsoleController.cs" />
     <Compile Include="Controllers\GithubVersionChecker.cs" />
@@ -119,7 +120,9 @@
     <Compile Include="Controllers\VNCControllerTurbo.cs" />
     <Compile Include="Controllers\WebTools.cs" />
     <Compile Include="Models\AdvancedSettings.cs" />
+    <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\ObjectCopier.cs" />
+    <Compile Include="Models\OSCBrand.cs" />
     <Compile Include="Models\PasswordEncryption.cs" />
     <Compile Include="Models\ProcessData.cs" />
     <Compile Include="Models\VisualizationNode.cs" />
@@ -149,6 +152,7 @@
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\AweSimBrand.cs" />
     <Compile Include="Views\ConnectMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +227,8 @@
     <None Include="Resources\OSC_Logo_Icon-Only.jpg" />
     <None Include="Resources\awesim_logo.png" />
     <Content Include="osclogo2.ico" />
+    <None Include="Resources\awesim-ball-sm.png" />
+    <None Include="Resources\awesim-logo-txt.png" />
     <Content Include="Resources\awesim_logo2.png" />
     <None Include="Resources\console.png" />
     <None Include="Resources\officine2.png" />

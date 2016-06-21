@@ -23,19 +23,20 @@ namespace OSCConnect.Views
     */
     public partial class ConnectMainForm : Form
     {
-        static readonly string CLIENT_TITLE = "OSC Connect v." + Application.ProductVersion;
-        static string OSC_DASHBOARD_URL = "http://www.osc.edu/";
-
-        private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
-        private static string LIMITED_CONNECTION_ERROR =
-            "Unable to connect to OSC servers.\n\nPlease check your connection or contact your system administrator to enable access.";
-        private static string UNABLE_TO_CONNECT =
-            "Unable to Connect to OSC Server. Check your connection or contact your system administrator.";
-        private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
-        private static Icon OSC_ICON = OSCConnect.Properties.Resources.oscicontransparent;
+        // Configure the brand by editing OSCBrand.cs or creating a new class from the Brand interface and add it to the BrandFactory.
+        private static Brand _brand = new BrandFactory(AppDomain.CurrentDomain.FriendlyName).getBrand();
 
         Connection _connection;
-
+        
+        // Displayed at the top of the form.
+        private string CLIENT_TITLE = _brand.name() + " Connect v." + Application.ProductVersion;
+        
+        private static string BROWSER_ERROR = "No default browser discovered. Please navigate your web browser to: ";
+        private static string LIMITED_CONNECTION_ERROR =
+        "Unable to connect to " + _brand.name() + " servers.\n\nPlease check your connection or contact your system administrator to enable access.";
+        private static string SFTP_NOT_DETECTED = "Supported SFTP client not detected";
+        private static string CREDENTIALS_LABEL = "1. " + _brand.name() + " Credentials";
+                
         private SFTPControllerWinSCP _ftpc;
         private ConsoleController _consolec;
         private ClipboardController _clipc;
@@ -62,6 +63,7 @@ namespace OSCConnect.Views
         public ConnectMainForm(string[] args)
         {
             InitializeComponent();
+            
             this.Text = CLIENT_TITLE;
         }
 
@@ -72,7 +74,13 @@ namespace OSCConnect.Views
             this.CenterToParent();
             bConnect.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255); //transparent
             this.AcceptButton = bConnect;
-            this.Icon = OSC_ICON;
+            this.Icon = _brand.icon();
+
+            // Enable branding features
+            bDashboard.BackgroundImage = _brand.dashboardButtonBackground();
+            gbCredentials.Text = CREDENTIALS_LABEL;
+            // The icon used in the top-left of the windows pane.
+            pbLogo.BackgroundImage = _brand.logoImage();
 
             _processes = new List<ProcessData>();
             _connectionForms = new List<ConnectionForm>();
@@ -135,11 +143,11 @@ namespace OSCConnect.Views
         {
             try
             {
-                WebTools.LaunchBrowser(OSC_DASHBOARD_URL);
+                WebTools.LaunchBrowser(_brand.dashboardURI());
             }
             catch (Exception)
             {
-                MessageBox.Show(BROWSER_ERROR + OSC_DASHBOARD_URL, "Browser not found", MessageBoxButtons.OK);
+                MessageBox.Show(BROWSER_ERROR + _brand.dashboardURI(), "Browser not found", MessageBoxButtons.OK);
             }
         }
 
@@ -702,7 +710,7 @@ namespace OSCConnect.Views
             else
             {
                 pbIsNetworkConnected.Image = Resources.cross_gry;
-                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, UNABLE_TO_CONNECT + "\n" + _sshHost);
+                toolTipNoDelay.SetToolTip(pbIsNetworkConnected, LIMITED_CONNECTION_ERROR + "\n" + _sshHost);
                 lConnectionStatus.Text = _sshHost + " unavailable";
             }
         }

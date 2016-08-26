@@ -9,6 +9,7 @@ namespace OSCConnect.Controllers
     {
         public class GithubAssets
         {
+            public string name { get; set; }
             public string browser_download_url { get; set; }
         }
 
@@ -21,7 +22,8 @@ namespace OSCConnect.Controllers
         }
 
         private string _latestBinaryPath;
-        private string _latestVersion;        
+        private string _latestVersion;
+        private List<GithubAssets> _assetList;
 
         // GET Returns json response from the github api
         public static string VERSION_RESPONSE_PAGE =
@@ -36,6 +38,7 @@ namespace OSCConnect.Controllers
             {
                 string data = WebTools.GET(VERSION_RESPONSE_PAGE);
                 GithubResponse gResponse = JsonConvert.DeserializeObject<GithubResponse>(data);
+                _assetList = gResponse.assets;
                 _latestBinaryPath = gResponse.assets[0].browser_download_url;
                 _latestVersion = gResponse.tag_name;
             }
@@ -50,6 +53,18 @@ namespace OSCConnect.Controllers
         public string getLatestBinaryPath()
         {
             return _latestBinaryPath;            
+        }
+
+        public string getLatestBinaryPath(string match)
+        {
+            foreach (var asset in _assetList)
+            {
+                if (asset.name.ToLower().Contains(match))
+                {
+                    _latestBinaryPath = asset.browser_download_url;
+                }
+            }
+            return _latestBinaryPath;
         }
 
         // Parse the data from remote and 

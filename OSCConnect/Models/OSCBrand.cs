@@ -9,6 +9,11 @@ namespace OSCConnect.Models
             return "OSC";
         }
 
+        public string brandString()
+        {
+            return "osc";
+        }
+
         public string dashboardURI()
         {
             return "http://ondemand3.osc.edu/";

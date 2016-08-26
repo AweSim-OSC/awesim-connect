@@ -9,6 +9,11 @@ namespace OSCConnect.Models
             return "AweSim";
         }
 
+        public string brandString()
+        {
+            return "awesim";
+        }
+
         public string dashboardURI()
         {
             return "http://apps.awesim.org/";

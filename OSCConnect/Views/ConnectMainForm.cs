@@ -902,7 +902,7 @@ namespace OSCConnect.Views
             {
                 _githubVersion = new GithubVersionChecker();
             }
-            WebTools.LaunchBrowser(_githubVersion.getLatestBinaryPath());
+            WebTools.LaunchBrowser(_githubVersion.getLatestBinaryPath(_brand.brandString()));
         }
     }
 }

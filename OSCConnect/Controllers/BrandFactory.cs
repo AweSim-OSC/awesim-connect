@@ -8,7 +8,7 @@ namespace OSCConnect.Controllers
 
         public BrandFactory(string brandString)
         {
-            if(brandString.ToLower().Contains("awesim"))
+            if(brandString.ToLower().Contains(new AweSimBrand().brandString()))
             {
                 _brand = new AweSimBrand();
             } else

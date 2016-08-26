@@ -398,7 +398,7 @@
             this.bDashboard.Size = new System.Drawing.Size(57, 61);
             this.bDashboard.TabIndex = 1;
             this.bDashboard.Tag = "Dashboard";
-            this.toolTipNoDelay.SetToolTip(this.bDashboard, "Click to Access the AweSim web dashboard.");
+            this.toolTipNoDelay.SetToolTip(this.bDashboard, "Click to Access the web portal.");
             this.bDashboard.UseVisualStyleBackColor = true;
             this.bDashboard.Click += new System.EventHandler(this.bDashboard_Click);
             // 

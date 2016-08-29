@@ -130,7 +130,7 @@ Be sure to launch `OSCConnect.exe` at least once. The initial launch will add a 
 
 If you move or rename the `OSCConnect.exe` file, you will need to open the application again manually to update the path in the handler.
 
-#### I've received the error "Unable to open helper application. The porotocol specified in this address is not valid."
+#### I've received the error "Unable to open helper application. The protocol specified in this address is not valid."
 
 This issue appears in some earlier versions of Internet Explorer when attempting to launch the application from a Temporary location. Download and run the `OSCConnect.exe` application, being sure to click "Save As" or "Save" in your browser to save the file to a non-temporary location.
 
@@ -147,6 +147,10 @@ This issue appears in some earlier versions of Internet Explorer when attempting
 * Open the project in Visual Studio by clicking **File > Open > Project/Solution** and selecting **AweSimConnect.sln** in the file dialog. You can also load the project in Visual Studio by double-clicking the **AweSimConnect.sln** file in the Windows Explorer.
 * Download the required dependencies using the NuGet Package Manager
 * Click the button with the green arrow and the word "Start" to build and run the solution.
+
+#### Branding Configuration
+
+* OSC Connect can manage custom branding. To add new branding, create a new Class extending the Brand interface. Modify the BrandFactory constructor in initialize the brand as approprate. In the current implementation, the brand is based on the filename of the executing application. A file that includes the word "awesim" (case insensitive) will display the AweSim branding, otherwise it will default to OSC branding.
 
 #### Version Checking
 

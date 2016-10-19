@@ -891,6 +891,15 @@ namespace OSCConnect.Views
             SaveUserSettings();
         }
 
+        // Save the user password on change if the "remember me" box is checked.
+        private void tbPassword_TextChanged(object sender, EventArgs e)
+        {            
+            if (cbRememberMe.Checked)
+            {
+                SaveUserSettings();
+            }
+        }
+
         internal void CheckRememberBox(bool check)
         {
             cbRememberMe.Checked = check;
@@ -904,5 +913,7 @@ namespace OSCConnect.Views
             }
             WebTools.LaunchBrowser(_githubVersion.getLatestBinaryPath(_brand.brandString()));
         }
+
+        
     }
 }

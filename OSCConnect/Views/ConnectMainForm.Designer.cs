@@ -119,6 +119,7 @@
             this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTipNoDelay.SetToolTip(this.tbPassword, "Enter your AweSim password.");
             this.tbPassword.UseSystemPasswordChar = true;
+            this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);
             // 
             // tbUsername
             // 

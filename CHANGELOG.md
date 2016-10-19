@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Assembly Versioning](https://msdn.microsoft.com/en-us/library/51ket42z(v=vs.71).aspx).
 
+## Upcoming
+
+* Saved password updates on change.
+
 ## v0.94
 
 * Version checker links to the correct updated binary at Github.

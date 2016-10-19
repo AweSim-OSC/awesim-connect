@@ -893,11 +893,8 @@ namespace OSCConnect.Views
 
         // Save the user password on change if the "remember me" box is checked.
         private void tbPassword_TextChanged(object sender, EventArgs e)
-        {            
-            if (cbRememberMe.Checked)
-            {
-                SaveUserSettings();
-            }
+        {
+            SaveUserSettings();         
         }
 
         internal void CheckRememberBox(bool check)

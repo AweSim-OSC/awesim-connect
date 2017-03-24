@@ -11,12 +11,14 @@ namespace OSCConnect.Controllers
     {
         public enum Cluster
         {
+            OWENS,
             OAKLEY,
             RUBY,
             GLENN
         }
 
         // SSH Nodes
+        static OSCCluster owens = new OSCCluster("OWN", "Owens", "owens.osc.edu");
         static OSCCluster oakley = new OSCCluster("OAK", "Oakley", "oakley.osc.edu");
         static OSCCluster ruby = new OSCCluster("RBY", "Ruby", "ruby.osc.edu");
         static OSCCluster glenn = new OSCCluster("OPT", "Glenn", "glenn.osc.edu");
@@ -42,9 +44,10 @@ namespace OSCConnect.Controllers
         private void init(OSCCluster selected)
         {
             List<OSCCluster> list = new List<OSCCluster>();
-            list.Add(oakley);  // Index 0
-            list.Add(ruby);    // Index 1
-            list.Add(glenn);   // Index 2
+            list.Add(owens);   // Index 0
+            list.Add(oakley);  // Index 1
+            list.Add(ruby);    // Index 2
+            list.Add(glenn);   // Index 3
 
             this.clusterList = list;
             this.selectedCluster = selected;
@@ -71,6 +74,9 @@ namespace OSCConnect.Controllers
         {
             switch (cluster)
             {
+                case Cluster.OWENS:
+                    this.selectedCluster = owens;
+                    break;
                 case Cluster.OAKLEY:
                     this.selectedCluster = oakley;
                     break;
@@ -81,7 +87,7 @@ namespace OSCConnect.Controllers
                     this.selectedCluster = glenn;
                     break;
                 default:
-                    this.selectedCluster = oakley;
+                    this.selectedCluster = owens;
                     break;
             }
         }

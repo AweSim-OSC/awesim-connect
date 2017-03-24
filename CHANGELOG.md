@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file. This projec
 
 ## Upcoming
 
+* Add Owens cluster as default.
 * Saved password updates on change.
+* Fix version checking bug.
 
 ## v0.94
 

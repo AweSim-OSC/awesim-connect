@@ -1,6 +1,8 @@
 ﻿using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace OSCConnect.Controllers
 {
@@ -40,12 +42,12 @@ namespace OSCConnect.Controllers
                 GithubResponse gResponse = JsonConvert.DeserializeObject<GithubResponse>(data);
                 _assetList = gResponse.assets;
                 _latestBinaryPath = gResponse.assets[0].browser_download_url;
-                _latestVersion = gResponse.tag_name;
+                setLatestVersion(gResponse.tag_name);
             }
             catch (Exception)
             {
                 _latestBinaryPath = "";
-                _latestVersion = CLIENT_VERSION;
+                setLatestVersion(CLIENT_VERSION);
             }           
         }
         
@@ -65,6 +67,14 @@ namespace OSCConnect.Controllers
                 }
             }
             return _latestBinaryPath;
+        }
+
+        // Sometimes the tag will be formatted with a leading char or contain trailing text.
+        // This trims the version down to the assembly version of XX.XX.XX.XX format
+        private void setLatestVersion(string version)
+        {
+            var pattern = new Regex(@"\d+.\d+.\d+.\d+", RegexOptions.ECMAScript);
+            _latestVersion = pattern.Match(version).ToString();
         }
 
         // Parse the data from remote and 

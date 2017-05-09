@@ -212,10 +212,10 @@
     <Content Include="libs\DiffieHellman.dll" />
     <Content Include="libs\Org.Mentalis.Security.dll" />
     <Content Include="libs\Tamir.SharpSSH.dll" />
+    <None Include="Resources\WinSCP.exe" />
     <None Include="Resources\vncviewer.exe" />
     <None Include="Resources\putty.exe" />
     <None Include="Resources\plink.exe" />
-    <None Include="Resources\WinSCP.exe" />
     <None Include="Resources\osclogo2.jpg" />
     <None Include="Resources\osctransparent.png" />
     <None Include="Resources\oscicontransparent.ico" />

@@ -13,15 +13,13 @@ namespace OSCConnect.Controllers
         {
             OWENS,
             OAKLEY,
-            RUBY,
-            GLENN
+            RUBY
         }
 
         // SSH Nodes
         static OSCCluster owens = new OSCCluster("OWN", "Owens", "owens.osc.edu");
         static OSCCluster oakley = new OSCCluster("OAK", "Oakley", "oakley.osc.edu");
         static OSCCluster ruby = new OSCCluster("RBY", "Ruby", "ruby.osc.edu");
-        static OSCCluster glenn = new OSCCluster("OPT", "Glenn", "glenn.osc.edu");
 
         // Other Hosts
         public static OSCCluster SFTP_CLUSTER = new OSCCluster("FTP", "SFTP", "sftp.osc.edu");
@@ -33,7 +31,7 @@ namespace OSCConnect.Controllers
 
         public OSCClusterController()
         {
-            init(oakley);
+            init(owens);
         }
 
         public OSCClusterController(OSCCluster selected)
@@ -47,7 +45,6 @@ namespace OSCConnect.Controllers
             list.Add(owens);   // Index 0
             list.Add(oakley);  // Index 1
             list.Add(ruby);    // Index 2
-            list.Add(glenn);   // Index 3
 
             this.clusterList = list;
             this.selectedCluster = selected;
@@ -59,9 +56,9 @@ namespace OSCConnect.Controllers
             {
                 this.selectedCluster = ruby;
             }
-            else if (code.Equals(glenn.Code))
+            else if (code.Equals(owens.Code))
             {
-                this.selectedCluster = glenn;
+                this.selectedCluster = owens;
             }
             else
             {
@@ -82,9 +79,6 @@ namespace OSCConnect.Controllers
                     break;
                 case Cluster.RUBY:
                     this.selectedCluster = ruby;
-                    break;
-                case Cluster.GLENN:
-                    this.selectedCluster = glenn;
                     break;
                 default:
                     this.selectedCluster = owens;

@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AweSimConnect.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OSCConnect.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Username" Type="System.String" Scope="User">
@@ -12,7 +12,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SSHHost" Type="System.String" Scope="User">
-      <Value Profile="(Default)">OAK</Value>
+      <Value Profile="(Default)">OWN</Value>
     </Setting>
     <Setting Name="AutoOpenApp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

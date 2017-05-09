@@ -61,7 +61,7 @@ namespace OSCConnect.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("OAK")]
+        [global::System.Configuration.DefaultSettingValueAttribute("OWN")]
         public string SSHHost {
             get {
                 return ((string)(this["SSHHost"]));

@@ -2,11 +2,15 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Assembly Versioning](https://msdn.microsoft.com/en-us/library/51ket42z(v=vs.71).aspx).
 
-## Upcoming
+## v0.95
 
 * Add Owens cluster as default.
 * Saved password updates on change.
 * Fix version checking bug.
+* Fix hang when cluster non-responsive.
+* Update to PuTTY/Plink 0.69
+* Update to TurboVNC 2.1.1
+* Update to WinSCP 5.9.5
 
 ## v0.94
 

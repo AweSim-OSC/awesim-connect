@@ -752,10 +752,13 @@ namespace OSCConnect.Views
             if (_secondsElapsed % 15 == 0)
             {
                 bool availableBeforeCheck = _networkAvailable;
-                _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
                 _networkChanged = (availableBeforeCheck != _networkAvailable);
                 EnableTunnelOptions(_networkAvailable && _sshAvailable);
+            }
 
+            if (_secondsElapsed % 30 == 0)
+            {
+                _networkAvailable = NetworkTools.CanTelnetToHost(_clusterc.GetCluster(_settings.GetSSHHostCode()).Domain);
             }
 
             if (_secondsElapsed % 2 == 0)

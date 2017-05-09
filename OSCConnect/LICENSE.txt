@@ -8,11 +8,11 @@ Tamir.SharpSSH 1.1.1.13
 http://www.tamirgal.com/blog/page/SharpSSH.aspx
 BSD-3-Clause
 
-Plink 0.67
+Plink 0.69
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 MIT License
 
-PuTTY 0.67
+PuTTY 0.69
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 MIT License
 
@@ -24,10 +24,10 @@ Metrize Icons
 http://www.alessioatzeni.com/metrize-icons/
 Free Commercial License
 
-TurboVNC 2.0.91
+TurboVNC 2.1.1
 http://sourceforge.net/projects/turbovnc/
 GPLv2
 
-WinSCP 5.7.7
+WinSCP 5.9.5
 http://winscp.net/eng/docs/license
 GPL

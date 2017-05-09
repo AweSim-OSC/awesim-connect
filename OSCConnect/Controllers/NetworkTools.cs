@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.Timers;
 
 namespace OSCConnect.Controllers
 {
@@ -11,11 +12,11 @@ namespace OSCConnect.Controllers
     {
         private static int TELNET_PORT = 22;
 
-        //Checks for connectivity to Default server (currently Oakley). Use for diagnostic.
+        //Checks for connectivity to Default server (currently Owens). Use for diagnostic.
         public static bool CanTelnetToDefault()
         {
-            string oakley = new OSCClusterController().ClusterDomain();
-            return CanTelnetToHost(oakley);
+            string defaultHost = new OSCClusterController().ClusterDomain();
+            return CanTelnetToHost(defaultHost);
         }
 
         // Checks the localhost for an open port.
@@ -35,7 +36,17 @@ namespace OSCConnect.Controllers
             using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
                 try
                 {
-                    socket.Connect(host, port);
+                    // Connect using a timeout (2 seconds)
+                    IAsyncResult result = socket.BeginConnect(host, port, null, null);
+
+                    bool success = result.AsyncWaitHandle.WaitOne(2000, true);
+
+                    if (!success)
+                    {
+                        // NOTE, MUST CLOSE THE SOCKET
+                        socket.Close();
+                        throw new SocketException();
+                    }
                     return true;
                 }
                 catch (SocketException ex)

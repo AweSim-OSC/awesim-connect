@@ -36,17 +36,20 @@ namespace OSCConnect.Controllers
             using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
                 try
                 {
+                    //socket.Connect(host, port);
+                    
                     // Connect using a timeout (2 seconds)
                     IAsyncResult result = socket.BeginConnect(host, port, null, null);
 
                     bool success = result.AsyncWaitHandle.WaitOne(2000, true);
 
-                    if (!success)
+                    if (!socket.Connected)
                     {
                         // NOTE, MUST CLOSE THE SOCKET
                         socket.Close();
                         throw new SocketException();
                     }
+                    
                     return true;
                 }
                 catch (SocketException ex)

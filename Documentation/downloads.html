@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
+  <title>OSC Connect</title>
+ </head>
+ <body>
+   <div class='container'>
+     <h1>
+     OSC Connect Downloads
+     </h1>
+     <div class='row' id='dl-table'>     
+    </div>
+   </div>   
+ </body>
+</html>
+
+<script>
+  var github = "https://api.github.com/repos/OSC/osc-connect/releases";
+
+  $( document ).ready( function() {
+    $.get( github, function( data ) {
+      var table = "";
+      table += "<table class='table table-bordered'>";
+      table += "<th>release</th>";      
+      table += "<th>downloads</th>";    
+      table += "<th>release date</th>";    
+      $.each(data, function( index, value ) {
+        table += "<tr>";
+        table += "<td><a href='"+value['html_url']+"'>" + value['name'] + "</a></td>";
+        var total_dl = 0
+        $.each(value['assets'], function( index, asset ) {
+          console.log(asset['download_count']);
+          total_dl += asset['download_count'];
+        });        
+        table += "<td>" + total_dl + "</td>";
+        table += "<td>" + value['published_at'] + "</td>";
+        table += "</tr>";
+      });      
+      table += "</table>";
+      
+      $( "#dl-table" ).html( table );
+      console.log(table);
+      console.log(data);
+    });    
+    
+  });
+</script>

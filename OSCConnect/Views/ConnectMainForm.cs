@@ -129,6 +129,9 @@ namespace OSCConnect.Views
             
         }
 
+        // Fills in the username and password fields from the settings. 
+        // Because of the listeners on the text field, we need to grab these values from 
+        //  the settings before populating the fields. 
         private void PopulateUserCredentials(AdvancedSettings settings)
         {
             String username = settings.GetUsername();

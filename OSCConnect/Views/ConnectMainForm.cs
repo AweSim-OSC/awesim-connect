@@ -86,7 +86,7 @@ namespace OSCConnect.Views
             _connectionForms = new List<ConnectionForm>();
             _connection = new Connection();
             _settings = new AdvancedSettings();
-
+            
             // If the app can't write out a folder to deploy helper apps,
             // it's because the user doesn't have admin access to write.
             _settings.SetWriteableUser(FileController.CreateFilesFolder());
@@ -115,14 +115,8 @@ namespace OSCConnect.Views
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
-            tbUsername.Text = _settings.GetUsername();
-            tbPassword.Text = _settings.GetPassword();
-            if (_settings.IsUserSaved())
-            {
-                cbRememberMe.Checked = true;
-            }
-
+            
+            PopulateUserCredentials(_settings);
             DisplayGroupBoxes();
             DisplayNewVersionOptions(_settings.NewerVersionAvailable());
 
@@ -133,6 +127,16 @@ namespace OSCConnect.Views
 
             timerMain.Start();
             
+        }
+
+        private void PopulateUserCredentials(AdvancedSettings settings)
+        {
+            String username = settings.GetUsername();
+            String password = settings.GetPassword();
+            bool rememberme = settings.IsUserSaved();
+            tbUsername.Text = username;
+            tbPassword.Text = password;
+            cbRememberMe.Checked = rememberme;
         }
 
 

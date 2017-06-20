@@ -134,9 +134,12 @@ namespace OSCConnect.Views
         //  the settings before populating the fields. 
         private void PopulateUserCredentials(AdvancedSettings settings)
         {
+            // Grab the username, password, and checked state from settings
             String username = settings.GetUsername();
             String password = settings.GetPassword();
             bool rememberme = settings.IsUserSaved();
+            
+            // Set the form fields from the cached settings.
             tbUsername.Text = username;
             tbPassword.Text = password;
             cbRememberMe.Checked = rememberme;

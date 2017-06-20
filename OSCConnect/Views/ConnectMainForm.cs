@@ -86,7 +86,7 @@ namespace OSCConnect.Views
             _connectionForms = new List<ConnectionForm>();
             _connection = new Connection();
             _settings = new AdvancedSettings();
-
+            
             // If the app can't write out a folder to deploy helper apps,
             // it's because the user doesn't have admin access to write.
             _settings.SetWriteableUser(FileController.CreateFilesFolder());
@@ -115,14 +115,8 @@ namespace OSCConnect.Views
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
-            tbUsername.Text = _settings.GetUsername();
-            tbPassword.Text = _settings.GetPassword();
-            if (_settings.IsUserSaved())
-            {
-                cbRememberMe.Checked = true;
-            }
-
+            
+            PopulateUserCredentials(_settings);
             DisplayGroupBoxes();
             DisplayNewVersionOptions(_settings.NewerVersionAvailable());
 
@@ -133,6 +127,22 @@ namespace OSCConnect.Views
 
             timerMain.Start();
             
+        }
+
+        // Fills in the username and password fields from the settings. 
+        // Because of the listeners on the text field, we need to grab these values from 
+        //  the settings before populating the fields. 
+        private void PopulateUserCredentials(AdvancedSettings settings)
+        {
+            // Grab the username, password, and checked state from settings
+            String username = settings.GetUsername();
+            String password = settings.GetPassword();
+            bool rememberme = settings.IsUserSaved();
+            
+            // Set the form fields from the cached settings.
+            tbUsername.Text = username;
+            tbPassword.Text = password;
+            cbRememberMe.Checked = rememberme;
         }
 
 

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Assembly Versioning](https://msdn.microsoft.com/en-us/library/51ket42z(v=vs.71).aspx).
 
+## v0.96
+
+* Clears up some overlapping code in the app configuration file
+* Properly initializes username and password fields from variables to prevent change event handlers from wiping state.
+
 ## v0.95
 
 * Add Owens cluster as default.

@@ -151,7 +151,11 @@ This issue appears in some earlier versions of Internet Explorer when attempting
 * Open the project in Visual Studio by clicking **File > Open > Project/Solution** and selecting **OSCConnect.sln** in the file dialog. You can also load the project in Visual Studio by double-clicking the **OSCConnect.sln** file in the Windows Explorer.
 * In the Visual Studio IDE, Download the required dependencies using the NuGet Package Manager
   * **Tools > NuGet Package Manager > Manage NuGet Packages for Solution...**
+  * The NuGet Manager will provide a notice that some of the required dependencies are missing. Click the **Restore** button to automatically download these packages.
 * Click the button with the green arrow and the word "Start" to build and run the solution.
+  * Select **Debug** and **Any CPU** while testing to enable breakpoints and performance monitoring during development.
+  * Select **Release** and **Any CPU** to compile a binary for deployment. Compiling for release removes the development tools and provides additional compilation optimizations for a release build.
+  * When deploying, attach a copy of the release-compiled `OSCConnect.exe` binary (` Solution Folder/bin/Release/OSCConnect.exe` )  to the GitHub release notification.
 
 #### Branding Configuration
 

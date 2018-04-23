@@ -137,7 +137,7 @@ This issue appears in some earlier versions of Internet Explorer when attempting
 ## Developer Notes
 
 * OSC Connect is built to comply with the Microsoft .NET  runtime 2.0. 2.0 is considered "pure" .NET and the compiled binaries should function without additional dependencies on Windows XP/7/8/8.1/10.
-* OSC Connect is developed using primarily the [C# language](https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx).
+* OSC Connect is developed using primarily the [C# language](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/index).
 
 #### Build Instructions
 
@@ -146,7 +146,7 @@ This issue appears in some earlier versions of Internet Explorer when attempting
   * Enable the .NET Framework 2.0 in Windows.
     * Press the Windows key Windows on your keyboard, type "Windows Features", and press Enter. The Turn Windows features on or off dialog box appears.
     * Select the .NET Framework 3.5 (includes .NET 2.0 and 3.0) check box, select OK, and reboot your computer if prompted.
-* Visual Studio includes team support, you can use this feature to clone the `osc-connect` repository from GitHub. If you are accustomed to command-line git, download and install [Git for Windows](https://msysgit.github.io/) to gain access to Git Bash.
+* Visual Studio includes team support, you can use this feature to clone the `osc-connect` repository from GitHub. If you are accustomed to command-line git, download and install [Git for Windows](https://gitforwindows.org/) to gain access to Git Bash.
 * `git clone` the OSC Connect repository to your system.
 * Open the project in Visual Studio by clicking **File > Open > Project/Solution** and selecting **OSCConnect.sln** in the file dialog. You can also load the project in Visual Studio by double-clicking the **OSCConnect.sln** file in the Windows Explorer.
 * In the Visual Studio IDE, Download the required dependencies using the NuGet Package Manager

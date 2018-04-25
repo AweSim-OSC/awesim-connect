@@ -16,7 +16,7 @@ namespace OSCConnect.Models
 
         public string dashboardURI()
         {
-            return "http://ondemand3.osc.edu/";
+            return "http://ondemand.osc.edu/";
         }
 
         public Icon icon()
